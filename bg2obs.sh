@@ -119,7 +119,7 @@ filename=${exportprefix}$chapter # Setting the filename
     navigation="$contents"
   elif [[ $chapter = $maxchapter ]]; then
     # If this is the last chapter of the book
-    navigation=""$contents\n\n## Related\n\n[[${prevfile}|Previous chapter]]
+    navigation="$contents\n\n## Related\n\n[[${prevfile}|Previous chapter]]"
   elif [[ ${chapter} = 1 ]] ; then
     # If this is the first chapter of the book
     navigation="$contents\n\n## Related\n\n[[${nextfile}|Next chapter]]"
@@ -152,7 +152,7 @@ filename=${exportprefix}$chapter # Setting the filename
 done # End of the book exporting loop
 
   # Create an overview file for each book of the Bible:
-  echo -e "[[${book_std}|${book}]]" >> "chr/${genre_std}.md"
+  echo -e "[[${bookarrayfile}|${book}]]" >> "${parentfolder}/${genrearrayfile}.md"
 
   done
 
