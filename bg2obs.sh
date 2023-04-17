@@ -65,8 +65,8 @@ echo "Starting download of the ${translation} Bible."
 
         echo -n "."
 
-((prevchapter=chapter-1)) # Counting the previous and next chapter for navigation
-((nextchapter=chapter+1))
+    ((prevchapter=chapter-1)) # Counting the previous and next chapter for navigation
+    ((nextchapter=chapter+1))
 
 # Exporting
 exportprefix="${abbfile}-" # Setting the first half of the filename
@@ -76,24 +76,25 @@ filename=${exportprefix}$chapter # Setting the filename
   prevfile=${exportprefix}$prevchapter # Naming previous and next files
   nextfile=${exportprefix}$nextchapter
 
+  audiobible="![[${abbfile}-$chapter.mp3]]"
+  contents="## Contents\n\n[[${abbfile}-$chapter-notes|Chapter notes]]"
 
-  # TODO
   # Formatting Navigation and omitting links that aren't necessary
   if [[ $maxchapter = 1 ]]; then
     # For a book that only has one chapter
-    navigation="[[${booktext}]]"
+    navigation="$contents"
   elif [[ $chapter = $maxchapter ]]; then
     # If this is the last chapter of the book
-    navigation="[[${prevfile}|← ${booktext} ${prevchapter}]] | [[${booktext}]]"
+    navigation=""$contents\n\n## Related\n\n[[${prevfile}|Previous chapter]]
   elif [[ ${chapter} = 1 ]] ; then
     # If this is the first chapter of the book
-    navigation="[[${booktext}]] | [[${nextfile}|${booktext} ${nextchapter} →]]"
+    navigation="$contents\n\n## Related\n\n[[${nextfile}|Next chapter]]"
   else
     # Navigation for everything else
-    navigation="[[${prevfile}|← ${booktext} ${prevchapter}]] | [[${booktext}]] | [[${nextfile}|${booktext} ${nextchapter} →]]"
+    navigation="$contents\n\n## Related\n\n[[${prevfile}|Previous chapter]]\n[[${nextfile}|Next chapter]]"
   fi
 
-    text=$(ruby bg2md.rb -e -c -f -l -r -v "${translation}" "${booktext} ${chapter}") # This calls the 'bg2md_mod' script
+    text=$(ruby bg2md.rb -e -c -f -l -r -v "${translation}" "${abbtext} ${chapter}") # This calls the 'bg2md_mod' script
 
 
   text=$(echo "$text" | sed 's/^(.*?)v1/v1/') # Deleting unwanted headers
@@ -102,7 +103,7 @@ filename=${exportprefix}$chapter # Setting the filename
   title="# ${abbtext} ${chapter}"
 
   # Navigation format
-  export="${title}\n\n$navigation\n***\n\n$text\n\n***\n$navigation"
+  export="# ${abbtext} $chapter\n\n$audiobible\n$text\n\n$navigation"
 
   # Export
   echo -e "$export" >> "$filename.md"
