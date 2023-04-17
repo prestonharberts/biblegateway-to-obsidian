@@ -26,6 +26,7 @@ declare -a lengtharray # Declaring amount of chapters in each book
 # For Translation, translate these three lists. Seperated by space and wrapped in quotes if they include whitespace.
 # Name of "The Bible" in your language
 biblenametext="Bible"
+biblenamefile="bible"
 # Full names of the books of the Bible
 bookarraytext=("Book of Genesis" "Book of Exodus" "Book of Leviticus" "Book of Numbers" "Book of Deuteronomy" "Book of Joshua" "Book of Judges" "Book of Ruth" "First Book of Samuel" "Second Book of Samuel" "First Book of Kings" "Second Book of Kings" "First Book of Chronicles" "Second Book of Chronicles" "Book of Ezra" "Book of Nehemiah" "Book of Esther" "Book of Job" "Book of Psalms" "Book of Proverbs" "Book of Ecclesiastes" "Song of Solomon" "Book of Isaiah" "Book of Jeremiah" "Book of Lamentations" "Book of Ezekiel" "Book of Daniel" "Book of Hosea" "Book of Joel" "Book of Amos" "Book of Obadiah" "Book of Jonah" "Book of Micah" "Book of Nahum" "Book of Habakkuk" "Book of Zephaniah" "Book of Haggai" "Book of Zechariah" "Book of Malachi" "Gospel of Matthew" "Gospel of Mark" "Gospel of Luke" "Gospel of John" "Acts of the Apostles" "Epistle to the Romans" "First Epistle to the Corinthians" "Second Epistle to the Corinthians" "Epistle to the Galatians" "Epistle to the Ephesians" "Epistle to the Philippians" "Epistle to the Colossians" "First Epistle to the Thessalonians" "Second Epistle to the Thessalonians" "First Epistle to Timothy" "Second Epistle to Timothy" "Epistle to Titus" "Epistle to Philemon" "Epistle to the Hebrews" "Epistle of James" "First Epistle of Peter" "Second Epistle of Peter" "First Epistle of John" "Second Epistle of John" "Third Epistle of John" "Epistle of Jude" "Book of Revelation")
 # Short names of the books of the Bible
@@ -35,10 +36,10 @@ abbarraytext=(Genesis Exodus Leviticus Numbers Deuteronomy Joshua Judges Ruth "1
 # Book chapter list
 lengtharray=(50 40 27 36 34 24 21 4 31 24 22 25 29 36 10 13 10 42 150 31 12 8 66 52 5 48 12 14 3 9 1 4 7 3 3 3 2 14 4 28 16 24 21 28 16 16 13 6 6 4 4 5 3 6 4 3 1 13 5 5 3 5 1 1 1 22)
 
-# Initialise the "The Bible" file for all of the books
-echo -e "# ${biblenametext}\n" >> "${biblenametext}.md"
+# Initialise the Bible file for all of the books
+echo -e "# ${biblenametext}\n" >> "${biblenamefile}.md"
 
-echo "Starting download of ${translation} Bible."
+echo "Starting download of the ${translation} Bible."
 
   # Cycling through the book counter, setting which book and its maxchapter
   for ((book_counter=0; book_counter <= book_counter_max; book_counter++))
@@ -103,7 +104,7 @@ filename=${export_prefix}$chapter # Setting the filename
   folder_name="${book}" # Setting the folder name
 
   # Creating a folder for the book of the Bible if it doesn't exist, otherwise moving new file into existing folder
-  mkdir -p "./${biblenametext} (${translation})/${folder_name}"; mv "${filename}".md "./${biblenametext} (${translation})/${folder_name}"
+  mkdir -p "./${biblenamefile})/${folder_name}"; mv "${filename}".md "./${biblenamefile}/${folder_name}"
 
 
 done # End of the book exporting loop
@@ -111,10 +112,10 @@ done # End of the book exporting loop
   # Create an overview file for each book of the Bible:
   overview_file="links: [[${biblenametext}]]\n# ${book}\n\n[Start Reading →]([[${abbreviation} 1]])"
   echo -e $overview_file >> "$book.md"
-  mv "$book.md" "./${biblenametext} (${translation})/${folder_name}"
+  mv "$book.md" "./${biblenamefile}/${folder_name}"
 
   # Append the bookname to "The Bible" file
-  echo -e "* [[${book}]]" >> "${biblenametext}.md"
+  echo -e "* [[${book}]]" >> "${biblenamefile}.md"
   done
 
 # Tidy up the Markdown files by removing unneeded headers and separating the verses
