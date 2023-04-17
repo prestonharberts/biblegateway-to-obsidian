@@ -1,63 +1,9 @@
 #!/bin/bash
-#----------------------------------------------------------------------------------
-# This script runs Jonathan clark's bg2md.rb ruby script and formats the output
-# to be useful in Obsidian. Find the script here: https://github.com/jgclark/BibleGateway-to-Markdown
-#
-# It needs to be run in the same directory as the 'bg2md.rb' script and will output
-# one .md file for each chapter, organising them in folders corresponding to the book.
-# Navigation on the top and bottom is also added.
-#
-#----------------------------------------------------------------------------------
-# SETTINGS
-#----------------------------------------------------------------------------------
-# Setting a different translation:
-# Using the abbreviation with the -v flag, you can call on a different translation.
-# It defaults to the "World English Bible", if you change the translation,
-# make sure to honour the copyright restrictions.
-#----------------------------------------------------------------------------------
 
-usage()
-{
-	echo "Usage: $0 [-beaicyh] [-v version]"
-	echo "  -v version   Specify the translation to download (default = WEB)"
-	echo "  -b    Set words of Jesus in bold"
-	echo "  -e    Include editorial headers"
-	echo "  -a    Create an alias in the YAML front matter for each chapter title"
-	echo "  -i    Show download information (i.e. verbose mode)"
-	echo "  -c    Include inline navigation for the breadcrumbs plugin (e.g. 'up', 'next','previous')"
-	echo "  -y    Print navigation for the breadcrumbs plugin (e.g. 'up', 'next','previous') in the frontmatter (YAML)"
-	echo "  -h    Display help"
-	exit 1
-}
-
-# Extract command line options
-
-# Clear translation variable if it exists and set defaults for others
-translation='WEB'    # Which translation to use
-boldwords="false"    # Set words of Jesus in bold
-headers="false"      # Include editorial headers
-aliases="false"      # Create an alias in the YAML front matter for each chapter title
-verbose="false"      # Show download progress for each chapter
-breadcrumbs_inline="false"      # Print breadcrumbs in the file
-breadcrumbs_yaml="false"      # Print breadcrumbs in the YAML
-
-# Process command line args
-while getopts 'v:beaicy?h' c
-do
-	case $c in
-		v) translation=$OPTARG ;;
-		b) boldwords="true" ;;
-		e) headers="true" ;;
-		a) aliases="true" ;;
-		i) verbose="true" ;;
-		c) breadcrumbs_inline="true" ;;
-		y) breadcrumbs_yaml="true" ;;
-		h|?) usage ;; 
-	esac
-done
+translation='ESV'    # Which translation to use
 
 # Copyright disclaimer
-echo "I confirm that I have checked and understand the copyright/license conditions for ${translation} and wish to continue downloading it in its entirety.?"
+echo "I confirm that I will not distribute the generated files if the copyright standards require me not to and wish to continue downloading the $translation in its entirety:"
 select yn in "Yes" "No"; do
     case $yn in
         Yes ) break;;
@@ -93,32 +39,24 @@ lengtharray=(50 40 27 36 34 24 21 4 31 24 22 25 29 36 10 13 10 42 150 31 12 8 66
 # Initialise the "The Bible" file for all of the books
 echo -e "# ${biblename}\n" >> "${biblename}.md"
 
-if [[ $verbose = "true" ]] ; then
-	echo "Starting download of ${translation} Bible."
-fi
+echo "Starting download of ${translation} Bible."
 
- # Cycling through the book counter, setting which book and its maxchapter
+  # Cycling through the book counter, setting which book and its maxchapter
   for ((book_counter=0; book_counter <= book_counter_max; book_counter++))
   do
 
-	if [[ $verbose = "true" ]] ; then
-		echo ""   # Make a new line which the '-n' flag to the echo command prevents.
-	fi
+    echo ""   # Make a new line which the '-n' flag to the echo command prevents.
 
     book=${bookarray[$book_counter]}
     maxchapter=${lengtharray[$book_counter]}
     abbreviation=${abbarray[$book_counter]}
 
-	if [[ $verbose = "true" ]] ; then
-		echo -n "${book} "
-	fi
+    echo -n "${book} "
 
     for ((chapter=1; chapter <= maxchapter; chapter++))
     do
 
-    	if [[ $verbose = "true" ]] ; then
-    		echo -n "."
-		fi
+        echo -n "."
 
 ((prev_chapter=chapter-1)) # Counting the previous and next chapter for navigation
 ((next_chapter=chapter+1))
@@ -131,8 +69,6 @@ filename=${export_prefix}$chapter # Setting the filename
   prev_file=${export_prefix}$prev_chapter # Naming previous and next files
   next_file=${export_prefix}$next_chapter
 
-  # Navigation with INLINE BREADCRUMBS DISABLED and YAML DISABLED – write normal navigation
-  if [[ $breadcrumbs_inline = "false" && $breadcrumbs_yaml = "false" ]]; then
 
   # Formatting Navigation and omitting links that aren't necessary
   if [[ $maxchapter = 1 ]]; then
@@ -148,35 +84,8 @@ filename=${export_prefix}$chapter # Setting the filename
     # Navigation for everything else
     navigation="[[${prev_file}|← ${book} ${prev_chapter}]] | [[${book}]] | [[${next_file}|${book} ${next_chapter} →]]"
   fi
-  fi
 
-  # Navigation with INLINE BREADCRUMBS ENABLED
-  if [[ $breadcrumbs_inline = "true" ]] ; then
-  # Formatting Navigation and omitting links that aren't necessary
-  if [[ ${maxchapter} = 1 ]] ; then
-    # For a book that only has one chapter
-    navigation="(up:: [[${book}]])"
-  elif [[ $chapter = $maxchapter ]] ; then
-    # If this is the last chapter of the book
-    navigation="(previous:: [[${prev_file}|← ${book} ${prev_chapter}]]) | (up:: [[${book}]])"
-  elif [[ $chapter = 1 ]] ; then
-    # If this is the first chapter of the book
-    navigation="(up:: [[${book}]]) | (next:: [[${next_file}|${book} ${next_chapter} →]])"
-  else
-    # Navigation for everything else
-    navigation="(previous:: [[${prev_file}|← ${book} ${prev_chapter}]]) | (up:: [[${book}]]) | (next:: [[${next_file}|${book} ${next_chapter} →]])"
-  fi
-  fi
-
-  if [[ $boldwords = "true" && $headers = "false" ]] ; then
-    text=$(ruby bg2md.rb -e -c -b -f -l -r -v "${translation}" "${book} ${chapter}") # This calls the 'bg2md_mod' script
-  elif [[ $boldwords = "true" && $headers = "true" ]] ; then
-    text=$(ruby bg2md.rb -c -b -f -l -r -v "${translation}" "${book} ${chapter}") # This calls the 'bg2md_mod' script
-  elif [[ $boldwords = "false" && $headers = "true" ]] ; then
     text=$(ruby bg2md.rb -e -c -f -l -r -v "${translation}" "${book} ${chapter}") # This calls the 'bg2md_mod' script
-  else
-    text=$(ruby bg2md.rb -e -c -f -l -r -v "${translation}" "${book} ${chapter}") # This calls the 'bg2md_mod' script
-  fi
 
 
   text=$(echo "$text" | sed 's/^(.*?)v1/v1/') # Deleting unwanted headers
@@ -185,46 +94,8 @@ filename=${export_prefix}$chapter # Setting the filename
   title="# ${book} ${chapter}"
 
   # Navigation format
-  if [[ $breadcrumbs_yaml = "true" ]]; then
-  export="${title}\n***\n\n$text"
-  else
   export="${title}\n\n$navigation\n***\n\n$text\n\n***\n$navigation"
-  fi
 
-# YAML
-yaml_start="---\n"
-yaml_end="\n---\n"
-alias="Aliases: [${book} ${chapter}]" # Add other aliases or 'Tags:' here if desired. Make sure to follow proper YAML format.
-
-  # Navigation with INLINE BREADCRUMBS ENABLED
-  if [[ $breadcrumbs_yaml = "true" ]] ; then
-  # Formatting Navigation and omitting links that aren't necessary
-  if [[ $maxchapter = 1 ]] ; then
-    # For a book that only has one chapter
-    bc_yaml="up: ['${book}']"
-  elif [[ $chapter = $maxchapter ]] ; then
-    # If this is the last chapter of the book
-    bc_yaml="previous: ['${prev_file}']\nup: ['${book}']"
-  elif [[ $chapter = 1 ]] ; then
-    # If this is the first chapter of the book
-    bc_yaml="up: ['${book}']\nnext: ['${next_file}']"
-  else
-    # Navigation for everything else
-    bc_yaml="up: ['${book}']\nprevious: ['${prev_file}']\nnext: ['${next_file}']"
-  fi
-  fi
-
-# Printing YAML
-  if [ ${aliases} == "true" ] && [ ${breadcrumbs_yaml} == "false" ]; then
-    yaml="${yaml_start}${alias}${yaml_end}"
-  elif [ ${aliases} == "true" ] && [ ${breadcrumbs_yaml} == "true" ]; then
-    yaml="${yaml_start}${alias}\n${bc_yaml}${yaml_end}"
-    elif [ ${aliases} == "false" ] && [ ${breadcrumbs_yaml} == "true" ]; then
-    yaml="${yaml_start}${bc_yaml}${yaml_end}"
-  fi
-  
-
-  export="${yaml}${export}"
   # Export
   echo -e "$export" >> "$filename.md"
 
