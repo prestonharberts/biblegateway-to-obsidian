@@ -29,8 +29,7 @@ sudo dnf install rubygems && sudo gem install colorize optparse clipboard
 Next, give execution rights to both scripts using the following command:
 
 ```
-chmod u+x bg2md.rh
-chmod u+x bg2obs.sh
+chmod u+x bg2md.rh bg2obs.sh
 ```
 
 ## Usage
