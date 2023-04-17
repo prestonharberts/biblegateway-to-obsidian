@@ -29,7 +29,7 @@ declare -a lengtharray # Declaring amount of chapters in each book
 # Name of "The Bible" in your language and make a folder for it if it does not exist
 biblenametext="Bible"
 biblenamefile="bible"
-mkdir -p ${biblenamefile}
+mkdir -p "${biblenamefile}"
 # Full names of the books of the Bible
 bookarraytext=("Book of Genesis" "Book of Exodus" "Book of Leviticus" "Book of Numbers" "Book of Deuteronomy" "Book of Joshua" "Book of Judges" "Book of Ruth" "First Book of Samuel" "Second Book of Samuel" "First Book of Kings" "Second Book of Kings" "First Book of Chronicles" "Second Book of Chronicles" "Book of Ezra" "Book of Nehemiah" "Book of Esther" "Book of Job" "Book of Psalms" "Book of Proverbs" "Book of Ecclesiastes" "Song of Solomon" "Book of Isaiah" "Book of Jeremiah" "Book of Lamentations" "Book of Ezekiel" "Book of Daniel" "Book of Hosea" "Book of Joel" "Book of Amos" "Book of Obadiah" "Book of Jonah" "Book of Micah" "Book of Nahum" "Book of Habakkuk" "Book of Zephaniah" "Book of Haggai" "Book of Zechariah" "Book of Malachi" "Gospel of Matthew" "Gospel of Mark" "Gospel of Luke" "Gospel of John" "Acts of the Apostles" "Epistle to the Romans" "First Epistle to the Corinthians" "Second Epistle to the Corinthians" "Epistle to the Galatians" "Epistle to the Ephesians" "Epistle to the Philippians" "Epistle to the Colossians" "First Epistle to the Thessalonians" "Second Epistle to the Thessalonians" "First Epistle to Timothy" "Second Epistle to Timothy" "Epistle to Titus" "Epistle to Philemon" "Epistle to the Hebrews" "Epistle of James" "First Epistle of Peter" "Second Epistle of Peter" "First Epistle of John" "Second Epistle of John" "Third Epistle of John" "Epistle of Jude" "Book of Revelation")
 bookarrayfile=(book-of-genesis book-of-exodus book-of-leviticus book-of-numbers book-of-deuteronomy book-of-joshua book-of-judges book-of-ruth first-book-of-samuel second-book-of-samuel first-book-of-kings second-book-of-kings first-book-of-chronicles second-book-of-chronicles book-of-ezra book-of-nehemiah book-of-esther book-of-job book-of-psalms book-of-proverbs book-of-ecclesiastes song-of-solomon book-of-isaiah book-of-jeremiah book-of-lamentations book-of-ezekiel book-of-daniel book-of-hosea book-of-joel book-of-amos book-of-obadiah book-of-jonah book-of-micah book-of-nahum book-of-habakkuk book-of-zephaniah book-of-haggai book-of-zechariah book-of-malachi gospel-of-matthew gospel-of-mark gospel-of-luke gospel-of-john acts-of-the-apostles epistle-to-the-romans first-epistle-to-the-corinthians second-epistle-to-the-corinthians epistle-to-the-galatians epistle-to-the-ephesians epistle-to-the-philippians epistle-to-the-colossians first-epistle-to-the-thessalonians second-epistle-to-the-thessalonians first-epistle-to-timothy second-epistle-to-timothy epistle-to-titus epistle-to-philemon epistle-to-the-hebrews epistle-of-james first-epistle-of-peter second-epistle-of-peter first-epistle-of-john second-epistle-of-john third-epistle-of-john epistle-of-jude book-of-revelation)
@@ -42,7 +42,7 @@ abbarrayfile=(genesis exodus leviticus numbers deuteronomy joshua judges ruth 1-
 lengtharray=(50 40 27 36 34 24 21 4 31 24 22 25 29 36 10 13 10 42 150 31 12 8 66 52 5 48 12 14 3 9 1 4 7 3 3 3 2 14 4 28 16 24 21 28 16 16 13 6 6 4 4 5 3 6 4 3 1 13 5 5 3 5 1 1 1 22)
 
 # Initialise the Bible file for all of the books
-echo -e "# ${biblenametext}\n" >> "${biblenamefile}.md"
+echo -e "# ${biblenametext}\n" >> "${biblenamefile}/${biblenamefile}.md"
 
 echo "Starting download of the ${translation} Bible."
 
@@ -121,10 +121,10 @@ done # End of the book exporting loop
   # Create an overview file for each book of the Bible:
   overview_file="links: [[${biblenametext}]]\n# ${booktext}\n\n[Start Reading →]([[${abb} 1]])"
   echo -e $overview_file >> "$bookfile.md"
-  mv $bookfile.md ${biblenamefile}/${foldername}
+  mv "$bookfile".md "./${biblenamefile}/${foldername}"
 
   # Append the bookname to the Bible file
-  echo -e "* [[${bookfile}|${booktext}]]" >> "${biblenamefile}.md"
+  echo -e "* [[${bookfile}|${booktext}]]" >> "${biblenamefile}/${biblenamefile}.md"
   done
 
 # Tidy up the Markdown files by removing unneeded headers and separating the verses
