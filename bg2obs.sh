@@ -165,13 +165,97 @@ done # End of the book exporting loop
 
 echo "Cleaning up the Markdown files."
 
-# Clear unnecessary headers
-find . -name "*.md" -print0 | xargs -0 perl -pi -e 's/#.*(#####\D[1]\D)/#$1/g'
-
 # Format verses into H6 headers
-find . -name "*.md" -print0 | xargs -0 perl -pi -e 's/######\s([0-9]\s|[0-9][0-9]\s|[0-9][0-9][0-9]\s)/\n\n###### $1\n/g'
+find . -type f -name "*.md" -exec sed -i 's/###### [0-9] /\n\n&\n\n/g' {} +
+find . -type f -name "*.md" -exec sed -i 's/###### [0-9][0-9] /\n\n&\n\n/g' {} +
+find . -type f -name "*.md" -exec sed -i 's/###### [0-9][0-9][0-9] /\n\n&\n\n/g' {} +
 
-# Delete crossreferences
-find . -name "*.md" -print0 | xargs -0 perl -pi -e 's/\<crossref intro.*crossref\>//g'
+# Remove spaces at the beginning of verses
+find . -type f -name "*.md" -exec sed -i 's/^ *//g' {} +
+
+# Create editorial headers
+find . -type f -name "*[0-9].md" -exec sed -i '5 s/[A-Za-z0-9].*/\n## &/' {} + # Make first header if it exists
+find . -type f -name "*.md" -exec sed -i 's/\.\"[A-Z0-9].*[A-Za-z0-9]$/\.\"\n\n## &/' {} + # Header following quotes (period)
+find . -type f -name "*.md" -exec sed -i 's/## \.\"/## /' {} +
+find . -type f -name "*.md" -exec sed -i 's/!\"[A-Z0-9].*[A-Za-z0-9]$/!\"\n\n## &/' {} + # Header following quotes (exclamation mark)
+find . -type f -name "*.md" -exec sed -i 's/## !\"/## /' {} +
+find . -type f -name "*.md" -exec sed -i 's/?\"[A-Z0-9].*[A-Za-z0-9]$/?\"\n\n## &/' {} + # Header following quotes (question mark)
+find . -type f -name "*.md" -exec sed -i 's/## ?\"/## /' {} +
+find . -type f -name "*.md" -exec sed -i 's/\.'\''[A-Z0-9].*[A-Za-z0-9]$/\.'\''\n\n## &/' {} + # Header following apostrophes (period)
+find . -type f -name "*.md" -exec sed -i 's/## \.'\''/## /' {} +
+find . -type f -name "*.md" -exec sed -i 's/!'\''[A-Z0-9].*[A-Za-z0-9]$/!'\''\n\n## &/' {} + # Header following apostrophes (exclamation mark)
+find . -type f -name "*.md" -exec sed -i 's/## !'\''/## /' {} +
+find . -type f -name "*.md" -exec sed -i 's/?'\''[A-Z0-9].*[A-Za-z0-9]$/?'\''\n\n### &/' {} + # Header following apostrophes (question mark)
+find . -type f -name "*.md" -exec sed -i 's/## ?'\''/## /' {} +
+find . -type f -name "*.md" -exec sed -i 's/)[A-Z0-9].*[A-Za-z0-9]$/)\n\n## &/' {} + # Header following parentheses
+find . -type f -name "*.md" -exec sed -i 's/## )/## /' {} +
+find . -type f -name "*.md" -exec sed -i 's/![A-Z0-9].*[A-Za-z0-9]$/!\n\n## &/' {} + # Header following exclamation mark
+find . -type f -name "*.md" -exec sed -i 's/## !/## /' {} +
+find . -type f -name "*.md" -exec sed -i 's/?[A-Z0-9].*[A-Za-z0-9]$/?\n\n## &/' {} + # Header following exclamation mark
+find . -type f -name "*.md" -exec sed -i 's/## ?/## /' {} +
+find . -type f -name "*.md" -exec sed -i 's/\.[A-Z0-9].*[A-Za-z0-9]$/\.\n\n## &/' {} +
+find . -type f -name "*.md" -exec sed -i 's/## \./## /' {} +
+
+# Delete spaces after text
+find . -type f -name "*.md" -exec sed -i 's/ *$//' {} +
+
+# Delete empty headers
+find . -name "*.md" -print0 | xargs -0 perl -pi -e 's/#*$//g'
+
+# Add space after
+find . -type f -name "*.md" -exec sed -i 's/\.[A-Za-z0-9]/\.\.\.&/' {} + # periods
+find . -type f -name "*.md" -exec sed -i 's/\.\.\.\./\. /' {} +
+find . -type f -name "*.md" -exec sed -i 's/\.\"[A-Za-z0-9]/\.\.\.&/' {} + # quotation (period)
+find . -type f -name "*.md" -exec sed -i 's/\.\.\.\.\"/\.\" /' {} +
+find . -type f -name "*.md" -exec sed -i 's/!\"[A-Za-z0-9]/\.\.\.&/' {} + # quotation (exclamation mark)
+find . -type f -name "*.md" -exec sed -i 's/\.\.\.!\"/\!\" /' {} +
+find . -type f -name "*.md" -exec sed -i 's/?\"[A-Za-z0-9]/\.\.\.&/' {} + # quotation (question mark)
+find . -type f -name "*.md" -exec sed -i 's/\.\.\.?\"/?\" /' {} +
+find . -type f -name "*.md" -exec sed -i 's/\.'\''[A-Za-z0-9]/\.\.\.&/' {} + # apostrophe (period)
+find . -type f -name "*.md" -exec sed -i 's/\.\.\.\.'\''/\.'\'' /' {} +
+find . -type f -name "*.md" -exec sed -i 's/!'\''[A-Za-z0-9]/\.\.\.&/' {} + # apostrophe (exclamation mark)
+find . -type f -name "*.md" -exec sed -i 's/\.\.\.!'\''/!'\'' /' {} +
+find . -type f -name "*.md" -exec sed -i 's/?'\''[A-Za-z0-9]/\.\.\.&/' {} + # apostrophe (question mark)
+find . -type f -name "*.md" -exec sed -i 's/\.\.\.?'\''/?'\'' /' {} +
+find . -type f -name "*.md" -exec sed -i 's/)[A-Za-z0-9]/\.\.\.&/' {} + # parentheses
+find . -type f -name "*.md" -exec sed -i 's/\.\.\.)/) /' {} +
+
+# Add newline betweeen commas and quotation mark
+find . -type f -name "*.md" -exec sed -i 's/\,\"[A-Za-z0-9]/\.\.\.&/' {} +
+find . -type f -name "*.md" -exec sed -i 's/\.\.\.\,\"/\,\n\"/' {} +
+
+# Correct newline spacing
+find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n/\n\n/;ba;}' {} +
+find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n/\n\n/;ba;}' {} +
+find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n/\n\n/;ba;}' {} +
+find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n/\n\n/;ba;}' {} +
+find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n\n/\n\n/;ba;}' {} +
+find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n/\n\n\n\n/;ba;}' {} +
+find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n\n/\n\n\n\n/;ba;}' {} +
+
+# Fix mp3 link
+find . -type f -name "*.md" -exec sed -i 's/\. mp3/\.mp3/' {} +
+
+# Delete Psalm book headings
+find . -type f -name "*.md" -exec sed -i 's/## Book One/## /' {} +
+find . -type f -name "*.md" -exec sed -i 's/## Book Two/## /' {} +
+find . -type f -name "*.md" -exec sed -i 's/## Book Three/## /' {} +
+find . -type f -name "*.md" -exec sed -i 's/## Book Four/## /' {} +
+
+# Fix some superscripts back to verses
+
+find . -type f -name "*.md" -exec sed -i 's/ <sup class=\"versenum mid-line\">/\n\n###### /' {} +
+find . -type f -name "*.md" -exec sed -i 's/<\/sup>/\n\n/' {} +
+find . -type f -name "*.md" -exec sed -i 's/<sup class=\"versenum mid-line\">/\n\n###### /' {} +
+find . -type f -name "*.md" -exec sed -i 's/<\/sup>/\n\n/' {} +
+
+# Correct newline spacing
+find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n/\n\n/;ba;}' {} +
+find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n/\n\n/;ba;}' {} +
+find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n/\n\n/;ba;}' {} +
+
+# Make table of contents' empty links be on the same line as the "Start reading" link
+find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/Start reading]]\n/Start reading]]/;ba;}' {} +
+find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/|]]\n/|]]/;ba;}' {} +
 
 echo "Download complete. Markdown files ready for Obsidian import."
