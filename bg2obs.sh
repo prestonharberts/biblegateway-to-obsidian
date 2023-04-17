@@ -20,6 +20,10 @@ declare -a bookarraytext # Declaring the Books of the Bible as a list to be used
 declare -a bookarrayfile # Declaring the Books of the Bible as a list to be used as filenames
 declare -a abbarraytext # Delaring the abbreviations for each book to be used in text
 declare -a abbarrayfile # Delaring the abbreviations for each book to be used as filenames
+declare -a testarraytext # Declaring the testaments for each book to be used in tables of contents
+declare -a testarrayfile # Declaring the testaments for each book to be used as filenames
+declare -a genrearraytext # Declaring the genres for each book to be used in tables of contents
+declare -a genrearrayfile # Declaring the genres for each book to be used as filenames
 declare -a lengtharray # Declaring amount of chapters in each book
 
 # -------------------------------------------
@@ -29,20 +33,50 @@ declare -a lengtharray # Declaring amount of chapters in each book
 # Name of "The Bible" in your language and make a folder for it if it does not exist
 biblenametext="Bible"
 biblenamefile="bible"
-mkdir -p "${biblenamefile}"
+# Name of the parent folder that the bible folder will be inside
+parentfolder="christianity"
+# Make folders
+mkdir -p "${parentfolder}"
+mkdir -p "${parentfolder}/${biblenamefile}"
 # Full names of the books of the Bible
 bookarraytext=("Book of Genesis" "Book of Exodus" "Book of Leviticus" "Book of Numbers" "Book of Deuteronomy" "Book of Joshua" "Book of Judges" "Book of Ruth" "First Book of Samuel" "Second Book of Samuel" "First Book of Kings" "Second Book of Kings" "First Book of Chronicles" "Second Book of Chronicles" "Book of Ezra" "Book of Nehemiah" "Book of Esther" "Book of Job" "Book of Psalms" "Book of Proverbs" "Book of Ecclesiastes" "Song of Solomon" "Book of Isaiah" "Book of Jeremiah" "Book of Lamentations" "Book of Ezekiel" "Book of Daniel" "Book of Hosea" "Book of Joel" "Book of Amos" "Book of Obadiah" "Book of Jonah" "Book of Micah" "Book of Nahum" "Book of Habakkuk" "Book of Zephaniah" "Book of Haggai" "Book of Zechariah" "Book of Malachi" "Gospel of Matthew" "Gospel of Mark" "Gospel of Luke" "Gospel of John" "Acts of the Apostles" "Epistle to the Romans" "First Epistle to the Corinthians" "Second Epistle to the Corinthians" "Epistle to the Galatians" "Epistle to the Ephesians" "Epistle to the Philippians" "Epistle to the Colossians" "First Epistle to the Thessalonians" "Second Epistle to the Thessalonians" "First Epistle to Timothy" "Second Epistle to Timothy" "Epistle to Titus" "Epistle to Philemon" "Epistle to the Hebrews" "Epistle of James" "First Epistle of Peter" "Second Epistle of Peter" "First Epistle of John" "Second Epistle of John" "Third Epistle of John" "Epistle of Jude" "Book of Revelation")
 bookarrayfile=(book-of-genesis book-of-exodus book-of-leviticus book-of-numbers book-of-deuteronomy book-of-joshua book-of-judges book-of-ruth first-book-of-samuel second-book-of-samuel first-book-of-kings second-book-of-kings first-book-of-chronicles second-book-of-chronicles book-of-ezra book-of-nehemiah book-of-esther book-of-job book-of-psalms book-of-proverbs book-of-ecclesiastes song-of-solomon book-of-isaiah book-of-jeremiah book-of-lamentations book-of-ezekiel book-of-daniel book-of-hosea book-of-joel book-of-amos book-of-obadiah book-of-jonah book-of-micah book-of-nahum book-of-habakkuk book-of-zephaniah book-of-haggai book-of-zechariah book-of-malachi gospel-of-matthew gospel-of-mark gospel-of-luke gospel-of-john acts-of-the-apostles epistle-to-the-romans first-epistle-to-the-corinthians second-epistle-to-the-corinthians epistle-to-the-galatians epistle-to-the-ephesians epistle-to-the-philippians epistle-to-the-colossians first-epistle-to-the-thessalonians second-epistle-to-the-thessalonians first-epistle-to-timothy second-epistle-to-timothy epistle-to-titus epistle-to-philemon epistle-to-the-hebrews epistle-of-james first-epistle-of-peter second-epistle-of-peter first-epistle-of-john second-epistle-of-john third-epistle-of-john epistle-of-jude book-of-revelation)
 # Short names of the books of the Bible
 abbarraytext=(Genesis Exodus Leviticus Numbers Deuteronomy Joshua Judges Ruth "1 Samuel" "2 Samuel" "1 Kings" "2 Kings" "1 Chronicles" "2 Chronicles" Ezra Nehemiah Esther Job Psalm Proverbs Ecclesiastes "Song of Solomon" Isaiah Jeremiah Lamentations Ezekiel Daniel Hosea Joel Amos Obadiah Jonah Micah Nahum Habakkuk Zephaniah Haggai Zechariah Malachi Matthew Mark Luke John Acts Romans "1 Corinthians" "2 Corinthians" Galatians Ephesians Philippians Colossians Thessalonians Thessalonians "1 Timothy" "2 Timothy" Titus Philemon Hebrews James "1 Peter" "2 Peter" "1 John" "2 John" "3 John" Jude Revelation)
 abbarrayfile=(genesis exodus leviticus numbers deuteronomy joshua judges ruth 1-samuel 2-samuel 1-kings 2-kings 1-chronicles 2-chronicles ezra nehemiah esther job psalm proverbs ecclesiastes song-of-solomon isaiah jeremiah lamentations ezekiel daniel hosea joel amos obadiah jonah micah nahum habakkuk zephaniah haggai zechariah malachi matthew mark luke john acts romans 1-corinthians 2-corinthians galatians ephesians philippians colossians thessalonians thessalonians 1-timothy 2-timothy titus philemon hebrews james 1-peter 2-peter 1-john 2-john 3-john jude revelation)
+# Both testaments in an array to be used in parallel with the other arrays
+testarraytext=("Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament")
+testarrayfile=(old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament old-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament new-testament)
+# All genres in an array to be used in parallel with the other arrays
+genrearraytext=(Pentateuch Pentateuch Pentateuch Pentateuch Pentateuch "Historical books" "Historical books" "Historical books" "Historical books" "Historical books" "Historical books" "Historical books" "Historical books" "Historical books" "Historical books" "Historical books" "Historical books" "Poetical books" "Poetical books" "Book of Wisdom" "Book of Wisdom" "Book of Wisdom" "Major prophets" "Major prophets" "Major prophets" "Major prophets" "Major prophets" "Minor prophets" "Minor prophets" "Minor prophets" "Minor prophets" "Minor prophets" "Minor prophets" "Minor prophets" "Minor prophets" "Minor prophets" "Minor prophets" "Minor prophets" "Minor prophets" Gospels Gospels Gospels Gospels "Church history" "Pauline epistles" "Pauline epistles" "Pauline epistles" "Pauline epistles" "Pauline epistles" "Pauline epistles" "Pauline epistles" "Pauline epistles" "Pauline epistles" "Pauline epistles" "Pauline epistles" "Pauline epistles" "Pauline epistles" "General epistles" "General epistles" "General epistles" "General epistles" "General epistles" "General epistles" "General epistles" "General epistles" Apocalyptic)
+genrearrayfile=(pentateuch pentateuch pentateuch pentateuch pentateuch historical-books historical-books historical-books historical-books historical-books historical-books historical-books historical-books historical-books historical-books historical-books historical-books poetical-books poetical-books book-of-wisdom book-of-wisdom book-of-wisdom major-prophets major-prophets major-prophets major-prophets major-prophets minor-prophets minor-prophets minor-prophets minor-prophets minor-prophets minor-prophets minor-prophets minor-prophets minor-prophets minor-prophets minor-prophets minor-prophets gospels gospels gospels gospels church-history pauline-epistles pauline-epistles pauline-epistles pauline-epistles pauline-epistles pauline-epistles pauline-epistles pauline-epistles pauline-epistles pauline-epistles pauline-epistles pauline-epistles pauline-epistles general-epistles general-epistles general-epistles general-epistles general-epistles general-epistles general-epistles general-epistles apocalyptic)
 # -------------------------------------------
+
+# Initialize the Bible file for all of the Old/New Testament
+echo -e "# ${biblenametext}\n\n## Contents\n\n[[${testarrayfile[0]}|${testarraytext[0]}]]\n[[${testarrayfile[39]}|${testarraytext[39]}]]" >> "${parentfolder}/${biblenamefile}/${biblenamefile}.md"
+
+# Initialize the Old/New Testament file for all of the genres
+echo -e "# ${testarraytext[0]}\n\n## Contents\n\n[[${genrearrayfile[0]}|${genrearraytext[0]}]]\n[[${genrearrayfile[5]}|${genrearraytext[5]}]]\n[[${genrearrayfile[17]}|${genrearraytext[17]}]]\n[[${genrearrayfile[19]}|${genrearraytext[19]}]]\n[[${genrearrayfile[22]}|${genrearraytext[22]}]]\n[[${genrearrayfile[27]}|${genrearraytext[27]}]]" >> "${parentfolder}/${biblenamefile}/${testarrayfile[0]}.md"
+echo -e "# ${testarraytext[39]}\n\n## Contents\n\n[[${genrearrayfile[39]}|${genrearraytext[39]}]]\n[[${genrearrayfile[43]}|${genrearraytext[43]}]]\n[[${genrearrayfile[44]}|${genrearraytext[44]}]]\n[[${genrearrayfile[57]}|${genrearraytext[57]}]]\n[[${genrearrayfile[65]}+${genrearraytext[65]}]]" >> "${parentfolder}/${biblenamefile}/${testarrayfile[39]}.md"
+
+# Initialize the genre file for all of the Bible
+echo -e "# ${testarraytext[0]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[0]}.md"
+echo -e "# ${testarraytext[5]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[5]}.md"
+echo -e "# ${testarraytext[17]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[17]}.md"
+echo -e "# ${testarraytext[19]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[19]}.md"
+echo -e "# ${testarraytext[22]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[22]}.md"
+echo -e "# ${testarraytext[27]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[27]}.md"
+echo -e "# ${testarraytext[39]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[39]}.md"
+echo -e "# ${testarraytext[43]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[43]}.md"
+echo -e "# ${testarraytext[44]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[44]}.md"
+echo -e "# ${testarraytext[57]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[57]}.md"
+echo -e "# ${testarraytext[65]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[65]}.md"
 
 # Book chapter list
 lengtharray=(50 40 27 36 34 24 21 4 31 24 22 25 29 36 10 13 10 42 150 31 12 8 66 52 5 48 12 14 3 9 1 4 7 3 3 3 2 14 4 28 16 24 21 28 16 16 13 6 6 4 4 5 3 6 4 3 1 13 5 5 3 5 1 1 1 22)
 
 # Initialise the Bible file for all of the books
-echo -e "# ${biblenametext}\n" >> "${biblenamefile}/${biblenamefile}.md"
+echo -e "# ${biblenametext}\n" >> "${parentfolder}/${biblenamefile}/${biblenamefile}.md"
 
 echo "Starting download of the ${translation} Bible."
 
@@ -108,23 +142,15 @@ filename=${exportprefix}$chapter # Setting the filename
   # Export
   echo -e "$export" >> "$filename.md"
 
-  # Creating a folder
-
-  foldername="${bookfile}" # Setting the folder name
-
   # Creating a folder for the book of the Bible if it doesn't exist, otherwise moving new file into existing folder
-  mv "${filename}".md "./${biblenamefile}/"
+  mv "${filename}".md "./${parentfolder}/${biblenamefile}/"
 
 
 done # End of the book exporting loop
 
   # Create an overview file for each book of the Bible:
-  overview_file="links: [[${biblenametext}]]\n# ${booktext}\n\n[Start Reading →]([[${abb} 1]])"
-  echo -e $overview_file >> "$bookfile.md"
-  mv "$bookfile".md "./${biblenamefile}/${foldername}"
+  echo -e "[[${book_std}|${book}]]" >> "chr/${genre_std}.md"
 
-  # Append the bookname to the Bible file
-  echo -e "* [[${bookfile}|${booktext}]]" >> "${biblenamefile}/${biblenamefile}.md"
   done
 
 # Tidy up the Markdown files by removing unneeded headers and separating the verses
