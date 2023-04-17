@@ -99,7 +99,7 @@ filename=${exportprefix}$chapter # Setting the filename
   text=$(echo "$text" | sed 's/^(.*?)v1/v1/') # Deleting unwanted headers
 
   # Formatting the title for markdown
-  title="# ${booktext} ${chapter}"
+  title="# ${abbtext} ${chapter}"
 
   # Navigation format
   export="${title}\n\n$navigation\n***\n\n$text\n\n***\n$navigation"
