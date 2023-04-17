@@ -2,13 +2,15 @@
 
 ## Disclaimers
 
-By default, the version is set to the [ESV Bible](https://www.esv.org/translation/). Before using this script, please make sure you own a copy of the ESV. Although this program does not make use of it, it is right to legally own it before making a copy of it using jgclark's script.
+This script is set to download the [ESV Bible](https://www.esv.org/translation/). Before using this script, please make sure you own a copy of the ESV. Although this program does not make use of it, it is right to legally own it before making a copy of it using jgclark's script.
 
 Do not distribute your files once generated because they are subject to the [ESV's copyright standards](https://www.crossway.org/permissions/). **All files are only intended for personal use.** This is not affiliated to, or approved by, BibleGateway.com or Crossway. I make no guarantee regarding the usage of the script, it is at your own discretion.
 
 ## About
 
 This script adapts [jgclark's BibleGateway-to-Markdown](https://github.com/jgclark/BibleGateway-to-Markdown) script and is forked from [selfire1's BibleGateway-to-Obsidian](https://github.com/selfire1/BibleGateway-to-Obsidian) to export the ESV for use in [Obsidian](https://obsidian.md/). It accompanies the [ESV Hear the Word Audio Bible](https://www.crossway.org/bibles/esv-hear-the-word-audio-bible-610-dl/) that can be listened to from Obsidian when downloaded.
+
+I have not tested this script with other translations, as I have thouroughly tested regular expressions to be used only on the ESV.
 
 What the script does is fetch the text from [Bible Gateway](https://www.biblegateway.com/) and save it as a formatted markdown file. Each chapter is saved as two files (one for reading and another without text for taking notes in). Navigation between files is located at the bottom and is automatically created. All the chapter reading and table of contents are saved to a folder named `bible`, and all note-taking files are saved to another folder named `bible-notes`.
 
