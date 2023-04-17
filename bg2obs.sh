@@ -16,8 +16,8 @@ book_counter=0 # Setting the counter to 0
 book_counter_max=66 # Setting the max amount to 66, since there are 66 books we want to import
 
 # Book list
-declare -a bookarray # Declaring the Books of the Bible as a list
-declare -a abbarray # Delaring the abbreviations for each book. You can adapt if you'd like
+declare -a bookarraytext # Declaring the Books of the Bible as a list
+declare -a abbarraytext # Delaring the abbreviations for each book. You can adapt if you'd like
 declare -a lengtharray # Declaring amount of chapters in each book
 
 # -------------------------------------------
@@ -25,19 +25,18 @@ declare -a lengtharray # Declaring amount of chapters in each book
 # -------------------------------------------
 # For Translation, translate these three lists. Seperated by space and wrapped in quotes if they include whitespace.
 # Name of "The Bible" in your language
-biblename="The Bible"
+biblenametext="Bible"
 # Full names of the books of the Bible
-bookarray=(Genesis Exodus Leviticus Numbers Deuteronomy Joshua Judges Ruth "1 Samuel" "2 Samuel" "1 Kings" "2 Kings" "1 Chronicles" "2 Chronicles" Ezra Nehemiah Esther Job Psalms Proverbs Ecclesiastes "Song of Solomon" Isaiah Jeremiah Lamentations Ezekiel Daniel Hosea Joel Amos Obadiah Jonah Micah Nahum Habakkuk Zephaniah Haggai Zechariah Malachi Matthew Mark Luke John Acts
-Romans "1 Corinthians" "2 Corinthians" Galatians Ephesians Philippians Colossians "1 Thessalonians" "2 Thessalonians" "1 Timothy" "2 Timothy" Titus Philemon Hebrews James "1 Peter" "2 Peter" "1 John" "2 John" "3 John" Jude Revelation)
+bookarraytext=("Book of Genesis" "Book of Exodus" "Book of Leviticus" "Book of Numbers" "Book of Deuteronomy" "Book of Joshua" "Book of Judges" "Book of Ruth" "First Book of Samuel" "Second Book of Samuel" "First Book of Kings" "Second Book of Kings" "First Book of Chronicles" "Second Book of Chronicles" "Book of Ezra" "Book of Nehemiah" "Book of Esther" "Book of Job" "Book of Psalms" "Book of Proverbs" "Book of Ecclesiastes" "Song of Solomon" "Book of Isaiah" "Book of Jeremiah" "Book of Lamentations" "Book of Ezekiel" "Book of Daniel" "Book of Hosea" "Book of Joel" "Book of Amos" "Book of Obadiah" "Book of Jonah" "Book of Micah" "Book of Nahum" "Book of Habakkuk" "Book of Zephaniah" "Book of Haggai" "Book of Zechariah" "Book of Malachi" "Gospel of Matthew" "Gospel of Mark" "Gospel of Luke" "Gospel of John" "Acts of the Apostles" "Epistle to the Romans" "First Epistle to the Corinthians" "Second Epistle to the Corinthians" "Epistle to the Galatians" "Epistle to the Ephesians" "Epistle to the Philippians" "Epistle to the Colossians" "First Epistle to the Thessalonians" "Second Epistle to the Thessalonians" "First Epistle to Timothy" "Second Epistle to Timothy" "Epistle to Titus" "Epistle to Philemon" "Epistle to the Hebrews" "Epistle of James" "First Epistle of Peter" "Second Epistle of Peter" "First Epistle of John" "Second Epistle of John" "Third Epistle of John" "Epistle of Jude" "Book of Revelation")
 # Short names of the books of the Bible
-abbarray=(Gen Exod Lev Num Deut Josh Judg Ruth "1 Sam" "2 Sam" "1 Kings" "2 Kings" "1 Chron" "2 Chron" Ezr Neh Esth Job Ps Prov Eccles Song Isa Jer Lam Ezek Dan Hos Joel Am Obad Jonah Micah Nah Hab Zeph Hag Zech Mal Matt Mark Luke John Acts Rom "1 Cor" "2 Cor" Gal Ephes Phil Col "1 Thess" "2 Thess" "1 Tim" "2 Tim" Titus Philem Heb James "1 Pet" "2 Pet" "1 John" "2 John" "3 John" Jude Rev)
+abbarraytext=(Genesis Exodus Leviticus Numbers Deuteronomy Joshua Judges Ruth "1 Samuel" "2 Samuel" "1 Kings" "2 Kings" "1 Chronicles" "2 Chronicles" Ezra Nehemiah Esther Job Psalm Proverbs Ecclesiastes "Song of Solomon" Isaiah Jeremiah Lamentations Ezekiel Daniel Hosea Joel Amos Obadiah Jonah Micah Nahum Habakkuk Zephaniah Haggai Zechariah Malachi Matthew Mark Luke John Acts Romans "1 Corinthians" "2 Corinthians" Galatians Ephesians Philippians Colossians Thessalonians Thessalonians "1 Timothy" "2 Timothy" Titus Philemon Hebrews James "1 Peter" "2 Peter" "1 John" "2 John" "3 John" Jude Revelation)
 # -------------------------------------------
 
 # Book chapter list
 lengtharray=(50 40 27 36 34 24 21 4 31 24 22 25 29 36 10 13 10 42 150 31 12 8 66 52 5 48 12 14 3 9 1 4 7 3 3 3 2 14 4 28 16 24 21 28 16 16 13 6 6 4 4 5 3 6 4 3 1 13 5 5 3 5 1 1 1 22)
 
 # Initialise the "The Bible" file for all of the books
-echo -e "# ${biblename}\n" >> "${biblename}.md"
+echo -e "# ${biblenametext}\n" >> "${biblenametext}.md"
 
 echo "Starting download of ${translation} Bible."
 
@@ -47,9 +46,9 @@ echo "Starting download of ${translation} Bible."
 
     echo ""   # Make a new line which the '-n' flag to the echo command prevents.
 
-    book=${bookarray[$book_counter]}
+    book=${bookarraytext[$book_counter]}
     maxchapter=${lengtharray[$book_counter]}
-    abbreviation=${abbarray[$book_counter]}
+    abbreviation=${abbarraytext[$book_counter]}
 
     echo -n "${book} "
 
@@ -104,18 +103,18 @@ filename=${export_prefix}$chapter # Setting the filename
   folder_name="${book}" # Setting the folder name
 
   # Creating a folder for the book of the Bible if it doesn't exist, otherwise moving new file into existing folder
-  mkdir -p "./${biblename} (${translation})/${folder_name}"; mv "${filename}".md "./${biblename} (${translation})/${folder_name}"
+  mkdir -p "./${biblenametext} (${translation})/${folder_name}"; mv "${filename}".md "./${biblenametext} (${translation})/${folder_name}"
 
 
 done # End of the book exporting loop
 
   # Create an overview file for each book of the Bible:
-  overview_file="links: [[${biblename}]]\n# ${book}\n\n[Start Reading →]([[${abbreviation} 1]])"
+  overview_file="links: [[${biblenametext}]]\n# ${book}\n\n[Start Reading →]([[${abbreviation} 1]])"
   echo -e $overview_file >> "$book.md"
-  mv "$book.md" "./${biblename} (${translation})/${folder_name}"
+  mv "$book.md" "./${biblenametext} (${translation})/${folder_name}"
 
   # Append the bookname to "The Bible" file
-  echo -e "* [[${book}]]" >> "${biblename}.md"
+  echo -e "* [[${book}]]" >> "${biblenametext}.md"
   done
 
 # Tidy up the Markdown files by removing unneeded headers and separating the verses
