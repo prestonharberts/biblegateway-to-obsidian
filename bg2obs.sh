@@ -110,6 +110,12 @@ filename=${exportprefix}$chapter # Setting the filename
   prevfile=${exportprefix}$prevchapter # Naming previous and next files
   nextfile=${exportprefix}$nextchapter
 
+  if [[ $chapter -gt 1 ]]; then
+      echo -e "[[${abbfile}-$chapter|]]" >> "${parentfolder}/${biblenamefile}/$bookfile.md"
+    else
+      echo -e "[[${abbfile}-$chapter|Start reading]]" >> "${parentfolder}/${biblenamefile}/$bookfile.md"
+  fi
+
   audiobible="![[${abbfile}-$chapter.mp3]]"
   contents="## Contents\n\n[[${abbfile}-$chapter-notes|Chapter notes]]"
 
@@ -257,5 +263,45 @@ find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n/\n\n/;ba;}' {} +
 # Make table of contents' empty links be on the same line as the "Start reading" link
 find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/Start reading]]\n/Start reading]]/;ba;}' {} +
 find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/|]]\n/|]]/;ba;}' {} +
+
+# Make first header if it exists
+find . -type f -name "*notes.md" -exec sed -i '5 s/[A-Za-z0-9].*/\n## &/' {} +
+
+# Make note files empty
+find . -type f -name "*notes.md" -exec sed -i 's/^[^#![].*//g' {} +
+find . -type f -name "*notes.md" -exec sed -i 's/###### [0-9]*//g' {} +
+
+# Remove audiobible
+find . -type f -name "*notes.md" -exec sed -i 's/.*mp3.*//g' {} +
+
+# Add ' notes' to the title header
+find . -type f -name "*notes.md" -exec sed -i '1 s/$/ notes/g' {} +
+
+# Remove Contents
+find . -type f -name "*notes.md" -exec sed -i 's/## Contents//g' {} +
+find . -type f -name "*notes.md" -exec sed -i 's/\[\[.*notes\]\]//g' {} +
+
+# Change Related notes
+find . -type f -name "*notes.md" -exec sed -i 's/|Previous/-notes|Previous/g' {} +
+find . -type f -name "*notes.md" -exec sed -i 's/|Next/-notes|Next/g' {} +
+
+# Correct newline spacing
+find . -type f -name "*notes.md" -exec sed -i ':a;$!{N;s/\n\n\n/\n\n/;ba;}' {} +
+find . -type f -name "*notes.md" -exec sed -i ':a;$!{N;s/\n\n\n\n/\n\n/;ba;}' {} +
+find . -type f -name "*notes.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n/\n\n/;ba;}' {} +
+find . -type f -name "*notes.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n/\n\n/;ba;}' {} +
+find . -type f -name "*notes.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n\n/\n\n/;ba;}' {} +
+find . -type f -name "*notes.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n/\n\n\n\n/;ba;}' {} +
+find . -type f -name "*notes.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n\n/\n\n\n\n/;ba;}' {} +
+
+# Add space after headers
+find . -type f -name "*notes.md" -exec sed -i 's/^## .*/&\n\n- [ ] /g' {} +
+
+# Remove 1 headers
+find . -type f -name "*notes.md" -exec sed -i ':a;$!{N;s/## 1\n\n//;ba;}' {} +
+
+# Fix Related spacing
+# find . -type f -name "*notes.md" -exec sed -i ':a;$!{N;s/\n\n- [ ] \n\n\[\[/\n\n\[\[/;ba;}' {} +
+find . -type f -name "*notes.md" -exec sed -i ':a;$!{N;s/## Related\n\n- \[ \] /## Related/;ba;}' {} +
 
 echo "Download complete. Markdown files ready for Obsidian import."
