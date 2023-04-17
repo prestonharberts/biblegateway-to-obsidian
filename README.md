@@ -1,5 +1,7 @@
 # BibleGateway-to-Obsidian
+
 ## ⚠️ Disclaimers
+
 By default, the version is set to the [WEB Bible](https://worldenglish.bible/). You can change the version but **must honour the copyright standards** of different translations of the Bible (See for example [BibleGateway's overview](https://www.biblegateway.com/versions/)).
 
 Using the script with some versions is **clearly breaking copyright**. The script is not intended for such usage.
@@ -24,19 +26,25 @@ This repository is also available in
 * 🇩🇪 [German](https://github.com/selfire1/BibleGateway-to-Obsidian/tree/translation-de)
 
 ## Installation
+
 Here are the tools we are going to use:
 * Our command line (Terminal)
 * On Windows you might need to [install perl](https://www.perl.org/get.html).
 
 ## Setting ruby up
+
 ### Updating
+
 In order to run the scripts, we will need to install ruby. Ruby comes pre-installed on macOS, but if you run into issues [update to the latest version](https://stackify.com/install-ruby-on-your-mac-everything-you-need-to-get-going/).
 
 ### Downloading BibleGateway-to-Markdown.rb
+
 Follow the instructions to download and set up [jgclark's BibleGateway-to-Markdown](https://github.com/jgclark/BibleGateway-to-Markdown).
 
 ## Usage
+
 ### 1. Install scripts
+
 Place both scripts (`bg2md.rb` and `bg2obs.sh`) in the same directory, open your terminal application, and navigate to that directory with commands like the following:
 
 * `pwd` Show your current directory
@@ -45,6 +53,7 @@ Place both scripts (`bg2md.rb` and `bg2obs.sh`) in the same directory, open your
 * `cd ..` Brings you 'up' one directory
 
 ### 2. Run the script
+
 Once you have navigated to the directory containing both scripts, run `bash bg2obs.sh`. This will run the bash script.
 
 `NOTE`: In this directory, a folder called `Scripture` with subfolders like `Genesis`, `Exodus` and so on will be created.
@@ -52,6 +61,7 @@ Once you have navigated to the directory containing both scripts, run `bash bg2o
 Several options are available via command-line switches. Type `bash bg2obs.sh -h` at any time to display them.
 
 #### Script option summary
+
 | Option | Description |
 | ------ | ----------- |
 | `-v [VERSION]` | Specify the version of the Bible to download (default is WEB) |
@@ -64,6 +74,7 @@ Several options are available via command-line switches. Type `bash bg2obs.sh -h
 | `-h` | Display help |
 
 #### Example usage
+
 | Command | Description |
 | ------- | ----------- | 
 |`bash bg2obs.sh -i -v NET` | Download a copy of the NET Bible with no other options.|
@@ -78,17 +89,20 @@ Some cross references are sometimes still included, run `\<crossref intro.*cross
 **There you go!** Now, just move the "Scripture" folder into your Obsidian vault. You can use the provided `The Bible.md` file as an overview file.
 
 ## Translations
+
 This script downloads the [World English Bible](https://worldenglish.bible/) by default. If you want to download a different translation, specify the version using the `-v` command-line switch as documented above. The list of abbreviations is available on the [Bible Gateway](https://www.biblegateway.com) site under the version drop-down menu in the search bar.  Make sure to honour copyright guidelines. The script has not been tested with all versions of the Bible available at Bible Gateway, though most of the more commonly-used ones should work.
 
 A fork of this repo supports Catholic translations: [mkudija/BibleGateway-to-Obsidian-Catholic](https://github.com/mkudija/BibleGateway-to-Obsidian-Catholic).
 
 ## Troubleshooting 🐛
+
 Below are common issues when using the script. If this still doesn't solve your issue, there are some place to get help:
 * The [Help and Support thread](https://forum.obsidian.md/t/bible-study-kit-in-obsidian-scripts-help-and-support/31069/2) for this script in the Obsidian Forums. (I am somewhat less active there, but plenty of folks are happy to help out!)
 * Create an [issue](https://github.com/selfire1/BibleGateway-to-Obsidian/issues) on GitHub. This is my preferred way to keep track of what needs fixing.
 * Also, feel free to [get in touch](https://joschuasgarden.com/Contact+me) and I will attempt to fix it!
 
 ### Problems loading ruby/gems
+
 An error like this indicates ruby or the gems aren't installed properly: `in require: cannot load such file -- colorize (LoadError)`
 
 **Solutions**
@@ -97,15 +111,18 @@ An error like this indicates ruby or the gems aren't installed properly: `in req
 * Re-install ruby and gems.
 
 ### The first chapter of the book repeats
+
 ☑️ Use [version 1.4.3](https://github.com/jgclark/BibleGateway-to-Markdown/tree/d693e85bba94122a2f46bec3ff9487333bccfdbf) of jgclark's script instead of the newest version.
 
 ## Contributing
+
 Pull requests are welcome.
 You can help me keep creating tools like this by [buying me a coffee](https://www.buymeacoffee.com/joschua).  ☕️
 
 <a href="https://www.buymeacoffee.com/joschua" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height= "48" width="173"></a>
 
 ### Translations
+
 You can contribute by translating this script into your language.
 
 - [ ] Translate name of the Bible, its books and abbreviations ([line 62](https://github.com/selfire1/BibleGateway-to-Obsidian/blob/97f873132dceb2504b765056914bd3dd927f6691/bg2obs.sh#L62))
