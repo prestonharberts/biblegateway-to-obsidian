@@ -140,10 +140,13 @@ filename=${exportprefix}$chapter # Setting the filename
   export="# ${abbtext} $chapter\n\n$audiobible\n$text\n\n$navigation"
 
   # Export
-  echo -e "$export" >> "$filename.md"
+  echo -e "$export" >> "${filename}.md"
+  echo -e "$export" >> "${filename}-notes.md"
+
 
   # Creating a folder for the book of the Bible if it doesn't exist, otherwise moving new file into existing folder
   mv "${filename}".md "./${parentfolder}/${biblenamefile}/"
+  mv "${filename}"-notes.md "./${parentfolder}/${biblenamefile}/"
 
 
 done # End of the book exporting loop
