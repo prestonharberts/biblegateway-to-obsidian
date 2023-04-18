@@ -206,6 +206,9 @@ find . -type f -name "*.md" -exec sed -i 's/\.\.\.)/) /' {} +
 find . -type f -name "*.md" -exec sed -i 's/\,\"[A-Za-z0-9]/\.\.\.&/' {} +
 find . -type f -name "*.md" -exec sed -i 's/\.\.\.\,\"/\,\n\"/' {} +
 
+# Add newline after second headers (will be removed later if redundant)
+find . -type f -name "*.md" -exec sed -i 's/## .*/&\n/' {} +
+
 # Correct newline spacing
 find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n/\n\n/;ba;}' {} +
 find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n/\n\n/;ba;}' {} +
