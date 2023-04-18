@@ -152,22 +152,11 @@ filename=${exportprefix}$chapter # Setting the filename
   echo -e "$export" >> "./${parentfolder}/${biblenamefile}/${filename}.md"
   echo -e "$export" >> "./${parentfolder}/${biblenamefile}/${filename}-notes.md"
 
-
-  # Creating a folder for the book of the Bible if it doesn't exist, otherwise moving new file into existing folder
-  # mv "${filename}".md "./${parentfolder}/${biblenamefile}/"
-  # mv "${filename}"-notes.md "./${parentfolder}/${biblenamefile}/"
-
-
 done # End of the book exporting loop
 
   done
 
-# Tidy up the Markdown files by removing unneeded headers and separating the verses
-# with some blank space and an H6-level verse number.
-#
-# Using a perl one-liner here in order to help ensure that this works across platforms
-# since the sed utility works differently on macOS and Linux variants. The perl should
-# work consistently.
+# Tidy up the Markdown files
 
 echo "Cleaning up the Markdown files."
 
