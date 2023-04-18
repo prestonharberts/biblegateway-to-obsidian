@@ -2,15 +2,6 @@
 
 translation='ESV' # Which translation to use
 
-# Copyright disclaimer
-echo "I confirm that I will not distribute the generated files if the copyright standards require me not to and wish to continue downloading the $translation in its entirety:"
-select yn in "Yes" "No"; do
-  case $yn in
-  Yes) break ;;
-  No) exit ;;
-  esac
-done
-
 # Initialize variables
 bookcounter=0     # Setting the counter to 0
 bookcountermax=66 # Setting the max amount to 66, since there are 66 books we want to import
