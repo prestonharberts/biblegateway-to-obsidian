@@ -60,23 +60,20 @@ echo -e "# ${testarraytext[0]}\n\n## Contents\n\n[[${genrearrayfile[0]}|${genrea
 echo -e "# ${testarraytext[39]}\n\n## Contents\n\n[[${genrearrayfile[39]}|${genrearraytext[39]}]]\n[[${genrearrayfile[43]}|${genrearraytext[43]}]]\n[[${genrearrayfile[44]}|${genrearraytext[44]}]]\n[[${genrearrayfile[57]}|${genrearraytext[57]}]]\n[[${genrearrayfile[65]}+${genrearraytext[65]}]]" >> "${parentfolder}/${biblenamefile}/${testarrayfile[39]}.md"
 
 # Initialize the genre file for all of the Bible
-echo -e "# ${testarraytext[0]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[0]}.md"
-echo -e "# ${testarraytext[5]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[5]}.md"
-echo -e "# ${testarraytext[17]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[17]}.md"
-echo -e "# ${testarraytext[19]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[19]}.md"
-echo -e "# ${testarraytext[22]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[22]}.md"
-echo -e "# ${testarraytext[27]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[27]}.md"
-echo -e "# ${testarraytext[39]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[39]}.md"
-echo -e "# ${testarraytext[43]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[43]}.md"
-echo -e "# ${testarraytext[44]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[44]}.md"
-echo -e "# ${testarraytext[57]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[57]}.md"
-echo -e "# ${testarraytext[65]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[65]}.md"
+echo -e "# ${genrearraytext[0]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[0]}.md"
+echo -e "# ${genrearraytext[5]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[5]}.md"
+echo -e "# ${genrearraytext[17]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[17]}.md"
+echo -e "# ${genrearraytext[19]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[19]}.md"
+echo -e "# ${genrearraytext[22]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[22]}.md"
+echo -e "# ${genrearraytext[27]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[27]}.md"
+echo -e "# ${genrearraytext[39]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[39]}.md"
+echo -e "# ${genrearraytext[43]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[43]}.md"
+echo -e "# ${genrearraytext[44]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[44]}.md"
+echo -e "# ${genrearraytext[57]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[57]}.md"
+echo -e "# ${genrearraytext[65]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[65]}.md"
 
 # Book chapter list
 lengtharray=(50 40 27 36 34 24 21 4 31 24 22 25 29 36 10 13 10 42 150 31 12 8 66 52 5 48 12 14 3 9 1 4 7 3 3 3 2 14 4 28 16 24 21 28 16 16 13 6 6 4 4 5 3 6 4 3 1 13 5 5 3 5 1 1 1 22)
-
-# Initialise the Bible file for all of the books
-echo -e "# ${biblenametext}\n" >> "${parentfolder}/${biblenamefile}/${biblenamefile}.md"
 
 echo "Starting download of the ${translation} Bible."
 
@@ -93,6 +90,10 @@ echo "Starting download of the ${translation} Bible."
     abbfile=${abbarrayfile[$book_counter]}
 
     echo -n "${booktext} "
+
+    # Create an overview file for each book of the Bible:
+    echo -e "# ${booktext}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/$bookfile.md"
+
 
     for ((chapter=1; chapter <= maxchapter; chapter++))
     do
@@ -146,19 +147,19 @@ filename=${exportprefix}$chapter # Setting the filename
   export="# ${abbtext} $chapter\n\n$audiobible\n$text\n\n$navigation"
 
   # Export
-  echo -e "$export" >> "${filename}.md"
-  echo -e "$export" >> "${filename}-notes.md"
+  echo -e "$export" >> "./${parentfolder}/${biblenamefile}/${filename}.md"
+  echo -e "$export" >> "./${parentfolder}/${biblenamefile}/${filename}-notes.md"
 
 
   # Creating a folder for the book of the Bible if it doesn't exist, otherwise moving new file into existing folder
-  mv "${filename}".md "./${parentfolder}/${biblenamefile}/"
-  mv "${filename}"-notes.md "./${parentfolder}/${biblenamefile}/"
+  # mv "${filename}".md "./${parentfolder}/${biblenamefile}/"
+  # mv "${filename}"-notes.md "./${parentfolder}/${biblenamefile}/"
 
 
 done # End of the book exporting loop
 
   # Create an overview file for each book of the Bible:
-  echo -e "[[${bookarrayfile}|${book}]]" >> "${parentfolder}/${genrearrayfile}.md"
+  echo -e "[[${bookarrayfile}|${bookarraytext}]]" >> "${parentfolder}/${biblenamefile}/${genrearrayfile}.md"
 
   done
 
