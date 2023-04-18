@@ -94,6 +94,8 @@ echo "Starting download of the ${translation} Bible."
     # Create an overview file for each book of the Bible:
     echo -e "# ${booktext}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/$bookfile.md"
 
+    # Create an overview file for each book of the Bible:
+    echo -e "[[${bookarrayfile}|${bookarraytext}]]" >> "${parentfolder}/${biblenamefile}/${genrearrayfile}.md"
 
     for ((chapter=1; chapter <= maxchapter; chapter++))
     do
@@ -157,9 +159,6 @@ filename=${exportprefix}$chapter # Setting the filename
 
 
 done # End of the book exporting loop
-
-  # Create an overview file for each book of the Bible:
-  echo -e "[[${bookarrayfile}|${bookarraytext}]]" >> "${parentfolder}/${biblenamefile}/${genrearrayfile}.md"
 
   done
 
