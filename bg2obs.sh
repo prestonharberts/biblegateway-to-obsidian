@@ -57,7 +57,7 @@ echo -e "# ${biblenametext}\n\n## Contents\n\n[[${testarrayfile[0]}|${testarrayt
 
 # Initialize the Old/New Testament file for all of the genres
 echo -e "# ${testarraytext[0]}\n\n## Contents\n\n[[${genrearrayfile[0]}|${genrearraytext[0]}]]\n[[${genrearrayfile[5]}|${genrearraytext[5]}]]\n[[${genrearrayfile[17]}|${genrearraytext[17]}]]\n[[${genrearrayfile[19]}|${genrearraytext[19]}]]\n[[${genrearrayfile[22]}|${genrearraytext[22]}]]\n[[${genrearrayfile[27]}|${genrearraytext[27]}]]" >>"${parentfolder}/${biblenamefile}/${testarrayfile[0]}.md"
-echo -e "# ${testarraytext[39]}\n\n## Contents\n\n[[${genrearrayfile[39]}|${genrearraytext[39]}]]\n[[${genrearrayfile[43]}|${genrearraytext[43]}]]\n[[${genrearrayfile[44]}|${genrearraytext[44]}]]\n[[${genrearrayfile[57]}|${genrearraytext[57]}]]\n[[${genrearrayfile[65]}+${genrearraytext[65]}]]" >>"${parentfolder}/${biblenamefile}/${testarrayfile[39]}.md"
+echo -e "# ${testarraytext[39]}\n\n## Contents\n\n[[${genrearrayfile[39]}|${genrearraytext[39]}]]\n[[${genrearrayfile[43]}|${genrearraytext[43]}]]\n[[${genrearrayfile[44]}|${genrearraytext[44]}]]\n[[${genrearrayfile[57]}|${genrearraytext[57]}]]\n[[${genrearrayfile[65]}|${genrearraytext[65]}]]" >>"${parentfolder}/${biblenamefile}/${testarrayfile[39]}.md"
 
 # Initialize the genre file for all of the Bible
 echo -e "# ${genrearraytext[0]}\n\n## Contents\n" >>"${parentfolder}/${biblenamefile}/${genrearrayfile[0]}.md"
