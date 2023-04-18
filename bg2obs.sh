@@ -1,30 +1,30 @@
 #!/bin/bash
 
-translation='ESV'    # Which translation to use
+translation='ESV' # Which translation to use
 
 # Copyright disclaimer
 echo "I confirm that I will not distribute the generated files if the copyright standards require me not to and wish to continue downloading the $translation in its entirety:"
 select yn in "Yes" "No"; do
-    case $yn in
-        Yes ) break;;
-        No ) exit;;
-    esac
+  case $yn in
+  Yes) break ;;
+  No) exit ;;
+  esac
 done
 
 # Initialize variables
-book_counter=0 # Setting the counter to 0
-book_counter_max=66 # Setting the max amount to 66, since there are 66 books we want to import
+bookcounter=0     # Setting the counter to 0
+bookcountermax=66 # Setting the max amount to 66, since there are 66 books we want to import
 
 # Book list
-declare -a bookarraytext # Declaring the Books of the Bible as a list to be used in text
-declare -a bookarrayfile # Declaring the Books of the Bible as a list to be used as filenames
-declare -a abbarraytext # Delaring the abbreviations for each book to be used in text
-declare -a abbarrayfile # Delaring the abbreviations for each book to be used as filenames
-declare -a testarraytext # Declaring the testaments for each book to be used in tables of contents
-declare -a testarrayfile # Declaring the testaments for each book to be used as filenames
+declare -a bookarraytext  # Declaring the Books of the Bible as a list to be used in text
+declare -a bookarrayfile  # Declaring the Books of the Bible as a list to be used as filenames
+declare -a abbarraytext   # Delaring the abbreviations for each book to be used in text
+declare -a abbarrayfile   # Delaring the abbreviations for each book to be used as filenames
+declare -a testarraytext  # Declaring the testaments for each book to be used in tables of contents
+declare -a testarrayfile  # Declaring the testaments for each book to be used as filenames
 declare -a genrearraytext # Declaring the genres for each book to be used in tables of contents
 declare -a genrearrayfile # Declaring the genres for each book to be used as filenames
-declare -a lengtharray # Declaring amount of chapters in each book
+declare -a lengtharray    # Declaring amount of chapters in each book
 
 # -------------------------------------------
 # TRANSLATION: Lists of Names
@@ -53,108 +53,105 @@ genrearrayfile=(pentateuch pentateuch pentateuch pentateuch pentateuch historica
 # -------------------------------------------
 
 # Initialize the Bible file for all of the Old/New Testament
-echo -e "# ${biblenametext}\n\n## Contents\n\n[[${testarrayfile[0]}|${testarraytext[0]}]]\n[[${testarrayfile[39]}|${testarraytext[39]}]]" >> "${parentfolder}/${biblenamefile}/${biblenamefile}.md"
+echo -e "# ${biblenametext}\n\n## Contents\n\n[[${testarrayfile[0]}|${testarraytext[0]}]]\n[[${testarrayfile[39]}|${testarraytext[39]}]]" >>"${parentfolder}/${biblenamefile}/${biblenamefile}.md"
 
 # Initialize the Old/New Testament file for all of the genres
-echo -e "# ${testarraytext[0]}\n\n## Contents\n\n[[${genrearrayfile[0]}|${genrearraytext[0]}]]\n[[${genrearrayfile[5]}|${genrearraytext[5]}]]\n[[${genrearrayfile[17]}|${genrearraytext[17]}]]\n[[${genrearrayfile[19]}|${genrearraytext[19]}]]\n[[${genrearrayfile[22]}|${genrearraytext[22]}]]\n[[${genrearrayfile[27]}|${genrearraytext[27]}]]" >> "${parentfolder}/${biblenamefile}/${testarrayfile[0]}.md"
-echo -e "# ${testarraytext[39]}\n\n## Contents\n\n[[${genrearrayfile[39]}|${genrearraytext[39]}]]\n[[${genrearrayfile[43]}|${genrearraytext[43]}]]\n[[${genrearrayfile[44]}|${genrearraytext[44]}]]\n[[${genrearrayfile[57]}|${genrearraytext[57]}]]\n[[${genrearrayfile[65]}+${genrearraytext[65]}]]" >> "${parentfolder}/${biblenamefile}/${testarrayfile[39]}.md"
+echo -e "# ${testarraytext[0]}\n\n## Contents\n\n[[${genrearrayfile[0]}|${genrearraytext[0]}]]\n[[${genrearrayfile[5]}|${genrearraytext[5]}]]\n[[${genrearrayfile[17]}|${genrearraytext[17]}]]\n[[${genrearrayfile[19]}|${genrearraytext[19]}]]\n[[${genrearrayfile[22]}|${genrearraytext[22]}]]\n[[${genrearrayfile[27]}|${genrearraytext[27]}]]" >>"${parentfolder}/${biblenamefile}/${testarrayfile[0]}.md"
+echo -e "# ${testarraytext[39]}\n\n## Contents\n\n[[${genrearrayfile[39]}|${genrearraytext[39]}]]\n[[${genrearrayfile[43]}|${genrearraytext[43]}]]\n[[${genrearrayfile[44]}|${genrearraytext[44]}]]\n[[${genrearrayfile[57]}|${genrearraytext[57]}]]\n[[${genrearrayfile[65]}+${genrearraytext[65]}]]" >>"${parentfolder}/${biblenamefile}/${testarrayfile[39]}.md"
 
 # Initialize the genre file for all of the Bible
-echo -e "# ${genrearraytext[0]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[0]}.md"
-echo -e "# ${genrearraytext[5]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[5]}.md"
-echo -e "# ${genrearraytext[17]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[17]}.md"
-echo -e "# ${genrearraytext[19]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[19]}.md"
-echo -e "# ${genrearraytext[22]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[22]}.md"
-echo -e "# ${genrearraytext[27]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[27]}.md"
-echo -e "# ${genrearraytext[39]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[39]}.md"
-echo -e "# ${genrearraytext[43]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[43]}.md"
-echo -e "# ${genrearraytext[44]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[44]}.md"
-echo -e "# ${genrearraytext[57]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[57]}.md"
-echo -e "# ${genrearraytext[65]}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/${genrearrayfile[65]}.md"
+echo -e "# ${genrearraytext[0]}\n\n## Contents\n" >>"${parentfolder}/${biblenamefile}/${genrearrayfile[0]}.md"
+echo -e "# ${genrearraytext[5]}\n\n## Contents\n" >>"${parentfolder}/${biblenamefile}/${genrearrayfile[5]}.md"
+echo -e "# ${genrearraytext[17]}\n\n## Contents\n" >>"${parentfolder}/${biblenamefile}/${genrearrayfile[17]}.md"
+echo -e "# ${genrearraytext[19]}\n\n## Contents\n" >>"${parentfolder}/${biblenamefile}/${genrearrayfile[19]}.md"
+echo -e "# ${genrearraytext[22]}\n\n## Contents\n" >>"${parentfolder}/${biblenamefile}/${genrearrayfile[22]}.md"
+echo -e "# ${genrearraytext[27]}\n\n## Contents\n" >>"${parentfolder}/${biblenamefile}/${genrearrayfile[27]}.md"
+echo -e "# ${genrearraytext[39]}\n\n## Contents\n" >>"${parentfolder}/${biblenamefile}/${genrearrayfile[39]}.md"
+echo -e "# ${genrearraytext[43]}\n\n## Contents\n" >>"${parentfolder}/${biblenamefile}/${genrearrayfile[43]}.md"
+echo -e "# ${genrearraytext[44]}\n\n## Contents\n" >>"${parentfolder}/${biblenamefile}/${genrearrayfile[44]}.md"
+echo -e "# ${genrearraytext[57]}\n\n## Contents\n" >>"${parentfolder}/${biblenamefile}/${genrearrayfile[57]}.md"
+echo -e "# ${genrearraytext[65]}\n\n## Contents\n" >>"${parentfolder}/${biblenamefile}/${genrearrayfile[65]}.md"
 
 # Book chapter list
 lengtharray=(50 40 27 36 34 24 21 4 31 24 22 25 29 36 10 13 10 42 150 31 12 8 66 52 5 48 12 14 3 9 1 4 7 3 3 3 2 14 4 28 16 24 21 28 16 16 13 6 6 4 4 5 3 6 4 3 1 13 5 5 3 5 1 1 1 22)
 
 echo "Starting download of the ${translation} Bible."
 
-  # Cycling through the book counter, setting which book and its maxchapter
-  for ((book_counter=0; book_counter <= book_counter_max; book_counter++))
-  do
+# Cycling through the book counter, setting which book and its maxchapter
+for ((bookcounter = 0; bookcounter <= bookcountermax; bookcounter++)); do
 
-    echo ""   # Make a new line which the '-n' flag to the echo command prevents.
+  echo "" # Make a new line which the '-n' flag to the echo command prevents.
 
-    booktext=${bookarraytext[$book_counter]}
-    bookfile=${bookarrayfile[$book_counter]}
-    maxchapter=${lengtharray[$book_counter]}
-    abbtext=${abbarraytext[$book_counter]}
-    abbfile=${abbarrayfile[$book_counter]}
+  booktext=${bookarraytext[$bookcounter]}
+  bookfile=${bookarrayfile[$bookcounter]}
+  abbtext=${abbarraytext[$bookcounter]}
+  abbfile=${abbarrayfile[$bookcounter]}
+  genrefile=${genrearrayfile[bookcounter]}
+  maxchapter=${lengtharray[$bookcounter]}
 
-    echo -n "${booktext} "
+  echo -n "${booktext} "
 
-    # Create an overview file for each book of the Bible:
-    echo -e "# ${booktext}\n\n## Contents\n" >> "${parentfolder}/${biblenamefile}/$bookfile.md"
+  # Create an overview file for each book of the Bible:
+  echo -e "# ${booktext}\n\n## Contents\n" >>"${parentfolder}/${biblenamefile}/$bookfile.md"
 
-    # Create an overview file for each book of the Bible:
-    echo -e "[[${bookarrayfile}|${bookarraytext}]]" >> "${parentfolder}/${biblenamefile}/${genrearrayfile}.md"
+  # Create an overview file for each book of the Bible:
+  echo -e "[[${bookfile}|${booktext}]]" >>"${parentfolder}/${biblenamefile}/${genrefile}.md"
 
-    for ((chapter=1; chapter <= maxchapter; chapter++))
-    do
+  for ((chapter = 1; chapter <= maxchapter; chapter++)); do
 
-        echo -n "."
+    echo -n "."
 
-    ((prevchapter=chapter-1)) # Counting the previous and next chapter for navigation
-    ((nextchapter=chapter+1))
+    ((prevchapter = chapter - 1)) # Counting the previous and next chapter for navigation
+    ((nextchapter = chapter + 1))
 
-# Exporting
-exportprefix="${abbfile}-" # Setting the first half of the filename
-filename=${exportprefix}$chapter # Setting the filename
+    # Exporting
+    exportprefix="${abbfile}-"       # Setting the first half of the filename
+    filename=${exportprefix}$chapter # Setting the filename
 
+    prevfile=${exportprefix}$prevchapter # Naming previous and next files
+    nextfile=${exportprefix}$nextchapter
 
-  prevfile=${exportprefix}$prevchapter # Naming previous and next files
-  nextfile=${exportprefix}$nextchapter
-
-  if [[ $chapter -gt 1 ]]; then
-      echo -e "[[${abbfile}-$chapter|]]" >> "${parentfolder}/${biblenamefile}/$bookfile.md"
+    if [[ $chapter -gt 1 ]]; then
+      echo -e "[[${abbfile}-$chapter|]]" >>"${parentfolder}/${biblenamefile}/$bookfile.md"
     else
-      echo -e "[[${abbfile}-$chapter|Start reading]]" >> "${parentfolder}/${biblenamefile}/$bookfile.md"
-  fi
+      echo -e "[[${abbfile}-$chapter|Start reading]]" >>"${parentfolder}/${biblenamefile}/$bookfile.md"
+    fi
 
-  audiobible="![[${abbfile}-$chapter.mp3]]"
-  contents="## Contents\n\n[[${abbfile}-$chapter-notes|Chapter notes]]"
+    audiobible="![[${abbfile}-$chapter.mp3]]"
+    contents="## Contents\n\n[[${abbfile}-$chapter-notes|Chapter notes]]"
 
-  # Formatting Navigation and omitting links that aren't necessary
-  if [[ $maxchapter = 1 ]]; then
-    # For a book that only has one chapter
-    navigation="$contents"
-  elif [[ $chapter = $maxchapter ]]; then
-    # If this is the last chapter of the book
-    navigation="$contents\n\n## Related\n\n[[${prevfile}|Previous chapter]]"
-  elif [[ ${chapter} = 1 ]] ; then
-    # If this is the first chapter of the book
-    navigation="$contents\n\n## Related\n\n[[${nextfile}|Next chapter]]"
-  else
-    # Navigation for everything else
-    navigation="$contents\n\n## Related\n\n[[${prevfile}|Previous chapter]]\n[[${nextfile}|Next chapter]]"
-  fi
+    # Formatting Navigation and omitting links that aren't necessary
+    if [[ $maxchapter -eq 1 ]]; then
+      # For a book that only has one chapter
+      navigation="$contents"
+    elif [[ $chapter -eq $maxchapter ]]; then
+      # If this is the last chapter of the book
+      navigation="$contents\n\n## Related\n\n[[${prevfile}|Previous chapter]]"
+    elif [[ ${chapter} -eq 1 ]]; then
+      # If this is the first chapter of the book
+      navigation="$contents\n\n## Related\n\n[[${nextfile}|Next chapter]]"
+    else
+      # Navigation for everything else
+      navigation="$contents\n\n## Related\n\n[[${prevfile}|Previous chapter]]\n[[${nextfile}|Next chapter]]"
+    fi
 
-    text=$(ruby bg2md.rb -e -c -f -l -r -v "${translation}" "${abbtext} ${chapter}") # This calls the 'bg2md_mod' script
+    text=$(ruby bg2md.rb -e -c -f -l -r -v "${translation}" "${abbtext} ${chapter}") # This calls the 'bg2mdmod' script
 
+    text=$(echo "$text" | sed 's/^(.*?)v1/v1/') # Deleting unwanted headers
 
-  text=$(echo "$text" | sed 's/^(.*?)v1/v1/') # Deleting unwanted headers
+    # Formatting the title for markdown
+    title="# ${abbtext} ${chapter}"
 
-  # Formatting the title for markdown
-  title="# ${abbtext} ${chapter}"
+    # Navigation format
+    export="$title\n\n$audiobible\n$text\n\n$navigation"
 
-  # Navigation format
-  export="# ${abbtext} $chapter\n\n$audiobible\n$text\n\n$navigation"
+    # Export
+    echo -e "$export" >>"./${parentfolder}/${biblenamefile}/${filename}.md"
+    echo -e "$export" >>"./${parentfolder}/${biblenamefile}/${filename}-notes.md"
 
-  # Export
-  echo -e "$export" >> "./${parentfolder}/${biblenamefile}/${filename}.md"
-  echo -e "$export" >> "./${parentfolder}/${biblenamefile}/${filename}-notes.md"
+  done # End of the book exporting loop
 
-done # End of the book exporting loop
-
-  done
+done
 
 # Tidy up the Markdown files
 
@@ -169,7 +166,7 @@ find . -type f -name "*.md" -exec sed -i 's/###### [0-9][0-9][0-9] /\n\n&\n\n/g'
 find . -type f -name "*.md" -exec sed -i 's/^ *//g' {} +
 
 # Create editorial headers
-find . -type f -name "*[0-9].md" -exec sed -i '5 s/[A-Za-z0-9].*/\n## &/' {} + # Make first header if it exists
+find . -type f -name "*[0-9].md" -exec sed -i '5 s/[A-Za-z0-9].*/\n## &/' {} +             # Make first header if it exists
 find . -type f -name "*.md" -exec sed -i 's/\.\"[A-Z0-9].*[A-Za-z0-9]$/\.\"\n\n## &/' {} + # Header following quotes (period)
 find . -type f -name "*.md" -exec sed -i 's/## \.\"/## /' {} +
 find . -type f -name "*.md" -exec sed -i 's/!\"[A-Z0-9].*[A-Za-z0-9]$/!\"\n\n## &/' {} + # Header following quotes (exclamation mark)
