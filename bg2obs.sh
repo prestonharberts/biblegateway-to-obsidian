@@ -69,7 +69,7 @@ lengtharray=(50 40 27 36 34 24 21 4 31 24 22 25 29 36 10 13 10 42 150 31 12 8 66
 echo "Starting download of the ${translationname} Bible."
 
 # Cycling through the book counter, setting which book and its maxchapter
-for ((bookcounter = 0; bookcounter <= bookcountermax; bookcounter++)); do
+for ((bookcounter = 0; bookcounter < bookcountermax; bookcounter++)); do
 
   echo "" # Make a new line which the '-n' flag to the echo command prevents.
 
