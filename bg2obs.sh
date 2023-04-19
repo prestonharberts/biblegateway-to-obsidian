@@ -209,6 +209,13 @@ find . -type f -name "*.md" -exec sed -i 's/\.\.\.\,\"/\,\n\"/' {} +
 # Add newline after second headers (will be removed later if redundant)
 find . -type f -name "*.md" -exec sed -i 's/## .*/&\n/' {} +
 
+# Delete Psalm book headings
+find . -type f -name "*.md" -exec sed -i 's/## Book One//' {} +
+find . -type f -name "*.md" -exec sed -i 's/## Book Two//' {} +
+find . -type f -name "*.md" -exec sed -i 's/## Book Three//' {} +
+find . -type f -name "*.md" -exec sed -i 's/## Book Four//' {} +
+find . -type f -name "*.md" -exec sed -i 's/## Book Five//' {} +
+
 # Correct newline spacing
 find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n/\n\n/;ba;}' {} +
 find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n/\n\n/;ba;}' {} +
@@ -220,12 +227,6 @@ find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n\n/\n\n\n\n/;ba;
 
 # Fix mp3 link
 find . -type f -name "*.md" -exec sed -i 's/\. mp3/\.mp3/' {} +
-
-# Delete Psalm book headings
-find . -type f -name "*.md" -exec sed -i 's/## Book One/## /' {} +
-find . -type f -name "*.md" -exec sed -i 's/## Book Two/## /' {} +
-find . -type f -name "*.md" -exec sed -i 's/## Book Three/## /' {} +
-find . -type f -name "*.md" -exec sed -i 's/## Book Four/## /' {} +
 
 # Fix some superscripts back to verses
 
