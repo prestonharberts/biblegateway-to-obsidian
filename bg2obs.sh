@@ -1,6 +1,6 @@
 #!/bin/bash
 
-translation='ESV' # Which translation to use
+translation='CSB' # Which translation to use
 
 # Initialize variables
 bookcounter=0     # Setting the counter to 0
@@ -155,6 +155,11 @@ find . -type f -name "*.md" -exec sed -i 's/###### [0-9][0-9][0-9] /\n\n&\n\n/g'
 # Remove spaces at the beginning of verses
 find . -type f -name "*.md" -exec sed -i 's/^ *//g' {} +
 
+# Correct Psalm headings for certain translations
+find . -type f -name "*.md" -exec sed -i 's/^Psalm [0-9][0-9][0-9]//' {} +
+find . -type f -name "*.md" -exec sed -i 's/^Psalm [0-9][0-9]//' {} +
+find . -type f -name "*.md" -exec sed -i 's/^Psalm [0-9]//' {} +
+
 # Create editorial headers
 find . -type f -name "*[0-9].md" -exec sed -i '5 s/[A-Za-z0-9].*/\n## &/' {} +             # Make first header if it exists
 find . -type f -name "*.md" -exec sed -i 's/\.\"[A-Z0-9].*[A-Za-z0-9]$/\.\"\n\n## &/' {} + # Header following quotes (period)
@@ -234,6 +239,10 @@ find . -type f -name "*.md" -exec sed -i 's/ <sup class=\"versenum mid-line\">/\
 find . -type f -name "*.md" -exec sed -i 's/<\/sup>/\n\n/' {} +
 find . -type f -name "*.md" -exec sed -i 's/<sup class=\"versenum mid-line\">/\n\n###### /' {} +
 find . -type f -name "*.md" -exec sed -i 's/<\/sup>/\n\n/' {} +
+
+# Remove tags
+find . -type f -name "*.md" -exec sed -i 's/<b class="quote">//' {} +
+find . -type f -name "*.md" -exec sed -i 's/\*\*//' {} +
 
 # Correct newline spacing
 find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n/\n\n/;ba;}' {} +
