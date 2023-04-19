@@ -1,6 +1,7 @@
 #!/bin/bash
 
-translation='CSB' # Which translation to use
+translationname='CSB' # Which translation to use
+translationfile='CSB' # Which translation to use for the Bible folder name
 
 # Initialize variables
 bookcounter=0     # Setting the counter to 0
@@ -65,7 +66,7 @@ echo -e "# ${genrearraytext[65]}\n\n## Contents\n" >>"${biblenamefile}/${genrear
 # Book chapter list
 lengtharray=(50 40 27 36 34 24 21 4 31 24 22 25 29 36 10 13 10 42 150 31 12 8 66 52 5 48 12 14 3 9 1 4 7 3 3 3 2 14 4 28 16 24 21 28 16 16 13 6 6 4 4 5 3 6 4 3 1 13 5 5 3 5 1 1 1 22)
 
-echo "Starting download of the ${translation} Bible."
+echo "Starting download of the ${translationname} Bible."
 
 # Cycling through the book counter, setting which book and its maxchapter
 for ((bookcounter = 0; bookcounter <= bookcountermax; bookcounter++)); do
@@ -125,7 +126,7 @@ for ((bookcounter = 0; bookcounter <= bookcountermax; bookcounter++)); do
       navigation="$contents\n\n## Related\n\n[[${prevfile}|Previous chapter]]\n[[${nextfile}|Next chapter]]"
     fi
 
-    text=$(ruby bg2md.rb -e -c -f -l -r -v "${translation}" "${abbtext} ${chapter}") # This calls the 'bg2mdmod' script
+    text=$(ruby bg2md.rb -e -c -f -l -r -v "${translationname}" "${abbtext} ${chapter}") # This calls the 'bg2mdmod' script
 
     text=$(echo "$text" | sed 's/^(.*?)v1/v1/') # Deleting unwanted headers
 
@@ -142,6 +143,9 @@ for ((bookcounter = 0; bookcounter <= bookcountermax; bookcounter++)); do
   done # End of the book exporting loop
 
 done
+
+#rename Bible folder
+mv "${biblenamefile}" "${biblenamefile}-${translationfile}"
 
 # Tidy up the Markdown files
 
