@@ -147,6 +147,13 @@ done
 #rename Bible folder
 mv "${biblenamefile}" "${biblenamefile}-${translationfile}"
 
+cd "${biblenamefile}"
+mkdir -p reading && mv *.md reading && cd reading
+mkdir ../contents/ ../notes/ ../reading/
+mv book-of-* first-* second-* third-epistle-of-john.md epistle-* pentateuch.md historical-books.md ../bible-csb-contents/book-of-wisdom.md poetical-books.md minor-prophets.md major-prophets.md gospel* acts-of-the-apostles.md apocalyptic.md general-epistles.md pauline-epistles.md church-history.md bible.md old-testament.md new-testament.md song-of-solomon.md ../contents/
+mv *notes* ../notes/
+mv *audio* ../contents/
+
 # Tidy up the Markdown files
 
 echo "Cleaning up the Markdown files."
