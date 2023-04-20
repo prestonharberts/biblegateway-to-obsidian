@@ -172,4 +172,4 @@ find . -type f -wholename "${notes_folder}/*.md" -exec sed -i ':a;$!{N;s/## 1\n\
 # find . -type f -wholename "${notes_folder}/*.md" -exec sed -i ':a;$!{N;s/\n\n- [ ] \n\n\[\[/\n\n\[\[/;ba;}' {} +
 find . -type f -wholename "${notes_folder}/*.md" -exec sed -i ':a;$!{N;s/## Related\n\n- \[ \] /## Related/;ba;}' {} +
 
-printf "\nDownload complete. Markdown files ready for Obsidian import."
+printf "\nDownload complete. Markdown files ready for Obsidian import.\n"
