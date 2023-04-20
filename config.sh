@@ -3,21 +3,20 @@
 translation="CSB" # Which translation to use
 bible_name="Bible"
 
-
 standard_translation=$(echo "${translation}" | sed 's/ /-/g; s/.*/\L&/g')
 standard_bible_name=$(echo "${bible_name}" | sed 's/ /-/g; s/.*/\L&/g')
 bible_folder="./${standard_bible_name}-${standard_translation}"
-mkdir -p "${bible_folder}"
 
-audio_folder="${bible_folder}/audio"
-contents_folder="${bible_folder}/contents"
-notes_folder="${bible_folder}/notes"
-reading_folder="${bible_folder}/reading"
+export -p audio_folder="${bible_folder}/audio"
+export -p contents_folder="${bible_folder}/contents"
+export -p notes_folder="${bible_folder}/notes"
+export -p reading_folder="${bible_folder}/reading"
 
-mkdir -p "${audio_folder}" "${contents_folder}" "${notes_folder}" "${reading_folder}"
+# Setting the max amount to 66, since there are 66 books we want to import
+book_max=66
 
 # Book chapter list
-length_array=(50 40 27 36 34 24 21 4 31 24 22 25 29 36 10 13 10 42 150 31 12 8 66 52 5 48 12 14 3 9 1 4 7 3 3 3 2 14 4 28 16 24 21 28 16 16 13 6 6 4 4 5 3 6 4 3 1 13 5 5 3 5 1 1 1 22)
+export length_array=(50 40 27 36 34 24 21 4 31 24 22 25 29 36 10 13 10 42 150 31 12 8 66 52 5 48 12 14 3 9 1 4 7 3 3 3 2 14 4 28 16 24 21 28 16 16 13 6 6 4 4 5 3 6 4 3 1 13 5 5 3 5 1 1 1 22)
 
 # Long titles of the books of the Bible
 long_title_array=("Book of Genesis" "Book of Exodus" "Book of Leviticus" "Book of Numbers" "Book of Deuteronomy" "Book of Joshua" "Book of Judges" "Book of Ruth" "First Book of Samuel" "Second Book of Samuel" "First Book of Kings" "Second Book of Kings" "First Book of Chronicles" "Second Book of Chronicles" "Book of Ezra" "Book of Nehemiah" "Book of Esther" "Book of Job" "Book of Psalms" "Book of Proverbs" "Book of Ecclesiastes" "Song of Solomon" "Book of Isaiah" "Book of Jeremiah" "Book of Lamentations" "Book of Ezekiel" "Book of Daniel" "Book of Hosea" "Book of Joel" "Book of Amos" "Book of Obadiah" "Book of Jonah" "Book of Micah" "Book of Nahum" "Book of Habakkuk" "Book of Zephaniah" "Book of Haggai" "Book of Zechariah" "Book of Malachi" "Gospel of Matthew" "Gospel of Mark" "Gospel of Luke" "Gospel of John" "Acts of the Apostles" "Epistle to the Romans" "First Epistle to the Corinthians" "Second Epistle to the Corinthians" "Epistle to the Galatians" "Epistle to the Ephesians" "Epistle to the Philippians" "Epistle to the Colossians" "First Epistle to the Thessalonians" "Second Epistle to the Thessalonians" "First Epistle to Timothy" "Second Epistle to Timothy" "Epistle to Titus" "Epistle to Philemon" "Epistle to the Hebrews" "Epistle of James" "First Epistle of Peter" "Second Epistle of Peter" "First Epistle of John" "Second Epistle of John" "Third Epistle of John" "Epistle of Jude" "Book of Revelation")
@@ -36,15 +35,17 @@ genre_array=(Pentateuch Pentateuch Pentateuch Pentateuch Pentateuch "Historical 
 
 # Create kebab-cased arrays of testament, genre, and book arrays
 # TODO: Allow user selection of various naming conventions
-standard_long_title_array=${long_title_array}
-standard_short_title_array=${short_title_array}
-standard_abbreviation_array=${abbreviation_array}
-standard_testament_array=${testament_array}
-standard_genre_array=${genre_array}
-for ((book = 0; book < 66; book++)); do
-  standard_long_title_array[$book]=$(echo "${long_title_array[$book]}" | sed 's/ /-/g; s/.*/\L&/g')
-  standard_short_title_array[$book]=$(echo "${short_title_array[$book]}" | sed 's/ /-/g; s/.*/\L&/g')
-  standard_abbreviation_array[$book]=$(echo "${abbreviation_array[$book]}" | sed 's/ /-/g; s/.*/\L&/g')
-  standard_testament_array[$book]=$(echo "${testament_array[$book]}" | sed 's/ /-/g; s/.*/\L&/g')
-  standard_genre_array[$book]=$(echo "${genre_array[$book]}" | sed 's/ /-/g; s/.*/\L&/g')
+
+export -ap standard_long_title_array
+export -ap standard_short_title_array
+export -ap standard_abbreviation_array
+export -ap standard_testament_array
+export -ap standard_genre_array
+
+for ((book = 0; book < book_max; book++)); do
+  standard_long_title_array[book]=$(echo "${long_title_array[$book]}" | sed 's/ /-/g; s/.*/\L&/g')
+  standard_short_title_array[book]=$(echo "${short_title_array[$book]}" | sed 's/ /-/g; s/.*/\L&/g')
+  standard_abbreviation_array[book]=$(echo "${abbreviation_array[$book]}" | sed 's/ /-/g; s/.*/\L&/g')
+  standard_testament_array[book]=$(echo "${testament_array[$book]}" | sed 's/ /-/g; s/.*/\L&/g')
+  standard_genre_array[book]=$(echo "${genre_array[$book]}" | sed 's/ /-/g; s/.*/\L&/g')
 done

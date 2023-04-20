@@ -1,12 +1,16 @@
 #!/bin/bash
 
 source config.sh
+
+mkdir -p "${bible_folder}"
+mkdir -p "${audio_folder}" "${contents_folder}" "${notes_folder}" "${reading_folder}"
+
 source make-contents.sh
 
 echo "Starting download of the ${translation} Bible."
 
 # Cycling through the book counter, setting which book and its max chapter
-for ((book = 0; book < 66; book++)); do
+for ((book = 0; book < book_max; book++)); do
 
   echo "" # Make a new line which the '-n' flag to the echo command prevents.
 
@@ -17,7 +21,7 @@ for ((book = 0; book < 66; book++)); do
   standard_short_title="${standard_short_title_array[$book]}"
   standard_abbreviation="${standard_abbreviation_array[$book]}"
   standard_genre="${standard_genre_array[$book]}"
-  max_chapter=${length_array[$book]}
+  chapter_max=${length_array[$book]}
 
   echo -n "${short_title} "
 
@@ -27,7 +31,7 @@ for ((book = 0; book < 66; book++)); do
   # Create an overview file for each book of the Bible:
   echo -e "[[${standard_long_title}|${long_title}]]" >>"${contents_folder}/${standard_genre}.md"
 
-  for ((chapter = 1; chapter <= max_chapter; chapter++)); do
+  for ((chapter = 1; chapter <= chapter_max; chapter++)); do
 
     echo -n "."
 
@@ -51,10 +55,10 @@ for ((book = 0; book < 66; book++)); do
     contents="## Contents\n\n[[${filename}-notes|Chapter notes]]"
 
     # Formatting Navigation and omitting links that aren't necessary
-    if [[ $max_chapter -eq 1 ]]; then
+    if [[ $chapter_max -eq 1 ]]; then
       # For a book that only has one chapter
       navigation="${contents}"
-    elif [[ $chapter -eq $max_chapter ]]; then
+    elif [[ $chapter -eq $chapter_max ]]; then
       # If this is the last chapter of the book
       navigation="${contents}\n\n## Related\n\n[[${previous_file}|Previous chapter]]"
     elif [[ ${chapter} -eq 1 ]]; then
@@ -84,3 +88,4 @@ for ((book = 0; book < 66; book++)); do
 done
 
 source clean-files.sh
+source make-audio-contents.sh
