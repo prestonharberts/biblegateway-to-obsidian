@@ -16,11 +16,14 @@ reading_folder="${bible_folder}/reading"
 
 mkdir -p "${audio_folder}" "${contents_folder}" "${notes_folder}" "${reading_folder}" 
 
-# Titles of the books of the Bible
-title_array=("Book of Genesis" "Book of Exodus" "Book of Leviticus" "Book of Numbers" "Book of Deuteronomy" "Book of Joshua" "Book of Judges" "Book of Ruth" "First Book of Samuel" "Second Book of Samuel" "First Book of Kings" "Second Book of Kings" "First Book of Chronicles" "Second Book of Chronicles" "Book of Ezra" "Book of Nehemiah" "Book of Esther" "Book of Job" "Book of Psalms" "Book of Proverbs" "Book of Ecclesiastes" "Song of Solomon" "Book of Isaiah" "Book of Jeremiah" "Book of Lamentations" "Book of Ezekiel" "Book of Daniel" "Book of Hosea" "Book of Joel" "Book of Amos" "Book of Obadiah" "Book of Jonah" "Book of Micah" "Book of Nahum" "Book of Habakkuk" "Book of Zephaniah" "Book of Haggai" "Book of Zechariah" "Book of Malachi" "Gospel of Matthew" "Gospel of Mark" "Gospel of Luke" "Gospel of John" "Acts of the Apostles" "Epistle to the Romans" "First Epistle to the Corinthians" "Second Epistle to the Corinthians" "Epistle to the Galatians" "Epistle to the Ephesians" "Epistle to the Philippians" "Epistle to the Colossians" "First Epistle to the Thessalonians" "Second Epistle to the Thessalonians" "First Epistle to Timothy" "Second Epistle to Timothy" "Epistle to Titus" "Epistle to Philemon" "Epistle to the Hebrews" "Epistle of James" "First Epistle of Peter" "Second Epistle of Peter" "First Epistle of John" "Second Epistle of John" "Third Epistle of John" "Epistle of Jude" "Book of Revelation")
+# Long titles of the books of the Bible
+long_title_array=("Book of Genesis" "Book of Exodus" "Book of Leviticus" "Book of Numbers" "Book of Deuteronomy" "Book of Joshua" "Book of Judges" "Book of Ruth" "First Book of Samuel" "Second Book of Samuel" "First Book of Kings" "Second Book of Kings" "First Book of Chronicles" "Second Book of Chronicles" "Book of Ezra" "Book of Nehemiah" "Book of Esther" "Book of Job" "Book of Psalms" "Book of Proverbs" "Book of Ecclesiastes" "Song of Solomon" "Book of Isaiah" "Book of Jeremiah" "Book of Lamentations" "Book of Ezekiel" "Book of Daniel" "Book of Hosea" "Book of Joel" "Book of Amos" "Book of Obadiah" "Book of Jonah" "Book of Micah" "Book of Nahum" "Book of Habakkuk" "Book of Zephaniah" "Book of Haggai" "Book of Zechariah" "Book of Malachi" "Gospel of Matthew" "Gospel of Mark" "Gospel of Luke" "Gospel of John" "Acts of the Apostles" "Epistle to the Romans" "First Epistle to the Corinthians" "Second Epistle to the Corinthians" "Epistle to the Galatians" "Epistle to the Ephesians" "Epistle to the Philippians" "Epistle to the Colossians" "First Epistle to the Thessalonians" "Second Epistle to the Thessalonians" "First Epistle to Timothy" "Second Epistle to Timothy" "Epistle to Titus" "Epistle to Philemon" "Epistle to the Hebrews" "Epistle of James" "First Epistle of Peter" "Second Epistle of Peter" "First Epistle of John" "Second Epistle of John" "Third Epistle of John" "Epistle of Jude" "Book of Revelation")
+
+# Short titles of the books of the Bible
+short_title_array=(Genesis Exodus Leviticus Numbers Deuteronomy Joshua Judges Ruth "1 Samuel" "2 Samuel" "1 Kings" "2 Kings" "1 Chronicles" "2 Chronicles" Ezra Nehemiah Esther Job Psalm Proverbs Ecclesiastes "Song of Solomon" Isaiah Jeremiah Lamentations Ezekiel Daniel Hosea Joel Amos Obadiah Jonah Micah Nahum Habakkuk Zephaniah Haggai Zechariah Malachi Matthew Mark Luke John Acts Romans "1 Corinthians" "2 Corinthians" Galatians Ephesians Philippians Colossians "1 Thessalonians" "2 Thessalonians" "1 Timothy" "2 Timothy" Titus Philemon Hebrews James "1 Peter" "2 Peter" "1 John" "2 John" "3 John" Jude Revelation)
 
 # Abbreviations of the books of the Bible
-abbreviation_array=(Genesis Exodus Leviticus Numbers Deuteronomy Joshua Judges Ruth "1 Samuel" "2 Samuel" "1 Kings" "2 Kings" "1 Chronicles" "2 Chronicles" Ezra Nehemiah Esther Job Psalm Proverbs Ecclesiastes "Song of Solomon" Isaiah Jeremiah Lamentations Ezekiel Daniel Hosea Joel Amos Obadiah Jonah Micah Nahum Habakkuk Zephaniah Haggai Zechariah Malachi Matthew Mark Luke John Acts Romans "1 Corinthians" "2 Corinthians" Galatians Ephesians Philippians Colossians "1 Thessalonians" "2 Thessalonians" "1 Timothy" "2 Timothy" Titus Philemon Hebrews James "1 Peter" "2 Peter" "1 John" "2 John" "3 John" Jude Revelation)
+abbreviation_array=(Gn Ex Lv Nm Dt Jos Jdg Ru 1Sm 2Sm 1Kg 2Kg 1Ch 2Ch Ezr Neh Est Jb Ps Pr Ec Sg Is Jr Lm Ezk Dn Hs Jl Am Ob Jnh Mc Nah Hab Zph Hg Zch Mal Mt Mk Lk Jn Ac Rm 1Co 2Co Gl Eph Php Col 1Th 2Th 1Tm 2Tm Ti Phm Heb Jms 1Pt 2Pt 1Jn 2Jn 3Jn Jd Rv)
 
 # Testaments of the books of the Bible
 testament_array=("Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "Old Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament" "New Testament")
@@ -30,12 +33,14 @@ genre_array=(Pentateuch Pentateuch Pentateuch Pentateuch Pentateuch "Historical 
 
 # Create kebab-cased arrays of testament, genre, and book arrays
 # TODO: Allow user selection of various naming conventions
-standard_title_array=${title_array}
+standard_long_title_array=${long_title_array}
+standard_short_title_array=${short_title_array}
 standard_abbreviation_array=${abbreviation_array}
 standard_testament_array=${testament_array}
 standard_genre_array=${genre_array}
 for ((book = 0; book < 66; book++)); do
-  standard_title_array[$book]=$(echo "${title_array[$book]}" | sed 's/ /-/g; s/.*/\L&/g')
+  standard_long_title_array[$book]=$(echo "${long_title_array[$book]}" | sed 's/ /-/g; s/.*/\L&/g')
+  standard_short_title_array[$book]=$(echo "${short_title_array[$book]}" | sed 's/ /-/g; s/.*/\L&/g')
   standard_abbreviation_array[$book]=$(echo "${abbreviation_array[$book]}" | sed 's/ /-/g; s/.*/\L&/g')
   standard_testament_array[$book]=$(echo "${testament_array[$book]}" | sed 's/ /-/g; s/.*/\L&/g')
   standard_genre_array[$book]=$(echo "${genre_array[$book]}" | sed 's/ /-/g; s/.*/\L&/g')
@@ -71,20 +76,22 @@ for ((book = 0; book < 66; book++)); do
 
   echo "" # Make a new line which the '-n' flag to the echo command prevents.
 
-  title="${title_array[$book]}"
-  standard_title="${standard_title_array[$book]}"
+  long_title="${long_title_array[$book]}"
+  short_title="${short_title_array[$book]}"
   abbreviation="${abbreviation_array[$book]}"
+  standard_long_title="${standard_long_title_array[$book]}"
+  standard_short_title="${standard_short_title_array[$book]}"
   standard_abbreviation="${standard_abbreviation_array[$book]}"
   standard_genre="${standard_genre_array[$book]}"
   max_chapter=${length_array[$book]}
 
-  echo -n "${abbreviation} "
+  echo -n "${short_title} "
 
   # Create an overview file for each book of the Bible:
-  echo -e "# ${title}\n\n## Contents\n" >>"${contents_folder}/${standard_title}.md"
+  echo -e "# ${long_title}\n\n## Contents\n" >>"${contents_folder}/${standard_long_title}.md"
 
   # Create an overview file for each book of the Bible:
-  echo -e "[[${standard_title}|${title}]]" >>"${contents_folder}/${standard_genre}.md"
+  echo -e "[[${standard_long_title}|${long_title}]]" >>"${contents_folder}/${standard_genre}.md"
 
   for ((chapter = 1; chapter <= max_chapter; chapter++)); do
 
@@ -94,20 +101,20 @@ for ((book = 0; book < 66; book++)); do
     ((nextchapter = chapter + 1))
 
     # Exporting
-    export_prefix="${standard_abbreviation}-"
+    export_prefix="${standard_abbreviation}"
     filename="${export_prefix}${chapter}" # Setting the filename
 
     previous_file="${export_prefix}${prevchapter}" # Naming previous and next files
     next_file="${export_prefix}${nextchapter}"
 
     if [[ $chapter -gt 1 ]]; then
-      echo -en "[[${standard_abbreviation}-${chapter}|]]" >>"${contents_folder}/${standard_title}.md"
+      echo -en "[[${export_prefix}${chapter}|]]" >>"${contents_folder}/${standard_long_title}.md"
     else
-      echo -en "[[${standard_abbreviation}-${chapter}|Start reading]]" >>"${contents_folder}/${standard_title}.md"
+      echo -en "[[${export_prefix}${chapter}|Start reading]]" >>"${contents_folder}/${standard_long_title}.md"
     fi
 
-    audio_bible="![[${standard_abbreviation}-$chapter.mp3]]"
-    contents="## Contents\n\n[[${standard_abbreviation}-${chapter}-notes|Chapter notes]]"
+    audio_bible="![[${filename}.mp3]]"
+    contents="## Contents\n\n[[${filename}-notes|Chapter notes]]"
 
     # Formatting Navigation and omitting links that aren't necessary
     if [[ $max_chapter -eq 1 ]]; then
@@ -124,15 +131,15 @@ for ((book = 0; book < 66; book++)); do
       navigation="${contents}\n\n## Related\n\n[[${previous_file}|Previous chapter]]\n[[${next_file}|Next chapter]]"
     fi
 
-    text=$(ruby bg2md.rb -e -c -f -l -r -v "${translation}" "${abbreviation} ${chapter}") # This calls the 'bg2mdmod' script
+    text=$(ruby bg2md.rb -e -c -f -l -r -v "${translation}" "${short_title} ${chapter}") # This calls the 'bg2mdmod' script
 
     text=$(echo "${text}" | sed 's/^(.*?)v1/v1/') # Deleting unwanted headers
 
     # Formatting the title for markdown
-    title="# ${abbreviation} ${chapter}"
+    heading="# ${short_title} ${chapter}"
 
     # Navigation format
-    export="${title}\n\n${audio_bible}\n${text}\n\n${navigation}"
+    export="${heading}\n\n${audio_bible}\n${text}\n\n${navigation}"
 
     # Export
     echo -e "$export" >>"${reading_folder}/${filename}.md"
