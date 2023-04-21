@@ -80,20 +80,6 @@ find . -type f -name "*.md" -exec sed -i 's/## Book Three//g' {} +
 find . -type f -name "*.md" -exec sed -i 's/## Book Four//g' {} +
 find . -type f -name "*.md" -exec sed -i 's/## Book Five//g' {} +
 
-# Turn H6 into numbered list
-find . -type f -wholename "${reading_folder}/*.md" -exec sed -i 's/###### //g' {} +
-find . -type f -name "*.md" -exec sed -i 's/ *$//g' {} + # Delete spaces after text
-find . -type f -wholename "${reading_folder}/*.md" -exec sed -i 's/^[0-9][0-9][0-9]$/&.temp1/g' {} +
-find . -type f -wholename "${reading_folder}/*.md" -exec sed -i 's/^[0-9][0-9]$/&.temp1/g' {} +
-find . -type f -wholename "${reading_folder}/*.md" -exec sed -i 's/^[0-9]$/&.temp1/g' {} +
-find . -type f -wholename "${reading_folder}/*.md" -exec sed -i ':a;$!{N;s/temp1\n/ /;ba;}' {} +
-find . -type f -wholename "${reading_folder}/*.md" -exec sed -i 's/^[0-9][0-9][0-9]\./temp2&/g' {} +
-find . -type f -wholename "${reading_folder}/*.md" -exec sed -i 's/^[0-9][0-9]\./temp2&/g' {} +
-find . -type f -wholename "${reading_folder}/*.md" -exec sed -i 's/^[0-9]\./temp2&/g' {} +
-find . -type f -wholename "${reading_folder}/*.md" -exec sed -i ':a;$!{N;s/\ntemp2//;ba;}' {} +
-find . -type f -wholename "${reading_folder}/*.md" -exec sed -i 's/^##.*$/&\n/g' {} +
-find . -type f -wholename "${reading_folder}/*.md" -exec sed -i 's/mp3\]\]/&\n/g' {} +
-
 # find . -type f -name "*.md" -exec sed -i 's/^[0-9][0-9][0-9]$/&.temp1/g' {} +
 # find . -type f -name "*.md" -exec sed -i 's/^[0-9][0-9]$/&.temp1/g' {} +
 # find . -type f -name "*.md" -exec sed -i 's/^[0-9]$/&.temp1/g' {} +
@@ -171,5 +157,28 @@ find . -type f -wholename "${notes_folder}/*.md" -exec sed -i ':a;$!{N;s/## 1\n\
 # Fix Related spacing
 # find . -type f -wholename "${notes_folder}/*.md" -exec sed -i ':a;$!{N;s/\n\n- [ ] \n\n\[\[/\n\n\[\[/;ba;}' {} +
 find . -type f -wholename "${notes_folder}/*.md" -exec sed -i ':a;$!{N;s/## Related\n\n- \[ \] /## Related/;ba;}' {} +
+#
+# Turn H6 into numbered list
+find . -type f -wholename "${reading_folder}/*.md" -exec sed -i 's/###### //g' {} +
+find . -type f -name "*.md" -exec sed -i 's/ *$//g' {} + # Delete spaces after text
+find . -type f -wholename "${reading_folder}/*.md" -exec sed -i 's/^[0-9][0-9][0-9]$/&.temp1/g' {} +
+find . -type f -wholename "${reading_folder}/*.md" -exec sed -i 's/^[0-9][0-9]$/&.temp1/g' {} +
+find . -type f -wholename "${reading_folder}/*.md" -exec sed -i 's/^[0-9]$/&.temp1/g' {} +
+find . -type f -wholename "${reading_folder}/*.md" -exec sed -i ':a;$!{N;s/temp1\n\n/ /;ba;}' {} +
+find . -type f -wholename "${reading_folder}/*.md" -exec sed -i 's/^[0-9][0-9][0-9]\./temp2&/g' {} +
+find . -type f -wholename "${reading_folder}/*.md" -exec sed -i 's/^[0-9][0-9]\./temp2&/g' {} +
+find . -type f -wholename "${reading_folder}/*.md" -exec sed -i 's/^[0-9]\./temp2&/g' {} +
+find . -type f -wholename "${reading_folder}/*.md" -exec sed -i ':a;$!{N;s/\ntemp2//;ba;}' {} +
+find . -type f -wholename "${reading_folder}/*.md" -exec sed -i 's/^##.*$/&\n/g' {} +
+find . -type f -wholename "${reading_folder}/*.md" -exec sed -i 's/mp3\]\]/&\n/g' {} +
+#
+# Correct newline spacing
+find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n/\n\n/;ba;}' {} +
+find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n/\n\n/;ba;}' {} +
+find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n/\n\n/;ba;}' {} +
+find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n/\n\n/;ba;}' {} +
+find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n\n/\n\n/;ba;}' {} +
+find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n/\n\n\n\n/;ba;}' {} +
+find . -type f -name "*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n\n/\n\n\n\n/;ba;}' {} +
 
 printf "\nDownload complete. Markdown files ready for Obsidian import.\n"
