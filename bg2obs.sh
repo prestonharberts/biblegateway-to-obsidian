@@ -4,23 +4,16 @@ source config
 source src/setup
 source src/outline
 
-echo "Starting download of the ${translation} Bible."
+printf 'Starting download of the %s Bible.' "${translation}"
 
 # Cycling through the book counter, setting which book and its max chapter
 for ((book = 0; book < book_max; book++)); do
-  echo "" # Make a new line which the '-n' flag to the echo command prevents.
+  printf '\n%s' "${short_title}"
 
-  long_title="${long_title_arr[book]}"
-  short_title="${short_title_arr[book]}"
-  standard_long_title="${standard_long_title_arr[book]}"
-  standard_abbreviation="${standard_abbreviation_arr[book]}"
-  standard_genre="${standard_genre_arr[book]}"
-  chapter_max=${length_arr[book]}
-
-  echo -n "${short_title} "
+  source src/info
 
   # Create an overview file for each book of the Bible:
-  echo -e "# ${long_title}\n\n## Contents\n" >>"${outline_dir}/${standard_long_title}.md"
+  echo -e " # ${long_title}\n\n## Contents\n" >>"${outline_dir}/${standard_long_title}.md"
   # Create an overview file for each book of the Bible:
   echo -e "[[${standard_long_title}|${long_title}]]" >>"${outline_dir}/${standard_genre}.md"
 
