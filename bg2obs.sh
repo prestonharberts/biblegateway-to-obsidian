@@ -3,31 +3,13 @@
 source config
 source src/variables
 
-mkdir -p "${bible_dir}" "${audio_dir}" "${contents_dir}" "${notes_dir}" "${reading_dir}"
-
-# Initialize the Bible file for all of the Old/New Testament
-echo -e "# ${bible_name}\n\n## Contents\n\n[[${standard_testament_arr[0]}|${testament_arr[0]}]]\n[[${standard_testament_arr[39]}|${testament_arr[39]}]]" >>"${contents_dir}/${standard_bible_name}.md"
-# Initialize the Old/New Testament file for all of the genres
-echo -e "# ${testament_arr[0]}\n\n## Contents\n\n[[${standard_genre_arr[0]}|${genre_arr[0]}]]\n[[${standard_genre_arr[5]}|${genre_arr[5]}]]\n[[${standard_genre_arr[17]}|${genre_arr[17]}]]\n[[${standard_genre_arr[19]}|${genre_arr[19]}]]\n[[${standard_genre_arr[22]}|${genre_arr[22]}]]\n[[${standard_genre_arr[27]}|${genre_arr[27]}]]" >>"${contents_dir}/${standard_testament_arr[0]}.md"
-echo -e "# ${testament_arr[39]}\n\n## Contents\n\n[[${standard_genre_arr[39]}|${genre_arr[39]}]]\n[[${standard_genre_arr[43]}|${genre_arr[43]}]]\n[[${standard_genre_arr[44]}|${genre_arr[44]}]]\n[[${standard_genre_arr[57]}|${genre_arr[57]}]]\n[[${standard_genre_arr[65]}|${genre_arr[65]}]]" >>"${contents_dir}/${standard_testament_arr[39]}.md"
-# Initialize the genre file for all of the Bible
-echo -e "# ${genre_arr[0]}\n\n## Contents\n" >>"${contents_dir}/${standard_genre_arr[0]}.md"
-echo -e "# ${genre_arr[5]}\n\n## Contents\n" >>"${contents_dir}/${standard_genre_arr[5]}.md"
-echo -e "# ${genre_arr[17]}\n\n## Contents\n" >>"${contents_dir}/${standard_genre_arr[17]}.md"
-echo -e "# ${genre_arr[19]}\n\n## Contents\n" >>"${contents_dir}/${standard_genre_arr[19]}.md"
-echo -e "# ${genre_arr[22]}\n\n## Contents\n" >>"${contents_dir}/${standard_genre_arr[22]}.md"
-echo -e "# ${genre_arr[27]}\n\n## Contents\n" >>"${contents_dir}/${standard_genre_arr[27]}.md"
-echo -e "# ${genre_arr[39]}\n\n## Contents\n" >>"${contents_dir}/${standard_genre_arr[39]}.md"
-echo -e "# ${genre_arr[43]}\n\n## Contents\n" >>"${contents_dir}/${standard_genre_arr[43]}.md"
-echo -e "# ${genre_arr[44]}\n\n## Contents\n" >>"${contents_dir}/${standard_genre_arr[44]}.md"
-echo -e "# ${genre_arr[57]}\n\n## Contents\n" >>"${contents_dir}/${standard_genre_arr[57]}.md"
-echo -e "# ${genre_arr[65]}\n\n## Contents\n" >>"${contents_dir}/${standard_genre_arr[65]}.md"
+mkdir -p "${bible_dir}" "${audio_dir}" "${outline_dir}" "${notes_dir}" "${reading_dir}"
 
 # Name of the audio Bible file
 audio_bible_name="Audio Bible"
 standard_audio_bible_name=$(echo "${audio_bible_name}" | sed 's/ /-/g; s/.*/\L&/g')
 # Initialize audio Bible file
-echo -e "## ${audio_bible_name}\n" >>"${contents_dir}/${standard_audio_bible_name}.md"
+echo -e "## ${audio_bible_name}\n" >>"${outline_dir}/${standard_audio_bible_name}.md"
 
 for ((book = 0; book < book_max; book++)); do
   short_title="${short_title_arr[$book]}"
@@ -45,7 +27,7 @@ for ((book = 0; book < book_max; book++)); do
   for ((chapter = 1; chapter <= chapter_max; chapter++)); do
     title="${short_title} ${chapter}"
     audio_bible="![[${standard_abbreviation}${chapter}.mp3]]"
-    echo -e "${title}\n${audio_bible}" >>"${contents_dir}/${standard_abbreviation}-audio.md"
+    echo -e "${title}\n${audio_bible}" >>"${outline_dir}/${standard_abbreviation}-audio.md"
   done
 
   # Formatting Navigation and omitting links that aren't necessary
@@ -62,10 +44,10 @@ for ((book = 0; book < book_max; book++)); do
   fi
 
   if [[ "${navigation}" != "" ]]; then
-    echo -e "${navigation}" >>"${contents_dir}/${standard_abbreviation}-audio.md"
+    echo -e "${navigation}" >>"${outline_dir}/${standard_abbreviation}-audio.md"
   fi
 
-  echo -e "[[${standard_abbreviation}-audio|${short_title}]]" >>"${contents_dir}/${standard_audio_bible_name}.md"
+  echo -e "[[${standard_abbreviation}-audio|${short_title}]]" >>"${outline_dir}/${standard_audio_bible_name}.md"
 done
 
 echo "Starting download of the ${translation} Bible."
@@ -84,9 +66,9 @@ for ((book = 0; book < book_max; book++)); do
   echo -n "${short_title} "
 
   # Create an overview file for each book of the Bible:
-  echo -e "# ${long_title}\n\n## Contents\n" >>"${contents_dir}/${standard_long_title}.md"
+  echo -e "# ${long_title}\n\n## Contents\n" >>"${outline_dir}/${standard_long_title}.md"
   # Create an overview file for each book of the Bible:
-  echo -e "[[${standard_long_title}|${long_title}]]" >>"${contents_dir}/${standard_genre}.md"
+  echo -e "[[${standard_long_title}|${long_title}]]" >>"${outline_dir}/${standard_genre}.md"
 
   for ((chapter = 1; chapter <= chapter_max; chapter++)); do
     echo -n "."
@@ -101,9 +83,9 @@ for ((book = 0; book < book_max; book++)); do
     next_file="${export_prefix}${nextchapter}"
 
     if [[ $chapter -gt 1 ]]; then
-      echo -en "[[${export_prefix}${chapter}|]]" >>"${contents_dir}/${standard_long_title}.md"
+      echo -en "[[${export_prefix}${chapter}|]]" >>"${outline_dir}/${standard_long_title}.md"
     else
-      echo -en "[[${export_prefix}${chapter}|Start reading]]" >>"${contents_dir}/${standard_long_title}.md"
+      echo -en "[[${export_prefix}${chapter}|Start reading]]" >>"${outline_dir}/${standard_long_title}.md"
     fi
 
     audio_bible="![[${filename}.mp3]]"

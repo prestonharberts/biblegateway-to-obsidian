@@ -11,7 +11,7 @@ remove_abbreviation_separator="true"
 
 translation="CSB"
 
-contents_folder="Table of contents"
+outline_folder="Outline"
 reading_folder="Reading"
 notes_folder="Notes"
 audio_folder="Audio"

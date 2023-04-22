@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# initialize the bible file for all of the old/new testament
+echo -e "# ${bible_name}\n\n## contents\n\n[[${standard_testament_arr[0]}|${testament_arr[0]}]]\n[[${standard_testament_arr[39]}|${testament_arr[39]}]]" >>"${contents_dir}/${standard_bible_name}.md"
+# initialize the old/new testament file for all of the genres
+echo -e "# ${testament_arr[0]}\n\n## contents\n\n[[${standard_genre_arr[0]}|${genre_arr[0]}]]\n[[${standard_genre_arr[5]}|${genre_arr[5]}]]\n[[${standard_genre_arr[17]}|${genre_arr[17]}]]\n[[${standard_genre_arr[19]}|${genre_arr[19]}]]\n[[${standard_genre_arr[22]}|${genre_arr[22]}]]\n[[${standard_genre_arr[27]}|${genre_arr[27]}]]" >>"${contents_dir}/${standard_testament_arr[0]}.md"
+echo -e "# ${testament_arr[39]}\n\n## contents\n\n[[${standard_genre_arr[39]}|${genre_arr[39]}]]\n[[${standard_genre_arr[43]}|${genre_arr[43]}]]\n[[${standard_genre_arr[44]}|${genre_arr[44]}]]\n[[${standard_genre_arr[57]}|${genre_arr[57]}]]\n[[${standard_genre_arr[65]}|${genre_arr[65]}]]" >>"${contents_dir}/${standard_testament_arr[39]}.md"
+# initialize the genre file for all of the bible
+echo -e "# ${genre_arr[0]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[0]}.md"
+echo -e "# ${genre_arr[5]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[5]}.md"
+echo -e "# ${genre_arr[17]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[17]}.md"
+echo -e "# ${genre_arr[19]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[19]}.md"
+echo -e "# ${genre_arr[22]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[22]}.md"
+echo -e "# ${genre_arr[27]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[27]}.md"
+echo -e "# ${genre_arr[39]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[39]}.md"
+echo -e "# ${genre_arr[43]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[43]}.md"
+echo -e "# ${genre_arr[44]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[44]}.md"
+echo -e "# ${genre_arr[57]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[57]}.md"
+echo -e "# ${genre_arr[65]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[65]}.md"

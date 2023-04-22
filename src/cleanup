@@ -9,6 +9,8 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/###### [0-9] /\n
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/###### [0-9][0-9] /\n\n&\n\n/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/###### [0-9][0-9][0-9] /\n\n&\n\n/g' {} +
 
+#!/bin/bash
+
 # Remove spaces at the beginning of verses
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^ *//g' {} +
 
