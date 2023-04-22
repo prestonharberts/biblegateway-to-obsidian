@@ -1,21 +1,16 @@
 #!/bin/bash
 
 source config
-source src/setup
-source src/outline
+source setup
+source outline
 
 printf 'Starting download of the %s Bible.' "${translation}"
 
 # Cycling through the book counter, setting which book and its max chapter
 for ((book = 0; book < book_max; book++)); do
+  source info
+
   printf '\n%s' "${short_title}"
-
-  source src/info
-
-  # Create an overview file for each book of the Bible:
-  echo -e " # ${long_title}\n\n## Contents\n" >>"${outline_dir}/${standard_long_title}.md"
-  # Create an overview file for each book of the Bible:
-  echo -e "[[${standard_long_title}|${long_title}]]" >>"${outline_dir}/${standard_genre}.md"
 
   for ((chapter = 1; chapter <= chapter_max; chapter++)); do
     echo -n "."
@@ -63,4 +58,4 @@ for ((book = 0; book < book_max; book++)); do
   done # End of the book exporting loop
 done
 
-source src/cleanup
+source cleanup
