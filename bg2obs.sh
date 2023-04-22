@@ -51,8 +51,12 @@ for ((book = 0; book < book_max; book++)); do
     # text=$(echo "${text}" | sed 's/^(.*?)v1/v1/') # Deleting unwanted headers
     text="${text/^(.*?)v1/v1/}" # Deleting unwanted headers
 
+    if [[ $yaml_enabled == "true" ]]; then
+      yaml="---\naliases: ${short_title} ${chapter}, ${abbreviation} ${chapter}, ${standard_abbreviation}${filename_separator}${chapter}\n---"
+    fi
+
     # Export
-    echo -e "# ${short_title} ${chapter}\n\n${audio_bible}\n${text}\n\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+    echo -e "${yaml}\n# ${short_title} ${chapter}\n\n${audio_bible}\n${text}\n\n${navigation}" >>"${reading_dir}/${curr_file}.md"
     echo -e "# ${short_title} ${chapter}\n\n${audio_bible}\n${text}\n\n${navigation}" >>"${notes_dir}/${curr_file}-notes.md"
   done # End of the book exporting loop
 done

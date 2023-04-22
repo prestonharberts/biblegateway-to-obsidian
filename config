@@ -10,6 +10,8 @@ filename_periods="false"
 remove_abbreviation_separator="true"
 # Choose whether or not to display verbose console messages
 verbose="true"
+# Choose whether or not to display verbose console messages
+yaml_enabled="true"
 
 # Customize the following if needed
 
