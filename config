@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Choose the character used to separate words in file and folder names
-filename_separator=" "
+filename_separator="-"
 # Choose whether or not to make file and folder names lowercase
-lowercase="false"
+lowercase="true"
 # Choose whether or not to keep abbreviation periods in the filename
 filename_periods="false"
 # Choose whether or not to keep the filename separator between the initial and its number
-remove_abbreviation_separator="false"
+remove_abbreviation_separator="true"
 # Choose whether or not to display verbose console messages
 verbose="true"
 
@@ -15,12 +15,13 @@ verbose="true"
 
 translation="CSB"
 
-outline_folder="Outline"
-reading_folder="Reading"
-notes_folder="Notes"
-audio_folder="Audio"
+outline="Outline"
+reading="Reading"
+notes="Notes"
+audio="Audio"
 
 bible_name="Bible"
+audio_bible_name="Audio Bible"
 
 testament_1="Old Testament"
 testament_2="New Testament"
@@ -251,6 +252,7 @@ abbreviation_arr=("${abbreviation_1}" "${abbreviation_2}" "${abbreviation_3}" "$
 
 standard_translation=${translation}
 standard_bible_name=${bible_name}
+standard_audio_bible_name=${audio_bible_name}
 
 standard_testament_arr=("${testament_arr[@]}")
 standard_genre_arr=("${genre_arr[@]}")
@@ -265,14 +267,15 @@ if [[ $remove_abbreviation_separator == "true" ]]; then
         standard_abbreviation_arr[book]=${standard_abbreviation_arr[book]// /}
     done
 fi
-if [[ $filename_separator != "\s" ]]; then
+if [[ $filename_separator != " " ]]; then
     standard_translation=${standard_translation// /${filename_separator}}
     standard_bible_name=${standard_bible_name// /${filename_separator}}
+    standard_audio_bible_name=${standard_audio_bible_name// /${filename_separator}}
 
-    outline_folder=${outline_folder// /${filename_separator}}
-    reading_folder=${reading_folder// /${filename_separator}}
-    notes_folder=${notes_folder// /${filename_separator}}
-    audio_folder=${audio_folder// /${filename_separator}}
+    outline=${outline// /${filename_separator}}
+    reading=${reading// /${filename_separator}}
+    notes=${notes// /${filename_separator}}
+    audio=${audio// /${filename_separator}}
 
     for ((book = 0; book < book_max; book++)); do
         standard_testament_arr[book]=${standard_testament_arr[book]// /${filename_separator}}
@@ -285,11 +288,12 @@ fi
 if [[ $lowercase == "true" ]]; then
     standard_translation=${standard_translation,,}
     standard_bible_name=${standard_bible_name,,}
+    standard_audio_bible_name=${standard_audio_bible_name,,}
 
-    outline_folder=${outline_folder,,}
-    reading_folder=${reading_folder,,}
-    notes_folder=${notes_folder,,}
-    audio_folder=${audio_folder,,}
+    outline=${outline,,}
+    reading=${reading,,}
+    notes=${notes,,}
+    audio=${audio,,}
 
     for ((book = 0; book < book_max; book++)); do
         standard_testament_arr[book]=${standard_testament_arr[book],,}
@@ -307,10 +311,10 @@ fi
 
 bible_dir="./${standard_bible_name}"
 translation_dir="${bible_dir}/${standard_translation}"
-outline_dir="${bible_dir}/${outline_folder}"
-reading_dir="${translation_dir}/${reading_folder}"
-notes_dir="${translation_dir}/${notes_folder}"
-audio_dir="${translation_dir}/${audio_folder}"
+outline_dir="${bible_dir}/${outline}"
+reading_dir="${translation_dir}/${reading}"
+notes_dir="${translation_dir}/${notes}"
+audio_dir="${translation_dir}/${audio}"
 
 mkdir -p "${bible_dir}" "${audio_dir}" "${outline_dir}" "${notes_dir}" "${reading_dir}"
 

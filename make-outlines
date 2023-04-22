@@ -23,19 +23,26 @@ echo -e "# ${genre_arr[65]}\n\n## contents\n" >>"${outline_dir}/${standard_genre
 for ((book = 0; book < book_max; book++)); do
     source fetch-info
     # Create an overview file for each book of the Bible:
-    echo -e " # ${long_title}\n\n## Contents\n" >>"${outline_dir}/${standard_long_title}.md"
+    echo -e " # ${long_title}\n\n## Contents\n" >>"${outline_dir}/${standard_short_title}.md"
     # Create an overview file for each book of the Bible:
-    echo -e "[[${standard_long_title}|${long_title}]]" >>"${outline_dir}/${standard_genre}.md"
+    echo -e "[[${standard_short_title}|${long_title}]]" >>"${outline_dir}/${standard_genre}.md"
+
+    for ((chapter = 1; chapter <= chapter_max; chapter++)); do
+        if [[ $chapter -gt 1 ]]; then
+            echo -en "[[${standard_short_title}${filename_separator}${chapter}|]]" >>"${outline_dir}/${standard_short_title}.md"
+        else
+            echo -en "[[${standard_short_title}${filename_separator}${chapter}|Start reading]]" >>"${outline_dir}/${standard_short_title}.md"
+        fi
+    done
 done
 
 # Name of the audio Bible file
-audio_bible_name="Audio Bible"
-standard_audio_bible_name=$(echo "${audio_bible_name}" | sed 's/ /-/g; s/.*/\L&/g')
 # Initialize audio Bible file
 echo -e "## ${audio_bible_name}\n" >>"${outline_dir}/${standard_audio_bible_name}.md"
 
 for ((book = 0; book < book_max; book++)); do
     short_title="${short_title_arr[book]}"
+    standard_short_title="${standard_short_title_arr[book]}"
     standard_abbreviation="${standard_abbreviation_arr[book]}"
     chapter_max=${length_arr[book]}
 
@@ -44,31 +51,31 @@ for ((book = 0; book < book_max; book++)); do
     fi
     ((next_book_num = book + 1))
 
-    previous_book="${short_title[previous_book_num]}"
-    next_book="${short_title[next_book_num]}"
+    previous_book="${standard_short_title_arr[previous_book_num]}"
+    next_book="${standard_short_title_arr[next_book_num]}"
 
     for ((chapter = 1; chapter <= chapter_max; chapter++)); do
         title="${short_title} ${chapter}"
-        audio_bible="![[${standard_abbreviation}${chapter}.mp3]]"
-        echo -e "${title}\n${audio_bible}" >>"${outline_dir}/${standard_abbreviation}-audio.md"
+        audio_bible="![[${standard_short_title}${filename_separator}${chapter}.mp3]]"
+        echo -e "${title}\n${audio_bible}" >>"${outline_dir}/${standard_short_title}${filename_separator}${audio}.md"
     done
 
     # Formatting Navigation and omitting links that aren't necessary
     if [[ $book -eq 0 ]]; then
         # For Genesis
-        navigation="\n[[${standard_audio_bible_name}|All books]]\n[[${next_book}-audio|Next book]]"
+        navigation="\n[[${standard_audio_bible_name}|All books]]\n[[${next_book}${filename_separator}${audio}|Next book]]"
     elif [[ $book -eq 65 ]]; then
         # For Revelation
-        navigation="\n[[${standard_audio_bible_name}|All books]]\n[[${previous_book}-audio|Previous book]]"
+        navigation="\n[[${standard_audio_bible_name}|All books]]\n[[${previous_book}${filename_separator}${audio}|Previous book]]"
         # For every other book
     else
         # Navigation for everything else
-        navigation="\n[[${standard_audio_bible_name}|All books]]\n[[${previous_book}-audio|Previous book]]\n[[${next_book}-audio|Next book]]"
+        navigation="\n[[${standard_audio_bible_name}|All books]]\n[[${previous_book}${filename_separator}${audio}|Previous book]]\n[[${next_book}-audio|Next book]]"
     fi
 
     if [[ "${navigation}" != "" ]]; then
-        echo -e "${navigation}" >>"${outline_dir}/${standard_abbreviation}-audio.md"
+        echo -e "${navigation}" >>"${outline_dir}/${standard_short_title}${filename_separator}${audio}.md"
     fi
 
-    echo -e "[[${standard_abbreviation}-audio|${short_title}]]" >>"${outline_dir}/${standard_audio_bible_name}.md"
+    echo -e "[[${standard_abbreviation}${filename_separator}${audio}|${short_title}]]" >>"${outline_dir}/${standard_audio_bible_name}.md"
 done

@@ -25,19 +25,12 @@ for ((book = 0; book < book_max; book++)); do
     ((nextchapter = chapter + 1))
 
     # Exporting
-    export_prefix="${standard_abbreviation}"
-    filename="${export_prefix}${chapter}"          # Setting the filename
-    previous_file="${export_prefix}${prevchapter}" # Naming previous and next files
-    next_file="${export_prefix}${nextchapter}"
+    curr_file="${standard_short_title}${filename_separator}${chapter}"         # Setting the current file
+    previous_file="${standard_short_title}${filename_separator}${prevchapter}" # Naming previous and next files
+    next_file="${standard_short_title}${filename_separator}${nextchapter}"
 
-    if [[ $chapter -gt 1 ]]; then
-      echo -en "[[${export_prefix}${chapter}|]]" >>"${outline_dir}/${standard_long_title}.md"
-    else
-      echo -en "[[${export_prefix}${chapter}|Start reading]]" >>"${outline_dir}/${standard_long_title}.md"
-    fi
-
-    audio_bible="![[${filename}.mp3]]"
-    contents="## Contents\n\n[[${filename}-notes|Chapter notes]]"
+    audio_bible="![[${curr_file}.mp3]]"
+    contents="## Contents\n\n[[${curr_file}${filename_separator}${notes}|Chapter notes]]"
 
     # Formatting Navigation and omitting links that aren't necessary
     if [[ $chapter_max -eq 1 ]]; then
@@ -59,8 +52,8 @@ for ((book = 0; book < book_max; book++)); do
     text="${text/^(.*?)v1/v1/}" # Deleting unwanted headers
 
     # Export
-    echo -e "# ${short_title} ${chapter}\n\n${audio_bible}\n${text}\n\n${navigation}" >>"${reading_dir}/${filename}.md"
-    echo -e "# ${short_title} ${chapter}\n\n${audio_bible}\n${text}\n\n${navigation}" >>"${notes_dir}/${filename}-notes.md"
+    echo -e "# ${short_title} ${chapter}\n\n${audio_bible}\n${text}\n\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+    echo -e "# ${short_title} ${chapter}\n\n${audio_bible}\n${text}\n\n${navigation}" >>"${notes_dir}/${curr_file}-notes.md"
   done # End of the book exporting loop
 done
 
