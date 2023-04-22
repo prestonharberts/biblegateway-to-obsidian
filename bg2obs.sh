@@ -9,7 +9,7 @@ fi
 
 # Cycling through the book counter, setting which book and its max chapter
 ((book = 0))
-for ((book = 0; book < book_max; book++)); do
+for ((book = 0; book < 1; book++)); do
   source fetch-info
 
   if [[ $verbose == "true" ]]; then
@@ -25,12 +25,13 @@ for ((book = 0; book < book_max; book++)); do
     ((nextchapter = chapter + 1))
 
     # Exporting
-    curr_file="${standard_short_title}${filename_separator}${chapter}"         # Setting the current file
-    previous_file="${standard_short_title}${filename_separator}${prevchapter}" # Naming previous and next files
-    next_file="${standard_short_title}${filename_separator}${nextchapter}"
+    curr_file="${standard_short_title}${filename_separator}${chapter}${filename_separator}${standard_translation}"         # Setting the current file
+    curr_file_notes="${standard_short_title}${filename_separator}${chapter}${filename_separator}${notes}"                  # Setting the current file
+    previous_file="${standard_short_title}${filename_separator}${prevchapter}${filename_separator}${standard_translation}" # Naming previous and next files
+    next_file="${standard_short_title}${filename_separator}${nextchapter}${filename_separator}${standard_translation}"
 
     audio_bible="![[${curr_file}.mp3]]"
-    contents="## Contents\n\n[[${curr_file}${filename_separator}${notes}|Chapter notes]]"
+    contents="## Contents\n\n[[${curr_file_notes}|Chapter notes]]"
 
     # Formatting Navigation and omitting links that aren't necessary
     if [[ $chapter_max -eq 1 ]]; then
@@ -52,17 +53,17 @@ for ((book = 0; book < book_max; book++)); do
     text="${text/^(.*?)v1/v1/}" # Deleting unwanted headers
 
     if [[ $yaml_enabled == "true" ]]; then
-      yaml="---\naliases: ${short_title} ${chapter}, ${abbreviation} ${chapter}, ${standard_abbreviation}${filename_separator}${chapter}\n---"
+      yaml="---\naliases: ${short_title} ${chapter}, ${short_title} ${chapter} (${translation}), ${abbreviation} ${chapter}, ${abbreviation} ${chapter} (${translation}), ${standard_abbreviation}${filename_separator}${chapter}, ${standard_abbreviation}${filename_separator}${chapter}${filename_separator}${translation}\n---"
     fi
 
     # Export
     echo -e "${yaml}\n# ${short_title} ${chapter}\n\n${audio_bible}\n${text}\n\n${navigation}" >>"${reading_dir}/${curr_file}.md"
-    echo -e "# ${short_title} ${chapter}\n\n${audio_bible}\n${text}\n\n${navigation}" >>"${notes_dir}/${curr_file}-notes.md"
+    echo -e "# ${short_title} ${chapter}\n\n${audio_bible}\n${text}\n\n${navigation}" >>"${reading_dir}/${curr_file_notes}.md"
   done # End of the book exporting loop
 done
 
 source cleanup
 
 if [[ $verbose == "true" ]]; then
-  echo "Markdown files ready for Obsidian."
+  printf "\nMarkdown files ready for Obsidian.\n"
 fi
