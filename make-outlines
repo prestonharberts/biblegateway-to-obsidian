@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source config
+
 # initialize the bible file for all of the old/new testament
 echo -e "# ${bible_name}\n\n## contents\n\n[[${standard_testament_arr[0]}|${testament_arr[0]}]]\n[[${standard_testament_arr[39]}|${testament_arr[39]}]]" >>"${outline_dir}/${standard_bible_name}.md"
 # initialize the old/new testament file for all of the genres
@@ -19,7 +21,7 @@ echo -e "# ${genre_arr[57]}\n\n## contents\n" >>"${outline_dir}/${standard_genre
 echo -e "# ${genre_arr[65]}\n\n## contents\n" >>"${outline_dir}/${standard_genre_arr[65]}.md"
 
 for ((book = 0; book < book_max; book++)); do
-    source info
+    source fetch-info
     # Create an overview file for each book of the Bible:
     echo -e " # ${long_title}\n\n## Contents\n" >>"${outline_dir}/${standard_long_title}.md"
     # Create an overview file for each book of the Bible:

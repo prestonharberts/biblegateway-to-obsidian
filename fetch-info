@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source config
+
 export long_title="${long_title_arr[book]}"
 export short_title="${short_title_arr[book]}"
 export standard_long_title="${standard_long_title_arr[book]}"

@@ -1,14 +1,15 @@
 #!/bin/bash
 
 source config
-source setup
-source outline
+source make-outlines
+
+mkdir -p "${bible_dir}" "${audio_dir}" "${outline_dir}" "${notes_dir}" "${reading_dir}"
 
 printf 'Starting download of the %s Bible.' "${translation}"
 
 # Cycling through the book counter, setting which book and its max chapter
 for ((book = 0; book < book_max; book++)); do
-  source info
+  source fetch-info
 
   printf '\n%s' "${short_title}"
 
