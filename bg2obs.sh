@@ -3,7 +3,7 @@
 source config
 source src/variables
 
-mkdir -p "${bible_folder}" "${audio_dir}" "${contents_dir}" "${notes_dir}" "${reading_dir}"
+mkdir -p "${bible_dir}" "${audio_dir}" "${contents_dir}" "${notes_dir}" "${reading_dir}"
 
 # Initialize the Bible file for all of the Old/New Testament
 echo -e "# ${bible_name}\n\n## Contents\n\n[[${standard_testament_arr[0]}|${testament_arr[0]}]]\n[[${standard_testament_arr[39]}|${testament_arr[39]}]]" >>"${contents_dir}/${standard_bible_name}.md"
