@@ -1,19 +1,64 @@
 #!/bin/bash
 
 # initialize the bible file for all of the old/new testament
-echo -e "# ${bible_name}\n\n## contents\n\n[[${standard_testament_arr[0]}|${testament_arr[0]}]]\n[[${standard_testament_arr[39]}|${testament_arr[39]}]]" >>"${contents_dir}/${standard_bible_name}.md"
+echo -e "# ${bible_name}\n\n## contents\n\n[[${standard_testament_arr[0]}|${testament_arr[0]}]]\n[[${standard_testament_arr[39]}|${testament_arr[39]}]]" >>"${outline_dir}/${standard_bible_name}.md"
 # initialize the old/new testament file for all of the genres
-echo -e "# ${testament_arr[0]}\n\n## contents\n\n[[${standard_genre_arr[0]}|${genre_arr[0]}]]\n[[${standard_genre_arr[5]}|${genre_arr[5]}]]\n[[${standard_genre_arr[17]}|${genre_arr[17]}]]\n[[${standard_genre_arr[19]}|${genre_arr[19]}]]\n[[${standard_genre_arr[22]}|${genre_arr[22]}]]\n[[${standard_genre_arr[27]}|${genre_arr[27]}]]" >>"${contents_dir}/${standard_testament_arr[0]}.md"
-echo -e "# ${testament_arr[39]}\n\n## contents\n\n[[${standard_genre_arr[39]}|${genre_arr[39]}]]\n[[${standard_genre_arr[43]}|${genre_arr[43]}]]\n[[${standard_genre_arr[44]}|${genre_arr[44]}]]\n[[${standard_genre_arr[57]}|${genre_arr[57]}]]\n[[${standard_genre_arr[65]}|${genre_arr[65]}]]" >>"${contents_dir}/${standard_testament_arr[39]}.md"
+echo -e "# ${testament_arr[0]}\n\n## contents\n\n[[${standard_genre_arr[0]}|${genre_arr[0]}]]\n[[${standard_genre_arr[5]}|${genre_arr[5]}]]\n[[${standard_genre_arr[17]}|${genre_arr[17]}]]\n[[${standard_genre_arr[19]}|${genre_arr[19]}]]\n[[${standard_genre_arr[22]}|${genre_arr[22]}]]\n[[${standard_genre_arr[27]}|${genre_arr[27]}]]" >>"${outline_dir}/${standard_testament_arr[0]}.md"
+echo -e "# ${testament_arr[39]}\n\n## contents\n\n[[${standard_genre_arr[39]}|${genre_arr[39]}]]\n[[${standard_genre_arr[43]}|${genre_arr[43]}]]\n[[${standard_genre_arr[44]}|${genre_arr[44]}]]\n[[${standard_genre_arr[57]}|${genre_arr[57]}]]\n[[${standard_genre_arr[65]}|${genre_arr[65]}]]" >>"${outline_dir}/${standard_testament_arr[39]}.md"
 # initialize the genre file for all of the bible
-echo -e "# ${genre_arr[0]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[0]}.md"
-echo -e "# ${genre_arr[5]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[5]}.md"
-echo -e "# ${genre_arr[17]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[17]}.md"
-echo -e "# ${genre_arr[19]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[19]}.md"
-echo -e "# ${genre_arr[22]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[22]}.md"
-echo -e "# ${genre_arr[27]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[27]}.md"
-echo -e "# ${genre_arr[39]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[39]}.md"
-echo -e "# ${genre_arr[43]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[43]}.md"
-echo -e "# ${genre_arr[44]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[44]}.md"
-echo -e "# ${genre_arr[57]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[57]}.md"
-echo -e "# ${genre_arr[65]}\n\n## contents\n" >>"${contents_dir}/${standard_genre_arr[65]}.md"
+echo -e "# ${genre_arr[0]}\n\n## contents\n" >>"${outline_dir}/${standard_genre_arr[0]}.md"
+echo -e "# ${genre_arr[5]}\n\n## contents\n" >>"${outline_dir}/${standard_genre_arr[5]}.md"
+echo -e "# ${genre_arr[17]}\n\n## contents\n" >>"${outline_dir}/${standard_genre_arr[17]}.md"
+echo -e "# ${genre_arr[19]}\n\n## contents\n" >>"${outline_dir}/${standard_genre_arr[19]}.md"
+echo -e "# ${genre_arr[22]}\n\n## contents\n" >>"${outline_dir}/${standard_genre_arr[22]}.md"
+echo -e "# ${genre_arr[27]}\n\n## contents\n" >>"${outline_dir}/${standard_genre_arr[27]}.md"
+echo -e "# ${genre_arr[39]}\n\n## contents\n" >>"${outline_dir}/${standard_genre_arr[39]}.md"
+echo -e "# ${genre_arr[43]}\n\n## contents\n" >>"${outline_dir}/${standard_genre_arr[43]}.md"
+echo -e "# ${genre_arr[44]}\n\n## contents\n" >>"${outline_dir}/${standard_genre_arr[44]}.md"
+echo -e "# ${genre_arr[57]}\n\n## contents\n" >>"${outline_dir}/${standard_genre_arr[57]}.md"
+echo -e "# ${genre_arr[65]}\n\n## contents\n" >>"${outline_dir}/${standard_genre_arr[65]}.md"
+
+# Name of the audio Bible file
+audio_bible_name="Audio Bible"
+standard_audio_bible_name=$(echo "${audio_bible_name}" | sed 's/ /-/g; s/.*/\L&/g')
+# Initialize audio Bible file
+echo -e "## ${audio_bible_name}\n" >>"${outline_dir}/${standard_audio_bible_name}.md"
+
+for ((book = 0; book < book_max; book++)); do
+    short_title="${short_title_arr[book]}"
+    standard_abbreviation="${standard_abbreviation_arr[book]}"
+    chapter_max=${length_arr[book]}
+
+    if [[ $book != 0 ]]; then
+        ((previous_book_num = book - 1))
+    fi
+    ((next_book_num = book + 1))
+
+    previous_book="${short_title[previous_book_num]}"
+    next_book="${short_title[next_book_num]}"
+
+    for ((chapter = 1; chapter <= chapter_max; chapter++)); do
+        title="${short_title} ${chapter}"
+        audio_bible="![[${standard_abbreviation}${chapter}.mp3]]"
+        echo -e "${title}\n${audio_bible}" >>"${outline_dir}/${standard_abbreviation}-audio.md"
+    done
+
+    # Formatting Navigation and omitting links that aren't necessary
+    if [[ $book -eq 0 ]]; then
+        # For Genesis
+        navigation="\n[[${standard_audio_bible_name}|All books]]\n[[${next_book}-audio|Next book]]"
+    elif [[ $book -eq 65 ]]; then
+        # For Revelation
+        navigation="\n[[${standard_audio_bible_name}|All books]]\n[[${previous_book}-audio|Previous book]]"
+        # For every other book
+    else
+        # Navigation for everything else
+        navigation="\n[[${standard_audio_bible_name}|All books]]\n[[${previous_book}-audio|Previous book]]\n[[${next_book}-audio|Next book]]"
+    fi
+
+    if [[ "${navigation}" != "" ]]; then
+        echo -e "${navigation}" >>"${outline_dir}/${standard_abbreviation}-audio.md"
+    fi
+
+    echo -e "[[${standard_abbreviation}-audio|${short_title}]]" >>"${outline_dir}/${standard_audio_bible_name}.md"
+done
