@@ -1,12 +1,11 @@
 #!/bin/bash
 
-source make-variables.sh
+source config.sh
 
 mkdir -p "${bible_folder}"
 mkdir -p "${audio_folder}" "${contents_folder}" "${notes_folder}" "${reading_folder}"
 
-source make-table-of-contents.sh
-source make-audio-table-of-contents.sh
+source make-contents.sh
 
 echo "Starting download of the ${translation} Bible."
 
@@ -18,12 +17,10 @@ for ((book = 0; book < book_max; book++)); do
   long_title="${long_title_array[$book]}"
   short_title="${short_title_array[$book]}"
   abbreviation="${abbreviation_array[$book]}"
-
   standard_long_title="${standard_long_title_array[$book]}"
   standard_short_title="${standard_short_title_array[$book]}"
   standard_abbreviation="${standard_abbreviation_array[$book]}"
   standard_genre="${standard_genre_array[$book]}"
-
   chapter_max=${length_array[$book]}
 
   echo -n "${short_title} "
@@ -91,3 +88,4 @@ for ((book = 0; book < book_max; book++)); do
 done
 
 source clean-files.sh
+source make-audio-contents.sh
