@@ -24,7 +24,11 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^Psalm [0-9][0-9
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^Psalm [0-9]//g' {} +
 
 # Create editorial headers
-find . -type f -wholename "*[0-9].md" -exec sed -i '5 s/[A-Za-z0-9].*/\n## &/g' {} +                            # Make first header if it exists
+if [[ $yaml_enabled == "true" ]]; then
+    find . -type f -wholename "*[0-9].md" -exec sed -i '8 s/[A-Za-z0-9].*/\n## &/g' {} + # Make first header if it exists (YAML enabled)
+else
+    find . -type f -wholename "*[0-9].md" -exec sed -i '5 s/[A-Za-z0-9].*/\n## &/g' {} + # Make first header if it exists (YAML disabled)
+fi
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\.\"[A-Z0-9].*[A-Za-z0-9]$/\.\"\n\n## &/g' {} + # Header following quotes (period)
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/## \.\"/## /g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/!\"[A-Z0-9].*[A-Za-z0-9]$/!\"\n\n## &/g' {} + # Header following quotes (exclamation mark)
