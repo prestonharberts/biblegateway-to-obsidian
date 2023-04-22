@@ -2,7 +2,9 @@
 
 source config
 
-printf "\nCleaning up the Markdown files."
+if [[ $verboe == "true" ]]; then
+    echo "Cleaning up markdown files..."
+fi
 
 # Format verses into H6 headers
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/###### [0-9] /\n\n&\n\n/g' {} +
@@ -170,4 +172,6 @@ find . -type f -wholename "${notes_dir}/*.md" -exec sed -i ':a;$!{N;s/## 1\n\n//
 # find . -type f -wholename "${notes_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n- [ ] \n\n\[\[/\n\n\[\[/;ba;}' {} +
 find . -type f -wholename "${notes_dir}/*.md" -exec sed -i ':a;$!{N;s/## Related\n\n- \[ \] /## Related/;ba;}' {} +
 
-printf "\nDownload complete. Markdown files ready for Obsidian import.\n"
+if [[ $verboe == "true" ]]; then
+    echo -n " Done."
+fi

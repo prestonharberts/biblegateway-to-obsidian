@@ -3,18 +3,23 @@
 source config
 source make-outlines
 
-mkdir -p "${bible_dir}" "${audio_dir}" "${outline_dir}" "${notes_dir}" "${reading_dir}"
-
-printf 'Starting download of the %s Bible.' "${translation}"
+if [[ $verbose == "true" ]]; then
+  printf 'Starting download of the %s Bible.' "${translation}"
+fi
 
 # Cycling through the book counter, setting which book and its max chapter
 ((book = 0))
 for ((book = 0; book < book_max; book++)); do
   source fetch-info
-  printf '\n%s' "${short_title}"
+
+  if [[ $verbose == "true" ]]; then
+    printf '\n%s' "${short_title}"
+  fi
 
   for ((chapter = 1; chapter <= chapter_max; chapter++)); do
-    echo -n "."
+    if [[ $verbose == "true" ]]; then
+      echo -n "."
+    fi
 
     ((prevchapter = chapter - 1)) # Counting the previous and next chapter for navigation
     ((nextchapter = chapter + 1))
@@ -60,3 +65,7 @@ for ((book = 0; book < book_max; book++)); do
 done
 
 source cleanup
+
+if [[ $verbose == "true" ]]; then
+  echo "Markdown files ready for Obsidian."
+fi
