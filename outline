@@ -18,6 +18,14 @@ echo -e "# ${genre_arr[44]}\n\n## contents\n" >>"${outline_dir}/${standard_genre
 echo -e "# ${genre_arr[57]}\n\n## contents\n" >>"${outline_dir}/${standard_genre_arr[57]}.md"
 echo -e "# ${genre_arr[65]}\n\n## contents\n" >>"${outline_dir}/${standard_genre_arr[65]}.md"
 
+for ((book = 0; book < book_max; book++)); do
+    source info
+    # Create an overview file for each book of the Bible:
+    echo -e " # ${long_title}\n\n## Contents\n" >>"${outline_dir}/${standard_long_title}.md"
+    # Create an overview file for each book of the Bible:
+    echo -e "[[${standard_long_title}|${long_title}]]" >>"${outline_dir}/${standard_genre}.md"
+done
+
 # Name of the audio Bible file
 audio_bible_name="Audio Bible"
 standard_audio_bible_name=$(echo "${audio_bible_name}" | sed 's/ /-/g; s/.*/\L&/g')
