@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Tidy up the markdown files
+source config
 
 printf "\nCleaning up the Markdown files."
 

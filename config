@@ -238,6 +238,9 @@ abbreviation_66="Rv."
 
 # Do not touch anything past this line unless needed
 
+book_max=66
+length_arr=(50 40 27 36 34 24 21 4 31 24 22 25 29 36 10 13 10 42 150 31 12 8 66 52 5 48 12 14 3 9 1 4 7 3 3 3 2 14 4 28 16 24 21 28 16 16 13 6 6 4 4 5 3 6 4 3 1 13 5 5 3 5 1 1 1 22)
+
 testament_arr=("${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}")
 genre_arr=("${genre_1}" "${genre_1}" "${genre_1}" "${genre_1}" "${genre_1}" "${genre_2}" "${genre_2}" "${genre_2}" "${genre_2}" "${genre_2}" "${genre_2}" "${genre_2}" "${genre_2}" "${genre_2}" "${genre_2}" "${genre_2}" "${genre_2}" "${genre_3}" "${genre_3}" "${genre_4}" "${genre_4}" "${genre_4}" "${genre_5}" "${genre_5}" "${genre_5}" "${genre_5}" "${genre_5}" "${genre_6}" "${genre_6}" "${genre_6}" "${genre_6}" "${genre_6}" "${genre_6}" "${genre_6}" "${genre_6}" "${genre_6}" "${genre_6}" "${genre_6}" "${genre_6}" "${genre_7}" "${genre_7}" "${genre_7}" "${genre_7}" "${genre_8}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_10}" "${genre_10}" "${genre_10}" "${genre_10}" "${genre_10}" "${genre_10}" "${genre_10}" "${genre_10}" "${genre_11}")
 long_title_arr=("${long_title_1}" "${long_title_2}" "${long_title_3}" "${long_title_4}" "${long_title_5}" "${long_title_6}" "${long_title_7}" "${long_title_8}" "${long_title_9}" "${long_title_10}" "${long_title_11}" "${long_title_12}" "${long_title_13}" "${long_title_14}" "${long_title_15}" "${long_title_16}" "${long_title_17}" "${long_title_18}" "${long_title_19}" "${long_title_20}" "${long_title_21}" "${long_title_22}" "${long_title_23}" "${long_title_24}" "${long_title_25}" "${long_title_26}" "${long_title_27}" "${long_title_28}" "${long_title_29}" "${long_title_30}" "${long_title_31}" "${long_title_32}" "${long_title_33}" "${long_title_34}" "${long_title_35}" "${long_title_36}" "${long_title_37}" "${long_title_38}" "${long_title_39}" "${long_title_40}" "${long_title_41}" "${long_title_42}" "${long_title_43}" "${long_title_44}" "${long_title_45}" "${long_title_46}" "${long_title_47}" "${long_title_48}" "${long_title_49}" "${long_title_50}" "${long_title_51}" "${long_title_52}" "${long_title_53}" "${long_title_54}" "${long_title_55}" "${long_title_56}" "${long_title_57}" "${long_title_58}" "${long_title_59}" "${long_title_60}" "${long_title_61}" "${long_title_62}" "${long_title_63}" "${long_title_64}" "${long_title_65}" "${long_title_66}")
@@ -296,31 +299,16 @@ if [ $lowercase == "true" ]; then
 fi
 if [ $filename_periods == "false" ]; then
     for ((book = 0; book < book_max; book++)); do
-        export standard_abbreviation_arr[book]=${standard_abbreviation_arr[book]//\./}
+        standard_abbreviation_arr[book]=${standard_abbreviation_arr[book]//\./}
     done
 fi
 
-export book_max=66
-export length_arr=(50 40 27 36 34 24 21 4 31 24 22 25 29 36 10 13 10 42 150 31 12 8 66 52 5 48 12 14 3 9 1 4 7 3 3 3 2 14 4 28 16 24 21 28 16 16 13 6 6 4 4 5 3 6 4 3 1 13 5 5 3 5 1 1 1 22)
-
-export translation
-export bible_name
-
-export standard_translation
-export standard_bible_name
-
-export standard_testament_arr
-export standard_genre_arr
-export standard_long_title_arr
-export standard_short_title_arr
-export standard_abbreviation_arr
-
-export bible_dir="./${standard_bible_name}"
-export translation_dir="${bible_dir}/${standard_translation}"
-export outline_dir="${bible_dir}/${outline_folder}"
-export reading_dir="${translation_dir}/${reading_folder}"
-export notes_dir="${translation_dir}/${notes_folder}"
-export audio_dir="${translation_dir}/${audio_folder}"
+bible_dir="./${standard_bible_name}"
+translation_dir="${bible_dir}/${standard_translation}"
+outline_dir="${bible_dir}/${outline_folder}"
+reading_dir="${translation_dir}/${reading_folder}"
+notes_dir="${translation_dir}/${notes_folder}"
+audio_dir="${translation_dir}/${audio_folder}"
 
 # long_title_arr=("Book of Genesis" "Book of Exodus" "Book of Leviticus" "Book of Numbers" "Book of Deuteronomy" "Book of Joshua" "Book of Judges" "Book of Ruth" "First Book of Samuel" "Second Book of Samuel" "First Book of Kings" "Second Book of Kings" "First Book of Chronicles" "Second Book of Chronicles" "Book of Ezra" "Book of Nehemiah" "Book of Esther" "Book of Job" "Book of Psalms" "Book of Proverbs" "Book of Ecclesiastes" "Song of Solomon" "Book of Isaiah" "Book of Jeremiah" "Book of Lamentations" "Book of Ezekiel" "Book of Daniel" "Book of Hosea" "Book of Joel" "Book of Amos" "Book of Obadiah" "Book of Jonah" "Book of Micah" "Book of Nahum" "Book of Habakkuk" "Book of Zephaniah" "Book of Haggai" "Book of Zechariah" "Book of Malachi" "Gospel of Matthew" "Gospel of Mark" "Gospel of Luke" "Gospel of John" "Acts of the Apostles" "Epistle to the Romans" "First Epistle to the Corinthians" "Second Epistle to the Corinthians" "Epistle to the Galatians" "Epistle to the Ephesians" "Epistle to the Philippians" "Epistle to the Colossians" "First Epistle to the Thessalonians" "Second Epistle to the Thessalonians" "First Epistle to Timothy" "Second Epistle to Timothy" "Epistle to Titus" "Epistle to Philemon" "Epistle to the Hebrews" "Epistle of James" "First Epistle of Peter" "Second Epistle of Peter" "First Epistle of John" "Second Epistle of John" "Third Epistle of John" "Epistle of Jude" "Book of Revelation")
 # short_title_arr=(Genesis Exodus Leviticus Numbers Deuteronomy Joshua Judges Ruth "1 Samuel" "2 Samuel" "1 Kings" "2 Kings" "1 Chronicles" "2 Chronicles" Ezra Nehemiah Esther Job Psalm Proverbs Ecclesiastes "Song of Solomon" Isaiah Jeremiah Lamentations Ezekiel Daniel Hosea Joel Amos Obadiah Jonah Micah Nahum Habakkuk Zephaniah Haggai Zechariah Malachi Matthew Mark Luke John Acts Romans "1 Corinthians" "2 Corinthians" Galatians Ephesians Philippians Colossians "1 Thessalonians" "2 Thessalonians" "1 Timothy" "2 Timothy" Titus Philemon Hebrews James "1 Peter" "2 Peter" "1 John" "2 John" "3 John" Jude Revelation)

@@ -8,9 +8,9 @@ mkdir -p "${bible_dir}" "${audio_dir}" "${outline_dir}" "${notes_dir}" "${readin
 printf 'Starting download of the %s Bible.' "${translation}"
 
 # Cycling through the book counter, setting which book and its max chapter
+((book = 0))
 for ((book = 0; book < book_max; book++)); do
   source fetch-info
-
   printf '\n%s' "${short_title}"
 
   for ((chapter = 1; chapter <= chapter_max; chapter++)); do
