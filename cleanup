@@ -158,7 +158,7 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\ntemp2/
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^##.*$/&\n/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/mp3\]\]/&\n/g' {} +
 
-find . -type f -name "*${notes}*.md" -exec sed -i 's/^- [ ]$/& /g' {} +
+find . -type f -name "*${notes}*.md" -exec sed -i 's/^- \[ \]$/& /g' {} +
 
 # Correct newline spacing
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n/\n\n/;ba;}' {} +
