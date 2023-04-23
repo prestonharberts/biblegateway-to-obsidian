@@ -49,6 +49,11 @@ mv philemon.mp3 philemon-1.mp3
 mv 2-john.mp3 2-john-1.mp3
 mv 3-john.mp3 3-john-1.mp3
 mv jude.mp3 jude-1.mp3
+```
+
+Run the following on the dramatized version:
+
+```
 rename 's/thess/thessalonians/g' *
 rename 's/daniell/daniel/g' *
 rename 's/cor/corinthians/g' *
