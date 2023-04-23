@@ -1,0 +1,58 @@
+#!/bin/bash
+
+source config
+
+# Initialize audio Bible file
+if [[ $enable_audio_bible == "true" ]]; then
+    echo -e "## ${translation} ${audio_bible_name}\n" >>"${audio_dir}/${standard_translation}${filename_separator}${standard_audio_bible_name}.md"
+    for ((book = 0; book < book_max; book++)); do
+        source get-info
+        # short_title="${short_title_arr[book]}"
+        # standard_short_title="${standard_short_title_arr[book]}"
+        # standard_abbreviation="${standard_abbreviation_arr[book]}"
+        chapter_max=${length_arr[book]}
+
+        if [[ $book != 0 ]]; then
+            ((previous_book_num = book - 1))
+        fi
+        ((next_book_num = book + 1))
+
+        previous_book="${standard_short_title_arr[previous_book_num]}"
+        next_book="${standard_short_title_arr[next_book_num]}"
+
+        yaml="---\naliases: ${long_title} ${translation} ${audio}, ${short_title} ${translation} ${audio}, ${abbreviation} ${translation} ${audio}\n---"
+
+        if [[ $yaml_enabled == "true" ]] && [[ $primary_translation == "true" ]]; then
+            echo -e "${yaml}" >>"${audio_dir}/${standard_short_title}${filename_separator}${standard_translation}${filename_separator}${audio}.md"
+        elif [[ $yaml_enabled == "true" ]] && [[ $primary_translation == "false" ]]; then
+            echo -e "${yaml}" >>"${audio_dir}/${standard_short_title}${filename_separator}${standard_translation}${filename_separator}${audio}.md"
+        fi
+
+        echo -e "## ${short_title} ${translation} ${audio}\n" >>"${audio_dir}/${standard_short_title}${filename_separator}${standard_translation}${filename_separator}${audio}.md"
+
+        for ((chapter = 1; chapter <= chapter_max; chapter++)); do
+            title="${short_title} ${chapter}"
+            audio_bible="![[${standard_short_title}${filename_separator}${chapter}${filename_separator}${standard_translation}.mp3]]" # Setting the current file
+            echo -e "${title}\n${audio_bible}" >>"${audio_dir}/${standard_short_title}${filename_separator}${standard_translation}${filename_separator}${audio}.md"
+        done
+
+        # Formatting Navigation and omitting links that aren't necessary
+        if [[ $book -eq 0 ]]; then
+            # For Genesis
+            navigation="\n[[${standard_translation}${filename_separator}${standard_audio_bible_name}|All books]]\n[[${next_book}${filename_separator}${standard_translation}${filename_separator}${audio}|Next book]]"
+        elif [[ $book -eq 65 ]]; then
+            # For Revelation
+            navigation="\n[[${standard_translation}${filename_separator}${standard_audio_bible_name}|All books]]\n[[${previous_book}${filename_separator}${standard_translation}${filename_separator}${audio}|Previous book]]"
+            # For every other book
+        else
+            # Navigation for everything else
+            navigation="\n[[${standard_translation}${filename_separator}${standard_audio_bible_name}|All books]]\n[[${previous_book}${filename_separator}${audio}|Previous book]]\n[[${next_book}-audio|Next book]]"
+        fi
+
+        if [[ "${navigation}" != "" ]]; then
+            echo -e "${navigation}" >>"${audio_dir}/${standard_short_title}${filename_separator}${standard_translation}${filename_separator}${audio}.md"
+        fi
+
+        echo -e "[[${standard_short_title}${filename_separator}${standard_translation}${filename_separator}${audio}|${short_title}]]" >>"${audio_dir}/${standard_translation}${filename_separator}${standard_audio_bible_name}.md"
+    done
+fi

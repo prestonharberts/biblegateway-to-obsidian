@@ -15,14 +15,14 @@ yaml_enabled="true"
 # Choose whether or not to have parentheses for translation in filename
 parentheses_enabled="false"
 # Choose whether or not to have audio bibles
-enable_audio_bible="false"
+enable_audio_bible="true"
 
 # Customize the following if needed
 
 translation="KJV"
 # Choose whether or not the translation to download is your primary translation
 # Secondary translations will be without note files and appended to outlines
-primary_translation="true"
+primary_translation="false"
 
 outline="Outline"
 reading="Reading"

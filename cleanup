@@ -183,7 +183,7 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n
 if [[ $primary_translation == "true" ]]; then
     mv "${reading_dir}/"*notes*.md "${notes_dir}/"
 fi
-if [[ $enable_audio_bible == "true" ]]; then
+if [[ $enable_audio_bible == "false" ]]; then
     rm "${audio_dir}" -r
 fi
 

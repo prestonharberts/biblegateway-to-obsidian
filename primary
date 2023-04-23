@@ -9,7 +9,7 @@ fi
 # Cycling through the book counter, setting which book and its max chapter
 ((book = 0))
 for ((book = 0; book < book_max; book++)); do
-    source fetch-info
+    source get-info
 
     if [[ $verbose == "true" ]]; then
         printf '\n%s' "${short_title}"
@@ -54,7 +54,7 @@ for ((book = 0; book < book_max; book++)); do
         # text=$(echo "${text}" | sed 's/^(.*?)v1/v1/') # Deleting unwanted headers
         text="${text/^(.*?)v1/v1/}" # Deleting unwanted headers
 
-        yaml="---\naliases: ${short_title} ${chapter}, ${short_title} ${chapter} (${translation}), ${abbreviation} ${chapter}, ${abbreviation} ${chapter} (${translation}), ${standard_abbreviation}${chapter}, ${standard_abbreviation}${chapter}${filename_separator}${standard_translation}\n---"
+        yaml="---\naliases: ${long_title} chapter ${chapter} ${translation}, ${long_title} chapter ${chapter}, ${short_title} ${chapter} ${translation}, ${short_title} ${chapter}, ${abbreviation} ${chapter} ${translation}, ${abbreviation} ${chapter}, ${standard_abbreviation}${chapter}, ${standard_abbreviation}${chapter}${standard_translation}, ${standard_abbreviation}${chapter} ${standard_translation}, ${standard_abbreviation}${chapter}${filename_separator}${standard_translation}\n---"
 
         if [[ $yaml_enabled == "true" ]] && [[ $enable_audio_bible == "true" ]]; then
             echo -e "${yaml}\n# ${short_title} ${chapter} ${translation}\n\n${audio_bible}\n${text}\n\n${navigation}" >>"${reading_dir}/${curr_file}.md"
