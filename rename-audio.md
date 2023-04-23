@@ -59,4 +59,5 @@ rename 's/daniell/daniel/g' *
 rename 's/cor/corinthians/g' *
 rename 's/prov/proverbs/g' *
 rename 's/gal/galatians/g' *
+rename 's/\.mp3/-kjv.mp3/g' *
 ```
