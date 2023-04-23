@@ -94,8 +94,10 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n/\n\n\n\n/;ba;}' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n\n/\n\n\n\n/;ba;}' {} +
 
-# Fix mp3 link
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\. mp3/\.mp3/g' {} +
+if [[ $enable_audio_bible == "true" ]]; then
+    # Fix mp3 link
+    find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\. mp3/\.mp3/g' {} +
+fi
 
 # Fix some superscripts back to verses
 
@@ -113,36 +115,38 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n/\n\n/;ba;}' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n/\n\n/;ba;}' {} +
 
-# Make first header if it exists
-find . -type f -name "*${notes}*.md" -exec sed -i '5 s/[A-Za-z0-9].*/\n## &/g' {} + # Make first header if it exists (YAML disabled)
+if [[ $primary_translation == "true" ]]; then
+    # Make first header if it exists
+    find . -type f -name "*${notes}*.md" -exec sed -i '5 s/[A-Za-z0-9].*/\n## &/g' {} + # Make first header if it exists (YAML disabled)
 
-# Make note files empty
-find . -type f -name "*${notes}*.md" -exec sed -i 's/^[^#![].*//g' {} +
-find . -type f -name "*${notes}*.md" -exec sed -i 's/###### [0-9]*//g' {} +
+    # Make note files empty
+    find . -type f -name "*${notes}*.md" -exec sed -i 's/^[^#![].*//g' {} +
+    find . -type f -name "*${notes}*.md" -exec sed -i 's/###### [0-9]*//g' {} +
 
-# Remove audio bible
-find . -type f -name "*${notes}*.md" -exec sed -i 's/.*mp3.*//g' {} +
+    # Remove audio bible
+    find . -type f -name "*${notes}*.md" -exec sed -i 's/.*mp3.*//g' {} +
 
-# Add ' notes' to the title header
-find . -type f -name "*${notes}*.md" -exec sed -i '1 s/$/ notes/g' {} +
+    # Add ' notes' to the title header
+    find . -type f -name "*${notes}*.md" -exec sed -i '1 s/$/ notes/g' {} +
 
-# Remove Contents
-find . -type f -name "*${notes}*.md" -exec sed -i 's/## Contents//g' {} +
-find . -type f -name "*${notes}*.md" -exec sed -i 's/\[\[.*notes\]\]//g' {} +
+    # Remove Contents
+    find . -type f -name "*${notes}*.md" -exec sed -i 's/## Contents//g' {} +
+    find . -type f -name "*${notes}*.md" -exec sed -i 's/\[\[.*notes\]\]//g' {} +
 
-# Change Related notes
-find . -type f -name "*${notes}*.md" -exec sed -i "s/${standard_translation}|Previous/notes|Previous/g" {} +
-find . -type f -name "*${notes}*.md" -exec sed -i "s/${standard_translation}|Next/notes|Next/g" {} +
+    # Change Related notes
+    find . -type f -name "*${notes}*.md" -exec sed -i "s/${standard_translation}|Previous/notes|Previous/g" {} +
+    find . -type f -name "*${notes}*.md" -exec sed -i "s/${standard_translation}|Next/notes|Next/g" {} +
 
-# Remove 1 headers
-find . -type f -name "*${notes}*.md" -exec sed -i ':a;$!{N;s/## 1\n\n//;ba;}' {} +
+    # Remove 1 headers
+    find . -type f -name "*${notes}*.md" -exec sed -i ':a;$!{N;s/## 1\n\n//;ba;}' {} +
 
-# Add space after headers
-find . -type f -name "*${notes}*.md" -exec sed -i 's/^## .*/&\n\n- [ ] /g' {} +
+    # Add space after headers
+    find . -type f -name "*${notes}*.md" -exec sed -i 's/^## .*/&\n\n- [ ] /g' {} +
 
-# Fix Related spacing
-# find . -type f -name "*${notes}*.md" -exec sed -i ':a;$!{N;s/\n\n- [ ] \n\n\[\[/\n\n\[\[/;ba;}' {} +
-find . -type f -name "*${notes}*.md" -exec sed -i ':a;$!{N;s/## Related\n\n- \[ \] /## Related/;ba;}' {} +
+    # Fix Related spacing
+    # find . -type f -name "*${notes}*.md" -exec sed -i ':a;$!{N;s/\n\n- [ ] \n\n\[\[/\n\n\[\[/;ba;}' {} +
+    find . -type f -name "*${notes}*.md" -exec sed -i ':a;$!{N;s/## Related\n\n- \[ \] /## Related/;ba;}' {} +
+fi
 
 # Turn H6 into numbered list
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/###### //g' {} +
@@ -155,10 +159,17 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^[0-9][0-9][0-9]
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^[0-9][0-9]\./temp2&/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^[0-9]\./temp2&/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\ntemp2//;ba;}' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^##.*$/&\n/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/mp3\]\]/&\n/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^## .*$/&\n/g' {} +
+if [[ $enable_audio_bible == "true" ]]; then
+    find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/mp3\]\]/&\n/g' {} +
+fi
+if [[ $enable_audio_bible == "false" ]]; then
+    find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^# .*$/&\n/g' {} +
+fi
 
-find . -type f -name "*${notes}*.md" -exec sed -i 's/^- \[ \]$/& /g' {} +
+if [[ $primary_translation == "true" ]]; then
+    find . -type f -name "*${notes}*.md" -exec sed -i 's/^- \[ \]$/& /g' {} +
+fi
 
 # Correct newline spacing
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n/\n\n/;ba;}' {} +
@@ -171,6 +182,9 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n
 
 if [[ $primary_translation == "true" ]]; then
     mv "${reading_dir}/"*notes*.md "${notes_dir}/"
+fi
+if [[ $enable_audio_bible == "true" ]]; then
+    rm "${audio_dir}" -r
 fi
 
 if [[ $verbose == "true" ]]; then

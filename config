@@ -14,13 +14,15 @@ verbose="true"
 yaml_enabled="true"
 # Choose whether or not to have parentheses for translation in filename
 parentheses_enabled="false"
+# Choose whether or not to have audio bibles
+enable_audio_bible="false"
 
 # Customize the following if needed
 
-translation="CSB"
+translation="KJV"
 # Choose whether or not the translation to download is your primary translation
 # Secondary translations will be without note files and appended to outlines
-primary_translation="false"
+primary_translation="true"
 
 outline="Outline"
 reading="Reading"
@@ -319,8 +321,8 @@ fi
 bible_dir="./${standard_bible_name}"
 translation_dir="${bible_dir}/${standard_translation}"
 outline_dir="${bible_dir}/${outline}"
+notes_dir="${bible_dir}/${notes}"
 reading_dir="${translation_dir}/${reading}"
-notes_dir="${translation_dir}/${notes}"
 audio_dir="${translation_dir}/${audio}"
 
 mkdir -p "${bible_dir}" "${audio_dir}" "${outline_dir}" "${notes_dir}" "${reading_dir}"
