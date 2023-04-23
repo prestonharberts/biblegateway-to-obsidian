@@ -54,9 +54,9 @@ for ((book = 0; book < book_max; book++)); do
 
     if [[ $yaml_enabled == "true" ]]; then
       yaml="---\naliases: ${short_title} ${chapter}, ${short_title} ${chapter} (${translation}), ${abbreviation} ${chapter}, ${abbreviation} ${chapter} (${translation}), ${standard_abbreviation}${filename_separator}${chapter}, ${standard_abbreviation}${filename_separator}${chapter}${filename_separator}${translation}\n---"
-      echo -e "${yaml}\n# ${short_title} ${chapter}\n\n${audio_bible}\n${text}\n\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+      echo -e "${yaml}\n# ${short_title} ${chapter} ${translation}\n\n${audio_bible}\n${text}\n\n${navigation}" >>"${reading_dir}/${curr_file}.md"
     else
-      echo -e "# ${short_title} ${chapter}\n\n${audio_bible}\n${text}\n\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+      echo -e "# ${short_title} ${chapter} ${translation}\n\n${audio_bible}\n${text}\n\n${navigation}" >>"${reading_dir}/${curr_file}.md"
     fi
 
     # Export
