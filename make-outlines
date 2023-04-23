@@ -54,6 +54,11 @@ for ((book = 0; book < book_max; book++)); do
     previous_book="${standard_short_title_arr[previous_book_num]}"
     next_book="${standard_short_title_arr[next_book_num]}"
 
+    if [[ $yaml_enabled == "true" ]]; then
+        yaml="---\naliases: ${short_title}, ${short_title} (${translation}), ${abbreviation}, ${abbreviation} (${translation}), ${standard_abbreviation}, ${standard_abbreviation}${filename_separator}${translation}\n---"
+        echo -e "${yaml}\n" >>"${outline_dir}/${standard_short_title}${filename_separator}${audio}.md"
+    fi
+
     for ((chapter = 1; chapter <= chapter_max; chapter++)); do
         title="${short_title} ${chapter}"
         audio_bible="![[${standard_short_title}${filename_separator}${chapter}${filename_separator}${standard_translation}.mp3]]" # Setting the current file
@@ -77,5 +82,5 @@ for ((book = 0; book < book_max; book++)); do
         echo -e "${navigation}" >>"${outline_dir}/${standard_short_title}${filename_separator}${audio}.md"
     fi
 
-    echo -e "[[${standard_abbreviation}${filename_separator}${audio}|${short_title}]]" >>"${outline_dir}/${standard_audio_bible_name}.md"
+    echo -e "[[${standard_short_title}${filename_separator}${audio}|${short_title}]]" >>"${outline_dir}/${standard_audio_bible_name}.md"
 done
