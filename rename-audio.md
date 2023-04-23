@@ -21,6 +21,14 @@ mv jude.mp3 jude-1.mp3
 rename 's/\.mp3/-esv.mp3/g' *
 ```
 
+## CSB
+
+Lowercase, hyphenated short title:
+
+```
+wip
+```
+
 ## AudioTreasure King James Version
 
 Free download: https://audiotreasure.com/AT_KJVA.htm
