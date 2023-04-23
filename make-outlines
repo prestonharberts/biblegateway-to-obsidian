@@ -31,7 +31,7 @@ for ((book = 0; book < book_max; book++)); do
         if [[ $chapter -gt 1 ]]; then
             echo -en "[[${standard_short_title}${filename_separator}${chapter}${filename_separator}${standard_translation}|]]" >>"${outline_dir}/${standard_short_title}.md"
         else
-            echo -en "[[${standard_short_title}${filename_separator}${chapter}${filename_separator}${standard_translation}|Start reading ${translation}]]" >>"${outline_dir}/${standard_short_title}.md"
+            echo -en "[[${standard_short_title}${filename_separator}${chapter}${filename_separator}${standard_translation}|Start reading (${translation})]]" >>"${outline_dir}/${standard_short_title}.md"
         fi
     done
 done

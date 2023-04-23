@@ -169,7 +169,9 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n/\n\n\n\n/;ba;}' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n\n/\n\n\n\n/;ba;}' {} +
 
-mv "${reading_dir}/"*notes*.md "${notes_dir}/"
+if [[ $primary_translation == "true" ]]; then
+    mv "${reading_dir}/"*notes*.md "${notes_dir}/"
+fi
 
 if [[ $verbose == "true" ]]; then
     echo " Done."
