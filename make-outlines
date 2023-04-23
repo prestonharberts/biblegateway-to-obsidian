@@ -56,7 +56,7 @@ for ((book = 0; book < book_max; book++)); do
 
     for ((chapter = 1; chapter <= chapter_max; chapter++)); do
         title="${short_title} ${chapter}"
-        audio_bible="![[${standard_short_title}${filename_separator}${chapter}.mp3]]"
+        audio_bible="![[${standard_short_title}${filename_separator}${chapter}${filename_separator}${standard_translation}.mp3]]" # Setting the current file
         echo -e "${title}\n${audio_bible}" >>"${outline_dir}/${standard_short_title}${filename_separator}${audio}.md"
     done
 

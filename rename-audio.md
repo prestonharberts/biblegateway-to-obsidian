@@ -18,4 +18,5 @@ mv philemon.mp3 philemon-1.mp3
 mv 2-john.mp3 2-john-1.mp3
 mv 3-john.mp3 3-john-1.mp3
 mv jude.mp3 jude-1.mp3
+rename 's/\.mp3/-esv.mp3/g' *
 ```
