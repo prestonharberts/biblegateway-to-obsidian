@@ -15,6 +15,14 @@ for ((book = 0; book < book_max; book++)); do
         printf '\n%s' "${short_title}"
     fi
 
+    if [[ $book != 0 ]]; then
+        ((previous_book_num = book - 1))
+    fi
+    ((next_book_num = book + 1))
+
+    previous_book="${standard_short_title_arr[previous_book_num]}"
+    next_book="${standard_short_title_arr[next_book_num]}"
+
     echo -en " " >>"${outline_dir}/${standard_short_title}.md"
 
     for ((chapter = 1; chapter <= chapter_max; chapter++)); do
@@ -43,13 +51,19 @@ for ((book = 0; book < book_max; book++)); do
         # Formatting Navigation and omitting links that aren't necessary
         if [[ $chapter_max -eq 1 ]]; then
             # For a book that only has one chapter
-            navigation="${contents}"
-        elif [[ $chapter -eq $chapter_max ]]; then
+            navigation="${contents}\n\n## Related\n\n[[${previous_book}${filename_separator}${length_arr[$previous_book_num]}${filename_separator}${standard_translation}|Previous book]]\n[[${next_book}${filename_separator}1${filename_separator}${standard_translation}|Next book]]"
+        elif [[ $chapter -eq $chapter_max ]] && [[ $book -eq $book_max ]]; then
             # If this is the last chapter of the book
             navigation="${contents}\n\n## Related\n\n[[${previous_file}|Previous chapter]]"
-        elif [[ ${chapter} -eq 1 ]]; then
+        elif [[ $chapter -eq $chapter_max ]] && [[ $book -ne $book_max ]]; then
+            # If this is the last chapter of the book
+            navigation="${contents}\n\n## Related\n\n[[${previous_file}|Previous chapter]]\n[[${next_book}${filename_separator}1${filename_separator}${standard_translation}|Next book]]"
+        elif [[ ${chapter} -eq 1 ]] && [[ $book -eq 0 ]]; then
             # If this is the first chapter of the book
             navigation="${contents}\n\n## Related\n\n[[${next_file}|Next chapter]]"
+        elif [[ ${chapter} -eq 1 ]] && [[ $book -ne 0 ]]; then
+            # If this is the first chapter of the book
+            navigation="${contents}\n\n## Related\n\n[[${previous_book}${filename_separator}${length_arr[$previous_book_num]}${filename_separator}${standard_translation}|Previous book]]\n[[${next_file}|Next chapter]]"
         else
             # Navigation for everything else
             navigation="${contents}\n\n## Related\n\n[[${previous_file}|Previous chapter]]\n[[${next_file}|Next chapter]]"
