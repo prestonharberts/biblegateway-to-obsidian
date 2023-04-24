@@ -52,10 +52,10 @@ for ((book = 0; book < book_max; book++)); do
         if [[ $chapter_max -eq 1 ]]; then
             # For a book that only has one chapter
             navigation="${contents}\n\n## Related\n\n[[${previous_book}${filename_separator}${length_arr[$previous_book_num]}${filename_separator}${standard_translation}|Previous book]]\n[[${next_book}${filename_separator}1${filename_separator}${standard_translation}|Next book]]"
-        elif [[ $chapter -eq $chapter_max ]] && [[ $book -eq $book_max ]]; then
+        elif [[ $chapter -eq $chapter_max ]] && [[ $book -eq $((book_max - 1)) ]]; then
             # If this is the last chapter of the book
             navigation="${contents}\n\n## Related\n\n[[${previous_file}|Previous chapter]]"
-        elif [[ $chapter -eq $chapter_max ]] && [[ $book -ne $book_max ]]; then
+        elif [[ $chapter -eq $chapter_max ]] && [[ $book -ne $((book_max - 1)) ]]; then
             # If this is the last chapter of the book
             navigation="${contents}\n\n## Related\n\n[[${previous_file}|Previous chapter]]\n[[${next_book}${filename_separator}1${filename_separator}${standard_translation}|Next book]]"
         elif [[ ${chapter} -eq 1 ]] && [[ $book -eq 0 ]]; then
