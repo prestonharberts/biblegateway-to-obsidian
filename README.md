@@ -44,6 +44,11 @@ Below are some issues that may happen when using the script. Create an [issue](h
 
 I am unsure what causes this, but it is fixed when run again. Only make sure that you do not highlight text (on Linux, this copies to a clipboard to be pasted with a middle-mouse click) or copy text. jgclark's script makes use of the system's clipboard when fetching text from BibleGateway. When the program is running, I leave my computer alone and find something else to do in the meantime.
 
+## TODO
+
+- [ ] Rename files to be like gn3esv.md
+- [ ] Add navigation to top and bottom like Previous chapter / Book / Notes / Next chapter
+
 ## Credits
 
 Thank you [selfire](https://github.com/selfire1) and [jgclark](https://github.com/jgclark) for your work putting these scripts together. This fork could not have been possible without you two. selfire1's patreon can be found at joschua if you feel inclined to support him.

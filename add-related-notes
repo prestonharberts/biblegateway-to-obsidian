@@ -1,0 +1,23 @@
+#!/bin/bash
+
+source config
+
+echo -e "###### [[${standard_bible_name}|${bible_name}]]" >>"${outline_dir}/${standard_testament_arr[0]}.md"
+echo -e "###### [[${standard_bible_name}|${bible_name}]]" >>"${outline_dir}/${standard_testament_arr[39]}.md"
+# initialize the genre file for all of the bible
+echo -e "###### [[${standard_bible_name}|${bible_name}]] / [[${standard_testament_arr[0]}|${testament_arr[0]}]]" >>"${outline_dir}/${standard_genre_arr[0]}.md"
+echo -e "###### [[${standard_bible_name}|${bible_name}]] / [[${standard_testament_arr[5]}|${testament_arr[5]}]]" >>"${outline_dir}/${standard_genre_arr[5]}.md"
+echo -e "###### [[${standard_bible_name}|${bible_name}]] / [[${standard_testament_arr[17]}|${testament_arr[17]}]]" >>"${outline_dir}/${standard_genre_arr[17]}.md"
+echo -e "###### [[${standard_bible_name}|${bible_name}]] / [[${standard_testament_arr[19]}|${testament_arr[19]}]]" >>"${outline_dir}/${standard_genre_arr[19]}.md"
+echo -e "###### [[${standard_bible_name}|${bible_name}]] / [[${standard_testament_arr[22]}|${testament_arr[22]}]]" >>"${outline_dir}/${standard_genre_arr[22]}.md"
+echo -e "###### [[${standard_bible_name}|${bible_name}]] / [[${standard_testament_arr[27]}|${testament_arr[27]}]]" >>"${outline_dir}/${standard_genre_arr[27]}.md"
+echo -e "###### [[${standard_bible_name}|${bible_name}]] / [[${standard_testament_arr[39]}|${testament_arr[39]}]]" >>"${outline_dir}/${standard_genre_arr[39]}.md"
+echo -e "###### [[${standard_bible_name}|${bible_name}]] / [[${standard_testament_arr[43]}|${testament_arr[43]}]]" >>"${outline_dir}/${standard_genre_arr[43]}.md"
+echo -e "###### [[${standard_bible_name}|${bible_name}]] / [[${standard_testament_arr[44]}|${testament_arr[44]}]]" >>"${outline_dir}/${standard_genre_arr[44]}.md"
+echo -e "###### [[${standard_bible_name}|${bible_name}]] / [[${standard_testament_arr[57]}|${testament_arr[57]}]]" >>"${outline_dir}/${standard_genre_arr[57]}.md"
+echo -e "###### [[${standard_bible_name}|${bible_name}]] / [[${standard_testament_arr[65]}|${testament_arr[65]}]]" >>"${outline_dir}/${standard_genre_arr[65]}.md"
+
+for ((book = 0; book < book_max; book++)); do
+    source get-info
+
+done
