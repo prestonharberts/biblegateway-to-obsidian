@@ -4,7 +4,7 @@ source config
 
 if [[ $primary_translation == "true" ]]; then
 
-  source make-reading-outlines
+  source make-primary-reading-outlines
 
   if [[ $enable_audio_bible == "true" ]]; then
     source make-audio-outlines
@@ -13,6 +13,8 @@ if [[ $primary_translation == "true" ]]; then
   source primary
 
 else
+
+  source make-secondary-reading-outlines
 
   if [[ $enable_audio_bible == "true" ]]; then
     source make-audio-outlines
