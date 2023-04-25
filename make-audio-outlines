@@ -18,13 +18,13 @@ if [[ $enable_audio_bible == "true" ]]; then
         for ((chapter = 1; chapter <= chapter_max; chapter++)); do
             yaml="---\naliases: ${short_title} ${chapter} ${audio}, ${abbreviation} ${chapter} ${audio}\n---"
 
-            ((prevchapter = chapter - 1)) # Counting the previous and next chapter for navigation
-            ((nextchapter = chapter + 1))
+            ((previous_chapter = chapter - 1)) # Counting the previous and next chapter for navigation
+            ((next_chapter = chapter + 1))
 
             # Exporting
-            curr_file_notes="${standard_abbreviation}${chapter}${notes}"   # Setting the current file
-            previous_file="${standard_abbreviation}${prevchapter}${audio}" # Naming previous and next files
-            next_file="${standard_abbreviation}${nextchapter}${audio}"
+            curr_file_notes="${standard_abbreviation}${chapter}${notes}"        # Setting the current file
+            previous_file="${standard_abbreviation}${previous_chapter}${audio}" # Naming previous and next files
+            next_file="${standard_abbreviation}${next_chapter}${audio}"
 
             # Formatting Navigation and omitting links that aren't necessary
             if [[ $chapter_max -eq 1 ]]; then
@@ -50,7 +50,7 @@ if [[ $enable_audio_bible == "true" ]]; then
             if [[ $primary_translation == "true" ]]; then
                 echo -e "${yaml}\n${navigation}\n### ${short_title} ${chapter}" >>"${outline_dir}/${standard_abbreviation}${chapter}${audio}.md"
             fi
-            title="###### [[${standard_abbreviation}${chapter}${standard_translation}|${translation}]]"
+            title="###### [[${standard_abbreviation}${chapter}${standard_translation}|${translation}]]:"
             audio_bible="![[${standard_abbreviation}${chapter}${standard_translation}.mp3]]" # Setting the current file
             echo -e "${title}\n${audio_bible}" >>"${outline_dir}/${standard_abbreviation}${chapter}${audio}.md"
         done

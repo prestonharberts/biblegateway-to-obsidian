@@ -36,14 +36,14 @@ for ((book = 0; book < book_max; book++)); do
             echo -en "[[${standard_short_title}${filename_separator}${chapter}${filename_separator}${standard_translation}|(${translation})]]" >>"${outline_dir}/${standard_short_title}.md"
         fi
 
-        ((prevchapter = chapter - 1)) # Counting the previous and next chapter for navigation
-        ((nextchapter = chapter + 1))
+        ((previous_chapter = chapter - 1)) # Counting the previous and next chapter for navigation
+        ((next_chapter = chapter + 1))
 
         # Exporting
-        curr_file="${standard_abbreviation}${chapter}${standard_translation}"         # Setting the current file
-        curr_file_notes="${standard_abbreviation}${chapter}${notes}"                  # Setting the current file
-        previous_file="${standard_abbreviation}${prevchapter}${standard_translation}" # Naming previous and next files
-        next_file="${standard_abbreviation}${nextchapter}${standard_translation}"
+        curr_file="${standard_abbreviation}${chapter}${standard_translation}"              # Setting the current file
+        curr_file_notes="${standard_abbreviation}${chapter}${notes}"                       # Setting the current file
+        previous_file="${standard_abbreviation}${previous_chapter}${standard_translation}" # Naming previous and next files
+        next_file="${standard_abbreviation}${next_chapter}${standard_translation}"
 
         # audio_bible="![[${curr_file}.mp3]]"
 
