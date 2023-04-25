@@ -322,8 +322,8 @@ bible_dir="./${standard_bible_name}"
 translation_dir="${bible_dir}/${standard_translation}"
 outline_dir="${bible_dir}/${outline}"
 notes_dir="${bible_dir}/${notes}"
-reading_dir="${translation_dir}/${reading}"
-audio_dir="${translation_dir}/${audio}"
+reading_dir="${translation_dir}"
+audio_dir="${bible_dir}/${audio}"
 
 mkdir -p "${bible_dir}" "${audio_dir}" "${outline_dir}" "${notes_dir}" "${reading_dir}"
 
