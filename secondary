@@ -30,12 +30,6 @@ for ((book = 0; book < book_max; book++)); do
             echo -n "."
         fi
 
-        if [[ $chapter -gt 1 ]]; then
-            echo -en "[[${standard_short_title}${filename_separator}${chapter}${filename_separator}${standard_translation}|]]" >>"${outline_dir}/${standard_short_title}.md"
-        else
-            echo -en "[[${standard_short_title}${filename_separator}${chapter}${filename_separator}${standard_translation}|(${translation})]]" >>"${outline_dir}/${standard_short_title}.md"
-        fi
-
         ((previous_chapter = chapter - 1)) # Counting the previous and next chapter for navigation
         ((next_chapter = chapter + 1))
 
