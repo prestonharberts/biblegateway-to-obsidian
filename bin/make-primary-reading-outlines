@@ -73,9 +73,9 @@ for ((book = 0; book < book_max; book++)); do
 
     for ((chapter = 1; chapter <= chapter_max; chapter++)); do
         if [[ $chapter -gt 1 ]]; then
-            echo -en "[[${standard_abbreviation}${chapter}${standard_translation}|]]" >>"${outline_dir}/${standard_abbreviation}.md"
+            echo -en "[[${standard_abbreviation}${chapter}|]]" >>"${outline_dir}/${standard_abbreviation}.md"
         else
-            echo -en "[[${standard_abbreviation}${chapter}${standard_translation}|Start reading (${translation})]]" >>"${outline_dir}/${standard_abbreviation}.md"
+            echo -en "[[${standard_abbreviation}${chapter}|Start reading (${translation})]]" >>"${outline_dir}/${standard_abbreviation}.md"
         fi
     done
 done
