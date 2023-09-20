@@ -1,29 +1,29 @@
 #!/bin/bash
 
-source config
+source config.sh
 
 if [[ $primary_translation == "true" ]]; then
 
-  source make-primary-reading-outlines
+  source bin/make-primary-reading-outlines.sh
 
   if [[ $enable_audio_bible == "true" ]]; then
-    source make-audio-outlines
+    source bin/make-audio-outlines.sh
   fi
 
-  source primary
+  source bin/primary.sh
 
 else
 
-  source make-secondary-reading-outlines
+  source bin/make-secondary-reading-outlines.sh
 
   if [[ $enable_audio_bible == "true" ]]; then
-    source make-audio-outlines
+    source bin/make-audio-outlines.sh
   fi
 
-  source secondary
+  source bin/secondary.sh
 fi
 
-source cleanup
+source bin/cleanup.sh
 
 if [[ $verbose == "true" ]]; then
   printf "Markdown files ready for Obsidian.\n"

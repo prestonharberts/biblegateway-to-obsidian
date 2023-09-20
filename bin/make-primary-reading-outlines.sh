@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source config
+source config.sh
 
 # initialize the bible file for all of the old/new testament
 echo -e "# ${bible_name}\n\n## Contents\n\n[[${standard_testament_arr[0]}|${testament_arr[0]}]]\n[[${standard_testament_arr[39]}|${testament_arr[39]}]]" >>"${outline_dir}/${standard_bible_name}.md"
@@ -48,7 +48,7 @@ elif [[ $yaml_enabled == "false" ]]; then
 fi
 
 for ((book = 0; book < book_max; book++)); do
-    source get-info
+    source bin/get-info.sh
 
     # Create an overview file for each book of the Bible:
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source config
+source config.sh
 
 if [[ $verbose == "true" ]]; then
     printf 'Starting download of the %s Bible.' "${translation}"
@@ -9,7 +9,7 @@ fi
 # Cycling through the book counter, setting which book and its max chapter
 ((book = 0))
 for ((book = 0; book < book_max; book++)); do
-    source get-info
+    source bin/get-info.sh
 
     if [[ $verbose == "true" ]]; then
         printf '\n%s' "${short_title}"
@@ -70,7 +70,7 @@ for ((book = 0; book < book_max; book++)); do
             navigation_notes="##### ←[[${previous_file_notes}|Previous chapter]] / [[${curr_file}|Reading]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_file_notes}|Next chapter]]→"
         fi
 
-        text=$(ruby bg2md.rb -e -c -f -l -r -v "${translation}" "${short_title} ${chapter}") # This calls the 'bg2mdmod' script
+        text=$(ruby bin/bg2md.rb -e -c -f -l -r -v "${translation}" "${short_title} ${chapter}") # This calls the 'bg2mdmod' script
         # text=$(echo "${text}" | sed 's/^(.*?)v1/v1/') # Deleting unwanted headers
         text="${text/^(.*?)v1/v1/}" # Deleting unwanted headers
 

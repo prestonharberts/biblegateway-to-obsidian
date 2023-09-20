@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source config
+source config.sh
 
 if [[ $verbose == "true" ]]; then
     printf "\nCleaning up markdown files..."
@@ -10,10 +10,6 @@ fi
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/###### [0-9] /\n\n&\n\n/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/###### [0-9][0-9] /\n\n&\n\n/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/###### [0-9][0-9][0-9] /\n\n&\n\n/g' {} +
-
-#!/bin/bash
-
-source config
 
 # Remove spaces at the beginning of verses
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^ *//g' {} +
