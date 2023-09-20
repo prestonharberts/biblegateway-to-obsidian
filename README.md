@@ -2,25 +2,25 @@
 
 ## Disclaimers
 
-This script is set to download the [ESV Bible](https://www.esv.org/translation/). Before using this script, please make sure you own a copy of the ESV. Although this program does not make use of it, it is right to legally own it before making a copy of it using jgclark's script.
+This script is set to download the [ESV Bible](https://www.esv.org/translation/), but it can be changed. Before using this script, please make sure you own a copy of the ESV, even if this program does not use it, it is right to legally own it before making a copy of it using jgclark's script.
 
-Do not distribute your files once generated because they are subject to the [ESV's copyright standards](https://www.crossway.org/permissions/). **All files are only intended for personal use.** This is not affiliated to, or approved by, BibleGateway.com or Crossway. I make no guarantee regarding the usage of the script, it is at your own discretion.
+Do not distribute your files once generated because they are subject to the [ESV's copyright standards](https://www.crossway.org/permissions/). **All files are only intended for personal use.** This is not affiliated or approved by BibleGateway.com or Crossway. I make no guarantee regarding the usage of the script, it is at your own discretion.
 
 ## About
 
 This script adapts [jgclark's BibleGateway-to-Markdown](https://github.com/jgclark/BibleGateway-to-Markdown) script and is forked from [selfire1's BibleGateway-to-Obsidian](https://github.com/selfire1/BibleGateway-to-Obsidian) to export the ESV for use in [Obsidian](https://obsidian.md/). It accompanies the [ESV Hear the Word Audio Bible](https://www.crossway.org/bibles/esv-hear-the-word-audio-bible-610-dl/) that can be listened to from Obsidian when downloaded.
 
-I have not tested this script with other translations, as I have thouroughly tested regular expressions to be used only on the ESV.
+Other translations along with their MP3 audio bibles may work, but I have not tested very many.
 
-What the script does is fetch the text from [Bible Gateway](https://www.biblegateway.com/) and save it as a formatted markdown file. Each chapter is saved as two files (one for reading and another without text for taking notes in). Navigation between files is located at the bottom and is automatically created. All the chapter reading and table of contents are saved to a folder named `bible`, and all note-taking files are saved to another folder named `bible-notes`.
+The script fetches text from [Bible Gateway](https://www.biblegateway.com/) and saves it as a markdown file. Each chapter is saved as two files, one for reading and another without text so that you can take notes in. A navigation bar is located at the bottom of each file for navigating files and is automatically created. All the chapter reading and table of contents are saved to a folder named `bible`, and all note-taking files are saved to another folder named `bible-notes`.
 
-This script is intended to be very simple to run, but it comes at the cost of customizability. To adapt it to your taste, you may have to modify `bg2obs.sh` or fork this script.
+This script is intended to be very simple to run, and is customizable from the `config` file. To adapt it to your taste, you can modify `bg2obs.sh` or fork this script.
 
 ## Installation
 
 This script is intended to be run in Linux, but it is able to be run on macOS and Windows with some setup that I am unable to provide as I do not use either.
 
-Download [jgclark's BibleGateway-to-Markdown](https://github.com/jgclark/BibleGateway-to-Markdown) and copy `bg2md.rb` to `biblegateway-to-obsidian`. Next, install RubyGems and the necessary gems with the following line (change the installation line to use your correct package manager; I use Fedora so I use `dnf`):
+Download [jgclark's BibleGateway-to-Markdown](https://github.com/jgclark/BibleGateway-to-Markdown) and copy `bg2md.rb` to `biblegateway-to-obsidian/bin`. Next, install RubyGems and the necessary gems with the following line (change the installation line to use your correct package manager; I use Fedora so I use `dnf`):
 
 ```
 sudo dnf install rubygems && sudo gem install colorize optparse clipboard
