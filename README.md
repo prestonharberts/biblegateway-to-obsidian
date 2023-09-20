@@ -20,7 +20,7 @@ This script is intended to be very simple to run, and is customizable from the `
 
 This script is intended to be run in Linux, but it is able to be run on macOS and Windows with some setup that I am unable to provide as I do not use either.
 
-Download [jgclark's BibleGateway-to-Markdown](https://github.com/jgclark/BibleGateway-to-Markdown) and copy `bg2md.rb` to `biblegateway-to-obsidian/bin`. Next, install RubyGems and the necessary gems with the following line (change the installation line to use your correct package manager; I use Fedora so I use `dnf`):
+Download my fork of [jgclark's BibleGateway-to-Markdown](https://github.com/prestonharberts/biblegateway-to-markdown) and copy `bg2md.rb` to `biblegateway-to-obsidian/bin`. Next, install RubyGems and the necessary gems with the following line (change the installation line to use your correct package manager; I use Fedora so I use `dnf`):
 
 ```
 sudo dnf install rubygems && sudo gem install colorize optparse clipboard
