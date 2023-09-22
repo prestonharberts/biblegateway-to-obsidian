@@ -62,7 +62,7 @@ for ((book = 0; book < book_max; book++)); do
             navigation="##### ←[[${previous_file}|Previous chapter]] / [[${curr_file_notes}|Notes]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_file}|Next chapter]]→"
         fi
 
-        text=$(ruby bin/bg2md.rb -e -c -f -l -r -v "${translation}" "${short_title} ${chapter}") # This calls the 'bg2mdmod' script
+        text=$(ruby bg2md.rb -e -c -f -l -r -v "${translation}" "${short_title} ${chapter}") # This calls the 'bg2mdmod' script
         # text=$(echo "${text}" | sed 's/^(.*?)v1/v1/') # Deleting unwanted headers
         text="${text/^(.*?)v1/v1/}" # Deleting unwanted headers
 
