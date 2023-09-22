@@ -9,7 +9,7 @@ fi
 # Cycling through the book counter, setting which book and its max chapter
 ((book = 0))
 for ((book = 0; book < book_max; book++)); do
-    source bin/get-info.sh
+    source get-info.sh
 
     if [[ $verbose == "true" ]]; then
         printf '\n%s' "${short_title}"

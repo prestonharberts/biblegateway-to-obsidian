@@ -5,7 +5,7 @@ source config.sh
 # Initialize audio Bible file
 if [[ $enable_audio_bible == "true" ]]; then
     for ((book = 0; book < book_max; book++)); do
-        source bin/get-info.sh
+        source get-info.sh
 
         if [[ $book != 0 ]]; then
             ((previous_book_num = book - 1))
@@ -49,14 +49,14 @@ if [[ $enable_audio_bible == "true" ]]; then
 
             if [[ $primary_translation == "true" ]]; then
                 echo -e "${yaml}\n${navigation}\n### ${short_title} ${chapter}" >>"${outline_dir}/${standard_abbreviation}${chapter}${audio}.md"
-	        title="###### [[${standard_abbreviation}${chapter}|${translation}]]:"
+                title="###### [[${standard_abbreviation}${chapter}|${translation}]]:"
                 audio_bible="![[${standard_abbreviation}${chapter}${standard_translation}.mp3]]" # Setting the current file
                 echo -e "${title}\n${audio_bible}" >>"${outline_dir}/${standard_abbreviation}${chapter}${audio}.md"
             elif [[ $primary_translation == "false" ]]; then
                 title="###### [[${standard_abbreviation}${chapter}${standard_translation}|${translation}]]:"
                 audio_bible="![[${standard_abbreviation}${chapter}${standard_translation}.mp3]]" # Setting the current file
                 echo -e "${title}\n${audio_bible}" >>"${outline_dir}/${standard_abbreviation}${chapter}${audio}.md"
-	    fi
+            fi
         done
     done
 fi

@@ -9,7 +9,7 @@ fi
 # Cycling through the book counter, setting which book and its max chapter
 ((book = 0))
 for ((book = 0; book < book_max; book++)); do
-    source bin/get-info.sh
+    source get-info.sh
 
     if [[ $verbose == "true" ]]; then
         printf '\n%s' "${short_title}"
@@ -32,9 +32,9 @@ for ((book = 0; book < book_max; book++)); do
         ((next_chapter = chapter + 1))
 
         # Exporting
-        curr_file="${standard_abbreviation}${chapter}"              # Setting the current file
-        curr_file_notes="${standard_abbreviation}${chapter}${notes}"                       # Setting the current file
-        previous_file="${standard_abbreviation}${previous_chapter}" # Naming previous and next files
+        curr_file="${standard_abbreviation}${chapter}"               # Setting the current file
+        curr_file_notes="${standard_abbreviation}${chapter}${notes}" # Setting the current file
+        previous_file="${standard_abbreviation}${previous_chapter}"  # Naming previous and next files
         next_file="${standard_abbreviation}${next_chapter}"
         previous_file_notes="${standard_abbreviation}${previous_chapter}${notes}" # Naming previous and next files
         next_file_notes="${standard_abbreviation}${next_chapter}${notes}"
