@@ -70,12 +70,12 @@ for ((book = 0; book < book_max; book++)); do
             navigation_notes="##### ←[[${previous_file_notes}|Previous chapter]] / [[${curr_file}|Reading]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_file_notes}|Next chapter]]→"
         fi
 
-        text=$(ruby bin/bg2md.rb -e -c -f -l -r -v "${translation}" "${short_title} ${chapter}") # This calls the 'bg2mdmod' script
+        text=$(ruby bg2md.rb -e -c -f -l -r -v "${translation}" "${short_title} ${chapter}") # This calls the 'bg2mdmod' script
         # text=$(echo "${text}" | sed 's/^(.*?)v1/v1/') # Deleting unwanted headers
         text="${text/^(.*?)v1/v1/}" # Deleting unwanted headers
 
-        yaml="---\naliases: ${short_title} ${chapter}, ${abbreviation} ${chapter}\n---"
-        yaml_notes="---\naliases: ${short_title} ${chapter} ${notes}, ${abbreviation} ${chapter} ${notes}\n---"
+        yaml="---\naliases: [\"${short_title} ${chapter}\", \"${abbreviation}. ${chapter}\"]\n---"
+        yaml_notes="---\naliases: [\"${short_title} ${chapter} ${notes}\", \"${abbreviation}. ${chapter} ${notes}\"]\n---"
 
         if [[ $yaml_enabled == "true" ]] && [[ $enable_audio_bible == "true" ]]; then
             # echo -en "${yaml}\n${navigation}\n# ${short_title} ${chapter} ${translation}\n\n${audio_bible}\n${text}\n---\n${navigation}" >>"${reading_dir}/${curr_file}.md"

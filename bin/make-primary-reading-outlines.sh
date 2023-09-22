@@ -60,7 +60,7 @@ for ((book = 0; book < book_max; book++)); do
     #     navigation="###### [[${standard_genre}|${genre}]]"
     # fi
 
-    yaml="---\naliases: ${short_title}, ${abbreviation}\n---"
+    yaml="---\naliases: [\"${short_title}\", \"${abbreviation}\"]\n---"
 
     if [[ $yaml_enabled == "true" ]]; then
         echo -e "${yaml}" >>"${outline_dir}/${standard_abbreviation}.md"
