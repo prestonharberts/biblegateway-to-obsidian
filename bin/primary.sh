@@ -74,8 +74,8 @@ for ((book = 0; book < book_max; book++)); do
         # text=$(echo "${text}" | sed 's/^(.*?)v1/v1/') # Deleting unwanted headers
         text="${text/^(.*?)v1/v1/}" # Deleting unwanted headers
 
-        yaml="---\naliases: [\"${short_title} ${chapter}\", \"${abbreviation}. ${chapter}\"]\n---"
-        yaml_notes="---\naliases: [\"${short_title} ${chapter} ${notes}\", \"${abbreviation}. ${chapter} ${notes}\"]\n---"
+        yaml="---\naliases: [\"${short_title} ${chapter}\", \"${abbreviation} ${chapter}\"]\n---"
+        yaml_notes="---\naliases: [\"${short_title} ${chapter} ${notes}\", \"${abbreviation} ${chapter} ${notes}\"]\n---"
 
         if [[ $yaml_enabled == "true" ]] && [[ $enable_audio_bible == "true" ]]; then
             # echo -en "${yaml}\n${navigation}\n# ${short_title} ${chapter} ${translation}\n\n${audio_bible}\n${text}\n---\n${navigation}" >>"${reading_dir}/${curr_file}.md"
