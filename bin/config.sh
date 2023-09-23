@@ -19,7 +19,7 @@ enable_audio_bible="true"
 
 # Customize the following if needed
 
-translation="CSB"
+translation="ESV"
 # Choose whether or not the translation to download is your primary translation
 # Secondary translations will be without note files and appended to outlines
 primary_translation="true"
