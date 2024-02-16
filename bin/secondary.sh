@@ -11,9 +11,11 @@ fi
 for ((book = 0; book < book_max; book++)); do
     source get-info.sh
 
-    if [[ $verbose == "true" ]]; then
-        printf '\n%s' "${short_title}"
-    fi
+    if [[ $verbose == "true" && $short_title != "Psalm" ]]; then
+         printf '\n%s' "${short_title}"
+    elif [[ $verbose == "true" ]]; then
+        printf '\n%s' "Psalms"
+     fi
 
     if [[ $book != 0 ]]; then
         ((previous_book_num = book - 1))
