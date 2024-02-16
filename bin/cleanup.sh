@@ -6,6 +6,9 @@ if [[ $verbose == "true" ]]; then
     printf "\nCleaning up markdown files..."
 fi
 
+# Remove "Chapter x" at the beginning of each file
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/##### Chapter.*//g' {} +
+
 # Format verses into H6 headers
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/###### [0-9] /\n\n&\n\n/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/###### [0-9][0-9] /\n\n&\n\n/g' {} +
@@ -33,7 +36,7 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/)[A-Z0-9][A-Za-z
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/## )/## /g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\.[A-Z0-9][A-Za-z0-9: ].*$/.\n\n## &/g' {} + # Header following period
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/## \./## /g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\,[A-Z0-9][A-Za-z0-9: ].*$/,\n\n## &/g' {} + # Header following comma
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\,[A-Z][A-Za-z: ].*$/,\n\n## &/g' {} + # Header following comma
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/## \,/## /g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/![A-Z0-9][A-Za-z0-9: ].*$/!\n\n## &/g' {} + # Header following exclamation mark
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/## !/## /g' {} +
@@ -156,7 +159,7 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^[0-9][0-9][0-9]
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^[0-9][0-9]\./temp2&/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^[0-9]\./temp2&/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\ntemp2//;ba;}' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^## .*$/&\n/g' {} +
+# find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^## .*$/&\n/g' {} +
 
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^# .*$/&\n/g' {} +
 
@@ -225,7 +228,7 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/)[A-Z0-9][A-Za-z
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/## )/## /g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\.[A-Z0-9][A-Za-z0-9: ].*$/.\n\n## &/g' {} + # Header following period
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/## \./## /g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\,[A-Z0-9][A-Za-z0-9: ].*$/,\n\n## &/g' {} + # Header following comma
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\,[A-Z][A-Za-z: ].*$/,\n\n## &/g' {} + # Header following comma
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/## \,/## /g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/![A-Z0-9][A-Za-z0-9: ].*$/!\n\n## &/g' {} + # Header following exclamation mark
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/## !/## /g' {} +
