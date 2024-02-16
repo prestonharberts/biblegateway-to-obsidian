@@ -29,12 +29,20 @@ sudo dnf install rubygems && sudo gem install colorize optparse clipboard
 Next, give execution rights to both scripts using the following command:
 
 ```
-chmod u+x bg2md.rh bg2obs.sh
+chmod u+x bg2md.rb bg2obs.sh
 ```
 
 ## Usage
 
 Once you are in the directory containing the script, run `./bg2obs.sh`. This will run the bash script. Do not copy anything while the program is running. See Troubleshooting, below.
+
+### Manual changes
+
+Certain manual changes must be made to the Bible files that cannot be done otherwise:
+
+- Psalm 145:13 seems to have brackets that mess with markdown specs. Remove them.
+- In Mark 16, there is an editorial note that results in headers being misplaced, so remove the note, create the header on the same line, correct Mark 16:9, and remove the brackets from Mark 16:20. Do the same for the notes file
+- In John chapters 7-8, there is an editorial note that results in headers being misplaced, so remove the note, correct John 7:53, fix the header, correct John 8:1, remove the brackets from John 8:11, and create the header in that verse as well by giving it a new line and placing two pound symbols before it and a space like this: "## ". Do the same for the notes file
 
 ## Troubleshooting
 
