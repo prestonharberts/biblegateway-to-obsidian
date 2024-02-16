@@ -69,10 +69,15 @@ for ((book = 0; book < book_max; book++)); do
         # text=$(echo "${text}" | sed 's/^(.*?)v1/v1/') # Deleting unwanted headers
         text="${text/^(.*?)v1/v1/}" # Deleting unwanted headers
 
-        if [[ $enable_audio_bible == "true" ]]; then
-            # echo -en "# ${short_title} ${chapter} ${translation}\n\n${audio_bible}\n${text}\ntemp_line\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+        yaml="---\naliases: [\"${short_title} ${chapter} \(${translation}\)\", \"${abbreviation} ${chapter} \(${translation}\)\"]\n---"
+
+        if [[ $yaml_enabled == "true" ]] && [[ $enable_audio_bible == "true" ]]; then
+            echo -en "${yaml}\n${navigation}\n# ${short_title} ${chapter} ${translation}\n${text}\ntemp_line\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+        elif [[ $yaml_enabled == "true" ]] && [[ $enable_audio_bible == "false" ]]; then
+            echo -en "${yaml}\n${navigation}\n# ${short_title} ${chapter} ${translation}\n\n${text}\ntemp_line\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+        elif [[ $yaml_enabled == "false" ]] && [[ $enable_audio_bible == "true" ]]; then
             echo -en "# ${short_title} ${chapter} ${translation}\n${text}\n\ntemp_line\n${navigation}" >>"${reading_dir}/${curr_file}.md"
-        elif [[ $enable_audio_bible == "false" ]]; then
+        else
             echo -en "# ${short_title} ${chapter} ${translation}\n\n${text}\n\ntemp_line\n${navigation}" >>"${reading_dir}/${curr_file}.md"
         fi
     done # End of the book exporting loop
