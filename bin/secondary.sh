@@ -25,7 +25,7 @@ for ((book = 0; book < book_max; book++)); do
     previous_book="${standard_abbreviation_arr[previous_book_num]}"
     next_book="${standard_abbreviation_arr[next_book_num]}"
 
-    echo -en " " >>"${outline_dir}/${standard_short_title}.md"
+    echo -en " " >>"${outlines_dir}/${standard_short_title}.md"
 
     for ((chapter = 1; chapter <= chapter_max; chapter++)); do
         if [[ $verbose == "true" ]]; then

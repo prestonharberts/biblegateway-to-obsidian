@@ -48,14 +48,14 @@ if [[ $enable_audio_bible == "true" ]]; then
             fi
 
             if [[ $primary_translation == "true" ]]; then
-                echo -e "${yaml}\n# ${short_title} ${chapter} audio\n${navigation}" >>"${outline_dir}/${standard_abbreviation}${chapter}${audio}.md"
+                echo -e "${yaml}\n# ${short_title} ${chapter} audio\n${navigation}" >>"${outlines_dir}/${standard_abbreviation}${chapter}${audio}.md"
                 title="##### [[${standard_abbreviation}${chapter}|${translation}]]:"
                 audio_bible="![[${standard_abbreviation}${chapter}${standard_translation}.mp3]]" # Setting the current file
-                echo -e "${title}\n${audio_bible}" >>"${outline_dir}/${standard_abbreviation}${chapter}${audio}.md"
+                echo -e "${title}\n${audio_bible}" >>"${outlines_dir}/${standard_abbreviation}${chapter}${audio}.md"
             elif [[ $primary_translation == "false" ]]; then
                 title="##### [[${standard_abbreviation}${chapter}${standard_translation}|${translation}]]:"
                 audio_bible="![[${standard_abbreviation}${chapter}${standard_translation}.mp3]]" # Setting the current file
-                echo -e "${title}\n${audio_bible}" >>"${outline_dir}/${standard_abbreviation}${chapter}${audio}.md"
+                echo -e "${title}\n${audio_bible}" >>"${outlines_dir}/${standard_abbreviation}${chapter}${audio}.md"
             fi
         done
     done
