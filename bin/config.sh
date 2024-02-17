@@ -24,7 +24,7 @@ translation="ESV"
 # Secondary translations will be without note files and appended to outlines
 primary_translation="true"
 
-outline="Outline"
+outlines="Outlines"
 reading="Reading"
 notes="Notes"
 audio="Audio"
@@ -281,7 +281,7 @@ if [[ $filename_separator != " " ]]; then
     standard_bible_name=${standard_bible_name// /${filename_separator}}
     standard_audio_bible_name=${standard_audio_bible_name// /${filename_separator}}
 
-    outline=${outline// /${filename_separator}}
+    outlines=${outlines// /${filename_separator}}
     reading=${reading// /${filename_separator}}
     notes=${notes// /${filename_separator}}
     audio=${audio// /${filename_separator}}
@@ -299,7 +299,7 @@ if [[ $lowercase == "true" ]]; then
     standard_bible_name=${standard_bible_name,,}
     standard_audio_bible_name=${standard_audio_bible_name,,}
 
-    outline=${outline,,}
+    outlines=${outlines,,}
     reading=${reading,,}
     notes=${notes,,}
     audio=${audio,,}
@@ -320,12 +320,12 @@ fi
 
 bible_dir="./${standard_bible_name}"
 translation_dir="${bible_dir}/${standard_translation}"
-outline_dir="${bible_dir}/${outline}"
+outlines_dir="${bible_dir}/${outlines}"
 notes_dir="${bible_dir}/${notes}"
 reading_dir="${translation_dir}/${reading}"
 audio_dir="${translation_dir}/${audio}"
 
-mkdir -p "${bible_dir}" "${translation_dir}" "${outline_dir}" "${notes_dir}" "${reading_dir}" "${audio_dir}"
+mkdir -p "${bible_dir}" "${translation_dir}" "${outlines_dir}" "${notes_dir}" "${reading_dir}" "${audio_dir}"
 
 if [[ $parentheses_enabled == "true" ]]; then
     translation="(${translation})"
