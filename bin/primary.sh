@@ -81,17 +81,17 @@ for ((book = 0; book < book_max; book++)); do
         yaml_notes="---\naliases: [\"${short_title} ${chapter} ${notes}\", \"${abbreviation} ${chapter} ${notes}\"]\n---"
 
         if [[ $yaml_enabled == "true" ]] && [[ $enable_audio_bible == "true" ]]; then
-            echo -en "${yaml}\n${navigation}\n# ${short_title} ${chapter} ${translation}\n${text}\ntemp_line\n${navigation}" >>"${reading_dir}/${curr_file}.md"
-            echo -en "${yaml_notes}\n${navigation_notes}\n# ${short_title} ${chapter} notes\n${text}" >>"${reading_dir}/${curr_file_notes}.md"
+            echo -en "${yaml}\n# ${short_title} ${chapter} ${translation}\n${navigation}${text}\ntemp_line\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+            echo -en "${yaml_notes}\n# ${short_title} ${chapter} notes\n${navigation_notes}${text}" >>"${reading_dir}/${curr_file_notes}.md"
         elif [[ $yaml_enabled == "true" ]] && [[ $enable_audio_bible == "false" ]]; then
-            echo -en "${yaml}\n${navigation}\n# ${short_title} ${chapter} ${translation}\n\n${text}\ntemp_line\n${navigation}" >>"${reading_dir}/${curr_file}.md"
-            echo -en "${yaml_notes}\n${navigation_notes}\n# ${short_title} ${chapter} notes\n\n${text}" >>"${reading_dir}/${curr_file_notes}.md"
+            echo -en "${yaml}\n# ${short_title} ${chapter} ${translation}\n${navigation}${text}\ntemp_line\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+            echo -en "${yaml_notes}\n# ${short_title} ${chapter} notes\n${navigation_notes}${text}" >>"${reading_dir}/${curr_file_notes}.md"
         elif [[ $yaml_enabled == "false" ]] && [[ $enable_audio_bible == "true" ]]; then
-            echo -en "# ${short_title} ${chapter} ${translation}\n${text}\n\ntemp_line\n${navigation}" >>"${reading_dir}/${curr_file}.md"
-            echo -en "# ${short_title} ${chapter} notes\n${text}" >>"${reading_dir}/${curr_file_notes}.md"
+            echo -en "# ${short_title} ${chapter} ${translation}\n${navigation_notes}${text}\n\ntemp_line\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+            echo -en "# ${short_title} ${chapter} notes\n${navigation_notes}${text}" >>"${reading_dir}/${curr_file_notes}.md"
         else
-            echo -en "# ${short_title} ${chapter} ${translation}\n\n${text}\n\ntemp_line\n${navigation}" >>"${reading_dir}/${curr_file}.md"
-            echo -en "# ${short_title} ${chapter} notes\n\n${text}" >>"${reading_dir}/${curr_file_notes}.md"
+            echo -en "# ${short_title} ${chapter} ${translation}\n${navigation_notes}${text}\n\ntemp_line\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+            echo -en "# ${short_title} ${chapter} notes\n${navigation_notes}${text}" >>"${reading_dir}/${curr_file_notes}.md"
         fi
     done # End of the book exporting loop
 done

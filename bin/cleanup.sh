@@ -24,9 +24,9 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^Psalm [0-9]//g'
 
 # Create editorial headers
 if [[ $yaml_enabled == "true" ]]; then
-    find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '7 s/[A-Za-z0-9:].*/\n## &/g' {} + # Make first header if it exists (YAML enabled)
+    find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '6 s/[A-Za-z0-9:].*/## &/g' {} + # Make first header if it exists (YAML enabled)
 else
-    find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '4 s/[A-Za-z0-9:].*/\n## &/g' {} + # Make first header if it exists (YAML disabled)
+    find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '3 s/[A-Za-z0-9:].*/## &/g' {} + # Make first header if it exists (YAML disabled)
 fi
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/”[A-Z0-9][A-Za-z0-9: ].*$/”\n\n## &/g' {} + # Header following quotes
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/## ”/## /g' {} +
@@ -130,7 +130,7 @@ if [[ $primary_translation == "true" ]]; then
     find . -type f -name "*${notes}.md" -exec sed -i 's/\-\-\-/[---]/g' {} +
 
     find . -type f -name "*${notes}.md" -exec sed -i 's/^[^#![].*//g' {} +
-    find . -type f -name "*${notes}.md" -exec sed -i '8 s/###### 1$/- [ ] /g' {} +
+    find . -type f -name "*${notes}.md" -exec sed -i '7 s/###### 1$/- [ ] /g' {} +
     find . -type f -name "*${notes}.md" -exec sed -i 's/###### [0-9]*//g' {} +
 
     find . -type f -name "*${notes}.md" -exec sed -i 's/\[alias\]/alias/g' {} +
@@ -245,9 +245,13 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n\n/\n\n/;ba;}' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n/\n\n\n\n/;ba;}' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n\n/\n\n\n\n/;ba;}' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n##### /\n##### /;ba;}' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/→\n/→/;ba;}' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/→##/→\n##/;ba;}' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/→-/→\n-/;ba;}' {} +
 
 if [[ $primary_translation == "true" ]]; then
-    mv "${reading_dir}/"*notes*.md "${notes_dir}/"
+    mv "${reading_dir}/"*notes.md "${notes_dir}/"
 fi
 if [[ $enable_audio_bible == "false" ]]; then
     rm "${audio_dir}" -r
