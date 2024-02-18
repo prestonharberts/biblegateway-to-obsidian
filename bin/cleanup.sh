@@ -250,6 +250,10 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/## ?/## /g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\:[A-Z0-9][A-Za-z0-9: ].*$/:\n\n## &/g' {} + # Header following colon
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/## \:/## /g' {} +
 
+# Remove extra space before some hyphens
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ —/—/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/— /—/g' {} +
+
 # Correct newline spacing
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n/\n\n/;ba;}' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n/\n\n/;ba;}' {} +
