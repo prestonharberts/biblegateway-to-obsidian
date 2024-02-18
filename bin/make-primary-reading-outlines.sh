@@ -2,8 +2,15 @@
 
 source config.sh
 
+yaml="---\naliases: [\"${bible_name}\"]\n---"
+
 # initialize the bible file for all of the old/new testament
-echo -e "# ${bible_name}\n\n## Contents\n\n[[${standard_testament_arr[0]}|${testament_arr[0]}]]\n[[${standard_testament_arr[39]}|${testament_arr[39]}]]" >>"${outlines_dir}/${standard_bible_name}.md"
+if [[ $yaml_enabled == "true" ]]; then
+	echo -e "${yaml}\n# ${bible_name}\n\n## Contents\n\n[[${standard_testament_arr[0]}|${testament_arr[0]}]]\n[[${standard_testament_arr[39]}|${testament_arr[39]}]]" >>"${outlines_dir}/${standard_bible_name}.md"
+else
+	echo -e "# ${bible_name}\n\n## Contents\n\n[[${standard_testament_arr[0]}|${testament_arr[0]}]]\n[[${standard_testament_arr[39]}|${testament_arr[39]}]]" >>"${outlines_dir}/${standard_bible_name}.md"
+else
+fi
 # initialize the old/new testament file for all of the genres
 # echo -e "---\naliases: ${testament_arr[0]}, OT\n---\n###### [[${standard_bible_name}|${bible_name}]]\n# ${testament_arr[0]}\n\n## Contents\n\n[[${standard_genre_arr[0]}|${genre_arr[0]}]]\n[[${standard_genre_arr[5]}|${genre_arr[5]}]]\n[[${standard_genre_arr[17]}|${genre_arr[17]}]]\n[[${standard_genre_arr[19]}|${genre_arr[19]}]]\n[[${standard_genre_arr[22]}|${genre_arr[22]}]]\n[[${standard_genre_arr[27]}|${genre_arr[27]}]]" >>"${outlines_dir}/${standard_testament_arr[0]}.md"
 # echo -e "---\naliases: ${testament_arr[39]}, NT\n---\n###### [[${standard_bible_name}|${bible_name}]]\n# ${testament_arr[39]}\n\n## Contents\n\n[[${standard_genre_arr[39]}|${genre_arr[39]}]]\n[[${standard_genre_arr[43]}|${genre_arr[43]}]]\n[[${standard_genre_arr[44]}|${genre_arr[44]}]]\n[[${standard_genre_arr[57]}|${genre_arr[57]}]]\n[[${standard_genre_arr[65]}|${genre_arr[65]}]]" >>"${outlines_dir}/${standard_testament_arr[39]}.md"
