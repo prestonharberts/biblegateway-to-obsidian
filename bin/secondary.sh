@@ -12,10 +12,10 @@ for ((book = 0; book < book_max; book++)); do
     source get-info.sh
 
     if [[ $verbose == "true" && $short_title != "Psalm" ]]; then
-         printf '\n%s' "${short_title}"
+        printf '\n%s' "${short_title}"
     elif [[ $verbose == "true" ]]; then
         printf '\n%s' "Psalms"
-     fi
+    fi
 
     if [[ $book != 0 ]]; then
         ((previous_book_num = book - 1))
@@ -24,8 +24,6 @@ for ((book = 0; book < book_max; book++)); do
 
     previous_book="${standard_abbreviation_arr[previous_book_num]}"
     next_book="${standard_abbreviation_arr[next_book_num]}"
-
-    echo -en " " >>"${outlines_dir}/${standard_short_title}.md"
 
     for ((chapter = 1; chapter <= chapter_max; chapter++)); do
         if [[ $verbose == "true" ]]; then
