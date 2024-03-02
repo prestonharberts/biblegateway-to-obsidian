@@ -9,6 +9,9 @@ fi
 # Remove "Chapter x" at the beginning of each file
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/##### Chapter.*//g' {} +
 
+# Transform _Selah_ into *Selah* and add a space
+find . -type f -name "${reading_dir}/*.md" -exec sed -i 's/_Selah_/ *Selah*/g' {} +
+
 # Format verses into H6 headers
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/###### [0-9] /\n\n&\n\n/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/###### [0-9][0-9] /\n\n&\n\n/g' {} +
