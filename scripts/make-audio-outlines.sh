@@ -16,7 +16,7 @@ if [[ $enable_audio_bible == "true" ]]; then
         next_book="${standard_abbreviation_arr[next_book_num]}"
 
         for ((chapter = 1; chapter <= chapter_max; chapter++)); do
-            yaml="---\naliases: [\"${short_title} ${chapter} ${audio}\", \"${abbreviation}. ${chapter} ${audio}\"]\n---"
+            yaml="---\naliases: [\"${short_title} ${chapter} ${audio}\", \"${abbreviation} ${chapter} ${audio}\"]\n---"
 
             ((previous_chapter = chapter - 1)) # Counting the previous and next chapter for navigation
             ((next_chapter = chapter + 1))

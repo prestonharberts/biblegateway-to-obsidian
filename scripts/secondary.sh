@@ -70,13 +70,13 @@ for ((book = 0; book < book_max; book++)); do
         yaml="---\naliases: [\"${short_title} ${chapter} (${translation})\", \"${abbreviation} ${chapter} (${translation})\"]\n---"
 
         if [[ $yaml_enabled == "true" ]] && [[ $enable_audio_bible == "true" ]]; then
-            echo -en "${yaml}\n# ${short_title} ${chapter} ${translation}\n${navigation}${text}\ntemp_line\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+            echo -en "${yaml}\n# ${short_title} ${chapter} ${translation}\n${navigation}${text}\ntempline\n${navigation}" >>"${reading_dir}/${curr_file}.md"
         elif [[ $yaml_enabled == "true" ]] && [[ $enable_audio_bible == "false" ]]; then
-            echo -en "${yaml}\n# ${short_title} ${chapter} ${translation}\n${navigation}${text}\ntemp_line\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+            echo -en "${yaml}\n# ${short_title} ${chapter} ${translation}\n${navigation}${text}\ntempline\n${navigation}" >>"${reading_dir}/${curr_file}.md"
         elif [[ $yaml_enabled == "false" ]] && [[ $enable_audio_bible == "true" ]]; then
-            echo -en "# ${short_title} ${chapter} ${translation}\n${navigation}\n${text}temp_line\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+            echo -en "# ${short_title} ${chapter} ${translation}\n${navigation}\n${text}templine\n${navigation}" >>"${reading_dir}/${curr_file}.md"
         else
-            echo -en "# ${short_title} ${chapter} ${translation}\n${navigation}\n\n${text}temp_line\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+            echo -en "# ${short_title} ${chapter} ${translation}\n${navigation}\n\n${text}templine\n${navigation}" >>"${reading_dir}/${curr_file}.md"
         fi
     done # End of the book exporting loop
 done
