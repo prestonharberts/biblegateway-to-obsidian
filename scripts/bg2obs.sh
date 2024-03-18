@@ -23,6 +23,8 @@ else
   source secondary.sh
 fi
 
+source cleanup.sh
+
 if [[ $verbose == "true" ]]; then
   printf "Markdown files ready for Obsidian.\n"
 fi

@@ -279,14 +279,6 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/→-/→
 # remove space before asterisks followed by right bracket
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ \*\]/\*]/g' {} +
 
-# escape double brackets
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^\[\[/\\[\\[/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^\[\[.*\]/&\.\.\./g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^[A-Za-z0-9].*\[\[/&\.\.\./g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\[\[\.\.\./\\[\\[/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^[A-Za-z0-9].*\]\]/&\.\.\./g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\]\]\.\.\./\\]\\]/g' {} +
-
 # escape single brackets
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^\[/\\[/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^\[.*\]/&\.\.\./g' {} +
@@ -295,7 +287,13 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\[\.\.\./\\[/g' 
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^[A-Za-z0-9].*\]/&\.\.\./g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\]\.\.\./\\]/g' {} +
 
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ *$//g' {} +      # Delete spaces after text
+# escape double brackets
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^\[\[/\\[\\[/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^\[\[.*\]/&\.\.\./g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^[A-Za-z0-9].*\[\[/&\.\.\./g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\[\[\.\.\./\\[\\[/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^[A-Za-z0-9].*\]\]/&\.\.\./g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\]\]\.\.\./\\]\\]/g' {} +
 
 if [[ $primary_translation == "true" ]]; then
     mv "${reading_dir}/"*notes.md "${notes_dir}/"
@@ -303,6 +301,9 @@ fi
 if [[ $enable_audio_bible == "false" ]]; then
     rm "${audio_dir}" -r
 fi
+
+# Delete spaces after text
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ *$//g' {} +
 
 if [[ $verbose == "true" ]]; then
     echo " Done."
