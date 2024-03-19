@@ -299,6 +299,10 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\]\]\.\.\./\\]\\
 # Correct \*Selah\* to Selah
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\\\*Selah\\\*/Selah/g' {} +
 
+# Remove <em> and </em>
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/[<]em[>]//g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/[<]\/em[>]//g' {} +
+
 # Delete pairs of asterisks
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\*\*//g' {} +
 
