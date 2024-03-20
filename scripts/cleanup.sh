@@ -150,6 +150,8 @@ if [[ $primary_translation == "true" ]]; then
     find . -type f -wholename "*${notes}.md" -exec sed -i 's/\[alias\]/alias/g' {} +
     find . -type f -wholename "*${notes}.md" -exec sed -i 's/\[\-\-\-\]/---/g' {} +
 
+    find . -type f -wholename "*${notes}.md" -exec sed -i 's/^\[.*//g' {} +
+
     # Remove 1 headers
     find . -type f -wholename "*${notes}.md" -exec sed -i 's/ *$//g' {} + # Delete spaces after text
     find . -type f -wholename "*${notes}.md" -exec sed -i ':a;$!{N;s/## 1$\n\n//;ba;}' {} +
@@ -160,6 +162,9 @@ if [[ $primary_translation == "true" ]]; then
 
     # Remove extra bullet
     find . -type f -wholename "*${notes}.md" -exec sed -i ':a;$!{N;s/\- \[ \] \n\n\- \[ \]/- [ ] /;ba;}' {} +
+
+    # Remove extra spacing caused by bracketed verses
+    find . -type f -wholename "*${notes}.md" -exec sed -i ':a;$!{N;s/\n\n$//;ba;}' {} +
 fi
 
 # Turn H6 into numbered list
