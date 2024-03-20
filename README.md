@@ -42,11 +42,17 @@ Certain manual changes must be made to the Bible files that cannot be done other
 
 - In Mark 16, there is an editorial note that results in headers being misplaced, so remove the note, create the header on the same line, correct Mark 16:9, and remove the brackets from Mark 16:20. Do the same for the notes file.
 - In John chapters 7-8, there is an editorial note that results in headers being misplaced, so remove the note, correct John 7:53, fix the header, correct John 8:1, remove the brackets from John 8:11, and create the header in that verse as well by giving it a new line and placing two pound symbols before it and a space like this: "## ". Do the same for the notes file and also create the same header that was made in the reading file in the notes file.
+- Separate header from verse by adding a new line and creating a numbered list with the same verse number as the previous verse for 1 Chronicles 29, 1 Timothy 6, 2 Samuel 12, Acts 9, John 19, Luke 9, and Obadiah.
 
 #### CSB Specific
 
 - In Mark 15:34, remove the asterisks.
 - In Matthew 27:46, remove the asterisks.
+- Separate header from verse by adding a new line and creating a numbered list with the same verse number as the previous verse for 1 Kings 19, 1 Kings 7,1 Samuel 4, 1 Samuel 14, 2 Kings 5, John 18, and Mark 15.
+
+#### ESV Specific
+
+- Separate header from verse by adding a new line and creating a numbered list with the same verse number as the previous verse for Psalm 1, 1 Samuel 25, 2 Samuel 19, John 12, Philippians 1, and Song of Songs 4.
 
 ## Troubleshooting
 
