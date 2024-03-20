@@ -19,22 +19,22 @@ elif [[ $chapter_max -gt 1 ]]; then
     echo "Now beginning: ${1} (${chapter_max} chapters)"
 fi
 
-#make add-pilcrow-signs.sh
-if [[ -f "add-pilcrow-signs.sh" ]]; then
-    echo -e "# Book ${book}: ${short_title}" >>add-pilcrow-signs.sh
+#make pilcrow-script.sh
+if [[ -f "pilcrow-script.sh" ]]; then
+    echo -e "# Book ${book}: ${short_title}" >>pilcrow-script.sh
 else
-    echo -e "#!/bin/bash" >>add-pilcrow-signs.sh
-    echo -e "source config.sh" >>add-pilcrow-signs.sh
-    echo -e "if [[ \$primary_translation == \"true\" ]]; then" >>add-pilcrow-signs.sh
-    echo -e "    if_secondary=\"\"" >>add-pilcrow-signs.sh
-    echo -e "else" >>add-pilcrow-signs.sh
-    echo -e "    if_secondary=\"\${standard_translation}\"" >>add-pilcrow-signs.sh
-    echo -e "fi" >>add-pilcrow-signs.sh
-    echo -e "sed -i \"s/###### 1$/###### ¶ 1/g\" \"\${reading_dir}/\"*.md" >>add-pilcrow-signs.sh
+    echo -e "#!/bin/bash" >>pilcrow-script.sh
+    echo -e "source config.sh" >>pilcrow-script.sh
+    echo -e "if [[ \$primary_translation == \"true\" ]]; then" >>pilcrow-script.sh
+    echo -e "    if_secondary=\"\"" >>pilcrow-script.sh
+    echo -e "else" >>pilcrow-script.sh
+    echo -e "    if_secondary=\"\${standard_translation}\"" >>pilcrow-script.sh
+    echo -e "fi" >>pilcrow-script.sh
+    echo -e "sed -i \"s/###### 1$/###### ¶ 1/g\" \"\${reading_dir}/\"*.md" >>pilcrow-script.sh
     ((book++))
-    echo -e "# Book ${book}: ${short_title}" >>add-pilcrow-signs.sh
+    echo -e "# Book ${book}: ${short_title}" >>pilcrow-script.sh
     ((book--))
-    chmod u+x add-pilcrow-signs.sh
+    chmod u+x pilcrow-script.sh
 fi
 
 #read verse num to add pilcrow sign to and add sed line to script
@@ -47,7 +47,7 @@ while ((chapter <= chapter_max)); do
     fi
     read -p ">>> " verse
     while ((verse != "n")); do
-            echo -e "sed -i \"s/###### ${verse}$/###### ¶ ${verse}/g\" \"\${reading_dir}/${standard_abbreviation}${chapter}\${if_secondary}.md\"" >>add-pilcrow-signs.sh
+            echo -e "sed -i \"s/###### ${verse}$/###### ¶ ${verse}/g\" \"\${reading_dir}/${standard_abbreviation}${chapter}\${if_secondary}.md\"" >>pilcrow-script.sh
         read -p ">>> " verse
     done
     # if [[ $verse == "n" ]] && [[ $chapter -eq $chapter_max ]]; then
