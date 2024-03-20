@@ -16,7 +16,12 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/_Selah_/ *Selah*
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\*/\\\*/g' {} +
 
 # Transform underscored text into markdown italics
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_/\*/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_[A-Za-z]/<i>...&/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/[A-Za-z]\_/&...<\/i>/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_\.\.\.//g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\.\.\.\_//g' {} +
+# No longer needed because I am using the CSS tag to italicize
+# find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_/\*/g' {} +
 
 # Format verses into H6 headers
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/###### [0-9] /\n\n&\n\n/g' {} +
@@ -76,14 +81,14 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/)[A-Za-z0-9*]/\.
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\.\.\.)/) /g' {} +
 
 # Add space between certain characters and right quotes
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\. ”/\.”/g' {} +                   # right double quote period
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\. '’'/\.'’'/g' {} +                 # right single quote period
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\, ”/\,”/g' {} +                   # right double quote comma
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\, '’'/\,'’'/g' {} +                 # right single quote comma
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\! ”/!”/g' {} +                    # right double quote exclamation mark
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\! '’'/!'’'/g' {} +                  # right single quote exclamation mark
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\? ”/?”/g' {} +                    # right double quote question mark
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\? '’'/?'’'/g' {} +                  # right single quote question mark
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\. ”/\.”/g' {} +                  # right double quote period
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\. '’'/\.'’'/g' {} +              # right single quote period
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\, ”/\,”/g' {} +                  # right double quote comma
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\, '’'/\,'’'/g' {} +              # right single quote comma
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\! ”/!”/g' {} +                   # right double quote exclamation mark
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\! '’'/!'’'/g' {} +               # right single quote exclamation mark
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\? ”/?”/g' {} +                   # right double quote question mark
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\? '’'/?'’'/g' {} +               # right single quote question mark
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\[A-Za-z0-9*] ”/&\.\.\./g' {} +   # right double quote letters and numbers
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ ”\.\.\./”/g' {} +                # right double quote letters and numbers
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\[A-Za-z0-9*] '’'/&\.\.\./g' {} + # right single quote letters and numbers
@@ -205,18 +210,18 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ 8\.\.\./8/g' {}
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ 9\.\.\./9/g' {} +
 
 # Add space between certain characters and right quotes
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\. ”/\.”/g' {} +                   # right double quote period
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\. '’'/\.'’'/g' {} +               # right single quote period
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\, ”/\,”/g' {} +                   # right double quote comma
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\, '’'/,'’'/g' {} +                # right single quote comma
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\! ”/!”/g' {} +                    # right double quote exclamation mark
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\! '’'/!'’'/g' {} +                # right single quote exclamation mark
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\? ”/?”/g' {} +                    # right double quote question mark
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\? '’'/?'’'/g' {} +                # right single quote question mark
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\. ”/\.”/g' {} +                    # right double quote period
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\. '’'/\.'’'/g' {} +                # right single quote period
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\, ”/\,”/g' {} +                    # right double quote comma
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\, '’'/,'’'/g' {} +                 # right single quote comma
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\! ”/!”/g' {} +                     # right double quote exclamation mark
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\! '’'/!'’'/g' {} +                 # right single quote exclamation mark
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\? ”/?”/g' {} +                     # right double quote question mark
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\? '’'/?'’'/g' {} +                 # right single quote question mark
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\[A-Za-z0-9*] ”/&\.\.\.\./g' {} +   # right double quote letters and numbers
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/”\.\.\.\./”/g' {} +                # right double quote letters and numbers
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/”\.\.\.\./”/g' {} +                 # right double quote letters and numbers
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\[A-Za-z0-9*] '’'/&\.\.\.\./g' {} + # right single quote letters and numbers
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/'’'\.\.\.\./'’'/g' {} +            # right single quote letters and numbers
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/'’'\.\.\.\./'’'/g' {} +             # right single quote letters and numbers
 
 # Correct newline spacing
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n/\n\n/;ba;}' {} +
@@ -306,6 +311,10 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/[<]\/em[>]//g' {
 # Delete pairs of asterisks
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\*\*//g' {} +
 
+# Fix alias brackets
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '2 s/\\\[/\[/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '2 s/\\\]/\]/g' {} +
+
 if [[ $primary_translation == "true" ]]; then
     mv "${reading_dir}/"*notes.md "${notes_dir}/"
 fi
@@ -315,6 +324,15 @@ fi
 
 # Delete spaces after text
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ *$//g' {} +
+
+# Replace poetry newlines with <br>
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^[^#-]/<br>&/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^<br>alias/alias/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^<br>[0-9]\./...&/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^<br>[0-9][0-9]\./...&/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^<br>[0-9][0-9][0-9]\./...&/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\.\.\.<br>//g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n<br>/<br>/;ba;}' {} +
 
 if [[ $verbose == "true" ]]; then
     echo " Done."
