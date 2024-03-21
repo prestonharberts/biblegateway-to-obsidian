@@ -40,12 +40,12 @@ Once you are in the directory containing the script, run `./bg2obs.sh`. This wil
 
 Certain manual changes must be made to the Bible files that cannot be done otherwise:
 
-- Mark 16:9 and Mark 16:20
 - John 7:52-53, 8:1, and 8:11
 - Check that Mark 15:34, Matthew 27:36, and Nehemiah 7:61, Hosea 9:1, and Ezra 2:59's italics are formatted properly.
 
 #### CSB specific changes
 
+- Ezra 2 skips verses 3-35 for some reason
 - Matthew 12:21
 
 #### LSB specific changes

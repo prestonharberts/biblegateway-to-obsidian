@@ -19,8 +19,8 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\*\*//g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/_Selah_/ *Selah*/g' {} +
 
 # Put italic underscores before quotes and punctuation
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_”/<i>/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_’/<i>/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_“/<i>/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_‘/<i>/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/”\_/<\/i>/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/’\_/<\/i>/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_’/<\/i>/g' {} +
@@ -29,8 +29,8 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_’/<\/i>/g' {
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_ _/<\/i> <i>/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_[A-Za-z]/<i>...&/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/[A-Za-z.,]\_/&...<\/i>/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_\.\.\.//g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\.\.\.\_//g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\.\.\.\<\/i>//g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ <\/i>/<\/i>/g' {} +
 # No longer needed because I am using the CSS tag to italicize
 # find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_/\*/g' {} +
 
@@ -316,6 +316,8 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^[A-Za-z0-9].*\[
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\[\[\.\.\./\\[\\[/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^[A-Za-z0-9].*\]\]/&\.\.\./g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\]\]\.\.\./\\]\\]/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\\]\]/\\]\\]/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\]\\]/\\]\\]/g' {} +
 
 # Correct \*Selah\* to Selah
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\\\*Selah\\\*/<i>Selah<\/i>/g' {} +
