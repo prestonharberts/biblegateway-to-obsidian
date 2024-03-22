@@ -19,17 +19,20 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\*\*//g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/_Selah_/ *Selah*/g' {} +
 
 # Put italic underscores before quotes and punctuation
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_“/<i>/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_‘/<i>/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/”\_/<\/i>/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/’\_/<\/i>/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\!\_/<\/i>!/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\?\_/<\/i>?/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_“/“<i>/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_‘/‘<i>/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/”\_/<\/i>”/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/’\_/<\/i>’/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_’/<\/i>/g' {} +
 
 # Transform underscored text into CSS italics
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_ _/<\/i> <i>/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_ \_/<\/i> <i>/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_[A-Za-z]/<i>...&/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/<i>\.\.\._/<i>/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/[A-Za-z.,]\_/&...<\/i>/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\.\.\.\<\/i>//g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_\.\.\.<\/i>/<\/i>/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ <\/i>/<\/i>/g' {} +
 # No longer needed because I am using the CSS tag to italicize
 # find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_/\*/g' {} +
@@ -328,6 +331,7 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/[<]\/em[>]//g' {
 
 # Delete pairs of asterisks
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\*\*//g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\\\*\\\*//g' {} +
 
 # Fix alias brackets
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '2 s/\\\[/\[/g' {} +
@@ -359,6 +363,21 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/templine/<hr sty
 # find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/<br>\.\.\.//g' {} +
 
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n/\n/;ba;}' {} + # Remove newline that gets added before ending horizontal line
+
+## duplicate lines
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ <\/i>/<\/i>/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\_“/“<i>/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/?<\/i>/<\/i>?/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/?<\/i>/<\/i>?/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/!<\/i>/<\/i>!/g' {} +
+
+# fix header immediately following punctuation
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\.[A-Za-z0-9*]/\.\n\.\.&/g' {} + # periods
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\.\.\./\## /g' {} + # periods
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\![A-Za-z0-9*]/\.\n\.\.&/g' {} + # periods
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\!\.\.\!/\## /g' {} + # periods
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\?[A-Za-z0-9*]/\.\n\.\.&/g' {} + # periods
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\?\.\.\?/\## /g' {} + # periods
 
 # Fix verses that continue after a heading
 # find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^#[^<]*<br>/&...\n###### ¶\n/g' {} +
