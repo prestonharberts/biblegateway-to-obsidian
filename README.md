@@ -38,7 +38,7 @@ Once you are in the directory containing the script, run `./bg2obs.sh`. This wil
 
 ### Manual changes
 
-Certain manual changes must be made to the Bible files that cannot be done otherwise:
+Certain manual changes must be made to the Bible files that cannot be done otherwise (make sure to check the note files for these chapters too):
 
 - John 7:52-53, 8:1, and 8:11
 - Check that Mark 15:34, Matthew 27:36, and Nehemiah 7:61, Hosea 9:1, and Ezra 2:59's italics are formatted properly.
