@@ -48,28 +48,28 @@ for ((book = 0; book < book_max; book++)); do
         # Formatting Navigation and omitting links that aren't necessary
         if [[ $chapter_max -eq 1 ]]; then
             # For a book that only has one chapter
-            navigation="##### ←[[${previous_book}${length_arr[$previous_book_num]}|Previous book]] / [[${curr_file_notes}|Notes]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_book}1|Next book]]→"
-            navigation_notes="##### ←[[${previous_book}${length_arr[$previous_book_num]}${notes}|Previous book]] / [[${curr_file}|Reading]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_book}1${notes}|Next book]]→"
+            navigation="##### ←←[[${previous_book}${length_arr[$previous_book_num]}|Prev]] / [[${curr_file_notes}|Notes]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_book}1|Next]]→→"
+            navigation_notes="##### ←←[[${previous_book}${length_arr[$previous_book_num]}${notes}|Prev]] / [[${curr_file}|Read]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_book}1${notes}|Next]]→→"
         elif [[ $chapter -eq $chapter_max ]] && [[ $book -eq $((book_max - 1)) ]]; then
             # If this is the last chapter of the book
-            navigation="##### ←[[${previous_file}|Previous chapter]] / [[${curr_file_notes}|Notes]] / [[${standard_abbreviation}${chapter}${audio}|Audio]]"
-            navigation_notes="##### ←[[${previous_file_notes}|Previous chapter]] / [[${curr_file}|Reading]] / [[${standard_abbreviation}${chapter}${audio}|Audio]]"
+            navigation="##### ←[[${previous_file}|Prev]] / [[${curr_file_notes}|Notes]] / [[${standard_abbreviation}${chapter}${audio}|Audio]]"
+            navigation_notes="##### ←[[${previous_file_notes}|Prev]] / [[${curr_file}|Read]] / [[${standard_abbreviation}${chapter}${audio}|Audio]]"
         elif [[ $chapter -eq $chapter_max ]] && [[ $book -ne $((book_max - 1)) ]]; then
             # If this is the last chapter of the book
-            navigation="##### ←[[${previous_file}|Previous chapter]] / [[${curr_file_notes}|Notes]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_book}1|Next book]]→"
-            navigation_notes="##### ←[[${previous_file_notes}|Previous chapter]] / [[${curr_file}|Reading]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_book}1${notes}|Next book]]→"
+            navigation="##### ←[[${previous_file}|Prev]] / [[${curr_file_notes}|Notes]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_book}1|Next]]→→"
+            navigation_notes="##### ←[[${previous_file_notes}|Prev]] / [[${curr_file}|Read]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_book}1${notes}|Next]]→→"
         elif [[ ${chapter} -eq 1 ]] && [[ $book -eq 0 ]]; then
             # If this is the first chapter of the book
-            navigation="##### [[${curr_file_notes}|Notes]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_file}|Next chapter]]→"
-            navigation_notes="##### [[${curr_file}|Reading]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_file_notes}|Next chapter]]→"
+            navigation="##### [[${curr_file_notes}|Notes]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_file}|Next]]→"
+            navigation_notes="##### [[${curr_file}|Read]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_file_notes}|Next]]→"
         elif [[ ${chapter} -eq 1 ]] && [[ $book -ne 0 ]]; then
             # If this is the first chapter of the book
-            navigation="##### ←[[${previous_book}${length_arr[$previous_book_num]}|Previous book]] / [[${curr_file_notes}|Notes]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_file}|Next chapter]]→"
-            navigation_notes="##### ←[[${previous_book}${length_arr[$previous_book_num]}${notes}|Previous book]] / [[${curr_file}|Reading]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_file_notes}|Next chapter]]→"
+            navigation="##### ←←[[${previous_book}${length_arr[$previous_book_num]}|Prev]] / [[${curr_file_notes}|Notes]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_file}|Next]]→"
+            navigation_notes="##### ←←[[${previous_book}${length_arr[$previous_book_num]}${notes}|Prev]] / [[${curr_file}|Read]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_file_notes}|Next]]→"
         else
             # Navigation for everything else
-            navigation="##### ←[[${previous_file}|Previous chapter]] / [[${curr_file_notes}|Notes]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_file}|Next chapter]]→"
-            navigation_notes="##### ←[[${previous_file_notes}|Previous chapter]] / [[${curr_file}|Reading]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_file_notes}|Next chapter]]→"
+            navigation="##### ←[[${previous_file}|Prev]] / [[${curr_file_notes}|Notes]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_file}|Next]]→"
+            navigation_notes="##### ←[[${previous_file_notes}|Prev]] / [[${curr_file}|Read]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_file_notes}|Next]]→"
         fi
 
         short_title_no_spaces=$(echo "${short_title}" | sed 's/ //g')
