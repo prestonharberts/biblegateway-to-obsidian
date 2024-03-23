@@ -337,6 +337,9 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\\\*\\\*//g' {} 
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '2 s/\\\[/\[/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '2 s/\\\]/\]/g' {} +
 
+# Chomp off all trailing newlines
+find . -type f -wholename "${reading_dir}/*.md" -exec perl -pi -e 'chomp if eof' {} +
+
 if [[ $primary_translation == "true" ]]; then
     mv "${reading_dir}/"*notes.md "${notes_dir}/"
 fi
@@ -350,7 +353,7 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ *$//g' {} +
 # Replace poetry newlines with <br>
 # find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^[^#-]/<br>&/g' {} +
 # find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/<br>templine/\n<hr style="margin-top:32px">/g' {} + # Replace templine with newline and horizontal line
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/templine/<hr style="margin-top:32px">/g' {} + # Replace templine with newline and horizontal line
+# find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/templine/<hr style="margin-top:32px">/g' {} + # Replace templine with newline and horizontal line
 # find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^<br>alias/alias/g' {} +
 # find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^<br>[0-9]\./...&/g' {} +
 # find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^<br>[0-9][0-9]\./...&/g' {} +
