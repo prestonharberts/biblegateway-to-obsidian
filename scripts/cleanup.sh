@@ -123,6 +123,7 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/## Book Four//g'
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/## Book Five//g' {} +
 
 # Correct newline spacing
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n/\n/;ba;}' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n/\n/;ba;}' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n/\n/;ba;}' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n/\n/;ba;}' {} +
@@ -385,6 +386,16 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\?\.\.\?/\## /g'
 # Fix verses that continue after a heading
 # find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^#[^<]*<br>/&...\n###### ¶\n/g' {} +
 # find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/<br>\.\.\.//g' {} +
+
+# Correct newline spacing for outlines
+find . -type f -wholename "${outlines_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n/\n/;ba;}' {} +
+find . -type f -wholename "${outlines_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n/\n/;ba;}' {} +
+find . -type f -wholename "${outlines_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n/\n/;ba;}' {} +
+find . -type f -wholename "${outlines_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n/\n/;ba;}' {} +
+find . -type f -wholename "${outlines_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n/\n/;ba;}' {} +
+find . -type f -wholename "${outlines_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n\n/\n/;ba;}' {} +
+find . -type f -wholename "${outlines_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n/\n/;ba;}' {} +
+find . -type f -wholename "${outlines_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n\n/\n/;ba;}' {} +
 
 source pilcrow-script.sh
 

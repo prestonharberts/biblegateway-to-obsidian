@@ -33,22 +33,22 @@ if [[ $enable_audio_bible == "true" ]]; then
             # Formatting Navigation and omitting links that aren't necessary
             if [[ $chapter_max -eq 1 ]]; then
                 # For a book that only has one chapter
-                navigation="##### ←[[${previous_book}${length_arr[$previous_book_num]}${audio}|Previous]] / [[${curr_file_notes}|Notes]] / [[${next_book}1${audio}|Next]]→"
+                navigation="##### ←←[[${previous_book}${length_arr[$previous_book_num]}${audio}|Prev]] / [[${curr_file_notes}|Notes]] / [[${next_book}1${audio}|Next]]→→"
             elif [[ $chapter -eq $chapter_max ]] && [[ $book -eq $((book_max - 1)) ]]; then
                 # If this is the last chapter of the book
-                navigation="##### ←[[${previous_file}|Previous]] / [[${curr_file_notes}|Notes]]"
+                navigation="##### ←[[${previous_file}|Prev]] / [[${curr_file_notes}|Notes]]"
             elif [[ $chapter -eq $chapter_max ]] && [[ $book -ne $((book_max - 1)) ]]; then
                 # If this is the last chapter of the book
-                navigation="##### ←[[${previous_file}|Previous]] / [[${curr_file_notes}|Notes]] / [[${next_book}1${audio}|Next]]→"
+                navigation="##### ←[[${previous_file}|Prev]] / [[${curr_file_notes}|Notes]] / [[${next_book}1${audio}|Next]]→→"
             elif [[ ${chapter} -eq 1 ]] && [[ $book -eq 0 ]]; then
                 # If this is the first chapter of the book
                 navigation="##### [[${curr_file_notes}|Notes]] / [[${next_file}|Next]]→"
             elif [[ ${chapter} -eq 1 ]] && [[ $book -ne 0 ]]; then
                 # If this is the first chapter of the book
-                navigation="##### ←[[${previous_book}${length_arr[$previous_book_num]}${audio}|Previous]] / [[${curr_file_notes}|Notes]] / [[${next_file}|Next]]→"
+                navigation="##### ←←[[${previous_book}${length_arr[$previous_book_num]}${audio}|Prev]] / [[${curr_file_notes}|Notes]] / [[${next_file}|Next]]→"
             else
                 # Navigation for everything else
-                navigation="##### ←[[${previous_file}|Previous]] / [[${curr_file_notes}|Notes]] / [[${next_file}|Next]]→"
+                navigation="##### ←[[${previous_file}|Prev]] / [[${curr_file_notes}|Notes]] / [[${next_file}|Next]]→"
             fi
 
             if [[ $primary_translation == "true" ]]; then

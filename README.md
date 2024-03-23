@@ -41,8 +41,6 @@ Once you are in the directory containing the script, run `./bg2obs.sh`. This wil
 Certain manual changes must be made to the Bible files that cannot be done otherwise (make sure to check the note files for these chapters too):
 
 - John 7:52-53, 8:1, and 8:11
-- Check that Mark 15:34, Matthew 27:36
-- Ensure that Nehemiah 7:61, Hosea 9:1, and Ezra 2:59's italics are formatted properly (move the apostrophe to inside the italics; I should write a regex for this soon)
 - If wanted, add Psalm introductions and introductions present in other books.
 - If wanted, indent poetry by adding enclosing the line with '<div classs="poetry">' and '</div>' (at the beginning and end).
 - If wanted, bold OT references in the NT.
@@ -53,22 +51,10 @@ Certain manual changes must be made to the Bible files that cannot be done other
 - Song of Songs editorial headers do not get added for some reason
 - Ezra 2 skips verses 3-35 for some reason.
 - Neh 7 Skips verses 40-42 for some reason.
-- Matthew 2:15
-- Matthew 2:18
-- Matthew 8:17
-- Matthew 12:21
-- Mark 13:6
-- Luke 8:10
-- John 15:25
-- Romans 1:17
-- Romans 4:8
-- Romans 9:29
-- 2 Corinthians 8:15
-- 1 Peter 3:12
 
 #### LSB specific changes
 
-- In Psalm 112, create two level 2 headings at before the first heading: Sin and Tav. Now, seperate the first half (the half before and including the semicolon) of the existing faulty heading to be under Sin, and the other half (the half after the semicolo) to be under Tav.
+- In Psalm 112, create two level 2 headings at before the first heading: Sin and Tav. Now, seperate the first half (the half before and including the semicolon) of the existing faulty heading to be under Sin, and the other half (the half after the semicolon) to be under Tav.
 - In Psalm 113, create two level 2 headings at before the first heading: Shin (make sure it is Shin and not Sin like the previous change we made) and Tav. Now, seperate the first half (the half before and including the semicolon) of the existing faulty heading to be under Shin, and the other half (the half after the semicolo) to be under Tav.
 
 ## Troubleshooting
