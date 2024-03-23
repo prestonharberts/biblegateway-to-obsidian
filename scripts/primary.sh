@@ -86,16 +86,16 @@ for ((book = 0; book < book_max; book++)); do
 	fi
 
         if [[ $yaml_enabled == "true" ]] && [[ $enable_audio_bible == "true" ]]; then
-            echo -en "${yaml}\n# ${short_title} ${chapter} ${translation}\n${navigation}${text}\ntempline\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+            echo -en "${yaml}\n# ${short_title} ${chapter} ${translation}\n${navigation}${text}\n${navigation}" >>"${reading_dir}/${curr_file}.md"
             echo -en "${yaml_notes}\n# ${short_title} ${chapter} notes\n${navigation_notes}${text}" >>"${reading_dir}/${curr_file_notes}.md"
         elif [[ $yaml_enabled == "true" ]] && [[ $enable_audio_bible == "false" ]]; then
-            echo -en "${yaml}\n# ${short_title} ${chapter} ${translation}\n${navigation}${text}\ntempline\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+            echo -en "${yaml}\n# ${short_title} ${chapter} ${translation}\n${navigation}${text}\n${navigation}" >>"${reading_dir}/${curr_file}.md"
             echo -en "${yaml_notes}\n# ${short_title} ${chapter} notes\n${navigation_notes}${text}" >>"${reading_dir}/${curr_file_notes}.md"
         elif [[ $yaml_enabled == "false" ]] && [[ $enable_audio_bible == "true" ]]; then
-            echo -en "# ${short_title} ${chapter} ${translation}\n${navigation_notes}${text}\n\ntempline\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+            echo -en "# ${short_title} ${chapter} ${translation}\n${navigation_notes}${text}\n\n${navigation}" >>"${reading_dir}/${curr_file}.md"
             echo -en "# ${short_title} ${chapter} notes\n${navigation_notes}${text}" >>"${reading_dir}/${curr_file_notes}.md"
         else
-            echo -en "# ${short_title} ${chapter} ${translation}\n${navigation_notes}${text}\n\ntempline\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+            echo -en "# ${short_title} ${chapter} ${translation}\n${navigation_notes}${text}\n${navigation}" >>"${reading_dir}/${curr_file}.md"
             echo -en "# ${short_title} ${chapter} notes\n${navigation_notes}${text}" >>"${reading_dir}/${curr_file_notes}.md"
         fi
     done # End of the book exporting loop
