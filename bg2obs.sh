@@ -1,5 +1,4 @@
 #!/bin/bash
-
 source config.sh
 
 if [[ $primary_translation == "true" ]]; then

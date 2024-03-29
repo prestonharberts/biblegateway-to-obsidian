@@ -1,5 +1,4 @@
 #!/bin/bash
-
 source config.sh
 
 if [[ $verbose == "true" ]]; then

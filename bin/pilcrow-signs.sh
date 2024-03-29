@@ -1,5 +1,6 @@
 #!/bin/bash
 source config
+
 if [[ $primary_translation == "true" ]]; then
     if_secondary=""
 else

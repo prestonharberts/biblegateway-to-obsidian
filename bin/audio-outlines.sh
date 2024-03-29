@@ -1,5 +1,4 @@
 #!/bin/bash
-
 source config.sh
 
 # Initialize audio Bible file

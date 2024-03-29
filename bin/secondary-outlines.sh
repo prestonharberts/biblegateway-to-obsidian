@@ -1,5 +1,4 @@
 #!/bin/bash
-
 source config.sh
 
 for ((book = 0; book < book_max; book++)); do

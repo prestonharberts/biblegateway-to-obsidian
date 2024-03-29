@@ -1,5 +1,4 @@
 #!/bin/bash
-
 source config.sh
 
 #find book index
