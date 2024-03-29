@@ -3,7 +3,7 @@
 source config.sh
 
 for ((book = 0; book < book_max; book++)); do
-    source get-info.sh
+    source bin/get-info.sh
 
     for ((chapter = 1; chapter <= chapter_max; chapter++)); do
         if [[ $chapter -gt 1 ]]; then

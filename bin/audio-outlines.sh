@@ -5,7 +5,7 @@ source config.sh
 # Initialize audio Bible file
 if [[ $enable_audio_bible == "true" ]]; then
     for ((book = 0; book < book_max; book++)); do
-        source get-info.sh
+        source bin/get-info.sh
 
         if [[ $book != 0 ]]; then
             ((previous_book_num = book - 1))

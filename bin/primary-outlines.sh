@@ -41,7 +41,7 @@ elif [[ $yaml_enabled == "false" ]]; then
 fi
 
 for ((book = 0; book < book_max; book++)); do
-    source get-info.sh
+    source bin/get-info.sh
 
     # Create an overview file for each book of the Bible:
 

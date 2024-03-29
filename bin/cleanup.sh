@@ -397,7 +397,7 @@ find . -type f -wholename "${outlines_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\
 find . -type f -wholename "${outlines_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n/\n/;ba;}' {} +
 find . -type f -wholename "${outlines_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n\n/\n/;ba;}' {} +
 
-source pilcrow-script.sh
+source bin/pilcrow-script.sh
 
 if [[ $verbose == "true" ]]; then
     echo " Done."
