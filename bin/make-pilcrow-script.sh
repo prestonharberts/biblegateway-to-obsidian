@@ -9,8 +9,7 @@ for ((book = 0; book < book_max; book++)); do
     break
   fi
 done
-
-#opening prompt
+# opening prompt
 echo "Enter verse numbers to add pilcrow sign to. Enter 'n' to go to next chapter."
 echo "Every first verse of every chapter already has one, so do not add one to it!"
 if [ $chapter_max -eq 1 ]; then
@@ -18,7 +17,6 @@ if [ $chapter_max -eq 1 ]; then
 elif [ $chapter_max -gt 1 ]; then
   echo "Now beginning: ${1} (${chapter_max} chapters)"
 fi
-
 # make pilcrow-signs
 if [[ -f "pilcrow-signs" ]]; then
   echo -e "# Book ${book}: ${short_title}" >>pilcrow-signs
@@ -37,7 +35,6 @@ else
   ((book--))
   chmod u+x pilcrow-signs
 fi
-
 # read verse num to add pilcrow sign to and add sed line to script
 chapter=1
 while ((chapter <= chapter_max)); do
@@ -55,7 +52,6 @@ while ((chapter <= chapter_max)); do
     ((chapter++))
   fi
 done
-
 # closing prompt
 echo
 if [ $chapter_max -eq 1 ]; then

@@ -3,7 +3,6 @@
 source config.sh
 
 yaml="---\naliases: [\"${bible_name}\"]\n---"
-
 # initialize the bible file for all of the old/new testament
 if [[ "${yaml_enabled}" == "true" ]]; then
   echo -e "${yaml}\n# ${bible_name}\n\n## Contents\n\n[[${standard_testament_arr[0]}|${testament_arr[0]}]]\n[[${standard_testament_arr[39]}|${testament_arr[39]}]]" >>"${outlines_dir}/${standard_bible_name}.md"
@@ -39,25 +38,19 @@ elif [[ "${yaml_enabled}" == "false" ]]; then
   echo -e "###### [[${standard_testament_arr[57]}|${testament_arr[57]}]]\n# ${genre_arr[57]}\n\n## Contents\n" >>"${outlines_dir}/${standard_genre_arr[57]}.md"
   echo -e "###### [[${standard_testament_arr[65]}|${testament_arr[65]}]]\n# ${genre_arr[65]}\n\n## Contents\n" >>"${outlines_dir}/${standard_genre_arr[65]}.md"
 fi
-
 for ((book = 0; book < book_max; book++)); do
   source bin/get-info.sh
-
   if [[ "${short_title}" == "${abbreviation}" ]]; then
     yaml="---\naliases: [\"${long_title}\", \"${short_title}\"]\n---"
   else
     yaml="---\naliases: [\"${long_title}\", \"${short_title}\", \"${abbreviation}\"]\n---"
   fi
-
   if [[ "${yaml_enabled}" == "true" ]]; then
     echo -e "${yaml}" >>"${outlines_dir}/${standard_abbreviation}.md"
   fi
-
   echo -e "# ${long_title}\n\n## Contents\n" >>"${outlines_dir}/${standard_abbreviation}.md"
-
   # create an overview file for each book of the Bible:
   echo -e "[[${standard_abbreviation}|${long_title}]]" >>"${outlines_dir}/${standard_genre}.md"
-
   for ((chapter = 1; chapter <= chapter_max; chapter++)); do
     if [ $chapter -gt 1 ]; then
       echo -en "[[${standard_abbreviation}${chapter}|]]" >>"${outlines_dir}/${standard_abbreviation}.md"
