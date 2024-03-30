@@ -86,14 +86,16 @@ fi
 # remove extra space before some hyphens
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ —/—/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/— /—/g' {} +
-# remove space before asterisks followed by right bracket
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ \*\]/\*]/g' {} +
 # replace multiple spaces in a row with just one space
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/ {2,}/ /g' {} +
 # remove space before right-sided punctuation
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/(.) ([!?.,:;”’\)])/\1\2/g' {} +
 # remove space after certain right-sided punctuation
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([“‘\(]) (.)/\1\2/g' {} +
+# add space before escaped asterisks
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/\\\*/ &/g' {} +
+# add space before escaped left bracket
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\\\[/ \\[/g' {} +
 # correct spacing for numbers over 1,000 with commas
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([0-9]), ([0-9])/\1,\2/g' {} +
 # remove duplicate spaces
@@ -133,9 +135,6 @@ fi
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E ':a;$!{N;s/\n{2,}/\n/;ba;}' {} +
 # correct newline spacing for outlines
 find . -type f -wholename "${outlines_dir}/*.md" -exec sed -i -E ':a;$!{N;s/\n{2,}/\n/;ba;}' {} +
-# add newline betweeen commas and quotation mark
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\,”[A-Za-z0-9*]/\.\.\.&/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\.\.\.\,”/\,\n”/g' {} +
 # chomp off all trailing newlines
 find . -type f -wholename "${reading_dir}/*.md" -exec perl -pi -e 'chomp if eof' {} +
 if [[ "${verbose}" == "true" ]]; then
