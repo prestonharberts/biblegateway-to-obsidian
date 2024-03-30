@@ -1,6 +1,6 @@
 #!/bin/bash
 # shellcheck disable=SC1091,2154
-source config
+source config.sh
 
 if [[ "${primary_translation}" == "true" ]]; then
     if_secondary=""
