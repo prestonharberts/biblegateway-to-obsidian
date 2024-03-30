@@ -10,8 +10,10 @@ main_translation="true"
 enable_audio_bible="true"
 # Choose the character used to separate words in file and folder names
 filename_separator="-"
-# Choose whether or not to make file and folder names lowercase
+# Choose whether or not to make file names lowercase
 lowercase="true"
+# Choose whether or not to make folder names lowercase
+lowercase_folders="false"
 # Choose whether or not to keep abbreviation periods in the filename
 filename_periods="false"
 # Choose whether or not to keep the filename separator between the initial and its number
@@ -267,12 +269,39 @@ standard_translation=${translation}
 standard_bible_name=${bible_name}
 standard_audio_bible_name=${audio_bible_name}
 
-standard_testament_arr=("${testament_arr[@]}")
-standard_genre_arr=("${genre_arr[@]}")
-standard_genre_alias_arr=("${genre_arr[@]}")
-standard_long_title_arr=("${long_title_arr[@]}")
-standard_short_title_arr=("${short_title_arr[@]}")
-standard_abbreviation_arr=("${abbreviation_arr[@]}")
+if [[ "${lowercase_folders}" == "true" ]]; then
+  standard_testament_arr=("${testament_arr[@]}")
+  standard_genre_arr=("${genre_arr[@]}")
+  standard_genre_alias_arr=("${genre_arr[@]}")
+  standard_long_title_arr=("${long_title_arr[@]}")
+  standard_short_title_arr=("${short_title_arr[@]}")
+  standard_abbreviation_arr=("${abbreviation_arr[@]}")
+  bible_dir="./${standard_bible_name}"
+  translation_dir="${bible_dir}/${standard_translation}"
+  outlines_dir="${bible_dir}/${outlines}"
+  notes_dir="${bible_dir}/${notes}"
+  reading_dir="${translation_dir}/${reading}"
+  audio_dir="${translation_dir}/${audio}"
+elif [[ "${lowercase_folders}" == "false" ]]; then
+  bible_dir="./${standard_bible_name}"
+  translation_dir="${bible_dir}/${standard_translation}"
+  outlines_dir="${bible_dir}/${outlines}"
+  notes_dir="${bible_dir}/${notes}"
+  reading_dir="${translation_dir}/${reading}"
+  audio_dir="${translation_dir}/${audio}"
+  standard_testament_arr=("${testament_arr[@]}")
+  standard_genre_arr=("${genre_arr[@]}")
+  standard_genre_alias_arr=("${genre_arr[@]}")
+  standard_long_title_arr=("${long_title_arr[@]}")
+  standard_short_title_arr=("${short_title_arr[@]}")
+  standard_abbreviation_arr=("${abbreviation_arr[@]}")
+fi
+
+if [[ ${enable_audio_bible} == "true" ]]; then
+  mkdir -p "${bible_dir}" "${translation_dir}" "${outlines_dir}" "${notes_dir}" "${reading_dir}" "${audio_dir}"
+elif [[ ${enable_audio_bible} == "false" ]]; then
+  mkdir -p "${bible_dir}" "${translation_dir}" "${outlines_dir}" "${notes_dir}" "${reading_dir}"
+fi
 
 # Customize variables to user preference
 
@@ -322,19 +351,6 @@ if [[ $filename_periods == "false" ]]; then
   for ((book = 0; book < book_max; book++)); do
     standard_abbreviation_arr[book]=${standard_abbreviation_arr[book]//\./}
   done
-fi
-
-bible_dir="./${standard_bible_name}"
-translation_dir="${bible_dir}/${standard_translation}"
-outlines_dir="${bible_dir}/${outlines}"
-notes_dir="${bible_dir}/${notes}"
-reading_dir="${translation_dir}/${reading}"
-audio_dir="${translation_dir}/${audio}"
-
-if [[ ${enable_audio_bible} == "true" ]]; then
-  mkdir -p "${bible_dir}" "${translation_dir}" "${outlines_dir}" "${notes_dir}" "${reading_dir}" "${audio_dir}"
-elif [[ ${enable_audio_bible} == "false" ]]; then
-  mkdir -p "${bible_dir}" "${translation_dir}" "${outlines_dir}" "${notes_dir}" "${reading_dir}"
 fi
 
 if [[ $parentheses_enabled == "true" ]]; then
