@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=2034,2154
 
 testament="${testament_arr[book]}"
 genre="${genre_arr[book]}"

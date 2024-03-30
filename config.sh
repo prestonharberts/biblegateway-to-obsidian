@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=2034
 
 # Choose the character used to separate words in file and folder names
 filename_separator="-"

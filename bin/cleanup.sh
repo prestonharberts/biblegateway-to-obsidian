@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=1091,1110,1112,2154
 source config.sh
 
 if [[ $verbose == "true" ]]; then
@@ -357,8 +358,8 @@ find . -type f -wholename "${outlines_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\
 find . -type f -wholename "${outlines_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n/\n/;ba;}' {} +
 find . -type f -wholename "${outlines_dir}/*.md" -exec sed -i ':a;$!{N;s/\n\n\n\n\n\n\n/\n/;ba;}' {} +
 
-source bin/pilcrow-script.sh
+source bin/pilcrow-signs.sh
 
 if [[ $verbose == "true" ]]; then
-    echo " Done."
+    echo "Done."
 fi
