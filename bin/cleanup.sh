@@ -3,15 +3,15 @@
 source config.sh
 
 if [[ $verbose == "true" ]]; then
-    printf "\nCleanup"
+  printf "\nCleanup"
 fi
 
 # HEADINGS
 # create first heading if it exists
 if [[ $yaml_enabled == "true" ]]; then
-    find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '6 s/^[A-Za-z0-9].*/## &/g' {} +
+  find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '6 s/^[A-Za-z0-9].*/## &/g' {} +
 else
-    find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '3 s/^[A-Za-z0-9].*/## &/g' {} +
+  find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '3 s/^[A-Za-z0-9].*/## &/g' {} +
 fi
 # create all headings that immediately follow punction without a space
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([!?.,:;”’\)])([A-Z0-9])/\1\n## \2/g' {} +
@@ -89,21 +89,21 @@ echo -n "."
 
 # CREATE NOTES
 if [[ $primary_translation == "true" ]]; then
-    # delete all text and create checkbox for chapters that do not start with a heading
-    if [[ $yaml_enabled == "true" ]]; then
-        find . -type f -wholename "*notes.md" -exec sed -i '4,$s/^[^#].*//g' {} +
-        find . -type f -wholename "*notes.md" -exec sed -i '7 s/###### 1$/- [ ] /g' {} +
-    else
-        find . -type f -wholename "*notes.md" -exec sed -i 's/^[^#].*//g' {} +
-        find . -type f -wholename "*notes.md" -exec sed -i '4 s/###### 1$/- [ ] /g' {} +
-    fi
-    # delete verse headings
-    find . -type f -wholename "*notes.md" -exec sed -i 's/###### [0-9]*//g' {} +
-    # add checkbox after headings
-    find . -type f -wholename "*notes.md" -exec sed -i 's/^## .*/&\n- [ ] /g' {} +
-    # remove extra checkbox
-    find . -type f -wholename "*notes.md" -exec sed -i ':a;$!{N;s/\- \[ \] \n\- \[ \]/- [ ] /;ba;}' {} +
-    echo -n "."
+  # delete all text and create checkbox for chapters that do not start with a heading
+  if [[ $yaml_enabled == "true" ]]; then
+    find . -type f -wholename "*notes.md" -exec sed -i '4,$s/^[^#].*//g' {} +
+    find . -type f -wholename "*notes.md" -exec sed -i '7 s/###### 1$/- [ ] /g' {} +
+  else
+    find . -type f -wholename "*notes.md" -exec sed -i 's/^[^#].*//g' {} +
+    find . -type f -wholename "*notes.md" -exec sed -i '4 s/###### 1$/- [ ] /g' {} +
+  fi
+  # delete verse headings
+  find . -type f -wholename "*notes.md" -exec sed -i 's/###### [0-9]*//g' {} +
+  # add checkbox after headings
+  find . -type f -wholename "*notes.md" -exec sed -i 's/^## .*/&\n- [ ] /g' {} +
+  # remove extra checkbox
+  find . -type f -wholename "*notes.md" -exec sed -i ':a;$!{N;s/\- \[ \] \n\- \[ \]/- [ ] /;ba;}' {} +
+  echo -n "."
 fi
 
 # NEWLINES
@@ -120,8 +120,8 @@ echo -n "."
 
 # MOVE FILES
 if [[ $primary_translation == "true" ]]; then
-    mv "${reading_dir}/"*notes.md "${notes_dir}/"
-    echo -n "."
+  mv "${reading_dir}/"*notes.md "${notes_dir}/"
+  echo -n "."
 fi
 
 # PILCROW SIGNS
@@ -130,5 +130,5 @@ source bin/pilcrow-signs.sh
 echo -n "."
 
 if [[ $verbose == "true" ]]; then
-    printf '\nDownloaded the %s Bible.\n' "${translation}"
+  printf '\nDownloaded the %s Bible.\n' "${translation}"
 fi

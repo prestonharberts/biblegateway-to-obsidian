@@ -277,51 +277,51 @@ standard_abbreviation_arr=("${abbreviation_arr[@]}")
 # Customize variables to user preference
 
 if [[ $remove_abbreviation_separator == "true" ]]; then
-    for ((book = 0; book < book_max; book++)); do
-        standard_abbreviation_arr[book]=${standard_abbreviation_arr[book]// /}
-    done
+  for ((book = 0; book < book_max; book++)); do
+    standard_abbreviation_arr[book]=${standard_abbreviation_arr[book]// /}
+  done
 fi
 if [[ $filename_separator != " " ]]; then
-    standard_translation=${standard_translation// /${filename_separator}}
-    standard_bible_name=${standard_bible_name// /${filename_separator}}
-    standard_audio_bible_name=${standard_audio_bible_name// /${filename_separator}}
+  standard_translation=${standard_translation// /${filename_separator}}
+  standard_bible_name=${standard_bible_name// /${filename_separator}}
+  standard_audio_bible_name=${standard_audio_bible_name// /${filename_separator}}
 
-    outlines=${outlines// /${filename_separator}}
-    reading=${reading// /${filename_separator}}
-    notes=${notes// /${filename_separator}}
-    audio=${audio// /${filename_separator}}
+  outlines=${outlines// /${filename_separator}}
+  reading=${reading// /${filename_separator}}
+  notes=${notes// /${filename_separator}}
+  audio=${audio// /${filename_separator}}
 
-    for ((book = 0; book < book_max; book++)); do
-        standard_testament_arr[book]=${standard_testament_arr[book]// /${filename_separator}}
-        standard_genre_arr[book]=${standard_genre_arr[book]// /${filename_separator}}
-        standard_long_title_arr[book]=${standard_long_title_arr[book]// /${filename_separator}}
-        standard_short_title_arr[book]=${standard_short_title_arr[book]// /${filename_separator}}
-        standard_abbreviation_arr[book]=${standard_abbreviation_arr[book]// /${filename_separator}}
-    done
+  for ((book = 0; book < book_max; book++)); do
+    standard_testament_arr[book]=${standard_testament_arr[book]// /${filename_separator}}
+    standard_genre_arr[book]=${standard_genre_arr[book]// /${filename_separator}}
+    standard_long_title_arr[book]=${standard_long_title_arr[book]// /${filename_separator}}
+    standard_short_title_arr[book]=${standard_short_title_arr[book]// /${filename_separator}}
+    standard_abbreviation_arr[book]=${standard_abbreviation_arr[book]// /${filename_separator}}
+  done
 fi
 if [[ $lowercase == "true" ]]; then
-    standard_translation=${standard_translation,,}
-    standard_bible_name=${standard_bible_name,,}
-    standard_audio_bible_name=${standard_audio_bible_name,,}
+  standard_translation=${standard_translation,,}
+  standard_bible_name=${standard_bible_name,,}
+  standard_audio_bible_name=${standard_audio_bible_name,,}
 
-    outlines=${outlines,,}
-    reading=${reading,,}
-    notes=${notes,,}
-    audio=${audio,,}
+  outlines=${outlines,,}
+  reading=${reading,,}
+  notes=${notes,,}
+  audio=${audio,,}
 
-    for ((book = 0; book < book_max; book++)); do
-        standard_testament_arr[book]=${standard_testament_arr[book],,}
-        standard_genre_arr[book]=${standard_genre_arr[book],,}
-        standard_genre_alias_arr[book]=${standard_genre_alias_arr[book],,}
-        standard_long_title_arr[book]=${standard_long_title_arr[book],,}
-        standard_short_title_arr[book]=${standard_short_title_arr[book],,}
-        standard_abbreviation_arr[book]=${standard_abbreviation_arr[book],,}
-    done
+  for ((book = 0; book < book_max; book++)); do
+    standard_testament_arr[book]=${standard_testament_arr[book],,}
+    standard_genre_arr[book]=${standard_genre_arr[book],,}
+    standard_genre_alias_arr[book]=${standard_genre_alias_arr[book],,}
+    standard_long_title_arr[book]=${standard_long_title_arr[book],,}
+    standard_short_title_arr[book]=${standard_short_title_arr[book],,}
+    standard_abbreviation_arr[book]=${standard_abbreviation_arr[book],,}
+  done
 fi
 if [[ $filename_periods == "false" ]]; then
-    for ((book = 0; book < book_max; book++)); do
-        standard_abbreviation_arr[book]=${standard_abbreviation_arr[book]//\./}
-    done
+  for ((book = 0; book < book_max; book++)); do
+    standard_abbreviation_arr[book]=${standard_abbreviation_arr[book]//\./}
+  done
 fi
 
 bible_dir="./${standard_bible_name}"
@@ -334,8 +334,8 @@ audio_dir="${translation_dir}/${audio}"
 mkdir -p "${bible_dir}" "${translation_dir}" "${outlines_dir}" "${notes_dir}" "${reading_dir}" "${audio_dir}"
 
 if [[ $parentheses_enabled == "true" ]]; then
-    translation="(${translation})"
-    standard_translation="(${standard_translation})"
+  translation="(${translation})"
+  standard_translation="(${standard_translation})"
 fi
 
 # long_title_arr=("Book of Genesis" "Book of Exodus" "Book of Leviticus" "Book of Numbers" "Book of Deuteronomy" "Book of Joshua" "Book of Judges" "Book of Ruth" "First Book of Samuel" "Second Book of Samuel" "First Book of Kings" "Second Book of Kings" "First Book of Chronicles" "Second Book of Chronicles" "Book of Ezra" "Book of Nehemiah" "Book of Esther" "Book of Job" "Book of Psalms" "Book of Proverbs" "Book of Ecclesiastes" "Song of Songs" "Book of Isaiah" "Book of Jeremiah" "Book of Lamentations" "Book of Ezekiel" "Book of Daniel" "Book of Hosea" "Book of Joel" "Book of Amos" "Book of Obadiah" "Book of Jonah" "Book of Micah" "Book of Nahum" "Book of Habakkuk" "Book of Zephaniah" "Book of Haggai" "Book of Zechariah" "Book of Malachi" "Gospel of Matthew" "Gospel of Mark" "Gospel of Luke" "Gospel of John" "Acts of the Apostles" "Epistle to the Romans" "First Epistle to the Corinthians" "Second Epistle to the Corinthians" "Epistle to the Galatians" "Epistle to the Ephesians" "Epistle to the Philippians" "Epistle to the Colossians" "First Epistle to the Thessalonians" "Second Epistle to the Thessalonians" "First Epistle to Timothy" "Second Epistle to Timothy" "Epistle to Titus" "Epistle to Philemon" "Epistle to the Hebrews" "Epistle of James" "First Epistle of Peter" "Second Epistle of Peter" "First Epistle of John" "Second Epistle of John" "Third Epistle of John" "Epistle of Jude" "Book of Revelation")

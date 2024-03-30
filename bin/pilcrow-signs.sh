@@ -3,9 +3,9 @@
 source config.sh
 
 if [[ "${primary_translation}" == "true" ]]; then
-    if_secondary=""
+  if_secondary=""
 else
-    if_secondary="${standard_translation}"
+  if_secondary="${standard_translation}"
 fi
 sed -i "s/###### 1$/###### ¶ 1/g" "${reading_dir}/"*.md
 # Book 42: Luke
