@@ -24,10 +24,10 @@ else
   echo -e "#!/bin/bash" >>pilcrow-signs
   echo -e "# shellcheck disable=SC1091,2154" >>pilcrow-signs
   echo -e "source config.sh" >>pilcrow-signs
-  echo -e "if [[ \"\${primary_translation}\" == \"true\" ]]; then" >>pilcrow-signs
-  echo -e "  if_secondary=\"\"" >>pilcrow-signs
+  echo -e "if [[ \"\${main_translation}\" == \"true\" ]]; then" >>pilcrow-signs
+  echo -e "  if_not_main=\"\"" >>pilcrow-signs
   echo -e "else" >>pilcrow-signs
-  echo -e "  if_secondary=\"\${standard_translation}\"" >>pilcrow-signs
+  echo -e "  if_not_main=\"\${standard_translation}\"" >>pilcrow-signs
   echo -e "fi" >>pilcrow-signs
   echo -e "sed -i \"s/###### 1$/###### ¶ 1/g\" \"\${reading_dir}/\"*.md" >>pilcrow-signs
   ((book++))
@@ -45,7 +45,7 @@ while ((chapter <= chapter_max)); do
   fi
   read -p ">>> " verse
   while ((verse != "n")); do
-    echo -e "sed -i \"s/###### ${verse}$/###### ¶ ${verse}/g\" \"\${reading_dir}/${standard_abbreviation}${chapter}\${if_secondary}.md\"" >>pilcrow-signs
+    echo -e "sed -i \"s/###### ${verse}$/###### ¶ ${verse}/g\" \"\${reading_dir}/${standard_abbreviation}${chapter}\${if_not_main}.md\"" >>pilcrow-signs
     read -p ">>> " verse
   done
   if [[ "${verse}" == "n" ]]; then

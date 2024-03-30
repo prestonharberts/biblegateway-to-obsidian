@@ -1,18 +1,18 @@
 #!/bin/bash
 source config.sh
 
-if [[ $primary_translation == "true" ]]; then
-  source bin/primary-outlines.sh
+if [[ $main_translation == "true" ]]; then
+  source bin/main-outlines.sh
   if [[ $enable_audio_bible == "true" ]]; then
     source bin/audio-outlines.sh
   fi
-  source bin/primary-reading.sh
+  source bin/main-reading.sh
 else
-  source bin/secondary-outlines.sh
+  source bin/other-outlines.sh
   if [[ $enable_audio_bible == "true" ]]; then
     source bin/audio-outlines.sh
   fi
-  source bin/secondary-reading.sh
+  source bin/other-reading.sh
 fi
 
 source bin/cleanup.sh

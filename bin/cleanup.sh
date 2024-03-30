@@ -88,7 +88,7 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^ *//g' {} +
 echo -n "."
 
 # CREATE NOTES
-if [[ $primary_translation == "true" ]]; then
+if [[ $main_translation == "true" ]]; then
   # delete all text and create checkbox for chapters that do not start with a heading
   if [[ $yaml_enabled == "true" ]]; then
     find . -type f -wholename "*notes.md" -exec sed -i '4,$s/^[^#].*//g' {} +
@@ -119,7 +119,7 @@ find . -type f -wholename "${reading_dir}/*.md" -exec perl -pi -e 'chomp if eof'
 echo -n "."
 
 # MOVE FILES
-if [[ $primary_translation == "true" ]]; then
+if [[ $main_translation == "true" ]]; then
   mv "${reading_dir}/"*notes.md "${notes_dir}/"
   echo -n "."
 fi

@@ -3,9 +3,9 @@
 
 # Choose translation to download (enter as an acronym; all are listed on Bible Gateway)
 translation="ESV"
-# Choose whether or not the translation to download is your primary translation
-# Secondary translations will be without note files and appended to outlines
-primary_translation="true"
+# Choose whether or not the translation to download is your main translation
+# other translations will be without note files and appended to outlines
+main_translation="true"
 # Choose whether or not to have audio bibles
 enable_audio_bible="true"
 # Choose the character used to separate words in file and folder names
