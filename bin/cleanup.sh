@@ -7,22 +7,21 @@ if [[ $verbose == "true" ]]; then
 fi
 
 # HEADINGS
+# create first heading if it exists
+if [[ $yaml_enabled == "true" ]]; then
+    find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '6 s/^[A-Za-z0-9].*/## &/g' {} +
+else
+    find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '3 s/^[A-Za-z0-9].*/## &/g' {} +
+fi
+# create all headings that immediately follow punction without a space
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([!?.,:;”’\)])([A-Z0-9])/\1\n## \2/g' {} +
 # delete "Chapter x" heading
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/##### Chapter.*//g' {} +
 # format verses into H6 headings
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/###### [0-9]{1,3} /\n&\n/g' {} +
-# fix headings immediately following punctuation
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([!?.,:;”’\)])([A-Z0-9])/\1\n## \2/g' {} +
 # fix some superscripts back to verses
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ <sup class=\"versenum mid-line\">/\n###### /g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/<\/sup>/\n/g' {} +
-# create first heading if it exists
-if [[ $yaml_enabled == "true" ]]; then
-    find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '6 s/[A-Za-z0-9].*/## &/g' {} +
-else
-    find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '3 s/[A-Za-z0-9].*/## &/g' {} +
-fi
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([!?.,:;”’\)])([A-Z0-9].*)/\1\n## \2/g' {} +
 echo -n "."
 
 # ITALICS
@@ -131,5 +130,5 @@ source bin/pilcrow-signs.sh
 echo -n "."
 
 if [[ $verbose == "true" ]]; then
-    printf "\nIt is finished.\n"
+    printf '\nDownloaded the %s Bible.\n' "${translation}"
 fi

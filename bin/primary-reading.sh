@@ -3,7 +3,7 @@
 source config.sh
 
 if [[ "${verbose}" == "true" ]]; then
-    printf 'Starting download of the %s Bible.' "${translation}"
+    printf 'Downloading the %s Bible.' "${translation}"
 fi
 
 # cycling through the book counter, setting which book and its max chapter
