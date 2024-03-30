@@ -42,16 +42,6 @@ fi
 for ((book = 0; book < book_max; book++)); do
     source bin/get-info.sh
 
-    # Create an overview file for each book of the Bible:
-
-    # if [[ $book -eq 0 ]]; then
-    #     navigation="###### [[${standard_genre}|${genre}]]"
-    # elif [[ $book -eq $((book_max - 1)) ]]; then
-    #     navigation="###### [[${standard_genre}|${genre}]]"
-    # else
-    #     navigation="###### [[${standard_genre}|${genre}]]"
-    # fi
-
     if [[ $short_title == $abbreviation ]]; then
         yaml="---\naliases: [\"${long_title}\", \"${short_title}\"]\n---"
     else
@@ -62,9 +52,9 @@ for ((book = 0; book < book_max; book++)); do
         echo -e "${yaml}" >>"${outlines_dir}/${standard_abbreviation}.md"
     fi
 
-    # echo -e "${navigation}\n# ${long_title}\n\n## Contents\n" >>"${outlines_dir}/${standard_abbreviation}.md"
     echo -e "# ${long_title}\n\n## Contents\n" >>"${outlines_dir}/${standard_abbreviation}.md"
-    # Create an overview file for each book of the Bible:
+
+    # create an overview file for each book of the Bible:
     echo -e "[[${standard_abbreviation}|${long_title}]]" >>"${outlines_dir}/${standard_genre}.md"
 
     for ((chapter = 1; chapter <= chapter_max; chapter++)); do

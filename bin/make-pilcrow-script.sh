@@ -1,7 +1,7 @@
 #!/bin/bash
 source config.sh
 
-#find book index
+# find book index
 for ((book = 0; book < book_max; book++)); do
     source bin/get-info.sh
     if [[ $short_title == $1 ]]; then
@@ -18,7 +18,7 @@ elif [[ $chapter_max -gt 1 ]]; then
     echo "Now beginning: ${1} (${chapter_max} chapters)"
 fi
 
-#make pilcrow-signs
+# make pilcrow-signs
 if [[ -f "pilcrow-signs" ]]; then
     echo -e "# Book ${book}: ${short_title}" >>pilcrow-signs
 else
@@ -36,7 +36,7 @@ else
     chmod u+x pilcrow-signs
 fi
 
-#read verse num to add pilcrow sign to and add sed line to script
+# read verse num to add pilcrow sign to and add sed line to script
 chapter=1
 while ((chapter <= chapter_max)); do
     if [[ $chapter_max -gt 1 ]]; then
@@ -46,17 +46,15 @@ while ((chapter <= chapter_max)); do
     fi
     read -p ">>> " verse
     while ((verse != "n")); do
-            echo -e "sed -i \"s/###### ${verse}$/###### ¶ ${verse}/g\" \"\${reading_dir}/${standard_abbreviation}${chapter}\${if_secondary}.md\"" >>pilcrow-signs
+        echo -e "sed -i \"s/###### ${verse}$/###### ¶ ${verse}/g\" \"\${reading_dir}/${standard_abbreviation}${chapter}\${if_secondary}.md\"" >>pilcrow-signs
         read -p ">>> " verse
     done
-    # if [[ $verse == "n" ]] && [[ $chapter -eq $chapter_max ]]; then
-    #break
     if [[ $verse == "n" ]]; then
         ((chapter++))
     fi
 done
 
-#closing prompt
+# closing prompt
 echo
 if [[ $chapter_max -eq 1 ]]; then
     echo "Finished: ${1} (${chapter_max} chapter)"
