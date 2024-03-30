@@ -4,7 +4,7 @@ source config.sh
 
 if [[ "${main_translation}" == "true" ]]; then
   if_not_main=""
-else
+elif [[ "${main_translation}" == "false" ]]; then
   if_not_main="${standard_translation}"
 fi
 sed -i "s/###### 1$/###### ¶ 1/g" "${reading_dir}/"*.md

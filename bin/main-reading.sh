@@ -77,7 +77,7 @@ for ((book = 0; book < book_max; book++)); do
     elif [[ "${yaml_enabled}" == "false" ]] && [[ "${enable_audio_bible}" == "true" ]]; then
       echo -en "# ${short_title} ${chapter} ${translation}\n${navigation_notes}${text}\n\n${navigation}" >>"${reading_dir}/${curr_file}.md"
       echo -en "# ${short_title} ${chapter} notes\n${navigation_notes}${text}" >>"${reading_dir}/${curr_file_notes}.md"
-    else
+    elif [[ "${yaml_enabled}" == "false" ]] && [[ "${enable_audio_bible}" == "false" ]]; then
       echo -en "# ${short_title} ${chapter} ${translation}\n${navigation_notes}${text}\n${navigation}" >>"${reading_dir}/${curr_file}.md"
       echo -en "# ${short_title} ${chapter} notes\n${navigation_notes}${text}" >>"${reading_dir}/${curr_file_notes}.md"
     fi

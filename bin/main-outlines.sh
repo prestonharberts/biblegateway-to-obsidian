@@ -6,7 +6,7 @@ yaml="---\naliases: [\"${bible_name}\"]\n---"
 # initialize the bible file for all of the old/new testament
 if [[ "${yaml_enabled}" == "true" ]]; then
   echo -e "${yaml}\n# ${bible_name}\n\n## Contents\n\n[[${standard_testament_arr[0]}|${testament_arr[0]}]]\n[[${standard_testament_arr[39]}|${testament_arr[39]}]]" >>"${outlines_dir}/${standard_bible_name}.md"
-else
+elif [[ "${yaml_enabled}" == "false" ]]; then
   echo -e "# ${bible_name}\n\n## Contents\n\n[[${standard_testament_arr[0]}|${testament_arr[0]}]]\n[[${standard_testament_arr[39]}|${testament_arr[39]}]]" >>"${outlines_dir}/${standard_bible_name}.md"
 fi
 # initialize the old/new testament file for all of the genres
@@ -54,7 +54,7 @@ for ((book = 0; book < book_max; book++)); do
   for ((chapter = 1; chapter <= chapter_max; chapter++)); do
     if [ $chapter -gt 1 ]; then
       echo -en "[[${standard_abbreviation}${chapter}|]]" >>"${outlines_dir}/${standard_abbreviation}.md"
-    else
+    elif [ $chapter -eq 0 ]; then
       echo -en "[[${standard_abbreviation}${chapter}|Start reading (${translation})]]" >>"${outlines_dir}/${standard_abbreviation}.md"
     fi
   done

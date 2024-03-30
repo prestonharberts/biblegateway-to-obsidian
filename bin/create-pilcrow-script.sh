@@ -26,7 +26,7 @@ else
   echo -e "source config.sh" >>pilcrow-signs
   echo -e "if [[ \"\${main_translation}\" == \"true\" ]]; then" >>pilcrow-signs
   echo -e "  if_not_main=\"\"" >>pilcrow-signs
-  echo -e "else" >>pilcrow-signs
+  echo -e "elif [[ \"\${main_translation}\" == \"false\" ]]; then" >>pilcrow-signs
   echo -e "  if_not_main=\"\${standard_translation}\"" >>pilcrow-signs
   echo -e "fi" >>pilcrow-signs
   echo -e "sed -i \"s/###### 1$/###### ¶ 1/g\" \"\${reading_dir}/\"*.md" >>pilcrow-signs

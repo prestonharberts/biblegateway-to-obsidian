@@ -10,7 +10,7 @@ fi
 # create first heading if it exists
 if [[ $yaml_enabled == "true" ]]; then
   find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '6 s/^[A-Za-z0-9].*/## &/g' {} +
-else
+elif [[ $yaml_enabled == "false" ]]; then
   find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '3 s/^[A-Za-z0-9].*/## &/g' {} +
 fi
 # create all headings that immediately follow punction without a space
@@ -22,7 +22,9 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/###### [0-9]{
 # fix some superscripts back to verses
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ <sup class=\"versenum mid-line\">/\n###### /g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/<\/sup>/\n/g' {} +
-echo -n "."
+if [[ "${verbose}" == "true" ]]; then
+  echo -n "."
+fi
 
 # ITALICS
 # transform _Selah_ to <i>Selah</i> and give it an extra space
@@ -35,14 +37,18 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/_ _/<\/i> <i>/g'
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/_([A-Za-z1-9])/<i>\1/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([A-Za-z1-9])_/\1<\/i>/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ *<\/i>/<\/i>/g' {} +
-echo -n "."
+if [[ "${verbose}" == "true" ]]; then
+  echo -n "."
+fi
 
 # ASTERISKS
 # escape asterisks for translations that use them (LSB)
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\*/\\\*/g' {} +
 # remove all  \*\* that get created with the command above
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\\\*\\\*//g' {} +
-echo -n "."
+if [[ "${verbose}" == "true" ]]; then
+  echo -n "."
+fi
 
 # REMOVE MISC
 # delete empty headings
@@ -55,7 +61,9 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/## Book (One|
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/<b class="quote">//g' {} +
 # remove <em> and </em>
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/[<]\/*em[>]//g' {} +
-echo -n "."
+if [[ "${verbose}" == "true" ]]; then
+  echo -n "."
+fi
 
 # BRACKETS
 # escape brackets
@@ -63,7 +71,9 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '/^#/!s/[][]/\\&/g'
 # fix alias brackets in frontmatter
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '2 s/\\*\[/[/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '2 s/\\*\]/]/g' {} +
-echo -n "."
+if [[ "${verbose}" == "true" ]]; then
+  echo -n "."
+fi
 
 # SPACES
 # remove extra space before some hyphens
@@ -85,7 +95,9 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/ {2,}/ /g' {}
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ *$//g' {} +
 # delete spaces before text
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^ *//g' {} +
-echo -n "."
+if [[ "${verbose}" == "true" ]]; then
+  echo -n "."
+fi
 
 # CREATE NOTES
 if [[ $main_translation == "true" ]]; then
@@ -93,7 +105,8 @@ if [[ $main_translation == "true" ]]; then
   if [[ $yaml_enabled == "true" ]]; then
     find . -type f -wholename "*notes.md" -exec sed -i '4,$s/^[^#].*//g' {} +
     find . -type f -wholename "*notes.md" -exec sed -i '7 s/###### 1$/- [ ] /g' {} +
-  else
+  elif [[ $yaml_enabled == "false" ]]; then
+    find . -type f -wholename "*notes.md" -exec sed -i '4,$s/^[^#].*//g' {} +
     find . -type f -wholename "*notes.md" -exec sed -i 's/^[^#].*//g' {} +
     find . -type f -wholename "*notes.md" -exec sed -i '4 s/###### 1$/- [ ] /g' {} +
   fi
@@ -103,7 +116,9 @@ if [[ $main_translation == "true" ]]; then
   find . -type f -wholename "*notes.md" -exec sed -i 's/^## .*/&\n- [ ] /g' {} +
   # remove extra checkbox
   find . -type f -wholename "*notes.md" -exec sed -i ':a;$!{N;s/\- \[ \] \n\- \[ \]/- [ ] /;ba;}' {} +
-  echo -n "."
+  if [[ "${verbose}" == "true" ]]; then
+    echo -n "."
+  fi
 fi
 
 # NEWLINES
@@ -116,18 +131,24 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\,”[A-Za-z0-9*
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\.\.\.\,”/\,\n”/g' {} +
 # chomp off all trailing newlines
 find . -type f -wholename "${reading_dir}/*.md" -exec perl -pi -e 'chomp if eof' {} +
-echo -n "."
+if [[ "${verbose}" == "true" ]]; then
+  echo -n "."
+fi
 
 # MOVE FILES
 if [[ $main_translation == "true" ]]; then
   mv "${reading_dir}/"*notes.md "${notes_dir}/"
-  echo -n "."
+  if [[ "${verbose}" == "true" ]]; then
+    echo -n "."
+  fi
 fi
 
 # PILCROW SIGNS
 # add pilcrow signs to verses where a new paragraph starts
 source bin/pilcrow-signs.sh
-echo -n "."
+if [[ "${verbose}" == "true" ]]; then
+  echo -n "."
+fi
 
 if [[ $verbose == "true" ]]; then
   printf '\nDownloaded the %s Bible.\n' "${translation}"

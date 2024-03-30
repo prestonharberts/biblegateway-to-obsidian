@@ -7,7 +7,7 @@ if [[ $main_translation == "true" ]]; then
     source bin/audio-outlines.sh
   fi
   source bin/main-reading.sh
-else
+elif [[ $main_translation == "false" ]]; then
   source bin/other-outlines.sh
   if [[ $enable_audio_bible == "true" ]]; then
     source bin/audio-outlines.sh
