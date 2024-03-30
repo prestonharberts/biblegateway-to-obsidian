@@ -21,7 +21,9 @@ elif [ $chapter_max -gt 1 ]; then
 fi
 # make pilcrow-signs
 if [[ -f "bin/pilcrow-signs.sh" ]]; then
+  ((book++))
   echo -e "# Book ${book}: ${short_title}" >>bin/pilcrow-signs.sh
+  ((book--))
 else
   echo -e "#!/bin/bash" >>bin/pilcrow-signs.sh
   echo -e "# shellcheck disable=SC1091,2154" >>bin/pilcrow-signs.sh
