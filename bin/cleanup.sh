@@ -17,6 +17,13 @@ fi
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([!?.,:;”’\)])([A-Z0-9])/\1\n## \2/g' {} +
 # delete "Chapter x" heading
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/##### Chapter.*//g' {} +
+# remove "1" from books that only have one chapter (Obadiah 1 -> Obadiah)
+# short_title (Obadiah 1) and abbreviations (Obad. 1)
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E "s/(${short_title_31}|${abbreviation_31}) 0/\1/g" {} + # Obadiah
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E "s/(${short_title_57}|${abbreviation_57}) 1/\1/g" {} + # Philemon
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E "s/(${short_title_63}|${abbreviation_63}) 1/\1/g" {} + # 2 John
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E "s/(${short_title_64}|${abbreviation_64}) 1/\1/g" {} + # 3 John
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E "s/(${short_title_65}|${abbreviation_65}) 1/\1/g" {} + # Jude
 # format verses into H6 headings
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/###### [0-9]{1,3} /\n&\n/g' {} +
 # fix some superscripts back to verses
