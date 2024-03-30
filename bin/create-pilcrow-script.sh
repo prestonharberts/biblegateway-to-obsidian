@@ -7,6 +7,8 @@ for ((book = 0; book < book_max; book++)); do
   source bin/get-info.sh
   if [[ "${short_title}" == "${1}" ]]; then
     break
+  elif [[ "${short_title}" == "${1} ${2}" ]]; then
+    break
   fi
 done
 # opening prompt
