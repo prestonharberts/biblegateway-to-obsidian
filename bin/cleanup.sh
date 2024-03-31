@@ -14,7 +14,7 @@ elif [[ $yaml_enabled == "false" ]]; then
   find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '3 s/^[A-Za-z0-9].*/## &/g' {} +
 fi
 # create all headings that immediately follow punction without a space
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([!?.,:;”’\)])([A-Z0-9])/\1\n## \2/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([!?.,:;”’\)\]])([A-Z0-9])/\1\n## \2/g' {} +
 # delete "Chapter x" heading
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/##### Chapter.*//g' {} +
 # remove "1" from books that only have one chapter (Obadiah 1 -> Obadiah)
@@ -37,8 +37,8 @@ fi
 # transform _Selah_ to <i>Selah</i> and give it an extra space
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/[_*]Selah[_*]/ <i>Selah<\/i>/g' {} +
 # put italic underscores before punctuation marks
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/_([!?.,:;”’\)])/<\/i>\1/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([!?.,:;”’\)])_/<\/i>\1/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/_([!?.,:;”’\)\]])/<\/i>\1/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([!?.,:;”’\)\]])_/<\/i>\1/g' {} +
 # transform underscored text into CSS italics
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/_ _/<\/i> <i>/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/_([A-Za-z1-9])/<i>\1/g' {} +
@@ -89,9 +89,9 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/— /—/g' {} +
 # replace multiple spaces in a row with just one space
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/ {2,}/ /g' {} +
 # remove space before right-sided punctuation
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/(.) ([!?.,:;”’\)])/\1\2/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/(.) ([!?.,:;”’\)\]])/\1\2/g' {} +
 # remove space after certain right-sided punctuation
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([“‘\(]) (.)/\1\2/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([“‘\(\[]) (.)/\1\2/g' {} +
 # add space before escaped asterisks
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/\\\*/ &/g' {} +
 # add space before escaped left bracket
