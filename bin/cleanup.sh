@@ -93,13 +93,13 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/— /—/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/ {2,}/ /g' {} +
 # remove space before right-sided punctuation
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/(.) ([!?.,:;”’\)\]])/\1\2/g' {} +
-# remove space after certain right-sided punctuation
+# remove space after certain left-sided punctuation
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([“‘\(\[]) (.)/\1\2/g' {} +
 # add space before escaped asterisks
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/\\\*/ &/g' {} +
 # add space before escaped left bracket
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\\\[/ \\[/g' {} +
-# remove space if there are two escaped left brackets
+# remove space between two escaped left brackets
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\\\[ \\\[/\\[\\[/g' {} +
 # correct spacing for numbers over 1,000 with commas
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([0-9]), ([0-9])/\1,\2/g' {} +
