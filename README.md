@@ -40,6 +40,7 @@ Once you are in the directory containing the script, run `./bg2obs.sh`. This wil
 
 Certain manual changes must be made to the Bible files that cannot be done otherwise (make sure to check the note files for these chapters too):
 
+- Delete extra text in Mark 16:8, and fix headings.
 - John 7:52-53, 8:1, and 8:11
 - If wanted, add Psalm introductions and introductions present in other books.
 - If wanted, indent poetry by adding enclosing the line with '<div class="poetry">' and '</div>' (at the beginning and end).
@@ -48,9 +49,10 @@ Certain manual changes must be made to the Bible files that cannot be done other
 
 #### CSB specific changes
 
-- Song of Songs editorial headers do not get added for some reason
+- Song of Songs editorial headings do not get added for some reason
 - Ezra 2 skips verses 3-35 for some reason.
 - Neh 7 Skips verses 40-42 for some reason.
+- Ensure the underscore in Matthew 27:46 is either "\<i>" or "\</i>" (without the "\")
 
 #### LSB specific changes
 
