@@ -36,7 +36,10 @@ fi
 # ITALICS
 # transform _Selah_ to <i>Selah</i> and give it an extra space
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/[_*]Selah[_*]/ <i>Selah<\/i>/g' {} +
-# put italic underscores before punctuation marks
+# put beginning italics after certain punctuation marks
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([“‘\(\[])_/\1<i>/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/_([“‘\(\[])/\1<i>/g' {} +
+# put ending italics before certain punctuation marks
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/_([!?.,:;”’\)\]])/<\/i>\1/g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([!?.,:;”’\)\]])_/<\/i>\1/g' {} +
 # transform underscored text into CSS italics
