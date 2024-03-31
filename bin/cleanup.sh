@@ -96,8 +96,11 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([“‘\(\[]
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/\\\*/ &/g' {} +
 # add space before escaped left bracket
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\\\[/ \\[/g' {} +
+# remove space if there are two escaped left brackets
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\\\[ \\\[/\\[\\[/g' {} +
 # correct spacing for numbers over 1,000 with commas
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([0-9]), ([0-9])/\1,\2/g' {} +
+find . -type f -wholename "${outlines_dir}/*.md" -exec sed -i -E ':a;$!{N;s/([0-9]),\n## ([0-9])/\1,\2/;ba;}' {} +
 # remove duplicate spaces
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/ {2,}/ /g' {} +
 # delete spaces after text
