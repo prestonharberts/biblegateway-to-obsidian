@@ -9,6 +9,8 @@ for ((book = 0; book < book_max; book++)); do
     break
   elif [[ "${short_title}" == "${1} ${2}" ]]; then
     break
+  elif [[ "${short_title}" == "${1} ${2} ${3}" ]]; then
+    break
   fi
 done
 # opening prompt
