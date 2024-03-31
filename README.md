@@ -42,7 +42,7 @@ Certain manual changes must be made to the Bible files that cannot be done other
 
 - John 7:52-53, 8:1, and 8:11
 - If wanted, add Psalm introductions and introductions present in other books.
-- If wanted, indent poetry by adding enclosing the line with '<div classs="poetry">' and '</div>' (at the beginning and end).
+- If wanted, indent poetry by adding enclosing the line with '<div class="poetry">' and '</div>' (at the beginning and end).
 - If wanted, bold OT references in the NT.
 - If wanted, add editorial footnotes and cross-references.
 
@@ -54,8 +54,8 @@ Certain manual changes must be made to the Bible files that cannot be done other
 
 #### LSB specific changes
 
-- In Psalm 112, create two level 2 headings at before the first heading: Sin and Tav. Now, seperate the first half (the half before and including the semicolon) of the existing faulty heading to be under Sin, and the other half (the half after the semicolon) to be under Tav.
-- In Psalm 113, create two level 2 headings at before the first heading: Shin (make sure it is Shin and not Sin like the previous change we made) and Tav. Now, seperate the first half (the half before and including the semicolon) of the existing faulty heading to be under Shin, and the other half (the half after the semicolo) to be under Tav.
+- In Psalm 112, create two level 2 headings at before the first heading: Sin and Tav. Now, separate the first half (the half before and including the semicolon) of the existing faulty heading to be under Sin, and the other half (the half after the semicolon) to be under Tav.
+- In Psalm 113, create two level 2 headings at before the first heading: Shin (make sure it is Shin and not Sin like the previous change we made) and Tav. Now, separate the first half (the half before and including the semicolon) of the existing faulty heading to be under Shin, and the other half (the half after the semicolon) to be under Tav.
 
 ## Troubleshooting
 
