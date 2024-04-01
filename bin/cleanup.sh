@@ -6,6 +6,35 @@ if [[ $verbose == "true" ]]; then
   printf "\nCleanup"
 fi
 
+# ASTERISKS
+# escape asterisks for translations that use them (LSB)
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\*/\\\*/g' {} +
+# remove all  \*\* that get created with the command above
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\\\*\\\*//g' {} +
+if [[ "${verbose}" == "true" ]]; then
+  echo -n "."
+fi
+
+# ITALICS
+# transform _Selah_ to <i>Selah</i> and give it an extra space
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/[_*]Selah[_*]/ <i>Selah<\/i>/g' {} +
+# put beginning italics after certain punctuation marks
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([“‘\(]|\[)_/\1<i>/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/_([“‘\(]|\[)/\1<i>/g' {} +
+# put ending italics before certain punctuation marks
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/_([!?.,:;”’\)]|\])/<\/i>\1/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([!?.,:;”’\)]|\])_/<\/i>\1/g' {} +
+# transform underscored text into CSS italics
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/_ _/<\/i> <i>/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/_([A-Za-z1-9])/<i>\1/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([A-Za-z1-9])_/\1<\/i>/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ *<\/i>/<\/i>/g' {} +
+# replace css italics with asterisks
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/<\/*i>/*/g' {} +
+if [[ "${verbose}" == "true" ]]; then
+  echo -n "."
+fi
+
 # HEADINGS
 # create first heading if it exists
 if [[ $yaml_enabled == "true" ]]; then
@@ -29,33 +58,6 @@ find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/###### [0-9]{
 # fix some superscripts back to verses
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ <sup class=\"versenum mid-line\">/\n###### /g' {} +
 find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/<\/sup>/\n/g' {} +
-if [[ "${verbose}" == "true" ]]; then
-  echo -n "."
-fi
-
-# ITALICS
-# transform _Selah_ to <i>Selah</i> and give it an extra space
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/[_*]Selah[_*]/ <i>Selah<\/i>/g' {} +
-# put beginning italics after certain punctuation marks
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([“‘\(]|\[)_/\1<i>/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/_([“‘\(]|\[)/\1<i>/g' {} +
-# put ending italics before certain punctuation marks
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/_([!?.,:;”’\)]|\])/<\/i>\1/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([!?.,:;”’\)]|\])_/<\/i>\1/g' {} +
-# transform underscored text into CSS italics
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/_ _/<\/i> <i>/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/_([A-Za-z1-9])/<i>\1/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([A-Za-z1-9])_/\1<\/i>/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ *<\/i>/<\/i>/g' {} +
-if [[ "${verbose}" == "true" ]]; then
-  echo -n "."
-fi
-
-# ASTERISKS
-# escape asterisks for translations that use them (LSB)
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\*/\\\*/g' {} +
-# remove all  \*\* that get created with the command above
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\\\*\\\*//g' {} +
 if [[ "${verbose}" == "true" ]]; then
   echo -n "."
 fi
