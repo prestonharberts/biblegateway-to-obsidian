@@ -52,7 +52,7 @@ Certain manual changes must be made to the Bible files that cannot be done other
 - Song of Songs editorial headings do not get added for some reason
 - Ezra 2 skips verses 3-35 for some reason.
 - Neh 7 Skips verses 40-42 for some reason.
-- Ensure the underscore in Matthew 27:46 is either "\<i>" or "\</i>" (without the "\")
+- Ensure there are no underscores in Matthew 27:46. Replace any with an asterisk, and make sure the italics do not enclose any punctuation.
 
 #### LSB specific changes
 
