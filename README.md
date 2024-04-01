@@ -43,7 +43,7 @@ Certain manual changes must be made to the Bible files that cannot be done other
 - Delete extra text in Mark 16:8, and fix headings.
 - Delete extra headings in John 7:52-53 and 8:1. Remove the newline in John 8:11.
 - If wanted, add Psalm introductions and introductions present in other books.
-- If wanted, indent poetry by adding enclosing the line with '<div class="poetry">' and '</div>' (at the beginning and end).
+- If wanted, indent poetry by putting a '>' at the beginning of each line to indent (same as toggling blockquotes).
 - If wanted, bold OT references in the NT.
 - If wanted, add editorial footnotes and cross-references.
 
