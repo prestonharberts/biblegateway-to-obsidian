@@ -41,7 +41,7 @@ Once you are in the directory containing the script, run `./bg2obs.sh`. This wil
 Certain manual changes must be made to the Bible files that cannot be done otherwise (make sure to check the note files for these chapters too):
 
 - Delete extra text in Mark 16:8, and fix headings.
-- John 7:52-53, 8:1, and 8:11
+- Delete extra headings in John 7:52-53 and 8:1. Remove the newline in John 8:11.
 - If wanted, add Psalm introductions and introductions present in other books.
 - If wanted, indent poetry by adding enclosing the line with '<div class="poetry">' and '</div>' (at the beginning and end).
 - If wanted, bold OT references in the NT.
