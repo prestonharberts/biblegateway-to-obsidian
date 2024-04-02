@@ -61,7 +61,8 @@ Certain manual changes must be made to the Bible files that cannot be done other
 
 #### Blockquotes
 
-When creating blockquotes to indent poetry or quotes, certain verses may appear wrongly. I have only see 1 Peter 2:8 do this.
+- When creating blockquotes to indent poetry or quotes, certain verses may appear wrongly. I have seen 1 Peter 2:8, Genesis 48:20, Leviticus 10:3, Numbers 21:18, Joshua 10:13, Judges 14:14, 14:18, and 2 Samuel 3:34 do this.
+- I still need to create CSS to handle blockquotes being too close to the bottom navigation.
 
 ## Troubleshooting
 
