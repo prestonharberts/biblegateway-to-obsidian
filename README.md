@@ -59,6 +59,10 @@ Certain manual changes must be made to the Bible files that cannot be done other
 - In Psalm 112, create two level 2 headings at before the first heading: Sin and Tav. Now, separate the first half (the half before and including the semicolon) of the existing faulty heading to be under Sin, and the other half (the half after the semicolon) to be under Tav.
 - In Psalm 113, create two level 2 headings at before the first heading: Shin (make sure it is Shin and not Sin like the previous change we made) and Tav. Now, separate the first half (the half before and including the semicolon) of the existing faulty heading to be under Shin, and the other half (the half after the semicolon) to be under Tav.
 
+#### Blockquotes
+
+When creating blockquotes to indent poetry or quotes, certain verses may appear wrongly. I have only see 1 Peter 2:8 do this.
+
 ## Troubleshooting
 
 Below are some issues that may happen when using the script. Create an [issue](https://github.com/prestonharberts/biblegateway-to-obsidian/issues) on GitHub if any other issues are found.
