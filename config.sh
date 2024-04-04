@@ -2,7 +2,7 @@
 # shellcheck disable=2034
 
 # Choose translation to download (enter as an acronym; all are listed on Bible Gateway)
-translation="ESV"
+translation="LSB"
 # Choose whether or not the translation to download is your main translation
 # other translations will be without note files and appended to outlines
 main_translation="true"
