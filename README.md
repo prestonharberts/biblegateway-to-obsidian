@@ -43,7 +43,8 @@ Certain manual changes must be made to the Bible files that cannot be done other
 - Delete extra text in Mark 16:8, and fix headings.
 - Delete extra headings in John 7:52-53 and 8:1. Remove the newline in John 8:11.
 - If wanted, add Psalm introductions and introductions present in other books.
-- If wanted, indent poetry by putting a '>' at the beginning of each line to indent (same as toggling blockquotes).
+- If wanted, add the Hebrew letters to Psalms and other Scriptures that use them as headings (add them as level 4).
+- If wanted, indent poetry by putting a '>' at the beginning of each line to indent (same as toggling blockquotes). Make sure to add a space below blockquote if the next line is a continuation of the same verse, or else it will be shown as a blockquote in preview mode, too.
 - If wanted, bold OT references in the NT.
 - If wanted, add editorial footnotes and cross-references.
 
@@ -57,14 +58,11 @@ Certain manual changes must be made to the Bible files that cannot be done other
 #### LSB specific changes
 
 - Remove '<div class ="left-1">' in Ezra 6.
-- In Psalm 112, create two level 2 headings at before the first heading: Sin and Tav. Now, separate the first half (the half before and including the semicolon) of the existing faulty heading to be under Sin, and the other half (the half after the semicolon) to be under Tav.
-- In Psalm 113, create two level 2 headings at before the first heading: Shin (make sure it is Shin and not Sin like the previous change we made) and Tav. Now, separate the first half (the half before and including the semicolon) of the existing faulty heading to be under Shin, and the other half (the half after the semicolon) to be under Tav.
+- In Psalm 112, the line before verse 1 should be cut and paste to the end of Psalm 111 and corrected. If wanted (this part is optional), create two level 2 headings at before the first heading: Sin and Tav. Now, separate the first half (the half before and including the semicolon) of the existing faulty heading to be under Sin, and the other half (the half after the semicolon) to be under Tav.
+- In Psalm 113, the line before verse 1 should be cut and paste to the end of Psalm 112 and corrected. If wanted (this part is optional), create two level 2 headings at before the first heading: Shin (make sure it is Shin and not Sin like the previous change we made) and Tav. Now, separate the first half (the half before and including the semicolon) of the existing faulty heading to be under Shin, and the other half (the half after the semicolon) to be under Tav.
 - Remove newline in Nehemiah 12:42.
-
-#### Blockquotes
-
-- When creating blockquotes to indent poetry or quotes, certain verses may appear wrongly. I have seen 1 Peter 2:8, Genesis 48:20, Leviticus 10:3, Numbers 21:18, Joshua 10:13, Judges 14:14, 14:18, and 2 Samuel 3:34 do this.
-- I still need to create CSS to handle blockquotes being too close to the bottom navigation.
+- Psalm 111:10 is messing over half the text.
+- Replace all occurences of 'E' with 'Ē' in Daniel 5 verses 25, 26, 27, and 28.
 
 ## Troubleshooting
 
