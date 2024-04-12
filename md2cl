@@ -19,8 +19,9 @@ text=$(echo "$text" | sed -E 's/\*//g')
 text=$(echo "$text" | sed -E 's/\\//g')
 text=$(echo "$text" | sed -E 's/\[//g')
 text=$(echo "$text" | sed -E 's/\]//g')
-text=$(echo "$text" | sed -E 's/^> /    > /g')
-#text=$(echo "$text" | sed -E 's/> /    /g')
+#text=$(echo "$text" | sed -E 's/^> /    > /g')
+text=$(echo "$text" | sed -E 's/^> /     /g')
+text=$(echo "$text" | sed -E 's/> / /g')
 
 # add space before lines that are not on the same line as the verse num
 text=$(echo "$text" | sed -E 's/(^[^0-9 ])/    \1/g')
@@ -123,10 +124,22 @@ text=$(echo "$text" | sed -E '/^$/d')
 text=$(echo "$text" | sed -E '/^ *>* *$/d')
 
 # pass 3/3
+# add newline when width is a space
+text=$(echo "$text" | sed -E "s/^(.{$((width - 1))}) /\1\n    /")
+text=$(echo "$text" | sed -E "s/^(.{$((width - 1))}) /\1\n    /")
+text=$(echo "$text" | sed -E "s/^(.{$((width - 1))}) /\1\n    /")
 # hyphenate words that are in width
 text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})([A-Za-z0-9])([A-Za-z0-9])([^ ])/\1\2-\n    \3\4/")
 text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})([A-Za-z0-9])([A-Za-z0-9])([^ ])/\1\2-\n    \3\4/")
 text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})([A-Za-z0-9])([A-Za-z0-9])([^ ])/\1\2-\n    \3\4/")
+# move char to newline if width-1 is a space
+text=$(echo "$text" | sed -E "s/^(.{$((width - 2))}) ([A-Za-z0-9])/\1\n    \2/")
+text=$(echo "$text" | sed -E "s/^(.{$((width - 2))}) ([A-Za-z0-9])/\1\n    \2/")
+text=$(echo "$text" | sed -E "s/^(.{$((width - 2))}) ([A-Za-z0-9])/\1\n    \2/")
+# add newline right after punctuation
+text=$(echo "$text" | sed -E "s/^(.{$((width - 1))})([!?.,”’;:])/\1\2\n    /")
+text=$(echo "$text" | sed -E "s/^(.{$((width - 1))})([!?.,”’;:])/\1\2\n    /")
+text=$(echo "$text" | sed -E "s/^(.{$((width - 1))})([!?.,”’;:])/\1\2\n    /")
 
 # replace smart punctuation with dumb ones
 # right
@@ -137,28 +150,13 @@ text=$(echo "$text" | sed -E "s/“/\"/g")
 text=$(echo "$text" | sed -E "s/‘/\'/g")
 
 if [[ $2 != '' ]]; then
-  text=$(echo "$text" | sed -E ':a;$!{N;s/\n    /    /;ba;}')
-  text=$(echo "$text" | sed -E "s/    > / /g")
-  text=$(echo "$text" | sed -E "s/> //g")
-  text=$(echo "$text" | sed -E "s/^(.{$((width - 1))}) /\1  /g")
-  text=$(echo "$text" | sed -E "s/^(.{$((width * 2 - 1))}) /\1  /g")
-  text=$(echo "$text" | sed -E "s/^(.{$((width * 3 - 1))}) /\1  /g")
-  # add newline when width is a space
-  text=$(echo "$text" | sed -E "s/^(.{$((width - 1))}) /\1  /g")
-  # hyphenate words that are in width
-  text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})([A-Za-z0-9])([A-Za-z0-9])([^ ])/\1\2-    \3\4/g")
-  text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})([A-Za-z0-9])([A-Za-z0-9])([^ ])/\1\2-    \3\4/g")
-  text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})([A-Za-z0-9])([A-Za-z0-9])([^ ])/\1\2-    \3\4/g")
-  # move char to newline if width-1 is a space
-  text=$(echo "$text" | sed -E "s/^(.{$((width - 2))}) ([A-Za-z0-9])/\1    \2/g")
-  text=$(echo "$text" | sed -E "s/^(.{$((width - 2))}) ([A-Za-z0-9])/\1    \2/g")
-  text=$(echo "$text" | sed -E "s/^(.{$((width - 2))}) ([A-Za-z0-9])/\1    \2/g")
-  # add newline right after punctuation
-  text=$(echo "$text" | sed -E "s/^(.{$((width - 1))})([!?.,”’;:])/\1\2    /g")
-  text=$(echo "$text" | sed -E "s/^(.{$((width - 1))})([!?.,”’;:])/\1\2    /g")
-  text=$(echo "$text" | sed -E "s/^(.{$((width - 1))})([!?.,”’;:])/\1\2    /g")
-  text=$(echo "$text" | sed -E '/^ *$/d')
-  echo "$text" | GREP_COLORS='ms=01;31' grep -E --color=always "^${2} .*" -A2 -B2 | less -RFX
+  echo "${text}" | awk "/^$(($2 - 2)) /{print; flag=1; next} /^$(($2 - 1)) /{flag=0} flag"
+  echo "${text}" | awk "/^$(($2 - 1)) /{print; flag=1; next} /^$(($2 - 0)) /{flag=0} flag"
+  echo "${text}" | awk "/^$(($2 - 0)) /{print \"\033[01;31m\" \$0; flag=1; next} /^$(($2 + 1)) /{flag=0} flag"
+  echo -en "\033[0m"
+  echo "${text}" | awk "/^$(($2 + 1)) /{print; flag=1; next} /^$(($2 + 2)) /{flag=0} flag"
+  echo "${text}" | awk "/^$(($2 + 2)) /{print; flag=1; next} /^$(($2 + 3)) /{flag=0} flag"
+  #echo "$text" | GREP_COLORS='ms=01;31' grep -E --color=always "^${2} .*" -A2 -B2 | less -RFX
 else
   echo "$text" | less -FX
 fi
