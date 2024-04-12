@@ -3,10 +3,14 @@
 
 text=$(cat ~/Documents/obsidian/Christianity/Bible/LSB/Reading/"${1}".md)
 
-# fit to terminal width
 width=$(tput cols)
 hline=$(printf '=%.0s' $(seq 1 $width); echo)
-title="$(echo "$text" | grep '^# .*' | sed 's/# //'):$2"
+# fit to terminal width
+if [[ $2 != '' ]]; then
+  title="$(echo "$text" | grep '^# .*' | sed 's/# //'):$2"
+else
+  title="$(echo "$text" | grep '^# .*' | sed 's/# //')"
+fi
 
 # remove headings
 text=$(echo "$text" | sed -E '1,3{d}')
@@ -74,8 +78,6 @@ text=$(echo "$text" | sed -E 's/ *$//g')
 text=$(echo "$text" | sed -E '/^$/d')
 text=$(echo "$text" | sed -E '/^ *>* *$/d')
 
-  # Clear the command line
-  printf "\033[K"
 if [[ $2 != '' ]]; then
   echo $hline
   padding=$(( ($width + ${#title}) / 2 ))
@@ -89,5 +91,12 @@ if [[ $2 != '' ]]; then
   echo "${text}" | awk "/^$(($2 + 2)) /{print; flag=1; next} /^$(($2 + 3)) /{flag=0} flag"
   #echo "$text" | GREP_COLORS='ms=01;31' grep -E --color=always "^${2} .*" -A2 -B2 | less -RFX
 else
-  echo "$text" | less -FX
+  output="$(
+    echo $hline
+    padding=$(( ($width + ${#title}) / 2 ))
+    printf "%*s\n" $padding "$title"
+    echo $hline
+    echo "$text"
+  )"
+  echo "$output" | less -FX
 fi
