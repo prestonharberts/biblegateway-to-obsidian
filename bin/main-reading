@@ -59,7 +59,7 @@ for ((book = 0; book < book_max; book++)); do
       navigation_notes="##### ←[[${previous_file_notes}|Prev]] / [[${curr_file}|Read]] / [[${standard_abbreviation}${chapter}${audio}|Audio]] / [[${next_file_notes}|Next]]→"
     fi
     short_title_no_spaces=$(echo "${short_title}" | sed 's/ //g')
-    text=$(ruby bg2md.rb -e -c -f -l -r -v "${translation}" "${short_title_no_spaces}${chapter}") # this calls the 'bg2md' script
+    text=$(ruby bg2md -e -c -f -l -r -v "${translation}" "${short_title_no_spaces}${chapter}") # this calls the 'bg2md' script
     text="${text/^(.*?)v1/v1/}"                                                                   # deleting unwanted headers
     if [[ "${short_title}" == "${abbreviation}" ]]; then
       yaml="---\naliases: [\"${short_title} ${chapter}\"]\n---"
