@@ -119,11 +119,6 @@ text=$(echo "$text" | sed -E 's/([0-9]{3})  /\1 /g')
 # fix spacing
 text=$(echo "$text" | sed -E 's/     /    /g')
 
-# remove blank lines
-text=$(echo "$text" | sed -E 's/ *$//g')
-text=$(echo "$text" | sed -E '/^$/d')
-text=$(echo "$text" | sed -E '/^ *>* *$/d')
-
 # pass 3/3
 # add newline when width is a space
 text=$(echo "$text" | sed -E "s/^(.{$((width - 1))}) /\1\n    /")
@@ -149,6 +144,11 @@ text=$(echo "$text" | sed -E "s/’/\'/g")
 # left
 text=$(echo "$text" | sed -E "s/“/\"/g")
 text=$(echo "$text" | sed -E "s/‘/\'/g")
+
+# remove blank lines
+text=$(echo "$text" | sed -E 's/ *$//g')
+text=$(echo "$text" | sed -E '/^$/d')
+text=$(echo "$text" | sed -E '/^ *>* *$/d')
 
 if [[ $2 != '' ]]; then
   echo "${text}" | awk "/^$(($2 - 2)) /{print; flag=1; next} /^$(($2 - 1)) /{flag=0} flag"
