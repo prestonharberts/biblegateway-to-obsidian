@@ -1,9 +1,9 @@
 #!/bin/bash
 # shellcheck disable=1091,2154
-source config.sh
+source config
 
 for ((book = 0; book < book_max; book++)); do
-  source bin/get-info.sh
+  source bin/get-info
   for ((chapter = 1; chapter <= chapter_max; chapter++)); do
     if [ $chapter -gt 1 ]; then
       echo -en "[[${standard_abbreviation}${chapter}${standard_translation}|]]" >>"${outlines_dir}/${standard_abbreviation}.md"

@@ -1,13 +1,13 @@
 #!/bin/bash
 # shellcheck disable=1091,2086,2154
-source config.sh
+source config
 
 if [[ "${verbose}" == "true" ]]; then
   printf 'Downloading the %s Bible.' "${translation}"
 fi
 ((book = 0))
 for ((book = 0; book < book_max; book++)); do
-  source bin/get-info.sh
+  source bin/get-info
   if [[ "${verbose}" == "true" && "${short_title}" != "Psalm" ]]; then
     printf '\n%s' "${short_title}"
   elif [[ "${verbose}" == "true" ]]; then

@@ -1,6 +1,6 @@
 #!/bin/bash
 # shellcheck disable=1091,2154
-source config.sh
+source config
 
 yaml="---\naliases: [\"${bible_name}\"]\n---"
 # initialize the bible file for all of the old/new testament
@@ -39,7 +39,7 @@ elif [[ "${yaml_enabled}" == "false" ]]; then
   echo -e "###### [[${standard_testament_arr[65]}|${testament_arr[65]}]]\n# ${genre_arr[65]}\n\n## Contents\n" >>"${outlines_dir}/${standard_genre_arr[65]}.md"
 fi
 for ((book = 0; book < book_max; book++)); do
-  source bin/get-info.sh
+  source bin/get-info
   if [[ "${short_title}" == "${abbreviation}" ]]; then
     yaml="---\naliases: [\"${long_title}\", \"${short_title}\"]\n---"
   else

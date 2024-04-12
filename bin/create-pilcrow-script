@@ -1,10 +1,10 @@
 #!/bin/bash
 # shellcheck disable=1091,2086,2154,2162
-source config.sh
+source config
 
 # find book index
 for ((book = 0; book < book_max; book++)); do
-  source bin/get-info.sh
+  source bin/get-info
   if [[ "${short_title}" == "${1}" ]]; then
     break
   elif [[ "${short_title}" == "${1} ${2}" ]]; then
@@ -22,22 +22,22 @@ elif [ $chapter_max -gt 1 ]; then
   echo "Now beginning: ${1} (${chapter_max} chapters)"
 fi
 # make pilcrow-signs
-if [[ -f "bin/pilcrow-signs.sh" ]]; then
+if [[ -f "bin/pilcrow-signs" ]]; then
   ((book++))
-  echo -e "# Book ${book}: ${short_title}" >>bin/pilcrow-signs.sh
+  echo -e "# Book ${book}: ${short_title}" >>bin/pilcrow-signs
   ((book--))
 else
-  echo -e "#!/bin/bash" >>bin/pilcrow-signs.sh
-  echo -e "# shellcheck disable=SC1091,2154" >>bin/pilcrow-signs.sh
-  echo -e "source config.sh" >>bin/pilcrow-signs.sh
-  echo -e "if [[ \"\${main_translation}\" == \"true\" ]]; then" >>bin/pilcrow-signs.sh
-  echo -e "  if_not_main=\"\"" >>bin/pilcrow-signs.sh
-  echo -e "elif [[ \"\${main_translation}\" == \"false\" ]]; then" >>bin/pilcrow-signs.sh
-  echo -e "  if_not_main=\"\${standard_translation}\"" >>bin/pilcrow-signs.sh
-  echo -e "fi" >>bin/pilcrow-signs.sh
-  echo -e "sed -i \"s/###### 1$/###### ¶ 1/g\" \"\${reading_dir}/\"*.md" >>bin/pilcrow-signs.sh
+  echo -e "#!/bin/bash" >>bin/pilcrow-signs
+  echo -e "# shellcheck disable=SC1091,2154" >>bin/pilcrow-signs
+  echo -e "source config" >>bin/pilcrow-signs
+  echo -e "if [[ \"\${main_translation}\" == \"true\" ]]; then" >>bin/pilcrow-signs
+  echo -e "  if_not_main=\"\"" >>bin/pilcrow-signs
+  echo -e "elif [[ \"\${main_translation}\" == \"false\" ]]; then" >>bin/pilcrow-signs
+  echo -e "  if_not_main=\"\${standard_translation}\"" >>bin/pilcrow-signs
+  echo -e "fi" >>bin/pilcrow-signs
+  echo -e "sed -i \"s/###### 1$/###### ¶ 1/g\" \"\${reading_dir}/\"*.md" >>bin/pilcrow-signs
   ((book++))
-  echo -e "# Book ${book}: ${short_title}" >>bin/pilcrow-signs.sh
+  echo -e "# Book ${book}: ${short_title}" >>bin/pilcrow-signs
   ((book--))
   chmod u+x pilcrow-signs
 fi
@@ -51,7 +51,7 @@ while ((chapter <= chapter_max)); do
   fi
   read -p ">>> " verse
   while ((verse != "n")); do
-    echo -e "sed -i \"s/###### ${verse}$/###### ¶ ${verse}/g\" \"\${reading_dir}/${standard_abbreviation}${chapter}\${if_not_main}.md\"" >>bin/pilcrow-signs.sh
+    echo -e "sed -i \"s/###### ${verse}$/###### ¶ ${verse}/g\" \"\${reading_dir}/${standard_abbreviation}${chapter}\${if_not_main}.md\"" >>bin/pilcrow-signs
     read -p ">>> " verse
   done
   if [[ "${verse}" == "n" ]]; then

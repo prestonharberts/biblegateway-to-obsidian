@@ -14,7 +14,7 @@ Other translations along with their MP3 audio bibles may work, but I have not te
 
 The script fetches text from [Bible Gateway](https://www.biblegateway.com/) and saves it as a markdown file. Each chapter is saved as two files, one for reading and another without text so that you can take notes in. A navigation bar is located at the bottom of each file for navigating files and is automatically created. All the chapter reading and table of contents are saved to a folder named `bible`, and all note-taking files are saved to another folder named `bible-notes`.
 
-This script is intended to be very simple to run, and is customizable from the `config` file. To adapt it to your taste, you can modify `bg2obs.sh` or fork this script.
+This script is intended to be very simple to run, and is customizable from the `config` file. To adapt it to your taste, you can modify `bg2ob` or fork this script.
 
 ## Installation
 
@@ -29,12 +29,12 @@ sudo dnf install rubygems && sudo gem install colorize optparse clipboard
 Next, give execution rights to both scripts using the following command:
 
 ```
-chmod u+x bg2md.rb bg2obs.sh
+chmod u+x bg2md.rb bg2ob
 ```
 
 ## Usage
 
-Once you are in the directory containing the script, run `./bg2obs.sh`. This will run the bash script. Do not copy anything while the program is running. See Troubleshooting, below.
+Once you are in the directory containing the script, run `./bg2ob`. This will run the bash script. Do not copy anything while the program is running. See Troubleshooting, below.
 
 ### Manual changes
 

@@ -1,10 +1,10 @@
 #!/bin/bash
 # shellcheck disable=1091,2086,2154
-source config.sh
+source config
 
 if [[ "${enable_audio_bible}" == "true" ]]; then
   for ((book = 0; book < book_max; book++)); do
-    source bin/get-info.sh
+    source bin/get-info
     if [ $book -ne 0 ]; then
       ((previous_book_num = book - 1))
     fi

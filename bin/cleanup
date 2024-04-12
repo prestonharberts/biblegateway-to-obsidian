@@ -1,6 +1,6 @@
 #!/bin/bash
 # shellcheck disable=1091,1110,1112,2154
-source config.sh
+source config
 
 if [[ $verbose == "true" ]]; then
   printf "\nCleanup"
@@ -159,7 +159,7 @@ fi
 
 # PILCROW SIGNS
 # add pilcrow signs to verses where a new paragraph starts
-source bin/pilcrow-signs.sh
+source bin/pilcrow-signs
 if [[ "${verbose}" == "true" ]]; then
   echo -n "."
 fi

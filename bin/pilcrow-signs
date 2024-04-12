@@ -1,6 +1,6 @@
 #!/bin/bash
 # shellcheck disable=SC1091,2154
-source config.sh
+source config
 
 if [[ "${main_translation}" == "true" ]]; then
   if_not_main=""
