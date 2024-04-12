@@ -1,0 +1,36 @@
+#!/bin/bash
+
+text=$(sdcv $1)
+
+# remove first and last few lines
+text=$(echo "$text" | sed -E 's/Found [0-9].*//')
+text=$(echo "$text" | sed -E 's/-->.*//')
+text=$(echo "$text" | sed -E 's/^ *\[.*//')
+
+# replace certain characters
+text=$(echo "$text" | sed -E 's/``/\"/')
+text=$(echo "$text" | sed -E "s/''/\"/")
+text=$(echo "$text" | sed -E 's/--/- /')
+
+# remove blank lines
+text=$(echo "$text" | sed -E 's/ *$//g')
+text=$(echo "$text" | sed -E '/^$/d')
+text=$(echo "$text" | sed -E '/^ *$/d')
+
+# fix indentation
+text=$(echo "$text" | sed -E 's/^   ([^ ])/    \1/')
+text=$(echo "$text" | sed -E 's/^      ([^ ])/       \1/')
+
+# fit to terminal width
+width=$(tput cols)
+hline=$(printf '=%.0s' $(seq 1 $width); echo)
+
+output="$(
+  echo $hline
+  padding=$(( ($width + ${#1}) / 2 ))
+  printf "%*s\n" $padding "${1^}"
+  echo $hline
+  echo "$text"
+)"
+
+echo "$output" | less -FX
