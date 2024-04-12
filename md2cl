@@ -20,6 +20,8 @@ text=$(echo "$text" | sed -E 's/\*//g')
 text=$(echo "$text" | sed -E 's/\\//g')
 text=$(echo "$text" | sed -E 's/\[//g')
 text=$(echo "$text" | sed -E 's/\]//g')
+text=$(echo "$text" | sed -E 's/^\^[0-9].*//g')
+text=$(echo "$text" | sed -E 's/\^[0-9]//g')
 #text=$(echo "$text" | sed -E 's/^> /    > /g')
 text=$(echo "$text" | sed -E 's/^> /     /g')
 text=$(echo "$text" | sed -E 's/> / /g')
@@ -40,9 +42,9 @@ text=$(echo "$text" | sed -E "s/^(.{4}> .{$((width - 8))})([A-Za-z0-9])([A-Za-z0
 text=$(echo "$text" | sed -E "s/^(.{4}> .{$((width - 8))})([A-Za-z0-9])([A-Za-z0-9])([^ ])/\1\2-\n     > \3\4/")
 text=$(echo "$text" | sed -E "s/^(.{4}> .{$((width - 8))})([A-Za-z0-9])([A-Za-z0-9])([^ ])/\1\2-\n     > \3\4/")
 # move char to newline if width-1 is a space
-text=$(echo "$text" | sed -E "s/^(.{4}> .{$((width - 8))}) ([A-Za-z0-9])/\1\n     > \2/")
-text=$(echo "$text" | sed -E "s/^(.{4}> .{$((width - 8))}) ([A-Za-z0-9])/\1\n     > \2/")
-text=$(echo "$text" | sed -E "s/^(.{4}> .{$((width - 8))}) ([A-Za-z0-9])/\1\n     > \2/")
+text=$(echo "$text" | sed -E "s/^(.{4}> .{$((width - 8))}) ([A-Za-z0-9“‘])/\1\n     > \2/")
+text=$(echo "$text" | sed -E "s/^(.{4}> .{$((width - 8))}) ([A-Za-z0-9“‘])/\1\n     > \2/")
+text=$(echo "$text" | sed -E "s/^(.{4}> .{$((width - 8))}) ([A-Za-z0-9“‘])/\1\n     > \2/")
 # add newline right after punctuation
 text=$(echo "$text" | sed -E "s/^(.{4}> .{$((width - 7))})([!?.,”’;:])/\1\2\n     > /")
 text=$(echo "$text" | sed -E "s/^(.{4}> .{$((width - 7))})([!?.,”’;:])/\1\2\n     > /")
@@ -69,9 +71,9 @@ text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})([A-Za-z0-9])([A-Za-z0-9])([
 text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})([A-Za-z0-9])([A-Za-z0-9])([^ ])/\1\2-\n    \3\4/")
 text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})([A-Za-z0-9])([A-Za-z0-9])([^ ])/\1\2-\n    \3\4/")
 # move char to newline if width-1 is a space
-text=$(echo "$text" | sed -E "s/^(.{$((width - 2))}) ([A-Za-z0-9])/\1\n    \2/")
-text=$(echo "$text" | sed -E "s/^(.{$((width - 2))}) ([A-Za-z0-9])/\1\n    \2/")
-text=$(echo "$text" | sed -E "s/^(.{$((width - 2))}) ([A-Za-z0-9])/\1\n    \2/")
+text=$(echo "$text" | sed -E "s/^(.{$((width - 2))}) ([A-Za-z0-9“‘])/\1\n    \2/")
+text=$(echo "$text" | sed -E "s/^(.{$((width - 2))}) ([A-Za-z0-9“‘])/\1\n    \2/")
+text=$(echo "$text" | sed -E "s/^(.{$((width - 2))}) ([A-Za-z0-9“‘])/\1\n    \2/")
 # add newline right after punctuation
 text=$(echo "$text" | sed -E "s/^(.{$((width - 1))})([!?.,”’;:])/\1\2\n    /")
 text=$(echo "$text" | sed -E "s/^(.{$((width - 1))})([!?.,”’;:])/\1\2\n    /")
@@ -87,9 +89,9 @@ text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})([A-Za-z0-9])([A-Za-z0-9])([
 text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})([A-Za-z0-9])([A-Za-z0-9])([^ ])/\1\2-\n    \3\4/")
 text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})([A-Za-z0-9])([A-Za-z0-9])([^ ])/\1\2-\n    \3\4/")
 # move char to newline if width-1 is a space
-text=$(echo "$text" | sed -E "s/^(.{$((width - 2))}) ([A-Za-z0-9])/\1\n    \2/")
-text=$(echo "$text" | sed -E "s/^(.{$((width - 2))}) ([A-Za-z0-9])/\1\n    \2/")
-text=$(echo "$text" | sed -E "s/^(.{$((width - 2))}) ([A-Za-z0-9])/\1\n    \2/")
+text=$(echo "$text" | sed -E "s/^(.{$((width - 2))}) ([A-Za-z0-9“‘])/\1\n    \2/")
+text=$(echo "$text" | sed -E "s/^(.{$((width - 2))}) ([A-Za-z0-9“‘])/\1\n    \2/")
+text=$(echo "$text" | sed -E "s/^(.{$((width - 2))}) ([A-Za-z0-9“‘])/\1\n    \2/")
 # add newline right after punctuation
 text=$(echo "$text" | sed -E "s/^(.{$((width - 1))})([!?.,”’;:])/\1\2\n    /")
 text=$(echo "$text" | sed -E "s/^(.{$((width - 1))})([!?.,”’;:])/\1\2\n    /")
