@@ -18,8 +18,9 @@ text=$(echo "$text" | sed -E '/^$/d')
 text=$(echo "$text" | sed -E '/^ *$/d')
 
 # fix indentation
-text=$(echo "$text" | sed -E 's/^   ([^ ])/     \1/')
-text=$(echo "$text" | sed -E 's/^      ([^ ])/       \1/')
+text=$(echo "$text" | sed -E 's/^      ([^ ])/        \1/')
+text=$(echo "$text" | sed -E 's/^   ([^ ])/      \1/')
+text=$(echo "$text" | sed -E '1s/^/  /')
 
 # fit to terminal width
 width=$(tput cols)
