@@ -159,7 +159,8 @@ text=$(echo "$text" | sed -E 's/^([¹²³⁴⁵⁶]) (.*)/   \1[\2]/g')
 
 if [[ $2 != '' ]]; then
   # format editorial headings
-  text=$(echo "$text" | sed -E 's/^## (.*)//')
+  text=$(echo "$text" | sed -E 's/^ *## (.*)//')
+  text=$(echo "$text" | sed -E '/^$/d')
   echo "$hline"
   padding=$(((width + ${#title}) / 2))
   printf "%*s\n" $padding "$title"
