@@ -84,7 +84,7 @@ for i in {1..2}; do
   # move char to newline if width-2 is (( or [[
   for j in {1..2}; do text=$(echo "$text" | sed -E "s/^(.{$((width - 3))})([[(])([[(])([A-Za-z0-9])/\1\n      \2\3\4/"); done
   # move char to newline if width-1 is a space or symbol
-  for j in {1..2}; do text=$(echo "$text" | sed -E "s/^(.{6}>.{$((width - 9))})([ “‘[)])([A-Za-z0-9“‘])/\1\n      > \2\3/"); done
+  for j in {1..2}; do text=$(echo "$text" | sed -E "s/^(.{6}>.{$((width - 9))})([ “‘[)])([A-Za-z0-9“‘[(])/\1\n      > \2\3/"); done
   # move char to newline if width-1 is a hyphen
   for j in {1..2}; do text=$(echo "$text" | sed -E "s/^(.{6}>.{$((width - 9))})-([A-Za-z0-9“‘])/\1-\n      > \2/"); done
   # move char to newline if width is a hyphen
@@ -112,7 +112,7 @@ for i in {1..2}; do
   # move char to newline if width-2 is (( or [[
   for j in {1..2}; do text=$(echo "$text" | sed -E "s/^(.{$((width - 3))})([[(])([[(])([A-Za-z0-9])/\1\n      \2\3\4/"); done
   # move char to newline if width-1 is a space or symbol
-  for j in {1..2}; do text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})([ “‘[(])([A-Za-z0-9“‘])/\1\n      \2\3/"); done
+  for j in {1..2}; do text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})([ “‘[(])([A-Za-z0-9“‘[(])/\1\n      \2\3/"); done
   # move char to newline if width-1 is a hyphen
   for j in {1..2}; do text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})-([A-Za-z0-9“‘])/\1-\n      \2/"); done
   # move char to newline if width is a hyphen
