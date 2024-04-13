@@ -168,12 +168,12 @@ if [[ $2 != '' ]]; then
   padding=$(((width + ${#title}) / 2))
   printf "%*s\n" $padding "$title"
   echo "$hline"
-  echo -e "${text}" | awk "/^$(($2 - 2)) /{print; flag=1; next} /^$(($2 - 1)) /{flag=0} flag"
-  echo -e "${text}" | awk "/^$(($2 - 1)) /{print; flag=1; next} /^$(($2 - 0)) /{flag=0} flag"
-  echo -e "${text}" | awk "/^$(($2 - 0)) /{print \"\033[31m\" \$0; flag=1; next} /^($(($2 + 1)) |¹)/{flag=0} flag"
+  echo -e "${text}" | awk "/^ *$(($2 - 2)) /{print; flag=1; next} /^ *$(($2 - 1)) /{flag=0} flag"
+  echo -e "${text}" | awk "/^ *$(($2 - 1)) /{print; flag=1; next} /^ *$(($2 - 0)) /{flag=0} flag"
+  echo -e "${text}" | awk "/^ $(($2 - 0)) /{print \"\033[31m\" \$0; flag=1; next} /^( *$(($2 + 1)) |¹)/{flag=0} flag"
   echo -en "\033[0m"
-  echo -e "${text}" | awk "/^$(($2 + 1)) /{print; flag=1; next} /^($(($2 + 2)) |¹)/{flag=0} flag"
-  echo -e "${text}" | awk "/^$(($2 + 2)) /{print; flag=1; next} /^($(($2 + 3)) |¹)/{flag=0} flag"
+  echo -e "${text}" | awk "/^ *$(($2 + 1)) /{print; flag=1; next} /^( *$(($2 + 2)) |¹)/{flag=0} flag"
+  echo -e "${text}" | awk "/^ *$(($2 + 2)) /{print; flag=1; next} /^( *$(($2 + 3)) |¹)/{flag=0} flag"
 else
   # add blank line before footnotes
   text=$(echo "$text" | sed -E 's/^¹/\n&/')
