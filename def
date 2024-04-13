@@ -18,16 +18,19 @@ text=$(echo "$text" | sed -E '/^$/d')
 text=$(echo "$text" | sed -E '/^ *$/d')
 
 # fix indentation
-text=$(echo "$text" | sed -E 's/^   ([^ ])/    \1/')
+text=$(echo "$text" | sed -E 's/^   ([^ ])/     \1/')
 text=$(echo "$text" | sed -E 's/^      ([^ ])/       \1/')
 
 # fit to terminal width
 width=$(tput cols)
-hline=$(printf '=%.0s' $(seq 1 $width); echo)
+hline=$(
+  printf '=%.0s' $(seq 1 $width)
+  echo
+)
 
 output="$(
   echo $hline
-  padding=$(( ($width + ${#1}) / 2 ))
+  padding=$((($width + ${#1}) / 2))
   printf "%*s\n" $padding "${1^}"
   echo $hline
   echo "$text"
