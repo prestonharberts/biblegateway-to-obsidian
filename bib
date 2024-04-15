@@ -165,14 +165,17 @@ cleanup() {
 }
 
 print_passage() {
-  # format editorial headings
-  text=$(echo "$text" | sed -E 's/^ *## (.*)//')
-  text=$(echo "$text" | sed -E '/^$/d')
-  echo "$hline"
-  padding=$(((width + ${#title}) / 2))
-  printf "%*s\n" $padding "$title"
-  echo "$hline"
-  echo -e "${text}" | awk "/^ *$(($2)) /{print; flag=1; next} /^ *$(($3 + 1)) /{flag=0} flag"
+  output="$(
+    # format editorial headings
+    text=$(echo "$text" | sed -E 's/^ *## (.*)//')
+    text=$(echo "$text" | sed -E '/^$/d')
+    echo "$hline"
+    padding=$(((width + ${#title}) / 2))
+    printf "%*s\n" $padding "$title"
+    echo "$hline"
+    echo -e "${text}" | awk "/^ *$(($2)) /{print; flag=1; next} /^ *$(($3 + 1)) /{flag=0} flag"
+  )"
+  echo "$output" | less -RFX
 }
 
 print_verse() {
