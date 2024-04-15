@@ -15,7 +15,9 @@ main() {
   done
   cleanup
   # output
-  if [[ $2 != '' ]]; then
+  if [[ $3 != '' ]]; then
+    print_passage "$@"
+  elif [[ $2 != '' ]]; then
     print_verse "$@"
   else
     print_chapter
@@ -30,7 +32,9 @@ print_title() {
     printf '=%.0s' $(seq 1 "$width")
     echo
   )
-  if [[ $2 != '' ]]; then
+  if [[ $3 != '' ]]; then
+    title="$(echo "$text" | grep '^# .*' | sed 's/# //'):$2-$3"
+  elif [[ $2 != '' ]]; then
     title="$(echo "$text" | grep '^# .*' | sed 's/# //'):$2"
   else
     title="$(echo "$text" | grep '^# .*' | sed 's/# //')"
@@ -158,6 +162,17 @@ cleanup() {
   text=$(echo "$text" | sed -E 's/^([¹²³⁴⁵⁶]) (.*)/   \1[\2]/g')
   # fix verses in hundreds
   text=$(echo "$text" | sed -E 's/^([0-9]{3}) *> /\1   > /g')
+}
+
+print_passage() {
+  # format editorial headings
+  text=$(echo "$text" | sed -E 's/^ *## (.*)//')
+  text=$(echo "$text" | sed -E '/^$/d')
+  echo "$hline"
+  padding=$(((width + ${#title}) / 2))
+  printf "%*s\n" $padding "$title"
+  echo "$hline"
+  echo -e "${text}" | awk "/^ *$(($2)) /{print; flag=1; next} /^ *$(($3 + 1)) /{flag=0} flag"
 }
 
 print_verse() {
