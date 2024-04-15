@@ -52,10 +52,10 @@ format_markdown() {
   text=$(echo "$text" | sed -E 's/\\\*/tempasterisk/g')
   text=$(echo "$text" | sed -E 's/—/––/g')
   # text=$(echo "$text" | sed -E 's/—/--/g')
-  # bold -> parentheses
-  text=$(echo "$text" | sed -E 's/\*\*([A-Za-z0-9])/((\1/g')
-  text=$(echo "$text" | sed -E 's/([A-Za-z0-9])\*\*/\1))/g')
-  text=$(echo "$text" | sed -E 's/\)\)([ !?.,”’”’;:]*)\(\(/\1/g')
+  # bold -> braces
+  text=$(echo "$text" | sed -E 's/\*\*([A-Za-z0-9])/{\1/g')
+  text=$(echo "$text" | sed -E 's/([A-Za-z0-9])\*\*/\1}/g')
+  text=$(echo "$text" | sed -E 's/\}([ !?.,”’”’;:]*)\{/\1/g')
   # italic -> brackets
   text=$(echo "$text" | sed -E 's/\*([A-Za-z0-9])/[\1/g')
   text=$(echo "$text" | sed -E 's/([A-Za-z0-9!?.,”’;:])\*/\1]/g')
@@ -86,10 +86,10 @@ justify_quotes() {
   text=$(echo "$text" | sed -E "s/^(.{6}>.{$((width - 9))}) /\1\n      > /")
   # hyphenate words that are in width
   text=$(echo "$text" | sed -E "s/^(.{6}>.{$((width - 9))})([A-Za-z0-9])([A-Za-z0-9])([^ ])/\1\2-\n      > \3\4/")
-  # move char to newline if width-2 is (( or [[
-  text=$(echo "$text" | sed -E "s/^(.{$((width - 3))})([[(])([[(])([A-Za-z0-9])/\1\n      \2\3\4/")
+  # move char to newline if width-2 is [[
+  text=$(echo "$text" | sed -E "s/^(.{$((width - 3))})\[\[([A-Za-z0-9])/\1\n      [[\2/")
   # move char to newline if width-1 is a space or symbol
-  text=$(echo "$text" | sed -E "s/^(.{6}>.{$((width - 9))})([ “‘[)])([A-Za-z0-9“‘[(])/\1\n      > \2\3/")
+  text=$(echo "$text" | sed -E "s/^(.{6}>.{$((width - 9))})([ “‘[({])([A-Za-z0-9“‘[({])/\1\n      > \2\3/")
   # move char to newline if width-1 is a hyphen
   text=$(echo "$text" | sed -E "s/^(.{6}>.{$((width - 9))})-([A-Za-z0-9“‘])/\1-\n      > \2/")
   # move char to newline if width is a hyphen
@@ -113,10 +113,10 @@ justify_normal() {
   text=$(echo "$text" | sed -E "s/^(.{$((width - 1))}) /\1\n      /")
   # hyphenate words that are in width
   text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})([A-Za-z0-9])([A-Za-z0-9])([^ ])/\1\2-\n      \3\4/")
-  # move char to newline if width-2 is (( or [[
-  text=$(echo "$text" | sed -E "s/^(.{$((width - 3))})([[(])([[(])([A-Za-z0-9])/\1\n      \2\3\4/")
+  # move char to newline if width-2 is [[
+  text=$(echo "$text" | sed -E "s/^(.{$((width - 3))})\[\[([A-Za-z0-9])/\1\n      [[\2/")
   # move char to newline if width-1 is a space or symbol
-  text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})([ “‘[(])([A-Za-z0-9“‘[(])/\1\n      \2\3/")
+  text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})([ “‘[({])([A-Za-z0-9“‘[({])/\1\n      \2\3/")
   # move char to newline if width-1 is a hyphen
   text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})-([A-Za-z0-9“‘])/\1-\n      \2/")
   # move char to newline if width is a hyphen
