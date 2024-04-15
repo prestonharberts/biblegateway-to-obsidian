@@ -1,6 +1,25 @@
 #!/bin/bash
 # shellcheck disable=1111,1112,2034
 
+show_help() {
+  echo "Usage: $0 [-ch]"
+  echo "   -c    Disable context verses"
+  echo "   -h    Display help"
+  exit 1
+}
+
+# Clear version variable if it exists and set defaults for others
+ARG_CONTEXT="true" # Which version to use from BibleGateway.com
+
+# Process command line args
+while getopts ':c?h' c; do
+  case $c in
+  c) ARG_CONTEXT="false" ;;
+  h | ?) show_help ;;
+  esac
+done
+shift $((OPTIND - 1))
+
 main() {
   text=$(cat ~/Documents/obsidian/Christianity/Bible/LSB/Reading/"${1}".md)
   get_terminal_width
@@ -186,12 +205,16 @@ print_verse() {
   padding=$(((width + ${#title}) / 2))
   printf "%*s\n" $padding "$title"
   echo "$hline"
-  echo -e "${text}" | awk "/^ *$(($2 - 2)) /{print; flag=1; next} /^ *$(($2 - 1)) /{flag=0} flag"
-  echo -e "${text}" | awk "/^ *$(($2 - 1)) /{print; flag=1; next} /^ *$(($2 - 0)) /{flag=0} flag"
-  echo -e "${text}" | awk "/^ *$2 /{print \"\033[31m\" \$0; flag=1; next} /^ *($(($2 + 1)) |¹)/{flag=0} flag"
-  echo -en "\033[0m"
-  echo -e "${text}" | awk "/^ *$(($2 + 1)) /{print; flag=1; next} /^ *($(($2 + 2)) |¹)/{flag=0} flag"
-  echo -e "${text}" | awk "/^ *$(($2 + 2)) /{print; flag=1; next} /^ *($(($2 + 3)) |¹)/{flag=0} flag"
+  if [[ $ARG_CONTEXT == 'true' ]]; then
+    echo -e "${text}" | awk "/^ *$(($2 - 2)) /{print; flag=1; next} /^ *$(($2 - 1)) /{flag=0} flag"
+    echo -e "${text}" | awk "/^ *$(($2 - 1)) /{print; flag=1; next} /^ *$(($2 - 0)) /{flag=0} flag"
+    echo -e "${text}" | awk "/^ *$2 /{print \"\033[31m\" \$0; flag=1; next} /^ *($(($2 + 1)) |¹)/{flag=0} flag"
+    echo -en "\033[0m"
+    echo -e "${text}" | awk "/^ *$(($2 + 1)) /{print; flag=1; next} /^ *($(($2 + 2)) |¹)/{flag=0} flag"
+    echo -e "${text}" | awk "/^ *$(($2 + 2)) /{print; flag=1; next} /^ *($(($2 + 3)) |¹)/{flag=0} flag"
+  elif [[ $ARG_CONTEXT == 'false' ]]; then
+    echo -e "${text}" | awk "/^ *$2 /{print; flag=1; next} /^ *($(($2 + 1)) |¹)/{flag=0} flag"
+  fi
 }
 
 print_chapter() {
