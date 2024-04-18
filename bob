@@ -1,1 +1,20 @@
 #!/bin/bash
+
+short_arr=(gen ex lev num deut josh judg ruth 1sam 2sam 1kings 2kings 1chron 2chron ezra neh est job ps prov eccles song isa jer lam ezek dan hos joel amos obad jonah mic nah hab zeph hag zech mal matt mark luke john acts rom 1cor 2cor gal eph phil col 1thess 2thess 1tim 2tim titus philem heb james 1pet 2pet 1john 2john 3john jude rev)
+long_arr=(Genesis Exodus Leviticus Numbers Deuteronomy Joshua Judges Ruth "1 Samuel" "2 Samuel" "1 Kings" "2 Kings" "1 Chronicles" "2 Chronicles" Ezra Nehemiah Esther Job Psalm Proverbs Ecclesiastes "Song of Songs" Isaiah Jeremiah Lamentations Ezekiel Daniel Hosea Joel Amos Obadiah Jonah Micah Nahum Habakkuk Zephaniah Haggai Zechariah Malachi Matthew Mark Luke John Acts Romans "1 Corinthians" "2 Corinthians" Galatians Ephesians Philippians Colossians "1 Thessalonians" "2 Thessalonians" "1 Timothy" "2 Timothy" Titus Philemon Hebrews James "1 Peter" "2 Peter" "1 John" "2 John" "3 John" Jude Revelation)
+
+if [[ $1 =~ ^(.+[^0-9])([0-9]+)$ ]]; then
+    short_book="${BASH_REMATCH[1]}"
+    chapter="${BASH_REMATCH[2]}"
+    verse="$2"
+fi
+
+for ((i = 0; i < 66; i++)); do
+  if [[ "$short_book" = "${short_arr[i]}" ]]; then
+    long_book="${long_arr[i]}"
+    break
+  fi
+done
+
+output="[[$short_book$chapter#$verse|$long_book $chapter:$verse]]"
+echo $output | xclip -sel c
