@@ -17,4 +17,5 @@ for ((i = 0; i < 66; i++)); do
 done
 
 output="[[$short_book$chapter#$verse|$long_book $chapter:$verse]]"
+echo $output
 echo $output | xclip -sel c
