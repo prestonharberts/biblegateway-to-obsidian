@@ -18,4 +18,4 @@ done
 
 output="[[$short_book$chapter#$verse|$long_book $chapter:$verse]]"
 echo "Verse link copied to clipboard!"
-echo $output | xclip -sel c
+echo -n $output | xclip -sel c
