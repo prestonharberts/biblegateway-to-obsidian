@@ -73,6 +73,7 @@ format_markdown() {
   text=$(echo "$text" | sed -E ':a;$!{N;s/\n¶ / ~\n/;ba;}')
   # fix/remove markdown syntax
   text=$(echo "$text" | sed -E 's/\\\*/tempasterisk/g')
+  text=$(echo "$text" | sed -E 's/==//g')
   text=$(echo "$text" | sed -E 's/—/––/g')
   # text=$(echo "$text" | sed -E 's/—/--/g')
   # bold -> braces
