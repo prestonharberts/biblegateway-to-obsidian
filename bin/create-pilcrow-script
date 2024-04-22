@@ -35,7 +35,7 @@ else
   echo -e "elif [[ \"\${main_translation}\" == \"false\" ]]; then" >>bin/pilcrow-signs
   echo -e "  if_not_main=\"\${standard_translation}\"" >>bin/pilcrow-signs
   echo -e "fi" >>bin/pilcrow-signs
-  echo -e "sed -i \"s/###### 1$/###### ¶ 1/g\" \"\${reading_dir}/\"*.md" >>bin/pilcrow-signs
+  echo -e "sed -i \"s/###### 1$/###### ¶ 1/g\" \"\${reading_dir}/\" *.md" >>bin/pilcrow-signs
   ((book++))
   echo -e "# Book ${book}: ${short_title}" >>bin/pilcrow-signs
   ((book--))
