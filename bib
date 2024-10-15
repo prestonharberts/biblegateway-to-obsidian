@@ -21,7 +21,7 @@ done
 shift $((OPTIND - 1))
 
 main() {
-  text=$(cat ~/Documents/obsidian/Christianity/Bible/LSB/Reading/"${1}".md)
+  text=$(cat ~/Documents/obsidian/Christianity/Bible/Scripture/"${1}".md)
   get_terminal_width
   print_title "$@"
   format_markdown

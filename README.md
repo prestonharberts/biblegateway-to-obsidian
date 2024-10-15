@@ -2,13 +2,13 @@
 
 ## Disclaimers
 
-This script is set to download the [ESV Bible](https://www.esv.org/translation/), but it can be changed. Before using this script, please make sure you own a copy of the ESV, even if this program does not use it, it is right to legally own it before making a copy of it using jgclark's script.
+This script is set to download the [NKJV Bible](https://www.biblegateway.com/versions/New-King-James-Version-NKJV-Bible/), but it can be changed. Before using this script, please make sure you own some sort of copy of the NKJV. Even if this program does not make actual use of it, it is right to legally own it before making a copy of it using jgclark's script.
 
-Do not distribute your files once generated because they are subject to the [ESV's copyright standards](https://www.crossway.org/permissions/). **All files are only intended for personal use.** This is not affiliated or approved by BibleGateway.com or Crossway. I make no guarantee regarding the usage of the script, it is at your own discretion.
+Do not distribute your files once generated because they are subject to the [NKJV's copyright standards](https://www.thomasnelson.com/about-us/permissions/). **All files are only intended for personal use.** This is not affiliated or approved by BibleGateway.com or Crossway. I make no guarantee regarding the usage of the script, it is at your own discretion.
 
 ## About
 
-This script adapts [jgclark's BibleGateway-to-Markdown](https://github.com/jgclark/BibleGateway-to-Markdown) script and is forked from [selfire1's BibleGateway-to-Obsidian](https://github.com/selfire1/BibleGateway-to-Obsidian) to export the ESV for use in [Obsidian](https://obsidian.md/). It accompanies the [ESV Hear the Word Audio Bible](https://www.crossway.org/bibles/esv-hear-the-word-audio-bible-610-dl/) that can be listened to from Obsidian when downloaded.
+This script adapts [jgclark's BibleGateway-to-Markdown](https://github.com/jgclark/BibleGateway-to-Markdown) script and is forked from [selfire1's BibleGateway-to-Obsidian](https://github.com/selfire1/BibleGateway-to-Obsidian) to export the NKJV for use in [Obsidian](https://obsidian.md/). It accompanies the [NKJV Voice Only Audio Bible Audiobook](https://www.christianbook.com/apps/product?item_no=DA25011-CP&event=ESRCG) that can be listened to from Obsidian when downloaded.
 
 Other translations along with their MP3 audio bibles may work, but I have not tested very many.
 
