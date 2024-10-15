@@ -19,6 +19,7 @@ text=$(echo "$text" | sed -E '/^ *$/d')
 
 # fix indentation
 text=$(echo "$text" | sed -E 's/^      ([^ ])/         \1/')
+text=$(echo "$text" | sed -E 's/^(                                                  )([^ ])/\1  \2/')
 text=$(echo "$text" | sed -E 's/^   ([^ ])/      \1/')
 text=$(echo "$text" | sed -E '1s/^/  /')
 text=$(echo "$text" | sed -E 's/^([^ ])/      \1/')
