@@ -368,7 +368,7 @@ passage.gsub!(/<i>/, '_')
 passage.gsub!(%r{</i>}, '_')
 passage.gsub!(%r{<br />}, "  \n") # use two trailling spaces to indicate line break but not paragraph break
 # Change the small caps around OT 'Lord' and make caps instead
-passage.gsub!(%r{<span style="font-variant: small-caps" class="small-caps">Lord</span>}, 'LORD')
+passage.gsub!(%r{<span style="font-variant: small-caps" class="small-caps divine-name">Lord</span>}, 'LORD')
 # Change the red text for Words of Jesus to be bold instead (if wanted)
 passage.gsub!(%r{<span class="woj">(.*?)</span>}, '**\1**') if opts[:boldwords]
 # simplify footnotes (or remove if that option set). Complex so do in several stages
