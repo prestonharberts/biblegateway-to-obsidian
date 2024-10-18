@@ -167,3 +167,6 @@ fi
 if [[ $verbose == "true" ]]; then
   printf '\nDownloaded the %s Bible.\n' "${translation}"
 fi
+
+# NKJV specific fixes
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/## Psalms [0-9]*–[0-9]*/## /g' {} +
