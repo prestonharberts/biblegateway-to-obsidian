@@ -40,6 +40,7 @@ Once you are in the directory containing the script, run `./bg2ob`. This will ru
 
 Certain manual changes must be made to the Bible files that cannot be done otherwise (make sure to check the note files for these chapters too):
 
+- Run `sed -i 's/LORD/Lᴏʀᴅ/g' *` in your Obsidian directory to change LORD to Lᴏʀᴅ (it looks much better in a serif font).
 - Delete extra text in Mark 16:8, and fix headings.
 - Delete extra headings in John 7:52-53 and 8:1. Remove the newline in John 8:11.
 - If wanted, add Psalm introductions and introductions present in other books.
@@ -47,6 +48,11 @@ Certain manual changes must be made to the Bible files that cannot be done other
 - If wanted, indent poetry by putting a '>' at the beginning of each line to indent (same as toggling blockquotes). Make sure to add a space below blockquote if the next line is a continuation of the same verse, or else it will be shown as a blockquote in preview mode, too.
 - If wanted, bold OT references in the NT.
 - If wanted, add editorial footnotes and cross-references.
+
+#### NKJV specific changes
+
+- A line in `bg2md` needs to be to correctly capitalize Lord to LORD when needed. Change line 371 to `passage.gsub!(%r{<span style="font-variant: small-caps" class="small-caps divine-name">Lord</span>}, 'LORD')`
+- The first header for 1 Sam. 28, 2 Chron. 5, 2 Cor. 7, 2 Kings 7, 2 Sam. 19, Dan. 11, Eccles. 8, and Zeph. 1 need to be removed in all Scripture and Note files.
 
 #### CSB specific changes
 
