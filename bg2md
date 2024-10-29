@@ -53,7 +53,8 @@ END_READ_CONTENT_RE   = '<section class="other-resources">|<section class="spons
 # Match parts of lines which actually contain passage text
 PASSAGE_RE = '(<p>\s*<span id=|<p class=|<p>\s?<span class=|<h3).*?(?:<\/p>|<\/h3>)'.freeze
 # Match parts of lines which actually contain passage text -- this uses non-matching groups to allow both options and capture
-MATCH_PASSAGE_RE = '((?:<p>\s*<span id=|<p class=|<p>\s?<span class=|<h3).*?(?:<\/p>|<\/h3>))'.freeze
+# MATCH_PASSAGE_RE = '((?:<p>\s*<span id=|<p class=|<p>\s?<span class=|<h3).*?(?:<\/p>|<\/h3>))'.freeze
+MATCH_PASSAGE_RE = '((?:<p>\s*<span id=|<p class=|<p>\s?<span class=|<h3|<\/div>|<div(?:\s+[^>]*)?>).*?(?:<\/p>|<\/h3>))'.freeze
 # Match lines that give the reference and version info in a displayable form
 REF_RE = '(<div class=\'bcv\'><div class="dropdown-display"><div class="dropdown-display-text">|<span class="passage-display-bcv">).*?(<\/div>|<\/span>)'.freeze
 MATCH_REF_RE = '(?:<div class=\'bcv\'><div class="dropdown-display"><div class="dropdown-display-text">|<span class="passage-display-bcv">)(.*?)(?:<\/div>|<\/span>)'.freeze
@@ -369,6 +370,8 @@ passage.gsub!(%r{</i>}, '_')
 passage.gsub!(%r{<br />}, "  \n") # use two trailling spaces to indicate line break but not paragraph break
 # Change the small caps around OT 'Lord' and make caps instead
 passage.gsub!(%r{<span style="font-variant: small-caps" class="small-caps divine-name">Lord</span>}, 'LORD')
+passage.gsub!(%r{<span style="font-variant: small-caps" class="small-caps divine-name">God</span>}, 'GOD')
+passage.gsub!(%r{<span style="font-variant: small-caps" class="small-caps divine-name">Jesus</span>}, 'JESUS')
 # Change the red text for Words of Jesus to be bold instead (if wanted)
 passage.gsub!(%r{<span class="woj">(.*?)</span>}, '**\1**') if opts[:boldwords]
 # simplify footnotes (or remove if that option set). Complex so do in several stages
@@ -388,9 +391,10 @@ end
 passage.gsub!(/<a .*?>/, '[')
 passage.gsub!(%r{</a>}, ']')
 # take out some <div> and </div> elements
-passage.gsub!(/<div class="footnotes">/, '')
-passage.gsub!(/<div class="poetry.*?>/, '')
-passage.gsub!(%r{\s*</div>}, '')
+# passage.gsub!(/<div class="footnotes">/, '')
+passage.gsub!(/<div class="poetry.*?>\n/, "\n> ")
+# passage.gsub!(/<div.*?>/, '')
+# passage.gsub!(%r{\s*</div>}, '')
 # take out all <span> and </span> elements (needs to come after chapternum spans)
 passage.gsub!(/<span .*?>/, '')
 passage.gsub!(%r{</span>}, '')

@@ -1,10 +1,13 @@
 #!/bin/bash
-# shellcheck disable=1091,1110,1112,2154
+# shellcheck disable=1091,1110,1112,2034,2154
 source config
 
 if [[ $verbose == "true" ]]; then
   printf "\nCleanup"
 fi
+
+# HTML due to BG2MD changes
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/<\/div><div.*html\"> //g' {} +
 
 # ASTERISKS
 # escape asterisks for translations that use them (LSB)
@@ -157,6 +160,43 @@ if [[ $main_translation == "true" ]]; then
   fi
 fi
 
+# NKJV specific fixes
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/## Psalms [0-9]*–[0-9]*/## /g' {} +
+
+# fix headers after </div>
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/<\/div> /<\/div>\n## /g' {} +
+
+# Poetry fixes
+# rm Bible/* -r && cp ~/Temp/nkjv-raw/* ./Bible/ -r && source bin/cleanup && vi Bible/NKJV/Reading/ps119.md
+
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E ':a;$!{N;s/\n>\n(###### [0-9]*\n)/\n\1> /;ba;}' {} +
+
+# trying to fix ps119
+((book = 0))
+for ((book = 0; book < book_max; book++)); do
+  source bin/get-info
+  for ((chapter = 1; chapter <= chapter_max; chapter++)); do
+    curr_file="${standard_abbreviation}${chapter}.md" # setting the current file
+    if ! grep -q "div>" "${reading_dir}/${curr_file}" && grep -q "> " "${reading_dir}/${curr_file}"; then
+      sed -i 's/^\([^#>-]\)/> \1/g' ${reading_dir}/${curr_file}
+      sed -i 's/> aliases/aliases/g' ${reading_dir}/${curr_file}
+    fi
+  done
+done
+
+# add # to line with div
+# find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(\n>.*)\n([^>]*<\/div>)/\1\n> \2/;ba;}' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(\n>[^>]*\n)([^>]*)(\n##### .*)$/\1\2<\/div>\3/;ba;}' {} +
+
+for i in {1..10}; do
+  find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E ':a;$!{N;s/\n([^>\n]*?)(<\/div>)/\2\n> \1/;ba;}' {} +
+done
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\(> .*\)<\/div>/\1/g' {} +
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/> #/#/g' {} +
+
+# fix astersisk
+find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ \\\* /\\\*/g' {} +
+
 # PILCROW SIGNS
 # add pilcrow signs to verses where a new paragraph starts
 source bin/pilcrow-signs
@@ -168,5 +208,15 @@ if [[ $verbose == "true" ]]; then
   printf '\nDownloaded the %s Bible.\n' "${translation}"
 fi
 
-# NKJV specific fixes
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/## Psalms [0-9]*–[0-9]*/## /g' {} +
+# old
+# find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E ':a;$!{N;s/\n([^#>]*?\n)> /\n>> \1> /;ba;}' {} +
+# find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(\n> .*?\n)([^#])/\1> \2/;ba;}' {} +
+# find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E ':a;$!{N;s/> [> ]*\n/\n/;ba;}' {} +
+# find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/[> ]*>>[> ]*/> /g' {} +
+# find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^> [> ]*/> /g' {} +
+
+# sed -i -E ':a;$!{N;s/\n([^#]*?\n)> /\n>> \1\n> /;ba;}' Bible/NKJV/Reading/gen2.md
+# sed -i -E ':a;$!{N;s/(\n> .*?\n)([^#])/\1> \2/;ba;}' Bible/NKJV/Reading/gen2.md
+# sed -i -E ':a;$!{N;s/> [> ]*\n/\n/;ba;}' Bible/NKJV/Reading/gen2.md
+# sed -i 's/[> ]*>>[> ]*/> /g' Bible/NKJV/Reading/gen2.md
+# sed -i 's/^> [> ]*/> /g' Bible/NKJV/Reading/gen2.md

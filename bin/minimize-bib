@@ -1,0 +1,5 @@
+#!/bin/bash
+sed -i '/aliases/d' *.md
+sed -i '/^##### /d' *.md
+sed -i '/^---/d' *.md
+sed -i 's/<div.*>\(.*\)<\/div>/\1/g' *.md
