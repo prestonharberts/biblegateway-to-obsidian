@@ -40,7 +40,6 @@ Once you are in the directory containing the script, run `./bg2ob`. This will ru
 
 Certain manual changes must be made to the Bible files that cannot be done otherwise (make sure to check the note files for these chapters too):
 
-- Run `sed -i 's/LORD/Lᴏʀᴅ/g' *` in your Obsidian directory to change LORD to Lᴏʀᴅ (it looks much better in a serif font).
 - Delete extra text in Mark 16:8, and fix headings.
 - Delete extra headings in John 7:52-53 and 8:1. Remove the newline in John 8:11.
 - If wanted, add Psalm introductions and introductions present in other books.
