@@ -52,11 +52,11 @@ print_title() {
     echo
   )
   if [[ $3 != '' ]]; then
-    title="$(echo "$text" | grep '^# .*' | sed 's/# \(.*\) [A-Z]*$/\1/'):$2-$3"
+    title="$(echo "$text" | grep '^# .*' | sed 's/# \(.*\) *(*[A-Z]*)*$/\1/'):$2-$3"
   elif [[ $2 != '' ]]; then
-    title="$(echo "$text" | grep '^# .*' | sed 's/# \(.*\) [A-Z]*$/\1/'):$2"
+    title="$(echo "$text" | grep '^# .*' | sed 's/# \(.*\) *(*[A-Z]*)*$/\1/'):$2"
   else
-    title="$(echo "$text" | grep '^# .*' | sed 's/# \(.*\) [A-Z]*$/\1/')"
+    title="$(echo "$text" | grep '^# .*' | sed 's/# \(.*\) *(*[A-Z]*)*$/\1/')"
   fi
 }
 
