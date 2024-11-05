@@ -60,7 +60,7 @@ for ((book = 0; book < book_max; book++)); do
     fi
     short_title_no_spaces=$(echo "${short_title}" | sed 's/ //g')
     text=$(ruby bg2md -e -c -f -l -r -v "${translation}" "${short_title_no_spaces}${chapter}") # this calls the 'bg2md' script
-    text="${text/^(.*?)v1/v1/}"                                                                   # deleting unwanted headers
+    text="${text/^(.*?)v1/v1/}"                                                                # deleting unwanted headers
     if [[ "${short_title}" == "${abbreviation}" ]]; then
       yaml="---\naliases: [\"${short_title} ${chapter}\"]\n---"
       yaml_notes="---\naliases: [\"${short_title} ${chapter} ${notes}\"]\n---"
