@@ -372,6 +372,8 @@ passage.gsub!(%r{<br />}, "  \n") # use two trailling spaces to indicate line br
 passage.gsub!(%r{<span style="font-variant: small-caps" class="small-caps divine-name">Lord</span>}, 'LORD')
 passage.gsub!(%r{<span style="font-variant: small-caps" class="small-caps divine-name">God</span>}, 'GOD')
 passage.gsub!(%r{<span style="font-variant: small-caps" class="small-caps divine-name">Jesus</span>}, 'JESUS')
+passage.gsub!(%r{<span style="font-variant: small-caps" class="small-caps">Yah</span>}, 'YAH')
+# passage.gsub!(%r{<span style="font-variant: small-caps" class="small-caps.*">}, 'SMALLCAP')
 # Change the red text for Words of Jesus to be bold instead (if wanted)
 passage.gsub!(%r{<span class="woj">(.*?)</span>}, '**\1**') if opts[:boldwords]
 # simplify footnotes (or remove if that option set). Complex so do in several stages

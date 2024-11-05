@@ -1,265 +1,267 @@
 #!/bin/bash
-# shellcheck disable=2034
+# shellcheck disable=1112,2023,2035,2086
 
-# rename verse-by-verse to have 'verse'
-rename "s/([0-9])\.md/\1verse.md/" *
+# book names
 
-find . -type f -wholename "*.md" -exec sed -i 's/ NKJV//g' {} +
-
-abbreviation_1="gen"
-abbreviation_2="ex"
-abbreviation_3="lev"
-abbreviation_4="num"
-abbreviation_5="deut"
-abbreviation_6="josh"
-abbreviation_7="judg"
-abbreviation_8="ruth"
-abbreviation_9="1sam"
-abbreviation_10="2sam"
-abbreviation_11="1kings"
-abbreviation_12="2kings"
-abbreviation_13="1chron"
-abbreviation_14="2chron"
-abbreviation_15="ezra"
-abbreviation_16="neh"
-abbreviation_17="est"
-abbreviation_18="job"
-abbreviation_19="ps"
-abbreviation_20="prov"
-abbreviation_21="eccles"
-abbreviation_22="song"
-abbreviation_23="isa"
-abbreviation_24="jer"
-abbreviation_25="lam"
-abbreviation_26="ezek"
-abbreviation_27="dan"
-abbreviation_28="hos"
-abbreviation_29="joel"
-abbreviation_30="amos"
-abbreviation_31="obad"
-abbreviation_32="jonah"
-abbreviation_33="mic"
-abbreviation_34="nah"
-abbreviation_35="hab"
-abbreviation_36="zeph"
-abbreviation_37="hag"
-abbreviation_38="zech"
-abbreviation_39="mal"
-abbreviation_40="matt"
-abbreviation_41="mark"
-abbreviation_42="luke"
-abbreviation_43="john"
-abbreviation_44="acts"
-abbreviation_45="rom"
-abbreviation_46="1cor"
-abbreviation_47="2cor"
-abbreviation_48="gal"
-abbreviation_49="eph"
-abbreviation_50="phil"
-abbreviation_51="col"
-abbreviation_52="1thess"
-abbreviation_53="2thess"
-abbreviation_54="1tim"
-abbreviation_55="2tim"
-abbreviation_56="titus"
-abbreviation_57="philem"
-abbreviation_58="heb"
-abbreviation_59="james"
-abbreviation_60="1pet"
-abbreviation_61="2pet"
-abbreviation_62="1john"
-abbreviation_63="2john"
-abbreviation_64="3john"
-abbreviation_65="jude"
-abbreviation_66="rev"
-
+# other variables
 book_max=66
 chapter_arr=(50 40 27 36 34 24 21 4 31 24 22 25 29 36 10 13 10 42 150 31 12 8 66 52 5 48 12 14 3 9 1 4 7 3 3 3 2 14 4 28 16 24 21 28 16 16 13 6 6 4 4 5 3 6 4 3 1 13 5 5 3 5 1 1 1 22)
+book_arr=("gen" "ex" "lev" "num" "deut" "josh" "judg" "ruth" "1sam" "2sam" "1kings" "2kings" "1chron" "2chron" "ezra" "neh" "est" "job" "ps" "prov" "eccles" "song" "isa" "jer" "lam" "ezek" "dan" "hos" "joel" "amos" "obad" "jonah" "mic" "nah" "hab" "zeph" "hag" "zech" "mal" "matt" "mark" "luke" "john" "acts" "rom" "1cor" "2cor" "gal" "eph" "phil" "col" "1thess" "2thess" "1tim" "2tim" "titus" "philem" "heb" "james" "1pet" "2pet" "1john" "2john" "3john" "jude" "rev")
 
-book_arr=("${abbreviation_1}" "${abbreviation_2}" "${abbreviation_3}" "${abbreviation_4}" "${abbreviation_5}" "${abbreviation_6}" "${abbreviation_7}" "${abbreviation_8}" "${abbreviation_9}" "${abbreviation_10}" "${abbreviation_11}" "${abbreviation_12}" "${abbreviation_13}" "${abbreviation_14}" "${abbreviation_15}" "${abbreviation_16}" "${abbreviation_17}" "${abbreviation_18}" "${abbreviation_19}" "${abbreviation_20}" "${abbreviation_21}" "${abbreviation_22}" "${abbreviation_23}" "${abbreviation_24}" "${abbreviation_25}" "${abbreviation_26}" "${abbreviation_27}" "${abbreviation_28}" "${abbreviation_29}" "${abbreviation_30}" "${abbreviation_31}" "${abbreviation_32}" "${abbreviation_33}" "${abbreviation_34}" "${abbreviation_35}" "${abbreviation_36}" "${abbreviation_37}" "${abbreviation_38}" "${abbreviation_39}" "${abbreviation_40}" "${abbreviation_41}" "${abbreviation_42}" "${abbreviation_43}" "${abbreviation_44}" "${abbreviation_45}" "${abbreviation_46}" "${abbreviation_47}" "${abbreviation_48}" "${abbreviation_49}" "${abbreviation_50}" "${abbreviation_51}" "${abbreviation_52}" "${abbreviation_53}" "${abbreviation_54}" "${abbreviation_55}" "${abbreviation_56}" "${abbreviation_57}" "${abbreviation_58}" "${abbreviation_59}" "${abbreviation_60}" "${abbreviation_61}" "${abbreviation_62}" "${abbreviation_63}" "${abbreviation_64}" "${abbreviation_65}" "${abbreviation_66}")
-
-# find . -type f -wholename "*verse.md" -exec sed -i 's/\([0-9]\)\(\",\)/\1 (Verse)\2/' {} + # old
-find . -type f -wholename "*verse.md" -exec sed -i 's/\([0-9]\)\(\"\]\)/\1 (Verse)\2/' {} +
-find . -type f -wholename "*verse.md" -exec sed -i 's/\([0-9]\)[|]Prev/\1verse\|Prev/' {} +
-find . -type f -wholename "*verse.md" -exec sed -i 's/\([0-9]\)[|]Next/\1verse\|Next/' {} +
-
+# make *verse.md files
+mkdir Link
 for ((book = 0; book < book_max; book++)); do
   for ((chapter = 1; chapter <= chapter_arr[book]; chapter++)); do
     #cat ${book_arr[book]}${chapter}.md >> ${book_arr[book]}.md
-    cp ${book_arr[book]}${chapter}verse.md ${book_arr[book]}${chapter}paragraph.md
+    cp ${book_arr[book]}${chapter}.md ${book_arr[book]}${chapter}verse.md
+    mv ${book_arr[book]}${chapter}.md Link
   done
 done
 
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)0/\1⁰/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)1/\1¹/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)2/\1²/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)3/\1³/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)4/\1⁴/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)5/\1⁵/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)6/\1⁶/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)7/\1⁷/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)8/\1⁸/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)9/\1⁹/g' {} +
+# put "Verse" in aliases and links
+find . -type f -wholename "*.md" -exec sed -i 's/\([0-9]\)\(\"\]\)/\1 (Verse)\2/' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/\([0-9]\)[|]Prev/\1verse\|Prev/' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/\([0-9]\)[|]Next/\1verse\|Next/' {} +
 
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)0/\1⁰/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)1/\1¹/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)2/\1²/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)3/\1³/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)4/\1⁴/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)5/\1⁵/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)6/\1⁶/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)7/\1⁷/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)8/\1⁸/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)9/\1⁹/g' {} +
+# remove translation title
+find . -type f -wholename "*.md" -exec sed -i 's/ NKJV//g' {} +
 
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)0/\1⁰/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)1/\1¹/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)2/\1²/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)3/\1³/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)4/\1⁴/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)5/\1⁵/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)6/\1⁶/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)7/\1⁷/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)8/\1⁸/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(######.*\)9/\1⁹/g' {} +
+# remove old div tags (if any)
+find . -type f -wholename "*.md" -exec sed -i 's/<div.*>\(.*\)<\/div>/\1/g' {} +
 
-find . -type f -wholename "*paragraph.md" -exec sed -i -E ':a;$!{N;s/###### ¶ ([⁰¹²³⁴⁵⁶⁷⁸⁹]*)\n/###### \\ \n**¶\1**/;ba;}' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i -E ':a;$!{N;s/###### ([⁰¹²³⁴⁵⁶⁷⁸⁹]*)\n/###### \\ \n**\1**/;ba;}' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i -E ':a;$!{N;s/\n###### ([⁰¹²³⁴⁵⁶⁷⁸⁹]*)\n([^“‘>])/ **\1**\2/;ba;}' {} +
-
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/(Verse)/(Paragraph)/g' {} +
-# find . -type f -wholename "*paragraph.md" -exec sed -i 's/\([0-9]\)\(\",\)/\1 (Paragraph)\2/' {} +
-# find . -type f -wholename "*paragraph.md" -exec sed -i 's/\([0-9]\)\(\"\]\)/\1 (Paragraph)\2/' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/verse[|]Prev/paragraph\|Prev/' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/verse[|]Next/paragraph\|Next/' {} +
-
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\*\*/_/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_A-Za-z0-9“‘]*\) _/\1\n###### \\ \n\*\*/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_]*\) _/\1\n###### \\ \n\*\*/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_]*\) _/\1\n###### \\ \n\*\*/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_]*\) _/\1\n###### \\ \n\*\*/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_]*\) _/\1\n###### \\ \n\*\*/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_]*\) _/\1\n###### \\ \n\*\*/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_]*\) _/\1\n###### \\ \n\*\*/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_]*\) _/\1\n###### \\ \n\*\*/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_]*\) _/\1\n###### \\ \n\*\*/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_]*\) _/\1\n###### \\ \n\*\*/g' {} +
-
-find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_]\)/###### \\ \n\1/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/_/\*\*/g' {} +
-
-find . -type f -wholename "*paragraph.md" -exec sed -i -E ':a;$!{N;s/###### \\ \n###### \\ /###### \\ /;ba;}' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i -E ':a;$!{N;s/\n###### \\ \n## /## /;ba;}' {} +
-# find . -type f -wholename "*paragraph.md" -exec sed -i -E ':a;$!{N;s/## ([A-Za-z0-9“‘’”:;() ]*)\n###### \\ /## \1/;ba;}' {} +
-# new version below
-find . -type f -wholename "*paragraph.md" -exec sed -i -E ':a;$!{N;s/\n## ([^#]*?)\n###### \\ /\n## \1/;ba;}' {} +
-
-find . -type f -wholename "*paragraph.md" -exec sed -i '6{/^###### \\ $/d}' {} +
-
-for ((book = 0; book < book_max; book++)); do
-  for ((chapter = 1; chapter <= chapter_arr[book]; chapter++)); do
-    cp ${book_arr[book]}${chapter}paragraph.md ${book_arr[book]}${chapter}reading.md
-  done
-done
-
-find . -type f -wholename "*reading.md" -exec sed -i 's/\*\*[¶⁰¹²³⁴⁵⁶⁷⁸⁹]*\*\*//g' {} +
-find . -type f -wholename "*reading.md" -exec sed -i 's/Paragraph/Reading/g' {} +
-find . -type f -wholename "*reading.md" -exec sed -i 's/paragraph/reading/g' {} +
-
-#find . -type f -wholename "*paragraph.md" -exec sed -i '2s/^\(.*\)$/\1\n\1/' {} +
-#find . -type f -wholename "*paragraph.md" -exec sed -i '2s/ (Paragraph)//g' {} +
-#find . -type f -wholename "*paragraph.md" -exec sed -i -E ':a;$!{N;s/(aliases.*)\]\naliases\: \[/\1, /;ba;}' {} +
-
+# fix divine names to smallcaps and other
+sed -i 's/LORD/Lᴏʀᴅ/g' *.md
+sed -i 's/GOD/Gᴏᴅ/g' *.md
+sed -i 's/JESUS/Jᴇꜱᴜꜱ/g' *.md
+sed -i 's/\*Selah\*/Selah/g' *.md
 find . -type f -wholename "*.md" -exec sed -i 's/— \*/—\*/g' {} +
+# change arrows (also do for notes manually)
+find . -type f -wholename "*.md" -exec sed -i 's/←←/←/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/→→/→/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/←/⭠ /g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/→/ ⭢/g' {} +
+# remove audio links
+find . -type f -wholename "*.md" -exec sed -i 's/\/ \[\[[^]]*Audio\]\] //g' {} +
 
-find . -type f -wholename "*verse.md" -exec sed -i 's/^\(# .*\)/\1 (Verse)/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/^\(# .*\)/\1 (Paragraph)/g' {} +
-find . -type f -wholename "*reading.md" -exec sed -i 's/^\(# .*\)/\1 (Reading)/g' {} +
+# remove md syntax from newline verses
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/###### ¶ ([0-9]*)\n/_¶\1_ /;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/###### ([0-9]*)\n/_\1_ /;ba;}' {} +
+
+# remove verse 1 (optional)
+# find . -type f -wholename "*.md" -exec sed -i 's/_1_//g' {} +
+
+# put verse after poetry
+find . -type f -wholename "*.md" -exec sed -i 's/^\(_[¶0-9]*_\) > /> \1 /g' {} +
+
+# change bold verses to have css class
+find . -type f -wholename "*.md" -exec sed -i 's/_¶\([0-9]*\)_/<span class=\"verse1\">\1<\/span>/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/_\([0-9]*\)_/<span class=\"verse2\">\1<\/span>/g' {} +
+
+# add newline above/below poetry
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^<>#][^\n]*)(\n>)/\1\n<div class=\"break\"><\/div>\2/;ba;}' {} + # before poetry
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n<span[^\n]*)(\n>)/\1\n<div class=\"break\"><\/div>\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n>[^\n]*)(\n[^<>#])/\1\n<div class=\"break\"><\/div>\2/;ba;}' {} + # after poetry
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n>[^\n]*)(\n<span)/\1\n<div class=\"break\"><\/div>\2/;ba;}' {} +
+
+# move md syntax to end of line to prepare for adding double quotations
+find . -type f -wholename "*.md" -exec sed -i 's/^\(<span.*span>\) \(.*\)$/\2 \1/g' {} +   # verse
+find . -type f -wholename "*.md" -exec sed -i 's/^\(> <span.*span>\) \(.*\)$/\2 \1/g' {} + # poetry verse
+find . -type f -wholename "*.md" -exec sed -i 's/^\(>\) \(.*\)$/\2 \1/g' {} +              # poetry continued
+find . -type f -wholename "*.md" -exec sed -i 's/^\(<div.*div>\)$/Break\1/g' {} +          # break
+
+# replace apostrophe 's' and 's' apostrophe with 'possessive' to prepare adding single quotations
+find . -type f -wholename "*.md" -exec sed -i 's/’s/single_possessive/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/s’ /double_possessive /g' {} +
+
+# add double quotes to continuation of quote after double quote finishes
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(’[^\n”]*\n)([^“‘])/\1“\2/;ba;}' {} +
+
+# add double quotes to beginning of lines that are a continuation of a double quote in a single quote
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n‘“]*‘[^\n’]*“[^\n”’]*\n)([^“‘])/\1“\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n‘“]*‘[^\n’]*’[^\n‘]*‘[^\n’]*“[^\n”’]*\n)([^“‘])/\1“\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n‘“]*‘[^\n’]*’[^\n‘]*‘[^\n’]*’[^\n‘]*‘[^\n’]*“[^\n”’]*\n)([^“‘])/\1“\2/;ba;}' {} +
+
+# add single quotes to beginning of lines that are a continuation of a single quote in a double quote
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n“‘]*“[^\n”]*‘[^\n”’]*\n)([^“‘])/\1‘\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n“‘]*“[^\n”]*”[^\n“]*“[^\n”]*‘[^\n”’]*\n)([^“‘])/\1‘\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n“‘]*“[^\n”]*”[^\n“]*“[^\n”]*”[^\n“]*“[^\n”]*‘[^\n”’]*\n)([^“‘])/\1‘\2/;ba;}' {} +
+
+# add single quotes to beginning of lines that are a continuation of a quote
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n‘]*‘[^\n’]*\n)([^“‘])/\1‘\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n‘]*‘[^\n’]*’[^\n‘]*‘[^\n’]*\n)([^“‘])/\1‘\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n‘]*‘[^\n’]*’[^\n‘]*‘[^\n’]*’[^\n‘]*‘[^\n’]*\n)([^“‘])/\1‘\2/;ba;}' {} +
+
+# add double quotes to beginning of lines that are a continuation of a quote
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n“]*“[^\n”]*\n)([^“‘])/\1“\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n“]*“[^\n”]*”[^\n“]*“[^\n”]*\n)([^“‘])/\1“\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n“]*“[^\n”]*”[^\n“]*“[^\n”]*”[^\n“]*“[^\n”]*\n)([^“‘])/\1“\2/;ba;}' {} +
+# ‘’
+find . -type f -wholename "*.md" -exec sed -i 's/“#/#/g' {} +
+
+# move md syntax back to start of line
+find . -type f -wholename "*.md" -exec sed -i 's/^\(.*\) \(<span.*span>\)$/\2 \1/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/^\(.*\) \(> <span.*span>\)$/\2 \1/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/^\(.*\) \(>\)$/\2 \1/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/^.*Break\(<div.*div>\)$/\1/g' {} +
+
+# add single quotes to last verse in a section
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n‘]*‘[^\n’]*)(\n#)/\1’\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n‘]*‘[^\n’]*’[^\n‘]*‘[^\n’]*)(\n#)/\1’\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n‘]*‘[^\n’]*’[^\n‘]*‘[^\n’]*’[^\n‘]*‘[^\n’]*)(\n#)/\1’\2/;ba;}' {} +
+
+# add double quotes to last verse in a section
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n“]*“[^\n”]*)(\n#)/\1”\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n“]*“[^\n”]*”[^\n“]*“[^\n”]*)(\n#)/\1”\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n“]*“[^\n”]*”[^\n“]*“[^\n”]*”[^\n“]*“[^\n”]*)(\n#)/\1”\2/;ba;}' {} +
+
+# fix possessive apostrophes
+find . -type f -wholename "*.md" -exec sed -i 's/single_possessive/’s/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/double_possessive/s’/g' {} +
+
+# make poetry verse numbers offset (verse3 css class)
+find . -type f -wholename "*.md" -exec sed -i 's/\(> <span class=\"verse\)1\(.*span>\) /\13\2/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/\(> <span class=\"verse\)2\(.*span>\) /\14\2/g' {} +
+
+# add css class to poetical quotes
+find . -type f -wholename "*.md" -exec sed -i 's/\(>\)\(“\)/\1<span class=\"poetry-quote1\">\2<\/span>/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/\(>\)\(‘\)/\1<span class=\"poetry-quote2\">\2<\/span>/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/^\(> \)\(“\)/\1<span class=\"poetry-quote1\">\2<\/span>/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/^\(> \)\(‘\)/\1<span class=\"poetry-quote2\">\2<\/span>/g' {} +
+
+# test: remove breaks
+find . -type f -wholename "*.md" -exec sed -i 's/^<div.*div>$//g' {} +
+
+# rename Verse to Paragraph
+#find . -type f -wholename "*paragraph.md" -exec sed -i 's/(Verse)/(Paragraph)/g' {} +
+#find . -type f -wholename "*paragraph.md" -exec sed -i 's/verse[|]Prev/paragraph\|Prev/' {} +
+#find . -type f -wholename "*paragraph.md" -exec sed -i 's/verse[|]Next/paragraph\|Next/' {} +
+
+#find . -type f -wholename "*paragraph.md" -exec sed -i 's//g' {} +
+#find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_A-Za-z0-9“‘]*\) _/\1\n###### \\ \n_/g' {} +
+#find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_]*\) _/\1\n###### \\ \n_/g' {} +
+#find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_]*\) _/\1\n###### \\ \n_/g' {} +
+#find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_]*\) _/\1\n###### \\ \n_/g' {} +
+#find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_]*\) _/\1\n###### \\ \n_/g' {} +
+#find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_]*\) _/\1\n###### \\ \n_/g' {} +
+#find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_]*\) _/\1\n###### \\ \n_/g' {} +
+#find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_]*\) _/\1\n###### \\ \n_/g' {} +
+#find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_]*\) _/\1\n###### \\ \n_/g' {} +
+#find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_]*\) _/\1\n###### \\ \n_/g' {} +
+
+#find . -type f -wholename "*paragraph.md" -exec sed -i '6,$s/^\([^>_]\)/###### \\ \n\1/g' {} +
+#find . -type f -wholename "*paragraph.md" -exec sed -i 's//g' {} +
+
+#find . -type f -wholename "*paragraph.md" -exec sed -i -E ':a;$!{N;s/###### \\ \n###### \\ /###### \\ /;ba;}' {} +
+#find . -type f -wholename "*paragraph.md" -exec sed -i -E ':a;$!{N;s/\n###### \\ \n## /## /;ba;}' {} +
+# new version below
+#find . -type f -wholename "*paragraph.md" -exec sed -i -E ':a;$!{N;s/\n## ([^#]*?)\n###### \\ /\n## \1/;ba;}' {} +
+
+#find . -type f -wholename "*paragraph.md" -exec sed -i '6{/^###### \\ $/d}' {} +
+
+#for ((book = 0; book < book_max; book++)); do
+#for ((chapter = 1; chapter <= chapter_arr[book]; chapter++)); do
+#cp ${book_arr[book]}${chapter}paragraph.md ${book_arr[book]}${chapter}reading.md
+#done
+#done
+
+#find . -type f -wholename "*reading.md" -exec sed -i 's/_[¶⁰¹²³⁴⁵⁶⁷⁸⁹]*_//g' {} +
+#find . -type f -wholename "*reading.md" -exec sed -i 's/Paragraph/Reading/g' {} +
+#find . -type f -wholename "*reading.md" -exec sed -i 's/paragraph/reading/g' {} +
+
+# find . -type f -wholename "*verse.md" -exec sed -i 's/^\(# .*\)/\1 (Verse)/g' {} +
+#find . -type f -wholename "*paragraph.md" -exec sed -i 's/^\(# .*\)/\1 (Paragraph)/g' {} +
+#find . -type f -wholename "*reading.md" -exec sed -i 's/^\(# .*\)/\1 (Reading)/g' {} +
 
 # run to debug
 # rm *.md && cp ~/Documents/obsidian/Christianity/Bible/NKJV/Reading/* . && rm *paragraph.md *reading.md && ./paragraph.sh && cp *paragraph.md *reading.md ~/Documents/obsidian/Christianity/Bible/NKJV/Reading/
 
 # in scripture and notes
-find . -type f -wholename "*.md" -exec sed -i 's/\/ \[\[[^]]*Audio\]\] //g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\/ \[\[[^]]*Audio\]\] //g' {} +
 
-find . -type f -wholename "*reading.md" -exec sed -i 's/(Verse)/(Reading)/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/ (Verse)//g' {} +
+#find . -type f -wholename "*reading.md" -exec sed -i 's/(Verse)/(Reading)/g' {} +
+#find . -type f -wholename "*paragraph.md" -exec sed -i 's/ (Verse)//g' {} +
 
 # change arrows
 # in scripture and notes
 # find . -type f -wholename "*.md" -exec sed -i 's/←←/←/g' {} +
 # find . -type f -wholename "*.md" -exec sed -i 's/→→/→/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/←/⭠ /g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/→/ ⭢/g' {} +
+
+# fix poetry
+#find . -type f -wholename "*paragraph.md" -exec sed -i 's/\([¶⁰¹²³⁴⁵⁶⁷⁸⁹]_\) */\1/g' {} +
+#find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(_[¶⁰¹²³⁴⁵⁶⁷⁸⁹]*_\)> */> \1/g' {} +
+
+# change verse nums to superscripts (round 1)
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)0/\1⁰/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)1/\1¹/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)2/\1²/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)3/\1³/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)4/\1⁴/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)5/\1⁵/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)6/\1⁶/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)7/\1⁷/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)8/\1⁸/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)9/\1⁹/g' {} +
+# change verse nums to superscripts (round 2)
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)0/\1⁰/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)1/\1¹/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)2/\1²/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)3/\1³/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)4/\1⁴/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)5/\1⁵/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)6/\1⁶/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)7/\1⁷/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)8/\1⁸/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)9/\1⁹/g' {} +
+# change verse nums to superscripts (round 3)
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)0/\1⁰/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)1/\1¹/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)2/\1²/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)3/\1³/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)4/\1⁴/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)5/\1⁵/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)6/\1⁶/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)7/\1⁷/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)8/\1⁸/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(######[^¶]*\)9/\1⁹/g' {} +
+
+###############################################################################
 
 # notes
-# find . -type f -wholename "*.md" -exec sed -i 's/[|]Read/paragraph|Read|/g' {} +
+# find . -type f -wholename "*notes.md" -exec sed -i 's/[|]Read/verse|Read|/g' {} +
 # find . -type f -wholename "*notes.md" -exec sed -i -E ':a;$!{N;s/(- )\[ \] \n/\1\n\n/;ba;}' {} +
 
 # outlines
-#rm *audio*
-#mv apocalyptic.md bible.md book-of-wisdom.md church-history.md general-epistles.md gospels.md historical-books.md major-prophets.md minor-prophets.md new-testament.md old-testament.md pauline-epistles.md pentateuch.md poetical-books.md ..
+# rm *audio*
+# mv apocalyptic.md bible.md book-of-wisdom.md church-history.md general-epistles.md gospels.md historical-books.md major-prophets.md minor-prophets.md new-testament.md old-testament.md pauline-epistles.md pentateuch.md poetical-books.md ..
+# find . -type f -wholename "*.md" -exec sed -i '6s/[|]/verse|/g' {} +
+# mv ../apocalyptic.md ../bible.md ../book-of-wisdom.md ../church-history.md ../general-epistles.md ../gospels.md ../historical-books.md ../major-prophets.md ../minor-prophets.md ../new-testament.md ../old-testament.md ../pauline-epistles.md ../pentateuch.md ../poetical-books.md .
+
+# incorporate the following into above if building other versions again
 #find . -type f -wholename "*.md" -exec sed -i 's/^\(\[\[.*\)/\1\n\1\n\1/' {} +
 #find . -type f -wholename "*.md" -exec sed -i '6s/[|]/verse|/g' {} +
 #find . -type f -wholename "*.md" -exec sed -i '6s/Start reading (NKJV)/Start reading (Verse)/g' {} +
 #find . -type f -wholename "*.md" -exec sed -i '7s/[|]/paragraph|/g' {} +
 #find . -type f -wholename "*.md" -exec sed -i '7s/Start reading (NKJV)/(Paragraph)/g' {} +
-#
 #find . -type f -wholename "*.md" -exec sed -i '8s/[|]/reading|/g' {} +
-##
 #find . -type f -wholename "*.md" -exec sed -i '8s/Start reading (NKJV)/(Reading)/g' {} +
 #find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/\]\]\n\[\[/\]\] \[\[/;ba;}' {} +
 #mv ../apocalyptic.md ../bible.md ../book-of-wisdom.md ../church-history.md ../general-epistles.md ../gospels.md ../historical-books.md ../major-prophets.md ../minor-prophets.md ../new-testament.md ../old-testament.md ../pauline-epistles.md ../pentateuch.md ../poetical-books.md .
 
-# rename verse back to original
-# and do to outline
-# find . -type f -wholename "*.md" -exec sed -i 's/verse[|]/|/g' {} +
-#find . -type f -wholename "*verse.md" -exec sed -i 's/¶//g' {} +
-#rename 's/verse//g' *
-
-# maybe unnecessary
-# find . -type f -wholename "*paragraph.md" -exec sed -i 's/\([0-9]\)\(\",\)/\1 (Paragraph)\2/' {} +
-# find . -type f -wholename "*paragraph.md" -exec sed -i 's/\([0-9]\)\(\"\]\)/\1 (Paragraph)\2/' {} +
-
-find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/######  /###### /;ba;}' {} +
-
-# fix poetry
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\([¶⁰¹²³⁴⁵⁶⁷⁸⁹]\*\*\) */\1/g' {} +
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\(\*\*[¶⁰¹²³⁴⁵⁶⁷⁸⁹]*\*\*\)> */> \1/g' {} +
-
-find . -type f -wholename "*.md" -exec sed -i 's/→#/→\n#/g' {} +
-find . -type f -wholename "*.md" -exec sed -i 's/\([^#]\)##/\1\n##/g' {} +
-find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n## [^\n]*)\n###### \\ /\1/;ba;}' {} +
-find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/###### \\ \n#/#/;ba;}' {} +
-find . -type f -wholename "*.md" -exec sed -i 's/<div.*>\(.*\)<\/div>/\1/g' {} +
-
-find . -type f -wholename "*.md" -exec sed -i 's/###### \\ /<div class=\"break\"><\/div>/g' {} +
-sed -i 's/LORD/Lᴏʀᴅ/g' *.md
-sed -i 's/GOD/Gᴏᴅ/g' *.md
-sed -i 's/JESUS/Jᴇꜱᴜꜱ/g' *.md
-
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/\*\*\([¶⁰¹²³⁴⁵⁶⁷⁸⁹]*\)\*\*/<span class=\"verse\">\1<\/span>/g' {} +
-
-find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/<div[^\n]*div>\n([^<>])/\1/;ba;}' {} +
-
-find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^>] [^\n]*)\n<div[^\n]*div>\n(<span class=\"verse\">[<\/span>[^“‘>])/ \1/;ba;}' {} +
-
-find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n<span[^\n]*\n)>/\1<div class=\"break\"><\/div>\n>/;ba;}' {} +
-find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n> [^\n]*\n)<span/\1<div class=\"break\"><\/div>\n<span/;ba;}' {} +
-find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n> [^\n]*\n)([^<])/\1<div class=\"break\"><\/div>\n\2/;ba;}' {} +
-find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n> [^\n]*)\n<div class=\"break\"><\/div>(\n> [^<])/\1\2/;ba;}' {} +
-find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/\n<div[^\n]*?div>(\n> <span[^¶\n]*span>[^“‘])/\1/;ba;}' {} +
-
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/^\(> .*\)\(<span.*?span>\)/\1\n<div class=\"break\"><\/div>\n\2/g' {} +
-find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n<span[^¶]*?span>[^\n]*)\n<div class=\"break\"><\/div>\n(<span[^¶]*?span>)/\1 \2/;ba;}' {} +
-find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^<>#-][^\n]*\n)>/\1<div class=\"break\"><\/div>\n>/;ba;}' {} +
-
-find . -type f -wholename "*paragraph.md" -exec sed -i 's/¶//g' {} +
-
-# cd /home/prestonharberts/Repos/biblegateway-to-obsidian/Bible/Scripture
-#rm *.md && cp ~/Temp/nkjv-untouched/NKJV/Reading/*.md . && cp ../../bin/create-other-versions . && ./create-other-versions && vi rev2paragraph.md
-
-# cd /home/prestonharberts/Documents/obsidian/Christianity/Bible/Scripture
-#rm *.md && cp ~/Repos/biblegateway-to-obsidian/Bible/Scripture/*.md .
-
-# fix Neh 6:9-10 poetry, Heb 6:1-2
 # figure out how to automatically make text support bib while not affecting the Obsidian ones
-# [Selah] ?
+# Luke 3 has poetry with single quotes
+# rm *.md Link -r && cp ~/Temp/nkjv-untouched/NKJV/Reading/* . && cp ../../bin/create-other-versions . && ./create-other-versions && rm ./create-other-versions && rm ~/Documents/obsidian/Christianity/Bible/Scripture/* -r && cp * ~/Documents/obsidian/Christianity/Bible/Scripture/ -r && vi matt5verse.md && clear
+
+# grep "SMALLCAP" *
+# isa12verse.md:> <span class="poetry-quote2">‘</span>For SMALLCAPYah, the Lᴏʀᴅ, *is* my strength and song;
+# isa26verse.md:> <span class="poetry-quote1">“</span>For in SMALLCAPb\]\]
+# isa38verse.md:> <span class="poetry-quote1">“</span>I shall not see SMALLCAPYah,
+# grep: Link: Is a directory
+# luke1verse.md:<span class="verse2">31</span> “And behold, you will conceive in your womb and bring forth a Son, and shall call His name SMALLCAP
+# luke2verse.md:<span class="verse1">21</span> And when eight days were completed for the circumcision of the Child, His name was called SMALLCAPJesus Presented in the Temple
+# matt1verse.md:<span class="verse2">21</span> “And she will bring forth a Son, and you shall call His name SMALLCAPAE\])
+# matt1verse.md:<span class="verse2">25</span> and did not know her till she had brought forth her firstborn Son. And he called His name SMALLCAPJesus.
+# ps68verse.md:> By His name SMALLCAPYah,
+# rev2 has quote at the end that doesn't get put in quotes
+# rev3:1-2 has wrong quotes in the verses following it
