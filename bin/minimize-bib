@@ -1,5 +1,17 @@
 #!/bin/bash
+rename 's/verse//g' *.md
 sed -i '/aliases/d' *.md
 sed -i '/^##### /d' *.md
 sed -i '/^---/d' *.md
 sed -i 's/<div.*>\(.*\)<\/div>/\1/g' *.md
+sed -i 's/^<span class=\"verse1\">\([0-9]*\)<\/span> */###### ¶ \1\n/g' *.md
+sed -i 's/^<span class=\"verse2\">\([0-9]*\)<\/span> */###### \1\n/g' *.md
+sed -i 's/^> <span class=\"verse3\">\([0-9]*\)<\/span> */###### ¶ \1\n> /g' *.md
+sed -i 's/^> <span class=\"verse4\">\([0-9]*\)<\/span> */###### \1\n> /g' *.md
+sed -i 's/<span class=\"poetry-quote.\">//g' *.md
+sed -i 's/<\/span>//g' *.md
+
+sed -i 's/Lᴏʀᴅ/LORD/g' *.md
+sed -i 's/Gᴏᴅ/GOD/g' *.md
+sed -i 's/Jᴇꜱᴜꜱ/JESUS/g' *.md
+sed -i 's/Yᴀʜ/YAH/g' *.md

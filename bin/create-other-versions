@@ -33,6 +33,7 @@ find . -type f -wholename "*.md" -exec sed -i 's/<div.*>\(.*\)<\/div>/\1/g' {} +
 sed -i 's/LORD/Lᴏʀᴅ/g' *.md
 sed -i 's/GOD/Gᴏᴅ/g' *.md
 sed -i 's/JESUS/Jᴇꜱᴜꜱ/g' *.md
+sed -i 's/YAH/Yᴀʜ/g' *.md
 sed -i 's/\*Selah\*/Selah/g' *.md
 find . -type f -wholename "*.md" -exec sed -i 's/— \*/—\*/g' {} +
 # change arrows (also do for notes manually)
