@@ -21,7 +21,7 @@ sed -i 's/JESUS/Jᴇꜱᴜꜱ/g' *.md
 sed -i 's/YAH/Yᴀʜ/g' *.md
 sed -i 's/\*Selah\*/Selah/g' *.md
 find . -type f -wholename "*.md" -exec sed -i 's/— \*/—\*/g' {} +
-# change arrows (also do for notes manually)
+# change arrows
 find . -type f -wholename "*.md" -exec sed -i 's/←←/←/g' {} +
 find . -type f -wholename "*.md" -exec sed -i 's/→→/→/g' {} +
 find . -type f -wholename "*.md" -exec sed -i 's/←/⭠ /g' {} +
@@ -127,6 +127,11 @@ sed -i 's/^<hgroup.*Psalms [0-9]*–[0-9]*/## /g' *.md
 # find . -type f -wholename "*notes.md" -exec sed -i -E ':a;$!{N;s/(- )\[ \] \n/\1\n\n/;ba;}' {} +
 # find . -type f -wholename "*.md" -exec sed -i 's/\/ \[\[[^]]*Audio\]\] //g' {} +
 # find . -type f -wholename "*.md" -exec sed -i 's/\/ \[\[[^]]*Audio\]\]//g' {} +
+# change arrows
+# find . -type f -wholename "*.md" -exec sed -i 's/←←/←/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/→→/→/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/←/⭠ /g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/→/ ⭢/g' {} +
 
 # outlines
 # rm *audio*
