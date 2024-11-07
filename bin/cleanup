@@ -152,6 +152,10 @@ if [[ "${verbose}" == "true" ]]; then
   echo -n "."
 fi
 
+# SPACING
+# remove 2+ spaces
+find . -type f -wholename "*.md" -exec sed -i 's/  / /g' {} +
+
 # MOVE FILES
 if [[ $main_translation == "true" ]]; then
   mv "${reading_dir}/"*notes.md "${notes_dir}/"
