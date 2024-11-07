@@ -116,8 +116,12 @@ justify_quotes() {
   text=$(echo "$text" | sed -E "s/^(.{6}>.{$((width - 9))})([ “‘[({])([A-Za-z0-9“‘[({])/\1\n      > \2\3/")
   # move char to newline if width-1 is a hyphen
   text=$(echo "$text" | sed -E "s/^(.{6}>.{$((width - 9))})-([A-Za-z0-9“‘])/\1-\n      > \2/")
+  # move char to newline if width-1 is an em dash
+  text=$(echo "$text" | sed -E "s/^(.{6}>.{$((width - 10))})––([A-Za-z0-9“‘])/\1––\n      > \2/")
   # move char to newline if width is a hyphen
   text=$(echo "$text" | sed -E "s/^(.{6}>.{$((width - 9))})([A-Za-z])-([A-Za-z])/\1\2-\n      > \3/")
+  # move char to newline if width is an em dash
+  text=$(echo "$text" | sed -E "s/^(.{6}>.{$((width - 10))})([A-Za-z])––([A-Za-z])/\1\2––\n      > \3/")
   # add newline right after punctuation
   text=$(echo "$text" | sed -E "s/^(.{6}>.{$((width - 8))})([!?.,”’;:])/\1\2\n      > /")
   # fix verses that didn't get move to newline
@@ -143,8 +147,12 @@ justify_normal() {
   text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})([ “‘[({])([A-Za-z0-9“‘[({])/\1\n      \2\3/")
   # move char to newline if width-1 is a hyphen
   text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})-([A-Za-z0-9“‘])/\1-\n      \2/")
+  # move char to newline if width-1 is an em dash
+  text=$(echo "$text" | sed -E "s/^(.{$((width - 3))})––([A-Za-z0-9“‘])/\1––\n      \2/")
   # move char to newline if width is a hyphen
   text=$(echo "$text" | sed -E "s/^(.{$((width - 2))})([A-Za-z])-([A-Za-z])/\1\2-\n      \3/")
+  # move char to newline if width is an em dash
+  text=$(echo "$text" | sed -E "s/^(.{$((width - 3))})([A-Za-z])––([A-Za-z])/\1\2––\n      \3/")
   # add newline right after punctuation
   text=$(echo "$text" | sed -E "s/^(.{$((width - 1))})([!?.,”’;:])/\1\2\n      /")
   # fix verses that didn't get move to newline
