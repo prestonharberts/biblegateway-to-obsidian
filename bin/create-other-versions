@@ -121,6 +121,28 @@ find . -type f -wholename "*.md" -exec sed -i 's/^<div.*div>$//g' {} +
 # delete H2s in Psalms
 sed -i 's/^<hgroup.*Psalms [0-9]*–[0-9]*/## /g' *.md
 
+# convert asterisks to italics CSS class
+sed -i 's/\.\*/*./g' *.md
+sed -i 's/,\*/*,/g' *.md
+sed -i 's/\!\*/*\!/g' *.md
+sed -i 's/\?\*/*\?/g' *.md
+
+sed -i 's/\*/<i>/g' *.md
+
+sed -i 's/<i> /<\/i> /g' *.md
+sed -i 's/<i>\./<\/i>./g' *.md
+sed -i 's/<i>,/<\/i>,/g' *.md
+sed -i 's/<i>\!/<\/i>\!/g' *.md
+sed -i 's/<i>?/<\/i>?/g' *.md
+sed -i 's/<i>$/<\/i>/g' *.md
+sed -i 's/<i>-/<\/i>-/g' *.md
+sed -i 's/<i>—/<\/i>—/g' *.md
+sed -i 's/<i>;/<\/i>;/g' *.md
+sed -i 's/<i>:/<\/i>:/g' *.md
+sed -i 's/<i>[)]/<\/i>)/g' *.md
+sed -i 's/<i>”/<\/i>”/g' *.md
+sed -i 's/<i>’/<\/i>’/g' *.md
+
 ###############################################################################
 
 # notes
