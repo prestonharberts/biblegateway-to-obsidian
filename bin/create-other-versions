@@ -143,6 +143,9 @@ sed -i 's/<i>[)]/<\/i>)/g' *.md
 sed -i 's/<i>”/<\/i>”/g' *.md
 sed -i 's/<i>’/<\/i>’/g' *.md
 
+# convert poetry > into CSS class poetry
+sed -i 's/^> \(.*\)$/<span class=\"poetry\">\1<\/span>/g' *.md
+
 ###############################################################################
 
 # notes
