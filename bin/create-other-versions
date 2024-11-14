@@ -146,6 +146,16 @@ sed -i 's/<i>’/<\/i>’/g' *.md
 # convert poetry > into CSS class poetry
 sed -i 's/^> \(.*\)$/<span class=\"poetry\">\1<\/span>/g' *.md
 
+# replace arrows with custom CSS
+sed -i 's/⭠/<span class=\"larrow\"><\/span>/g' *.md
+sed -i 's/⭢/<span class=\"rarrow\"><\/span>/g' *.md
+
+# replace slash separators with custom CSS
+sed -i 's/ \/ / <span class=\"separator\"><\/span> /g' *.md
+
+# replace \n\n with custom CSS
+sed -i -E ':a;$!{N;s/\n\n/\n<div class=\"break\"><\/div>\n/;ba;}' *.md
+
 ###############################################################################
 
 # notes
