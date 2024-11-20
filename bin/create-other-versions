@@ -156,6 +156,9 @@ sed -i 's/ \/ / <span class=\"separator\"><\/span> /g' *.md
 # replace \n\n with custom CSS
 sed -i -E ':a;$!{N;s/\n\n/\n<div class=\"break\"><\/div>\n/;ba;}' *.md
 
+# remove empty headers that came from somewhere
+sed -i -E ':a;$!{N;s/\n## \n/\n/;ba;}' *.md
+
 ###############################################################################
 
 # notes
@@ -167,6 +170,8 @@ sed -i -E ':a;$!{N;s/\n\n/\n<div class=\"break\"><\/div>\n/;ba;}' *.md
 # find . -type f -wholename "*.md" -exec sed -i 's/→→/→/g' {} +
 # find . -type f -wholename "*.md" -exec sed -i 's/←/⭠ /g' {} +
 # find . -type f -wholename "*.md" -exec sed -i 's/→/ ⭢/g' {} +
+# # remove empty sections
+# sed -i -E ':a;$!{N;s/\n## \n- \n\n/\n/;ba;}' *.md
 
 # outlines
 # rm *audio*

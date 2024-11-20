@@ -50,7 +50,6 @@ Certain manual changes must be made to the Bible files that cannot be done other
 
 #### NKJV specific changes
 
-- A line in `bg2md` needs to be to correctly capitalize Lord to LORD when needed. Change line 371 to `passage.gsub!(%r{<span style="font-variant: small-caps" class="small-caps divine-name">Lord</span>}, 'LORD')`
 - The first header for 1 Sam. 28, 2 Chron. 5, 2 Cor. 7, 2 Kings 7, 2 Sam. 19, Dan. 11, Eccles. 8, and Zeph. 1 need to be removed in all Scripture and Note files.
 
 #### CSB specific changes
