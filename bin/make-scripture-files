@@ -92,11 +92,11 @@ for ((book = 0; book < book_max; book++)); do
                 yaml="---\naliases: [\"${short_title} ${chapter}\", \"${abbreviation} ${chapter}\"]\n---"
                 yaml_notes="---\naliases: [\"${short_title} ${chapter} ${notes}\", \"${abbreviation} ${chapter} ${notes}\"]\n---"
             fi
-            echo -en "${yaml}\n# ${short_title} ${chapter}\n${navigation}${text}\n${navigation}" >>"${reading_dir}/${curr_file}.md"
-            echo -en "${yaml_notes}\n# ${short_title} ${chapter} notes\n${navigation_notes}${text}\n${navigation_notes}" >>"${reading_dir}/${curr_file_notes}.md"
+            echo -en "${yaml}\n# ${short_title} ${chapter}\n${navigation}${text}\n${navigation}" >>"${scripture_dir}/${curr_file}.md"
+            echo -en "${yaml_notes}\n# ${short_title} ${chapter} notes\n${navigation_notes}${text}\n${navigation_notes}" >>"${scripture_dir}/${curr_file_notes}.md"
         else
-            echo -en "# ${short_title} ${chapter}\n${navigation_notes}${text}\n${navigation}" >>"${reading_dir}/${curr_file}.md"
-            echo -en "# ${short_title} ${chapter} notes\n${navigation_notes}${text}\n${navigation_notes}" >>"${reading_dir}/${curr_file_notes}.md"
+            echo -en "# ${short_title} ${chapter}\n${navigation_notes}${text}\n${navigation}" >>"${scripture_dir}/${curr_file}.md"
+            echo -en "# ${short_title} ${chapter} notes\n${navigation_notes}${text}\n${navigation_notes}" >>"${scripture_dir}/${curr_file_notes}.md"
         fi
     done
 done

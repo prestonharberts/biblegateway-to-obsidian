@@ -193,7 +193,7 @@ find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/> #/#/g' {} +
 find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/ \\\* /\\\*/g' {} +
 
 # add pilcrow signs to verses where a new paragraph starts
-source bin/pilcrow-signs
+source bin/add-pilcrow-signs
 
 echo -n "."
 
