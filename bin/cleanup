@@ -2,225 +2,390 @@
 # shellcheck disable=1091,1110,1112,2034,2154
 source config
 
-if [[ $verbose == "true" ]]; then
-  printf "\nCleanup"
-fi
+printf "\nCleanup"
 
 # HTML due to BG2MD changes
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/<\/div><div.*html\"> //g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/<\/div><div.*html\"> //g' {} +
 
-# ASTERISKS
-# escape asterisks for translations that use them (LSB)
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\*/\\\*/g' {} +
+# asterisks
+
+# escape asterisks for translations that use them
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/\*/\\\*/g' {} +
 # remove all  \*\* that get created with the command above
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\\\*\\\*//g' {} +
-if [[ "${verbose}" == "true" ]]; then
-  echo -n "."
-fi
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/\\\*\\\*//g' {} +
 
-# ITALICS
+echo -n "."
+
+# italics
+
 # transform _Selah_ to <i>Selah</i> and give it an extra space
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/[_*]Selah[_*]/ <i>Selah<\/i>/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/[_*]Selah[_*]/ <i>Selah<\/i>/g' {} +
 # put beginning italics after certain punctuation marks
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([“‘\(]|\[)_/\1<i>/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/_([“‘\(]|\[)/\1<i>/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E 's/([“‘\(]|\[)_/\1<i>/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E 's/_([“‘\(]|\[)/\1<i>/g' {} +
 # put ending italics before certain punctuation marks
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/_([!?.,:;”’\)]|\])/<\/i>\1/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([!?.,:;”’\)]|\])_/<\/i>\1/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E 's/_([!?.,:;”’\)]|\])/<\/i>\1/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E 's/([!?.,:;”’\)]|\])_/<\/i>\1/g' {} +
 # transform underscored text into CSS italics
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/_ _/<\/i> <i>/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/_([A-Za-z1-9])/<i>\1/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([A-Za-z1-9])_/\1<\/i>/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ *<\/i>/<\/i>/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/_ _/<\/i> <i>/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E 's/_([A-Za-z1-9])/<i>\1/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E 's/([A-Za-z1-9])_/\1<\/i>/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/ *<\/i>/<\/i>/g' {} +
 # replace css italics with asterisks
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/<\/*i>/*/g' {} +
-if [[ "${verbose}" == "true" ]]; then
-  echo -n "."
-fi
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/<\/*i>/*/g' {} +
 
-# HEADINGS
+echo -n "."
+
+# headings
+
 # create first heading if it exists
 if [[ $yaml_enabled == "true" ]]; then
-  find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '6 s/^[A-Za-z0-9].*/## &/g' {} +
+    find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i '6 s/^[A-Za-z0-9].*/## &/g' {} +
 elif [[ $yaml_enabled == "false" ]]; then
-  find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '3 s/^[A-Za-z0-9].*/## &/g' {} +
+    find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i '3 s/^[A-Za-z0-9].*/## &/g' {} +
 fi
 # create all headings that immediately follow punction without a space
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([!?.,:;”’\)]|\])([A-Z0-9])/\1\n## \2/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E 's/([!?.,:;”’\)]|\])([A-Z0-9])/\1\n## \2/g' {} +
 # delete "Chapter x" heading
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/##### Chapter.*//g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/##### Chapter.*//g' {} +
 # remove "1" from books that only have one chapter (Obadiah 1 -> Obadiah)
 # short_title (Obadiah 1) and abbreviations (Obad. 1)
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E "s/(${short_title_31}|${abbreviation_31}) 0/\1/g" {} + # Obadiah
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E "s/(${short_title_57}|${abbreviation_57}) 1/\1/g" {} + # Philemon
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E "s/(${short_title_63}|${abbreviation_63}) 1/\1/g" {} + # 2 John
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E "s/(${short_title_64}|${abbreviation_64}) 1/\1/g" {} + # 3 John
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E "s/(${short_title_65}|${abbreviation_65}) 1/\1/g" {} + # Jude
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E "s/(${short_title_31}|${abbreviation_31}) 0/\1/g" {} + # Obadiah
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E "s/(${short_title_57}|${abbreviation_57}) 1/\1/g" {} + # Philemon
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E "s/(${short_title_63}|${abbreviation_63}) 1/\1/g" {} + # 2 John
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E "s/(${short_title_64}|${abbreviation_64}) 1/\1/g" {} + # 3 John
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E "s/(${short_title_65}|${abbreviation_65}) 1/\1/g" {} + # Jude
 # format verses into H6 headings
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/###### [0-9]{1,3} /\n&\n/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E 's/###### [0-9]{1,3} /\n&\n/g' {} +
 # fix some superscripts back to verses
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ <sup class=\"versenum mid-line\">/\n###### /g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/<\/sup>/\n/g' {} +
-if [[ "${verbose}" == "true" ]]; then
-  echo -n "."
-fi
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/ <sup class=\"versenum mid-line\">/\n###### /g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/<\/sup>/\n/g' {} +
 
-# REMOVE MISC
+echo -n "."
+
+# remove misc
+
 # delete empty headings
-find . -wholename "${reading_dir}/*.md" -print0 | xargs -0 perl -pi -e 's/#*$//g'
+find . -wholename "${scripture_dir}/*.md" -print0 | xargs -0 perl -pi -e 's/#*$//g'
 # remove Psalm headings for certain translations
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/^Psalm [0-9]{1,3}//g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E 's/^Psalm [0-9]{1,3}//g' {} +
 # delete Psalm book headings
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/## Book (One|Two|Three|Four|Five)//g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E 's/## Book (One|Two|Three|Four|Five)//g' {} +
 # remove tags
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/<b class="quote">//g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/<b class="quote">//g' {} +
 # remove <em> and </em>
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/[<]\/*em[>]//g' {} +
-if [[ "${verbose}" == "true" ]]; then
-  echo -n "."
-fi
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/[<]\/*em[>]//g' {} +
 
-# BRACKETS
+echo -n "."
+
+# brackets
+
 # escape brackets
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '/^#/!s/[][]/\\&/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i '/^#/!s/[][]/\\&/g' {} +
 # fix alias brackets in frontmatter
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '2 s/\\*\[/[/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i '2 s/\\*\]/]/g' {} +
-if [[ "${verbose}" == "true" ]]; then
-  echo -n "."
-fi
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i '2 s/\\*\[/[/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i '2 s/\\*\]/]/g' {} +
 
-# SPACES
+echo -n "."
+
+# spaces
+
 # remove extra space before some hyphens
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ —/—/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/— /—/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/ —/—/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/— /—/g' {} +
 # replace multiple spaces in a row with just one space
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/ {2,}/ /g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E 's/ {2,}/ /g' {} +
 # remove space before right-sided punctuation
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/(.) ([!?.,:;”’\)]|\])/\1\2/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E 's/(.) ([!?.,:;”’\)]|\])/\1\2/g' {} +
 # remove space after certain left-sided punctuation
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([“‘\(]|\[) (.)/\1\2/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E 's/([“‘\(]|\[) (.)/\1\2/g' {} +
 # add space before escaped asterisks
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/\\\*/ &/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E 's/\\\*/ &/g' {} +
 # add space before escaped left bracket
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\\\[/ \\[/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/\\\[/ \\[/g' {} +
 # remove space between two escaped left brackets
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\\\[ \\\[/\\[\\[/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/\\\[ \\\[/\\[\\[/g' {} +
 # correct spacing for numbers over 1,000 with commas
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/([0-9]), ([0-9])/\1,\2/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E ':a;$!{N;s/([0-9]),\n## ([0-9])/\1,\2/;ba;}' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E 's/([0-9]), ([0-9])/\1,\2/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/([0-9]),\n## ([0-9])/\1,\2/;ba;}' {} +
 # remove duplicate spaces
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E 's/ {2,}/ /g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E 's/ {2,}/ /g' {} +
 # delete spaces after text
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ *$//g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/ *$//g' {} +
 # delete spaces before text
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^ *//g' {} +
-if [[ "${verbose}" == "true" ]]; then
-  echo -n "."
-fi
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/^ *//g' {} +
 
-# CREATE NOTES
-if [[ $main_translation == "true" ]]; then
-  # delete all text and create checkbox for chapters that do not start with a heading
-  if [[ $yaml_enabled == "true" ]]; then
+echo -n "."
+
+# create notes
+
+# delete all text and create checkbox for chapters that do not start with a heading
+if [[ $yaml_enabled == "true" ]]; then
     find . -type f -wholename "*notes.md" -exec sed -i '4,$s/^[^#].*//g' {} +
     find . -type f -wholename "*notes.md" -exec sed -i '7 s/###### 1$/- [ ] /g' {} +
-  elif [[ $yaml_enabled == "false" ]]; then
+elif [[ $yaml_enabled == "false" ]]; then
     find . -type f -wholename "*notes.md" -exec sed -i '4,$s/^[^#].*//g' {} +
     find . -type f -wholename "*notes.md" -exec sed -i 's/^[^#].*//g' {} +
     find . -type f -wholename "*notes.md" -exec sed -i '4 s/###### 1$/- [ ] /g' {} +
-  fi
-  # delete verse headings
-  find . -type f -wholename "*notes.md" -exec sed -i 's/###### [0-9]*//g' {} +
-  # add checkbox after headings
-  find . -type f -wholename "*notes.md" -exec sed -i 's/^## .*/&\n- [ ] /g' {} +
-  # remove extra checkbox
-  find . -type f -wholename "*notes.md" -exec sed -i ':a;$!{N;s/\- \[ \] \n\- \[ \]/- [ ] /;ba;}' {} +
-  if [[ "${verbose}" == "true" ]]; then
-    echo -n "."
-  fi
 fi
+# delete verse headings
+find . -type f -wholename "*notes.md" -exec sed -i 's/###### [0-9]*//g' {} +
+# add checkbox after headings
+find . -type f -wholename "*notes.md" -exec sed -i 's/^## .*/&\n- [ ] /g' {} +
+# remove extra checkbox
+find . -type f -wholename "*notes.md" -exec sed -i ':a;$!{N;s/\- \[ \] \n\- \[ \]/- [ ] /;ba;}' {} +
 
-# NEWLINES
+echo -n "."
+
+# newlines
+
 # correct newline spacing
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E ':a;$!{N;s/\n{2,}/\n/;ba;}' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/\n{2,}/\n/;ba;}' {} +
 # correct newline spacing for outlines
 find . -type f -wholename "${outlines_dir}/*.md" -exec sed -i -E ':a;$!{N;s/\n{2,}/\n/;ba;}' {} +
 # chomp off all trailing newlines
-find . -type f -wholename "${reading_dir}/*.md" -exec perl -pi -e 'chomp if eof' {} +
-if [[ "${verbose}" == "true" ]]; then
-  echo -n "."
-fi
+find . -type f -wholename "${scripture_dir}/*.md" -exec perl -pi -e 'chomp if eof' {} +
 
-# SPACING
+echo -n "."
+
+# spacing
+
 # remove 2+ spaces
 find . -type f -wholename "*.md" -exec sed -i 's/  / /g' {} +
 
-# MOVE FILES
-if [[ $main_translation == "true" ]]; then
-  mv "${reading_dir}/"*notes.md "${notes_dir}/"
-  if [[ "${verbose}" == "true" ]]; then
-    echo -n "."
-  fi
-fi
+# move files
+mv "${scripture_dir}/"*notes.md "${notes_dir}/"
 
-# NKJV specific fixes
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/## Psalms [0-9]*–[0-9]*/## /g' {} +
+echo -n "."
+
+# remove unnecessary header
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/## Psalms [0-9]*–[0-9]*/## /g' {} +
 
 # fix headers after </div>
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/<\/div> /<\/div>\n## /g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/<\/div> /<\/div>\n## /g' {} +
 
-# Poetry fixes
-# rm Bible/* -r && cp ~/Temp/nkjv-raw/* ./Bible/ -r && source bin/cleanup && vi Bible/NKJV/Reading/ps119.md
-
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E ':a;$!{N;s/\n>\n(###### [0-9]*\n)/\n\1> /;ba;}' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/\n>\n(###### [0-9]*\n)/\n\1> /;ba;}' {} +
 
 # trying to fix ps119
 ((book = 0))
 for ((book = 0; book < book_max; book++)); do
-  source bin/get-info
-  for ((chapter = 1; chapter <= chapter_max; chapter++)); do
-    curr_file="${standard_abbreviation}${chapter}.md" # setting the current file
-    if ! grep -q "div>" "${reading_dir}/${curr_file}" && grep -q "> " "${reading_dir}/${curr_file}"; then
-      sed -i 's/^\([^#>-]\)/> \1/g' ${reading_dir}/${curr_file}
-      sed -i 's/> aliases/aliases/g' ${reading_dir}/${curr_file}
-    fi
-  done
+    source bin/get-info
+    for ((chapter = 1; chapter <= chapter_max; chapter++)); do
+        curr_file="${standard_abbreviation}${chapter}.md" # setting the current file
+        if ! grep -q "div>" "${scripture_dir}/${curr_file}" && grep -q "> " "${scripture_dir}/${curr_file}"; then
+            sed -i 's/^\([^#>-]\)/> \1/g' ${scripture_dir}/${curr_file}
+            sed -i 's/> aliases/aliases/g' ${scripture_dir}/${curr_file}
+        fi
+    done
 done
 
 # add # to line with div
-# find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(\n>.*)\n([^>]*<\/div>)/\1\n> \2/;ba;}' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(\n>[^>]*\n)([^>]*)(\n##### .*)$/\1\2<\/div>\3/;ba;}' {} +
+# find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(\n>.*)\n([^>]*<\/div>)/\1\n> \2/;ba;}' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(\n>[^>]*\n)([^>]*)(\n##### .*)$/\1\2<\/div>\3/;ba;}' {} +
 
 for i in {1..10}; do
-  find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E ':a;$!{N;s/\n([^>\n]*?)(<\/div>)/\2\n> \1/;ba;}' {} +
+    find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/\n([^>\n]*?)(<\/div>)/\2\n> \1/;ba;}' {} +
 done
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/\(> .*\)<\/div>/\1/g' {} +
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/> #/#/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/\(> .*\)<\/div>/\1/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/> #/#/g' {} +
 
 # fix astersisk
-find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/ \\\* /\\\*/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/ \\\* /\\\*/g' {} +
 
-# PILCROW SIGNS
 # add pilcrow signs to verses where a new paragraph starts
 source bin/pilcrow-signs
-if [[ "${verbose}" == "true" ]]; then
-  echo -n "."
-fi
 
-if [[ $verbose == "true" ]]; then
-  printf '\nDownloaded the %s Bible.\n' "${translation}"
-fi
+echo -n "."
 
-# old
-# find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E ':a;$!{N;s/\n([^#>]*?\n)> /\n>> \1> /;ba;}' {} +
-# find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(\n> .*?\n)([^#])/\1> \2/;ba;}' {} +
-# find . -type f -wholename "${reading_dir}/*.md" -exec sed -i -E ':a;$!{N;s/> [> ]*\n/\n/;ba;}' {} +
-# find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/[> ]*>>[> ]*/> /g' {} +
-# find . -type f -wholename "${reading_dir}/*.md" -exec sed -i 's/^> [> ]*/> /g' {} +
+# remove old div tags (if any)
+find . -type f -wholename "*.md" -exec sed -i 's/<div.*>\(.*\)<\/div>/\1/g' {} +
 
-# sed -i -E ':a;$!{N;s/\n([^#]*?\n)> /\n>> \1\n> /;ba;}' Bible/NKJV/Reading/gen2.md
-# sed -i -E ':a;$!{N;s/(\n> .*?\n)([^#])/\1> \2/;ba;}' Bible/NKJV/Reading/gen2.md
-# sed -i -E ':a;$!{N;s/> [> ]*\n/\n/;ba;}' Bible/NKJV/Reading/gen2.md
-# sed -i 's/[> ]*>>[> ]*/> /g' Bible/NKJV/Reading/gen2.md
-# sed -i 's/^> [> ]*/> /g' Bible/NKJV/Reading/gen2.md
+echo -n "."
+
+# fix divine names to smallcaps and other
+find . -type f -wholename "*.md" -exec sed -i 's/LORD/Lᴏʀᴅ/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/GOD/Gᴏᴅ/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/JESUS/Jᴇꜱᴜꜱ/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/YAH/Yᴀʜ/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/\*Selah\*/Selah/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/— \*/—\*/g' {} +
+
+echo -n "."
+
+# remove md syntax from newline verses
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/###### ¶ ([0-9]*)\n/_¶\1_ /;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/###### ([0-9]*)\n/_\1_ /;ba;}' {} +
+
+echo -n "."
+
+# put verse after poetry
+find . -type f -wholename "*.md" -exec sed -i 's/^\(_[¶0-9]*_\) > /> \1 /g' {} +
+
+echo -n "."
+
+# change bold verses to have css class
+find . -type f -wholename "*.md" -exec sed -i 's/_¶\([0-9]*\)_/<span class=\"verse1\">\1<\/span>/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/_\([0-9]*\)_/<span class=\"verse2\">\1<\/span>/g' {} +
+
+echo -n "."
+
+# add newline above/below poetry
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^<>#][^\n]*)(\n>)/\1\n<div class=\"break\"><\/div>\2/;ba;}' {} + # before poetry
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n<span[^\n]*)(\n>)/\1\n<div class=\"break\"><\/div>\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n>[^\n]*)(\n[^<>#])/\1\n<div class=\"break\"><\/div>\2/;ba;}' {} + # after poetry
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n>[^\n]*)(\n<span)/\1\n<div class=\"break\"><\/div>\2/;ba;}' {} +
+
+echo -n "."
+
+# move md syntax to end of line to prepare for adding double quotations
+find . -type f -wholename "*.md" -exec sed -i 's/^\(<span.*span>\) \(.*\)$/\2 \1/g' {} +   # verse
+find . -type f -wholename "*.md" -exec sed -i 's/^\(> <span.*span>\) \(.*\)$/\2 \1/g' {} + # poetry verse
+find . -type f -wholename "*.md" -exec sed -i 's/^\(>\) \(.*\)$/\2 \1/g' {} +              # poetry continued
+find . -type f -wholename "*.md" -exec sed -i 's/^\(<div.*div>\)$/Break\1/g' {} +          # break
+
+echo -n "."
+
+# replace apostrophe 's' and 's' apostrophe with 'possessive' to prepare adding single quotations
+find . -type f -wholename "*.md" -exec sed -i 's/’s/single_possessive/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/s’ /double_possessive /g' {} +
+
+echo -n "."
+
+# add double quotes to continuation of quote after double quote finishes
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(’[^\n”]*\n)([^“‘])/\1“\2/;ba;}' {} +
+
+echo -n "."
+
+# add double quotes to beginning of lines that are a continuation of a double quote in a single quote
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n‘“]*‘[^\n’]*“[^\n”’]*\n)([^“‘])/\1“\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n‘“]*‘[^\n’]*’[^\n‘]*‘[^\n’]*“[^\n”’]*\n)([^“‘])/\1“\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n‘“]*‘[^\n’]*’[^\n‘]*‘[^\n’]*’[^\n‘]*‘[^\n’]*“[^\n”’]*\n)([^“‘])/\1“\2/;ba;}' {} +
+
+echo -n "."
+
+# add single quotes to beginning of lines that are a continuation of a single quote in a double quote
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n“‘]*“[^\n”]*‘[^\n”’]*\n)([^“‘])/\1‘\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n“‘]*“[^\n”]*”[^\n“]*“[^\n”]*‘[^\n”’]*\n)([^“‘])/\1‘\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n“‘]*“[^\n”]*”[^\n“]*“[^\n”]*”[^\n“]*“[^\n”]*‘[^\n”’]*\n)([^“‘])/\1‘\2/;ba;}' {} +
+
+echo -n "."
+
+# add single quotes to beginning of lines that are a continuation of a quote
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n‘]*‘[^\n’]*\n)([^“‘])/\1‘\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n‘]*‘[^\n’]*’[^\n‘]*‘[^\n’]*\n)([^“‘])/\1‘\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n‘]*‘[^\n’]*’[^\n‘]*‘[^\n’]*’[^\n‘]*‘[^\n’]*\n)([^“‘])/\1‘\2/;ba;}' {} +
+
+echo -n "."
+
+# add double quotes to beginning of lines that are a continuation of a quote
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n“]*“[^\n”]*\n)([^“‘])/\1“\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n“]*“[^\n”]*”[^\n“]*“[^\n”]*\n)([^“‘])/\1“\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n“]*“[^\n”]*”[^\n“]*“[^\n”]*”[^\n“]*“[^\n”]*\n)([^“‘])/\1“\2/;ba;}' {} +
+# ‘’
+find . -type f -wholename "*.md" -exec sed -i 's/“#/#/g' {} +
+
+echo -n "."
+
+# move md syntax back to start of line
+find . -type f -wholename "*.md" -exec sed -i 's/^\(.*\) \(<span.*span>\)$/\2 \1/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/^\(.*\) \(> <span.*span>\)$/\2 \1/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/^\(.*\) \(>\)$/\2 \1/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/^.*Break\(<div.*div>\)$/\1/g' {} +
+
+echo -n "."
+
+# add single quotes to last verse in a section
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n‘]*‘[^\n’]*)(\n#)/\1’\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n‘]*‘[^\n’]*’[^\n‘]*‘[^\n’]*)(\n#)/\1’\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n‘]*‘[^\n’]*’[^\n‘]*‘[^\n’]*’[^\n‘]*‘[^\n’]*)(\n#)/\1’\2/;ba;}' {} +
+
+echo -n "."
+
+# add double quotes to last verse in a section
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n“]*“[^\n”]*)(\n#)/\1”\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n“]*“[^\n”]*”[^\n“]*“[^\n”]*)(\n#)/\1”\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^\n“]*“[^\n”]*”[^\n“]*“[^\n”]*”[^\n“]*“[^\n”]*)(\n#)/\1”\2/;ba;}' {} +
+
+echo -n "."
+
+# fix possessive apostrophes
+find . -type f -wholename "*.md" -exec sed -i 's/single_possessive/’s/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/double_possessive/s’/g' {} +
+
+echo -n "."
+
+# make poetry verse numbers offset (verse3 css class)
+find . -type f -wholename "*.md" -exec sed -i 's/\(> <span class=\"verse\)1\(.*span>\) /\13\2/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/\(> <span class=\"verse\)2\(.*span>\) /\14\2/g' {} +
+
+echo -n "."
+
+# add css class to poetical quotes
+find . -type f -wholename "*.md" -exec sed -i 's/\(>\)\(“\)/\1<span class=\"poetry-quote1\">\2<\/span>/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/\(>\)\(‘\)/\1<span class=\"poetry-quote2\">\2<\/span>/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/^\(> \)\(“\)/\1<span class=\"poetry-quote1\">\2<\/span>/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/^\(> \)\(‘\)/\1<span class=\"poetry-quote2\">\2<\/span>/g' {} +
+
+echo -n "."
+
+# test: remove breaks
+find . -type f -wholename "*.md" -exec sed -i 's/^<div.*div>$//g' {} +
+
+echo -n "."
+#
+# delete H2s in Psalms
+find . -type f -wholename "*.md" -exec sed -i 's/^<hgroup.*Psalms [0-9]*–[0-9]*/## /g' {} +
+
+echo -n "."
+
+# convert asterisks to italics CSS class
+find . -type f -wholename "*.md" -exec sed -i 's/\.\*/*./g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/,\*/*,/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/\!\*/*\!/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/\?\*/*\?/g' {} +
+
+echo -n "."
+
+find . -type f -wholename "*.md" -exec sed -i 's/\*/<i>/g' {} +
+
+echo -n "."
+
+find . -type f -wholename "*.md" -exec sed -i 's/<i> /<\/i> /g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/<i>\./<\/i>./g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/<i>,/<\/i>,/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/<i>\!/<\/i>\!/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/<i>?/<\/i>?/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/<i>$/<\/i>/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/<i>-/<\/i>-/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/<i>—/<\/i>—/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/<i>;/<\/i>;/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/<i>:/<\/i>:/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/<i>[)]/<\/i>)/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/<i>”/<\/i>”/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/<i>’/<\/i>’/g' {} +
+
+echo -n "."
+
+# convert poetry > into CSS class poetry
+find . -type f -wholename "*.md" -exec sed -i 's/^> \(.*\)$/<span class=\"poetry\">\1<\/span>/g' {} +
+
+echo -n "."
+
+# replace \n\n with custom CSS
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/\n\n/\n<div class=\"break\"><\/div>\n/;ba;}' {} +
+
+echo -n "."
+
+# remove empty headers that came from somewhere
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/\n## \n/\n/;ba;}' {} +
+
+echo -n "."
+
+# notes
+find . -type f -wholename "*notes.md" -exec sed -i -E ':a;$!{N;s/(- )\[ \] \n/\1\n\n/;ba;}' {} +
+# # remove empty sections
+find . -type f -wholename "*notes.md" -exec sed -i -E ':a;$!{N;s/\n## \n- \n\n/\n/;ba;}' {} +
+
+echo -n "."
+
+printf '\nDownloaded the %s Bible.\n' "${translation}"

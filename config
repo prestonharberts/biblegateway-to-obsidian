@@ -1,39 +1,21 @@
 #!/bin/bash
 # shellcheck disable=2034
 
-# Choose translation to download (enter as an acronym; all are listed on Bible Gateway)
-translation="NKJV"
-# Choose whether or not the translation to download is your main translation
-# other translations will be without note files and appended to outlines
-main_translation="true"
-# Choose whether or not to have audio bibles
-enable_audio_bible="true"
-# Choose the character used to separate words in file and folder names
-filename_separator="-"
-# Choose whether or not to make file names lowercase
-lowercase="true"
-# Choose whether or not to make folder names lowercase
-lowercase_folders="false"
-# Choose whether or not to keep abbreviation periods in the filename
-filename_periods="false"
-# Choose whether or not to keep the filename separator between the initial and its number
-remove_abbreviation_separator="true"
-# Choose whether or not to display verbose console messages
-verbose="true"
-# Choose whether or not to display verbose console messages
-yaml_enabled="true"
-# Choose whether or not to have parentheses for translation in filename
-parentheses_enabled="false"
+# customize the following if wanted
 
-# Customize the following if needed
+translation="NET"
+filename_separator="-"
+lowercase_files="true"
+lowercase_folders="false"
+filename_periods="false"       # if true, 1 Thess. 1 would have the filename "1 Thess. 1.md"
+abbreviation_separator="false" # remove filename separator between abbreviation and book number if it exists (ex. 1-john => 1john)
+yaml_enabled="true"
 
 outlines="Outlines"
-reading="Reading"
+scripture="Scripture"
 notes="Notes"
-audio="Audio"
 
-bible_name="Bible"
-audio_bible_name="Audio Bible"
+bible_name="Holy Bible"
 
 testament_1="Old Testament"
 testament_1_abbreviation="OT"
@@ -253,107 +235,108 @@ abbreviation_64="3 John"
 abbreviation_65="Jude"
 abbreviation_66="Rev."
 
-# Do not touch anything past this line unless needed
+# do not touch anything past this line unless needed
 
+# max books and the number of chapters in each book
+# length_arr must have book_max number of elements
 book_max=66
 length_arr=(50 40 27 36 34 24 21 4 31 24 22 25 29 36 10 13 10 42 150 31 12 8 66 52 5 48 12 14 3 9 1 4 7 3 3 3 2 14 4 28 16 24 21 28 16 16 13 6 6 4 4 5 3 6 4 3 1 13 5 5 3 5 1 1 1 22)
 
+# this allows fetching the testament of the current book
 testament_arr=("${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_1}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}" "${testament_2}")
 testament_abbreviation_arr=("${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_1_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}" "${testament_2_abbreviation}")
+# this allows fetching the genre of the current book
 genre_arr=("${genre_1}" "${genre_1}" "${genre_1}" "${genre_1}" "${genre_1}" "${genre_2}" "${genre_2}" "${genre_2}" "${genre_2}" "${genre_2}" "${genre_2}" "${genre_2}" "${genre_2}" "${genre_2}" "${genre_2}" "${genre_2}" "${genre_2}" "${genre_3}" "${genre_3}" "${genre_4}" "${genre_4}" "${genre_4}" "${genre_5}" "${genre_5}" "${genre_5}" "${genre_5}" "${genre_5}" "${genre_6}" "${genre_6}" "${genre_6}" "${genre_6}" "${genre_6}" "${genre_6}" "${genre_6}" "${genre_6}" "${genre_6}" "${genre_6}" "${genre_6}" "${genre_6}" "${genre_7}" "${genre_7}" "${genre_7}" "${genre_7}" "${genre_8}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_9}" "${genre_10}" "${genre_10}" "${genre_10}" "${genre_10}" "${genre_10}" "${genre_10}" "${genre_10}" "${genre_10}" "${genre_11}")
+# this allows fetching the long title of the current book
 long_title_arr=("${long_title_1}" "${long_title_2}" "${long_title_3}" "${long_title_4}" "${long_title_5}" "${long_title_6}" "${long_title_7}" "${long_title_8}" "${long_title_9}" "${long_title_10}" "${long_title_11}" "${long_title_12}" "${long_title_13}" "${long_title_14}" "${long_title_15}" "${long_title_16}" "${long_title_17}" "${long_title_18}" "${long_title_19}" "${long_title_20}" "${long_title_21}" "${long_title_22}" "${long_title_23}" "${long_title_24}" "${long_title_25}" "${long_title_26}" "${long_title_27}" "${long_title_28}" "${long_title_29}" "${long_title_30}" "${long_title_31}" "${long_title_32}" "${long_title_33}" "${long_title_34}" "${long_title_35}" "${long_title_36}" "${long_title_37}" "${long_title_38}" "${long_title_39}" "${long_title_40}" "${long_title_41}" "${long_title_42}" "${long_title_43}" "${long_title_44}" "${long_title_45}" "${long_title_46}" "${long_title_47}" "${long_title_48}" "${long_title_49}" "${long_title_50}" "${long_title_51}" "${long_title_52}" "${long_title_53}" "${long_title_54}" "${long_title_55}" "${long_title_56}" "${long_title_57}" "${long_title_58}" "${long_title_59}" "${long_title_60}" "${long_title_61}" "${long_title_62}" "${long_title_63}" "${long_title_64}" "${long_title_65}" "${long_title_66}")
+# this allows fetching the short title of the current book
 short_title_arr=("${short_title_1}" "${short_title_2}" "${short_title_3}" "${short_title_4}" "${short_title_5}" "${short_title_6}" "${short_title_7}" "${short_title_8}" "${short_title_9}" "${short_title_10}" "${short_title_11}" "${short_title_12}" "${short_title_13}" "${short_title_14}" "${short_title_15}" "${short_title_16}" "${short_title_17}" "${short_title_18}" "${short_title_19}" "${short_title_20}" "${short_title_21}" "${short_title_22}" "${short_title_23}" "${short_title_24}" "${short_title_25}" "${short_title_26}" "${short_title_27}" "${short_title_28}" "${short_title_29}" "${short_title_30}" "${short_title_31}" "${short_title_32}" "${short_title_33}" "${short_title_34}" "${short_title_35}" "${short_title_36}" "${short_title_37}" "${short_title_38}" "${short_title_39}" "${short_title_40}" "${short_title_41}" "${short_title_42}" "${short_title_43}" "${short_title_44}" "${short_title_45}" "${short_title_46}" "${short_title_47}" "${short_title_48}" "${short_title_49}" "${short_title_50}" "${short_title_51}" "${short_title_52}" "${short_title_53}" "${short_title_54}" "${short_title_55}" "${short_title_56}" "${short_title_57}" "${short_title_58}" "${short_title_59}" "${short_title_60}" "${short_title_61}" "${short_title_62}" "${short_title_63}" "${short_title_64}" "${short_title_65}" "${short_title_66}")
 abbreviation_arr=("${abbreviation_1}" "${abbreviation_2}" "${abbreviation_3}" "${abbreviation_4}" "${abbreviation_5}" "${abbreviation_6}" "${abbreviation_7}" "${abbreviation_8}" "${abbreviation_9}" "${abbreviation_10}" "${abbreviation_11}" "${abbreviation_12}" "${abbreviation_13}" "${abbreviation_14}" "${abbreviation_15}" "${abbreviation_16}" "${abbreviation_17}" "${abbreviation_18}" "${abbreviation_19}" "${abbreviation_20}" "${abbreviation_21}" "${abbreviation_22}" "${abbreviation_23}" "${abbreviation_24}" "${abbreviation_25}" "${abbreviation_26}" "${abbreviation_27}" "${abbreviation_28}" "${abbreviation_29}" "${abbreviation_30}" "${abbreviation_31}" "${abbreviation_32}" "${abbreviation_33}" "${abbreviation_34}" "${abbreviation_35}" "${abbreviation_36}" "${abbreviation_37}" "${abbreviation_38}" "${abbreviation_39}" "${abbreviation_40}" "${abbreviation_41}" "${abbreviation_42}" "${abbreviation_43}" "${abbreviation_44}" "${abbreviation_45}" "${abbreviation_46}" "${abbreviation_47}" "${abbreviation_48}" "${abbreviation_49}" "${abbreviation_50}" "${abbreviation_51}" "${abbreviation_52}" "${abbreviation_53}" "${abbreviation_54}" "${abbreviation_55}" "${abbreviation_56}" "${abbreviation_57}" "${abbreviation_58}" "${abbreviation_59}" "${abbreviation_60}" "${abbreviation_61}" "${abbreviation_62}" "${abbreviation_63}" "${abbreviation_64}" "${abbreviation_65}" "${abbreviation_66}")
 
+# these standard variables are used for filenames using whatever case or filename separator settings the user sets
+
 standard_translation=${translation}
 standard_bible_name=${bible_name}
-standard_audio_bible_name=${audio_bible_name}
 
+# either lowercase or keep folder name uppercase
 if [[ "${lowercase_folders}" == "true" ]]; then
-  standard_testament_arr=("${testament_arr[@]}")
-  standard_genre_arr=("${genre_arr[@]}")
-  standard_genre_alias_arr=("${genre_arr[@]}")
-  standard_long_title_arr=("${long_title_arr[@]}")
-  standard_short_title_arr=("${short_title_arr[@]}")
-  standard_abbreviation_arr=("${abbreviation_arr[@]}")
-  bible_dir="./${standard_bible_name}"
-  translation_dir="${bible_dir}/${standard_translation}"
-  outlines_dir="${bible_dir}/${outlines}"
-  notes_dir="${bible_dir}/${notes}"
-  reading_dir="${translation_dir}/${reading}"
-  audio_dir="${translation_dir}/${audio}"
+    standard_testament_arr=("${testament_arr[@]}")
+    standard_genre_arr=("${genre_arr[@]}")
+    standard_genre_alias_arr=("${genre_arr[@]}")
+    standard_long_title_arr=("${long_title_arr[@]}")
+    standard_short_title_arr=("${short_title_arr[@]}")
+    standard_abbreviation_arr=("${abbreviation_arr[@]}")
+    bible_dir="./${standard_bible_name}"
+    translation_dir="${bible_dir}/${standard_translation}"
+    outlines_dir="${bible_dir}/${outlines}"
+    notes_dir="${bible_dir}/${notes}"
+    scripture_dir="${translation_dir}/${scripture}"
 elif [[ "${lowercase_folders}" == "false" ]]; then
-  bible_dir="./${standard_bible_name}"
-  translation_dir="${bible_dir}/${standard_translation}"
-  outlines_dir="${bible_dir}/${outlines}"
-  notes_dir="${bible_dir}/${notes}"
-  reading_dir="${translation_dir}/${reading}"
-  audio_dir="${translation_dir}/${audio}"
-  standard_testament_arr=("${testament_arr[@]}")
-  standard_genre_arr=("${genre_arr[@]}")
-  standard_genre_alias_arr=("${genre_arr[@]}")
-  standard_long_title_arr=("${long_title_arr[@]}")
-  standard_short_title_arr=("${short_title_arr[@]}")
-  standard_abbreviation_arr=("${abbreviation_arr[@]}")
+    bible_dir="./${standard_bible_name}"
+    translation_dir="${bible_dir}/${standard_translation}"
+    outlines_dir="${bible_dir}/${outlines}"
+    notes_dir="${bible_dir}/${notes}"
+    scripture_dir="${translation_dir}/${scripture}"
+    standard_testament_arr=("${testament_arr[@]}")
+    standard_genre_arr=("${genre_arr[@]}")
+    standard_genre_alias_arr=("${genre_arr[@]}")
+    standard_long_title_arr=("${long_title_arr[@]}")
+    standard_short_title_arr=("${short_title_arr[@]}")
+    standard_abbreviation_arr=("${abbreviation_arr[@]}")
 fi
 
-if [[ ${enable_audio_bible} == "true" ]]; then
-  mkdir -p "${bible_dir}" "${translation_dir}" "${outlines_dir}" "${notes_dir}" "${reading_dir}" "${audio_dir}"
-elif [[ ${enable_audio_bible} == "false" ]]; then
-  mkdir -p "${bible_dir}" "${translation_dir}" "${outlines_dir}" "${notes_dir}" "${reading_dir}"
+# make folders
+mkdir -p "${bible_dir}" "${translation_dir}" "${outlines_dir}" "${notes_dir}" "${scripture_dir}"
+
+# customize currently set variables to user preferences
+
+# remove filename separator between abbreviation and book number if it exists (ex. 1-john => 1john)
+if [[ $abbreviation_separator == "false" ]]; then
+    for ((book = 0; book < book_max; book++)); do
+        standard_abbreviation_arr[book]=${standard_abbreviation_arr[book]// /}
+    done
 fi
 
-# Customize variables to user preference
-
-if [[ $remove_abbreviation_separator == "true" ]]; then
-  for ((book = 0; book < book_max; book++)); do
-    standard_abbreviation_arr[book]=${standard_abbreviation_arr[book]// /}
-  done
-fi
+# set filename separator for all standard variables (between book name and chapter number)
 if [[ $filename_separator != " " ]]; then
-  standard_translation=${standard_translation// /${filename_separator}}
-  standard_bible_name=${standard_bible_name// /${filename_separator}}
-  standard_audio_bible_name=${standard_audio_bible_name// /${filename_separator}}
+    standard_translation=${standard_translation// /${filename_separator}}
+    standard_bible_name=${standard_bible_name// /${filename_separator}}
 
-  outlines=${outlines// /${filename_separator}}
-  reading=${reading// /${filename_separator}}
-  notes=${notes// /${filename_separator}}
-  audio=${audio// /${filename_separator}}
+    outlines=${outlines// /${filename_separator}}
+    scripture=${scripture// /${filename_separator}}
+    notes=${notes// /${filename_separator}}
 
-  for ((book = 0; book < book_max; book++)); do
-    standard_testament_arr[book]=${standard_testament_arr[book]// /${filename_separator}}
-    standard_genre_arr[book]=${standard_genre_arr[book]// /${filename_separator}}
-    standard_long_title_arr[book]=${standard_long_title_arr[book]// /${filename_separator}}
-    standard_short_title_arr[book]=${standard_short_title_arr[book]// /${filename_separator}}
-    standard_abbreviation_arr[book]=${standard_abbreviation_arr[book]// /${filename_separator}}
-  done
+    for ((book = 0; book < book_max; book++)); do
+        standard_testament_arr[book]=${standard_testament_arr[book]// /${filename_separator}}
+        standard_genre_arr[book]=${standard_genre_arr[book]// /${filename_separator}}
+        standard_long_title_arr[book]=${standard_long_title_arr[book]// /${filename_separator}}
+        standard_short_title_arr[book]=${standard_short_title_arr[book]// /${filename_separator}}
+        standard_abbreviation_arr[book]=${standard_abbreviation_arr[book]// /${filename_separator}}
+    done
 fi
-if [[ $lowercase == "true" ]]; then
-  standard_translation=${standard_translation,,}
-  standard_bible_name=${standard_bible_name,,}
-  standard_audio_bible_name=${standard_audio_bible_name,,}
 
-  outlines=${outlines,,}
-  reading=${reading,,}
-  notes=${notes,,}
-  audio=${audio,,}
+# lowercase all standard variables if set
+if [[ $lowercase_files == "true" ]]; then
+    standard_translation=${standard_translation,,}
+    standard_bible_name=${standard_bible_name,,}
 
-  for ((book = 0; book < book_max; book++)); do
-    standard_testament_arr[book]=${standard_testament_arr[book],,}
-    standard_genre_arr[book]=${standard_genre_arr[book],,}
-    standard_genre_alias_arr[book]=${standard_genre_alias_arr[book],,}
-    standard_long_title_arr[book]=${standard_long_title_arr[book],,}
-    standard_short_title_arr[book]=${standard_short_title_arr[book],,}
-    standard_abbreviation_arr[book]=${standard_abbreviation_arr[book],,}
-  done
+    outlines=${outlines,,}
+    scripture=${scripture,,}
+    notes=${notes,,}
+
+    for ((book = 0; book < book_max; book++)); do
+        standard_testament_arr[book]=${standard_testament_arr[book],,}
+        standard_genre_arr[book]=${standard_genre_arr[book],,}
+        standard_genre_alias_arr[book]=${standard_genre_alias_arr[book],,}
+        standard_long_title_arr[book]=${standard_long_title_arr[book],,}
+        standard_short_title_arr[book]=${standard_short_title_arr[book],,}
+        standard_abbreviation_arr[book]=${standard_abbreviation_arr[book],,}
+    done
 fi
+
+# remove abbreviation periods in filename if set
 if [[ $filename_periods == "false" ]]; then
-  for ((book = 0; book < book_max; book++)); do
-    standard_abbreviation_arr[book]=${standard_abbreviation_arr[book]//\./}
-  done
-fi
-
-if [[ $parentheses_enabled == "true" ]]; then
-  translation="(${translation})"
-  standard_translation="(${standard_translation})"
+    for ((book = 0; book < book_max; book++)); do
+        standard_abbreviation_arr[book]=${standard_abbreviation_arr[book]//\./}
+    done
 fi

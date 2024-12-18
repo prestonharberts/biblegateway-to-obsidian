@@ -1,18 +1,11 @@
 #!/bin/bash
+
+# initialize variables
 source config
 
-if [[ $main_translation == "true" ]]; then
-  source bin/main-outlines
-  if [[ $enable_audio_bible == "true" ]]; then
-    source bin/audio-outlines
-  fi
-  source bin/main-reading
-elif [[ $main_translation == "false" ]]; then
-  source bin/other-outlines
-  if [[ $enable_audio_bible == "true" ]]; then
-    source bin/audio-outlines
-  fi
-  source bin/other-reading
-fi
+# create files
+source bin/make-outline-files
+source bin/make-scripture-files
 
+# cleanup
 source bin/cleanup

@@ -1,14 +1,22 @@
 #!/bin/bash
 # shellcheck disable=2034,2154
 
+# gets which testament and genre the current book is
 testament="${testament_arr[book]}"
 genre="${genre_arr[book]}"
+
+# gets titles of current book
 long_title="${long_title_arr[book]}"
 short_title="${short_title_arr[book]}"
 abbreviation="${abbreviation_arr[book]}"
+
+# gets standard variables
+# see config file for details on standard variables
 standard_testament="${standard_testament_arr[book]}"
 standard_genre="${standard_genre_arr[book]}"
 standard_long_title="${standard_long_title_arr[book]}"
 standard_short_title="${standard_short_title_arr[book]}"
 standard_abbreviation="${standard_abbreviation_arr[book]}"
+
+# gets amount of chapters in current book
 chapter_max=${length_arr[book]}

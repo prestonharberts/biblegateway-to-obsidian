@@ -1,0 +1,102 @@
+#!/bin/bash
+# shellcheck disable=1091,2086,2154
+
+# reinitialize config variables
+source config
+
+printf 'Downloading the %s Bible.' "${translation}"
+
+# traverse books until last book
+((book = 0))
+for ((book = 0; book < book_max; book++)); do
+    # get info of current book
+    source bin/get-info
+
+    # print "Psalms" to terminal instead of "Psalm"
+    if [[ "${short_title}" != "Psalm" ]]; then
+        printf '\n%s' "${short_title}"
+    else
+        printf '\n%s' "Psalms"
+    fi
+
+    # set variables for navigating backwards between books
+    if [ $book != 0 ]; then
+        ((previous_book_num = book - 1))
+    fi
+    ((next_book_num = book + 1))
+    previous_book="${standard_abbreviation_arr[previous_book_num]}"
+    next_book="${standard_abbreviation_arr[next_book_num]}"
+
+    # traverse chapters until end of book
+    for ((chapter = 1; chapter <= chapter_max; chapter++)); do
+
+        # print "." for every chapter downloaded
+        echo -n "."
+
+        # set chapter numbers for navigation
+        ((previous_chapter = chapter - 1))
+        ((next_chapter = chapter + 1))
+
+        # initialize filenames for navigation (abbreviation+num[+notes])
+        curr_file="${standard_abbreviation}${chapter}"
+        curr_file_notes="${standard_abbreviation}${chapter}${notes}"
+        previous_file="${standard_abbreviation}${previous_chapter}"
+        next_file="${standard_abbreviation}${next_chapter}"
+        previous_file_notes="${standard_abbreviation}${previous_chapter}${notes}"
+        next_file_notes="${standard_abbreviation}${next_chapter}${notes}"
+
+        # initialize the navigation line depending on certain conditions
+
+        # book with only one chapter
+        if [ $chapter_max -eq 1 ]; then
+            navigation="##### <span class="larrow"></span> [[${previous_book}${length_arr[$previous_book_num]}|Prev]] <span class="separator"></span> [[${curr_file_notes}|Notes]] <span class="separator"></span> [[${next_book}1|Next]] <span class="rarrow"></span>"
+            navigation_notes="##### <span class="larrow"></span> [[${previous_book}${length_arr[$previous_book_num]}${notes}|Prev]] <span class="separator"></span> [[${curr_file}|Read]] <span class="separator"></span> [[${next_book}1${notes}|Next]] <span class="rarrow"></span>"
+        # last chapter of last book
+        elif [ $chapter -eq $chapter_max ] && [ $book -eq $((book_max - 1)) ]; then
+            navigation="##### <span class="larrow"></span> [[${previous_file}|Prev]] <span class="separator"></span> [[${curr_file_notes}|Notes]]"
+            navigation_notes="##### <span class="larrow"></span> [[${previous_file_notes}|Prev]] <span class="separator"></span> [[${curr_file}|Read]]"
+        # last chapter of book
+        elif [ $chapter -eq $chapter_max ] && [ $book -ne $((book_max - 1)) ]; then
+            navigation="##### <span class="larrow"></span> [[${previous_file}|Prev]] <span class="separator"></span> [[${curr_file_notes}|Notes]] <span class="separator"></span> [[${next_book}1|Next]] <span class="rarrow"></span>"
+            navigation_notes="##### <span class="larrow"></span> [[${previous_file_notes}|Prev]] <span class="separator"></span> [[${curr_file}|Read]] <span class="separator"></span> [[${next_book}1${notes}|Next]] <span class="rarrow"></span>"
+        # first chapter of the first book
+        elif [ ${chapter} -eq 1 ] && [ $book -eq 0 ]; then
+            navigation="##### [[${curr_file_notes}|Notes]] <span class="separator"></span> [[${next_file}|Next]] <span class="rarrow"></span>"
+            navigation_notes="##### [[${curr_file}|Read]] <span class="separator"></span> [[${next_file_notes}|Next]] <span class="rarrow"></span>"
+        # first chapter of book
+        elif [ ${chapter} -eq 1 ] && [ $book -ne 0 ]; then
+            navigation="##### <span class="larrow"></span> [[${previous_book}${length_arr[$previous_book_num]}|Prev]] <span class="separator"></span> [[${curr_file_notes}|Notes]] <span class="separator"></span> [[${next_file}|Next]] <span class="rarrow"></span>"
+            navigation_notes="##### <span class="larrow"></span> [[${previous_book}${length_arr[$previous_book_num]}${notes}|Prev]] <span class="separator"></span> [[${curr_file}|Read]] <span class="separator"></span> [[${next_file_notes}|Next]] <span class="rarrow"></span>"
+        # chapters in between first and last
+        else
+            navigation="##### <span class="larrow"></span> [[${previous_file}|Prev]] <span class="separator"></span> [[${curr_file_notes}|Notes]] <span class="separator"></span> [[${next_file}|Next]] <span class="rarrow"></span>"
+            navigation_notes="##### <span class="larrow"></span> [[${previous_file_notes}|Prev]] <span class="separator"></span> [[${curr_file}|Read]] <span class="separator"></span> [[${next_file_notes}|Next]] <span class="rarrow"></span>"
+        fi
+
+        short_title_no_spaces=$(echo "${short_title}" | sed 's/ //g')
+
+        # call bg2md
+        text=$(ruby bg2md -e -c -f -l -r -v "${translation}" "${short_title_no_spaces}${chapter}")
+
+        # deleting unwanted headers
+        text="${text/^(.*?)v1/v1/}"
+
+        # output everything to current chapter file with or without YAML front matter
+        if [[ "${yaml_enabled}" == "true" ]]; then
+            # initialize YAML lines
+            # this condition avoids duplicate entries in the aliases section if the short title matches the abbreviation (example: John)
+            if [[ "${short_title}" == "${abbreviation}" ]]; then
+                yaml="---\naliases: [\"${short_title} ${chapter}\"]\n---"
+                yaml_notes="---\naliases: [\"${short_title} ${chapter} ${notes}\"]\n---"
+            else
+                yaml="---\naliases: [\"${short_title} ${chapter}\", \"${abbreviation} ${chapter}\"]\n---"
+                yaml_notes="---\naliases: [\"${short_title} ${chapter} ${notes}\", \"${abbreviation} ${chapter} ${notes}\"]\n---"
+            fi
+            echo -en "${yaml}\n# ${short_title} ${chapter}\n${navigation}${text}\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+            echo -en "${yaml_notes}\n# ${short_title} ${chapter} notes\n${navigation_notes}${text}\n${navigation_notes}" >>"${reading_dir}/${curr_file_notes}.md"
+        else
+            echo -en "# ${short_title} ${chapter}\n${navigation_notes}${text}\n${navigation}" >>"${reading_dir}/${curr_file}.md"
+            echo -en "# ${short_title} ${chapter} notes\n${navigation_notes}${text}\n${navigation_notes}" >>"${reading_dir}/${curr_file_notes}.md"
+        fi
+    done
+done
