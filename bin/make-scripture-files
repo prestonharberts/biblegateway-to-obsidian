@@ -49,28 +49,28 @@ for ((book = 0; book < book_max; book++)); do
 
         # book with only one chapter
         if [ $chapter_max -eq 1 ]; then
-            navigation="##### <span class="larrow"></span> [[${previous_book}${length_arr[$previous_book_num]}|Prev]] <span class="separator"></span> [[${curr_file_notes}|Notes]] <span class="separator"></span> [[${next_book}1|Next]] <span class="rarrow"></span>"
-            navigation_notes="##### <span class="larrow"></span> [[${previous_book}${length_arr[$previous_book_num]}${notes}|Prev]] <span class="separator"></span> [[${curr_file}|Read]] <span class="separator"></span> [[${next_book}1${notes}|Next]] <span class="rarrow"></span>"
+            navigation="##### <span class=arrow-left></span> [[${previous_book}${length_arr[$previous_book_num]}|Prev]] <span class=navigation-separator></span> [[${curr_file_notes}|Notes]] <span class=navigation-separator></span> [[${next_book}1|Next]] <span class=arrow-right></span>"
+            navigation_notes="##### <span class=arrow-left></span> [[${previous_book}${length_arr[$previous_book_num]}${notes}|Prev]] <span class=navigation-separator></span> [[${curr_file}|Read]] <span class=navigation-separator></span> [[${next_book}1${notes}|Next]] <span class=arrow-right></span>"
         # last chapter of last book
         elif [ $chapter -eq $chapter_max ] && [ $book -eq $((book_max - 1)) ]; then
-            navigation="##### <span class="larrow"></span> [[${previous_file}|Prev]] <span class="separator"></span> [[${curr_file_notes}|Notes]]"
-            navigation_notes="##### <span class="larrow"></span> [[${previous_file_notes}|Prev]] <span class="separator"></span> [[${curr_file}|Read]]"
+            navigation="##### <span class=arrow-left></span> [[${previous_file}|Prev]] <span class=navigation-separator></span> [[${curr_file_notes}|Notes]]"
+            navigation_notes="##### <span class=arrow-left></span> [[${previous_file_notes}|Prev]] <span class=navigation-separator></span> [[${curr_file}|Read]]"
         # last chapter of book
         elif [ $chapter -eq $chapter_max ] && [ $book -ne $((book_max - 1)) ]; then
-            navigation="##### <span class="larrow"></span> [[${previous_file}|Prev]] <span class="separator"></span> [[${curr_file_notes}|Notes]] <span class="separator"></span> [[${next_book}1|Next]] <span class="rarrow"></span>"
-            navigation_notes="##### <span class="larrow"></span> [[${previous_file_notes}|Prev]] <span class="separator"></span> [[${curr_file}|Read]] <span class="separator"></span> [[${next_book}1${notes}|Next]] <span class="rarrow"></span>"
+            navigation="##### <span class=arrow-left></span> [[${previous_file}|Prev]] <span class=navigation-separator></span> [[${curr_file_notes}|Notes]] <span class=navigation-separator></span> [[${next_book}1|Next]] <span class=arrow-right></span>"
+            navigation_notes="##### <span class=arrow-left></span> [[${previous_file_notes}|Prev]] <span class=navigation-separator></span> [[${curr_file}|Read]] <span class=navigation-separator></span> [[${next_book}1${notes}|Next]] <span class=arrow-right></span>"
         # first chapter of the first book
         elif [ ${chapter} -eq 1 ] && [ $book -eq 0 ]; then
-            navigation="##### [[${curr_file_notes}|Notes]] <span class="separator"></span> [[${next_file}|Next]] <span class="rarrow"></span>"
-            navigation_notes="##### [[${curr_file}|Read]] <span class="separator"></span> [[${next_file_notes}|Next]] <span class="rarrow"></span>"
+            navigation="##### [[${curr_file_notes}|Notes]] <span class=navigation-separator></span> [[${next_file}|Next]] <span class=arrow-right></span>"
+            navigation_notes="##### [[${curr_file}|Read]] <span class=navigation-separator></span> [[${next_file_notes}|Next]] <span class=arrow-right></span>"
         # first chapter of book
         elif [ ${chapter} -eq 1 ] && [ $book -ne 0 ]; then
-            navigation="##### <span class="larrow"></span> [[${previous_book}${length_arr[$previous_book_num]}|Prev]] <span class="separator"></span> [[${curr_file_notes}|Notes]] <span class="separator"></span> [[${next_file}|Next]] <span class="rarrow"></span>"
-            navigation_notes="##### <span class="larrow"></span> [[${previous_book}${length_arr[$previous_book_num]}${notes}|Prev]] <span class="separator"></span> [[${curr_file}|Read]] <span class="separator"></span> [[${next_file_notes}|Next]] <span class="rarrow"></span>"
+            navigation="##### <span class=arrow-left></span> [[${previous_book}${length_arr[$previous_book_num]}|Prev]] <span class=navigation-separator></span> [[${curr_file_notes}|Notes]] <span class=navigation-separator></span> [[${next_file}|Next]] <span class=arrow-right></span>"
+            navigation_notes="##### <span class=arrow-left></span> [[${previous_book}${length_arr[$previous_book_num]}${notes}|Prev]] <span class=navigation-separator></span> [[${curr_file}|Read]] <span class=navigation-separator></span> [[${next_file_notes}|Next]] <span class=arrow-right></span>"
         # chapters in between first and last
         else
-            navigation="##### <span class="larrow"></span> [[${previous_file}|Prev]] <span class="separator"></span> [[${curr_file_notes}|Notes]] <span class="separator"></span> [[${next_file}|Next]] <span class="rarrow"></span>"
-            navigation_notes="##### <span class="larrow"></span> [[${previous_file_notes}|Prev]] <span class="separator"></span> [[${curr_file}|Read]] <span class="separator"></span> [[${next_file_notes}|Next]] <span class="rarrow"></span>"
+            navigation="##### <span class=arrow-left></span> [[${previous_file}|Prev]] <span class=navigation-separator></span> [[${curr_file_notes}|Notes]] <span class=navigation-separator></span> [[${next_file}|Next]] <span class=arrow-right></span>"
+            navigation_notes="##### <span class=arrow-left></span> [[${previous_file_notes}|Prev]] <span class=navigation-separator></span> [[${curr_file}|Read]] <span class=navigation-separator></span> [[${next_file_notes}|Next]] <span class=arrow-right></span>"
         fi
 
         short_title_no_spaces=$(echo "${short_title}" | sed 's/ //g')
