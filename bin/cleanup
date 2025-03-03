@@ -40,9 +40,9 @@ echo -n "."
 
 # create first heading if it exists
 if [[ $yaml_enabled == "true" ]]; then
-    find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i '6 s/^[A-Za-z0-9].*/## &/g' {} +
+  find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i '6 s/^[A-Za-z0-9].*/## &/g' {} +
 elif [[ $yaml_enabled == "false" ]]; then
-    find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i '3 s/^[A-Za-z0-9].*/## &/g' {} +
+  find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i '3 s/^[A-Za-z0-9].*/## &/g' {} +
 fi
 # create all headings that immediately follow punction without a space
 find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E 's/([!?.,:;”’\)]|\])([A-Z0-9])/\1\n## \2/g' {} +
@@ -121,12 +121,12 @@ echo -n "."
 
 # delete all text and create checkbox for chapters that do not start with a heading
 if [[ $yaml_enabled == "true" ]]; then
-    find . -type f -wholename "*notes.md" -exec sed -i '4,$s/^[^#].*//g' {} +
-    find . -type f -wholename "*notes.md" -exec sed -i '7 s/###### 1$/- [ ] /g' {} +
+  find . -type f -wholename "*notes.md" -exec sed -i '4,$s/^[^#].*//g' {} +
+  find . -type f -wholename "*notes.md" -exec sed -i '7 s/###### 1$/- [ ] /g' {} +
 elif [[ $yaml_enabled == "false" ]]; then
-    find . -type f -wholename "*notes.md" -exec sed -i '4,$s/^[^#].*//g' {} +
-    find . -type f -wholename "*notes.md" -exec sed -i 's/^[^#].*//g' {} +
-    find . -type f -wholename "*notes.md" -exec sed -i '4 s/###### 1$/- [ ] /g' {} +
+  find . -type f -wholename "*notes.md" -exec sed -i '4,$s/^[^#].*//g' {} +
+  find . -type f -wholename "*notes.md" -exec sed -i 's/^[^#].*//g' {} +
+  find . -type f -wholename "*notes.md" -exec sed -i '4 s/###### 1$/- [ ] /g' {} +
 fi
 # delete verse headings
 find . -type f -wholename "*notes.md" -exec sed -i 's/###### [0-9]*//g' {} +
@@ -169,14 +169,14 @@ find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/\n>
 # trying to fix ps119
 ((book = 0))
 for ((book = 0; book < book_max; book++)); do
-    source bin/get-info
-    for ((chapter = 1; chapter <= chapter_max; chapter++)); do
-        curr_file="${standard_abbreviation}${chapter}.md" # setting the current file
-        if ! grep -q "div>" "${scripture_dir}/${curr_file}" && grep -q "> " "${scripture_dir}/${curr_file}"; then
-            sed -i 's/^\([^#>-]\)/> \1/g' ${scripture_dir}/${curr_file}
-            sed -i 's/> aliases/aliases/g' ${scripture_dir}/${curr_file}
-        fi
-    done
+  source bin/get-info
+  for ((chapter = 1; chapter <= chapter_max; chapter++)); do
+    curr_file="${standard_abbreviation}${chapter}.md" # setting the current file
+    if ! grep -q "div>" "${scripture_dir}/${curr_file}" && grep -q "> " "${scripture_dir}/${curr_file}"; then
+      sed -i 's/^\([^#>-]\)/> \1/g' ${scripture_dir}/${curr_file}
+      sed -i 's/> aliases/aliases/g' ${scripture_dir}/${curr_file}
+    fi
+  done
 done
 
 # add # to line with div
@@ -184,7 +184,7 @@ done
 find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(\n>[^>]*\n)([^>]*)(\n##### .*)$/\1\2<\/div>\3/;ba;}' {} +
 
 for i in {1..10}; do
-    find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/\n([^>\n]*?)(<\/div>)/\2\n> \1/;ba;}' {} +
+  find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/\n([^>\n]*?)(<\/div>)/\2\n> \1/;ba;}' {} +
 done
 find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/\(> .*\)<\/div>/\1/g' {} +
 find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/> #/#/g' {} +
@@ -366,8 +366,21 @@ find . -type f -wholename "*.md" -exec sed -i 's/<i>’/<\/i>’/g' {} +
 
 echo -n "."
 
+# OLD
 # convert poetry > into CSS class poetry
-find . -type f -wholename "*.md" -exec sed -i 's/^> \(.*\)$/<span class=\"poetry\">\1<\/span>/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/^> \(.*\)$/<span class=\"poetry\">\1<\/span>/g' {} +
+
+# fix first h5
+find . -type f -wholename "*.md" -exec sed -i 's/\(<span class=rarrow><\/span>\) ##### \(<span class=larrow><\/span>\) \(.*\)/##### \2 \3 \1/' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/\(<span class=rarrow><\/span>\) ##### \(.*\)/##### \2 \1/' {} +
+
+if [[ $translation == "NET" ]]; then
+  # this doesn't work
+  find . -type f -wholename "ps*.md" -exec sed -i -E ':a;$!{N;s/\n## [^\n]*//;ba;}' {} +
+  find . -type f -wholename "*.md" -exec sed -i 's/<i>//' {} +
+  find . -type f -wholename "*.md" -exec sed -i 's/<\/i>//' {} +
+
+fi
 
 echo -n "."
 
