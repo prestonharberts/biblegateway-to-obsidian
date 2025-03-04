@@ -167,9 +167,9 @@ find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/<\/div> /<\/di
 find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/\n>\n(###### [0-9]*\n)/\n\1> /;ba;}' {} +
 
 # trying to fix ps119
-((book = 18))
+((book = 0))
 source bin/get-info
-for ((chapter = 1; chapter <= chapter_max; chapter++)); do
+for ((chapter = 0; chapter <= chapter_max; chapter++)); do
   curr_file="${standard_abbreviation}${chapter}.md" # setting the current file
   if ! grep -q "div>" "${scripture_dir}/${curr_file}" && grep -q "> " "${scripture_dir}/${curr_file}"; then
     sed -i 's/^\([^#>-]\)/> \1/g' "${scripture_dir}/${curr_file}"
@@ -199,6 +199,7 @@ for i in {1..10}; do
 done
 find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/\(> .*\)<\/div>/\1/g' {} +
 find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/> #/#/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/\n###### [^\n]*\n######/\n######/;ba;}' {} +
 
 # fix astersisk
 find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/ \\\* /\\\*/g' {} +
@@ -241,10 +242,10 @@ find . -type f -wholename "*.md" -exec sed -i 's/_\([0-9]*\)_/<span class=verse-
 echo -n "."
 
 # add newline above/below poetry
-find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^<>#][^\n]*)(\n>)/\1\n<div class=poetry-break><\/div>\2/;ba;}' {} + # before poetry
-find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n<span[^\n]*)(\n>)/\1\n<div class=poetry-break><\/div>\2/;ba;}' {} +
-find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n>[^\n]*)(\n[^<>#])/\1\n<div class=poetry-break><\/div>\2/;ba;}' {} + # after poetry
-find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n>[^\n]*)(\n<span)/\1\n<div class=poetry-break><\/div>\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^<>#][^\n]*)(\n>)/\1\n<div class=paragraph-break><\/div>\2/;ba;}' {} + # before poetry
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n<span[^\n]*)(\n>)/\1\n<div class=paragraph-break><\/div>\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n>[^\n]*)(\n[^<>#])/\1\n<div class=paragraph-break><\/div>\2/;ba;}' {} + # after poetry
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n>[^\n]*)(\n<span)/\1\n<div class=paragraph-break><\/div>\2/;ba;}' {} +
 
 echo -n "."
 
@@ -334,8 +335,8 @@ echo -n "."
 # add css class to poetical quotes
 find . -type f -wholename "*.md" -exec sed -i 's/\(>\)\(“\)/\1<span class=poetry-quote-double>\2<\/span>/g' {} +
 find . -type f -wholename "*.md" -exec sed -i 's/\(>\)\(‘\)/\1<span class=poetry-quote-single>\2<\/span>/g' {} +
-find . -type f -wholename "*.md" -exec sed -i 's/^\(> \)\(“\)/\1<span class=poetry-quote-single>\2<\/span>/g' {} +
-find . -type f -wholename "*.md" -exec sed -i 's/^\(> \)\(‘\)/\1<span class=poetry-quote-double>\2<\/span>/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/^\(> \)\(“\)/\1<span class=poetry-quote-double>\2<\/span>/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/^\(> \)\(‘\)/\1<span class=poetry-quote-single>\2<\/span>/g' {} +
 
 echo -n "."
 
@@ -388,7 +389,7 @@ find . -type f -wholename "*.md" -exec sed -i 's/\(<span class=arrow-right><\/sp
 echo -n "."
 
 # replace \n\n with custom CSS
-find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/\n\n/\n<div class=poetry-break><\/div>\n/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/\n\n/\n<div class=paragraph-break><\/div>\n/;ba;}' {} +
 
 echo -n "."
 
@@ -415,13 +416,30 @@ if [[ $translation == "NET" ]]; then
   # re-remove italics that don't get removed earlier for some reason
   find . -type f -wholename "*.md" -exec sed -i 's/<i>//g' {} +
   find . -type f -wholename "*.md" -exec sed -i 's/<\/i>//g' {} +
-  # capitalize first letter of verses
-  find . -type f -wholename "*.md" -exec sed -i 's/^>\( *[a-z]\)/>\U\1/g' {} +
-  # these capitalize first letter of non-poetry verses which may not be wanted
-  # find . -type f -wholename "*.md" -exec sed -i 's/\(> “[a-z]\)/\U\1/g' {} +
-  # find . -type f -wholename "*.md" -exec sed -i 's/\(> ‘[a-z]\)/\U\1/g' {} +
 fi
+
+# capitalize first letter of verses
+find . -type f -wholename "*.md" -exec sed -i 's/^\(> *[a-z]\)/\U\1/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/^\(>.*>.*>\)\([a-z]\)/\1\U\2/g' {} +
+# these capitalize first letter of non-poetry verses which may not be wanted
+# find . -type f -wholename "*.md" -exec sed -i 's/\(> “[a-z]\)/\U\1/g' {} +
+# find . -type f -wholename "*.md" -exec sed -i 's/\(> ‘[a-z]\)/\U\1/g' {} +
+
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(<div class=paragraph-break><\/div>)(\n[^\n])/\1\n\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/span> /span>/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/ <span/<span/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/#<span/# <span/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/^> />/g' {} +
+# find . -type f -name "lam*.md" -exec sed -i -E ':a;$!{N;s/<div class=paragraph-break><\/div>\n\n//;ba;}' {} +
+# find . -type f -name "lam*.md" -exec sed -i 's/^\([^#<>-]\)/>\U\1/g' {} +
+# find . -type f -name "lam*.md" -exec sed -i 's/>Aliases/aliases/g' {} +
+# find . -type f -name "lam*.md" -exec sed -i 's/^\(<span class=verse-body\)/>\1-poetry/g' {} +
+# find . -type f -name "lam*.md" -exec sed -i 's/^\(<span class=verse-first\)/>\1-poetry/g' {} +
+
+# remove tags that bg2md didn't remove
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/<div class=\"poetry\">\n//;ba;}' {} +
 
 echo -n "."
 
 printf '\nDownloaded the %s Bible.\n' "${translation}"
+
