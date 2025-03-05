@@ -7,6 +7,10 @@ printf "\nCleanup"
 # HTML due to BG2MD changes
 find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/<\/div><div.*html\"> //g' {} +
 
+# I do this at the end a different way actually
+# remove footnotes and verse numbers that may show up in NET (Isaiah 64)
+#find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/([0-9a-b:]*) //g' {} +
+
 # asterisks
 
 # escape asterisks for translations that use them
@@ -158,31 +162,27 @@ mv "${scripture_dir}/"*notes.md "${notes_dir}/"
 
 echo -n "."
 
-# remove unnecessary header
+# remove unnecessary heading
 find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/## Psalms [0-9]*–[0-9]*/## /g' {} +
 
-# fix headers after </div>
+# fix headings after </div>
 find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/<\/div> /<\/div>\n## /g' {} +
 
 find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/\n>\n(###### [0-9]*\n)/\n\1> /;ba;}' {} +
 
-# trying to fix ps119
-((book = 0))
-source bin/get-info
-for ((chapter = 0; chapter <= chapter_max; chapter++)); do
-  curr_file="${standard_abbreviation}${chapter}.md" # setting the current file
-  if ! grep -q "div>" "${scripture_dir}/${curr_file}" && grep -q "> " "${scripture_dir}/${curr_file}"; then
-    sed -i 's/^\([^#>-]\)/> \1/g' "${scripture_dir}/${curr_file}"
-    sed -i 's/> aliases/aliases/g' "${scripture_dir}/${curr_file}"
-  fi
+# trying to fix certain poetical chapters
+for chapter in ${scripture_dir}/ps*.md ${scripture_dir}/lam*.md; do
+    sed -i 's/^\([^#>-]\)/> \1/g' "$chapter"
+    sed -i 's/> aliases/aliases/g' "$chapter"
 done
+
 
 if [[ $translation == "NET" ]]; then
   find . -type f -name "ps*.md" -exec sed -i -E ':a;$!{N;s/\n## [^\n]*//;ba;}' {} +
   find . -type f -wholename "*.md" -exec sed -i 's/<i>//g' {} +
   find . -type f -wholename "*.md" -exec sed -i 's/<\/i>//g' {} +
   # capitalize first letter of verses
-  find . -type f -wholename "*.md" -exec sed -i 's/>\( *[a-z]\)/>\U\1/g' {} +
+  # find . -type f -wholename "*.md" -exec sed -i 's/\([^i]\)>\( *[a-z]\)/\1>\U\2/g' {} +
   # these capitalize first letter of non-poetry verses which may not be wanted
   # find . -type f -wholename "*.md" -exec sed -i 's/\(> “[a-z]\)/\U\1/g' {} +
   # find . -type f -wholename "*.md" -exec sed -i 's/\(> ‘[a-z]\)/\U\1/g' {} +
@@ -393,7 +393,7 @@ find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/\n\n/\n<div class=pa
 
 echo -n "."
 
-# remove empty headers that came from somewhere
+# remove empty headings that came from somewhere
 find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/\n## \n/\n/;ba;}' {} +
 
 echo -n "."
@@ -420,7 +420,7 @@ fi
 
 # capitalize first letter of verses
 find . -type f -wholename "*.md" -exec sed -i 's/^\(> *[a-z]\)/\U\1/g' {} +
-find . -type f -wholename "*.md" -exec sed -i 's/^\(>.*>.*>\)\([a-z]\)/\1\U\2/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/^\(>.*[^i]>\)\([a-z]\)/\1\U\2/g' {} +
 # these capitalize first letter of non-poetry verses which may not be wanted
 # find . -type f -wholename "*.md" -exec sed -i 's/\(> “[a-z]\)/\U\1/g' {} +
 # find . -type f -wholename "*.md" -exec sed -i 's/\(> ‘[a-z]\)/\U\1/g' {} +
@@ -438,6 +438,26 @@ find . -type f -wholename "*.md" -exec sed -i 's/^> />/g' {} +
 
 # remove tags that bg2md didn't remove
 find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/<div class=\"poetry\">\n//;ba;}' {} +
+
+# add paragraph-break before verse-first and verse-first-poetry
+# but not after h2
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^#][^\n]*\n)(<span class=verse-first>)/\1<div class=paragraph-break><\/div>\n\n\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^#][^\n]*\n)(><span class=verse-first-poetry>)/\1<div class=paragraph-break><\/div>\n\n\2/;ba;}' {} +
+
+# add paragraph-break to verses that has text on a newline underneath it
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n<[^\n]*\n)([^<>\n])/\1<div class=paragraph-break><\/div>\n\n\2/;ba;}' {} +
+
+# remove paragraph-breaks that appear before headings
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/<div class=paragraph-break><\/div>\n\n#/#/;ba;}' {} +
+
+# replace Lᴏʀᴅ OF LᴏʀᴅS with LORD OF LORDS
+find . -type f -wholename "*.md" -exec sed -i 's/Lᴏʀᴅ OF LᴏʀᴅS/LORD OF LORDS/g' {} +
+
+# remove footnotes and verse numbers that may show up in NET (Isaiah 64)
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/>[0-9a-z:]+\n## [0-9a-z]+/>/;ba;}' {} +
+
+# add H6 verses back
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/\(>*<span class=verse-[a-z-]*>\)\([0-9]*\)/###### \2\n\1\2/g' {} +
 
 echo -n "."
 
