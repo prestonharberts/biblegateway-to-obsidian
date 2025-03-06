@@ -2,6 +2,8 @@
 
 This script is downloads the Bible in Markdown files along with empty note-taking files, all to be imported into [Obsidian](https://obsidian.md/). By default, it downloads the [NET translation](https://www.biblegateway.com/versions/New-English-Translation-NET-Bible/), and certain other translations are also supported. This script adapts [jgclark's BibleGateway-to-Markdown](https://github.com/jgclark/BibleGateway-to-Markdown) script and is forked from [selfire1's BibleGateway-to-Obsidian](https://github.com/selfire1/BibleGateway-to-Obsidian) to export the Bible for use in Obsidian.
 
+Included to download in this repo is the NET translation in markdown files with my recommended configuration, ready to be imported into an Obsidian vault. This is made possible by the [NET translation teams generous copyright](https://netbible.com/copyright/) which allows me to redistribute it for free to you all.
+
 The script fetches text from [Bible Gateway](https://www.biblegateway.com/) and saves it as a markdown file. Each chapter is saved as two files (one for reading and another without text so that you can take notes). A navigation bar is located at the top and bottom of each file for navigating chapters. All Bible chapters are saved to a folder named `Scripture`, note-taking files are saved to another folder named `Notes`, and outline files are stored in `Outlines`.
 
 This script is intended to be very simple to run, and is customizable from the `config` file. To adapt it to your taste, you can modify `bg2ob` or fork this script.
