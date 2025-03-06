@@ -50,7 +50,7 @@ Certain manual changes must be made to the Bible files that cannot be done autom
 
 ```
 
-- Insert the above HTML into Rev. 19 where it says `KING OF KINGS AND\nLORD OF LORDS`
+- Remove the above HTML in Rev. 19 where it should say `KING OF KINGS AND\nLORD OF LORDS`
 - 2 Chron. 36:22 has some junk HTML
 
 #### CSB specific changes
