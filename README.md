@@ -6,7 +6,7 @@ This script is downloads the Bible in Markdown files along with empty note-takin
 
 The script fetches text from [Bible Gateway](https://www.biblegateway.com/) and saves it as a markdown file. Each chapter is saved as two files (one for reading and another without text so that you can take notes). A navigation bar is located at the top and bottom of each file for navigating chapters. All Bible chapters are saved to a folder named `Scripture`, note-taking files are saved to another folder named `Notes`, and outline files are stored in `Outlines`.
 
-This script is intended to be very simple to run, and is customizable from the `config` file. To adapt it to your taste, you can modify `bg2ob` or fork this script.
+This script is intended to be very simple to run, and is customizable from the `config` file. To adapt it even more to your liking, you can modify `bg2ob` or fork this script.
 
 ## Copyright
 
