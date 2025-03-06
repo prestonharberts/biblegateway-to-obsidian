@@ -446,6 +446,8 @@ find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[^#][^\n]*\n)(><s
 
 # add paragraph-break to verses that has text on a newline underneath it
 find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n<[^\n]*\n)([^<>\n])/\1<div class=paragraph-break><\/div>\n\n\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n[A-Za-z0-9”’([][^\n]*\n)([^-<>\n])/\1<div class=paragraph-break><\/div>\n\n\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(\n)(<i>)?([A-Za-z0-9”’[(][^\n]*\n)(<i>)?([^#<>-])/\1\2\3<div class=paragraph-break><\/div>\n\n\4\5/;ba;}' {} +
 
 # remove paragraph-breaks that appear before headings
 find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/<div class=paragraph-break><\/div>\n\n#/#/;ba;}' {} +
