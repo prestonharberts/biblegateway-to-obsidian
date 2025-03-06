@@ -2,9 +2,7 @@
 
 ## Disclaimers
 
-This script is set to download the NET Bible, but it can be changed. Before using this script, please make sure you own some sort of copy of the NKJV. Even if this program does not make actual use of it, it is right to legally own it before making a copy of it using jgclark's script.
-
-Depending on the translation's copyright, once generated, rights to distribute vary because they are subject to the translation's copyright standards. This is not affiliated or approved by BibleGateway.com or Crossway. I make no guarantee regarding the usage of the script, it is at your own discretion.
+This script is set to download the NET Bible, but it can be changed. Depending on the translation's copyright, once generated, rights to distribute vary because they are subject to the translation's copyright standards. This is not affiliated or approved by BibleGateway.com or Crossway. I make no guarantee regarding the usage of the script, it is at your own discretion.
 
 ## About
 
