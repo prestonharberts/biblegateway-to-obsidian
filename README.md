@@ -1,16 +1,14 @@
 # BibleGateway-to-Obsidian
 
-## Disclaimers
-
-This script is set to download the NET Bible, but it can be changed. Depending on the translation's copyright, once generated, rights to distribute vary because they are subject to the translation's copyright standards. This is not affiliated or approved by BibleGateway.com or Crossway. I make no guarantee regarding the usage of the script, it is at your own discretion.
-
-## About
-
-This script adapts [jgclark's BibleGateway-to-Markdown](https://github.com/jgclark/BibleGateway-to-Markdown) script and is forked from [selfire1's BibleGateway-to-Obsidian](https://github.com/selfire1/BibleGateway-to-Obsidian) to export the Bible for use in [Obsidian](https://obsidian.md/).
+This script is set to download the Bible in Markdown files along with empty note-taking files, all to be imported into [Obsidian](https://obsidian.md/). By default, it downloads the NET translation. This script adapts [jgclark's BibleGateway-to-Markdown](https://github.com/jgclark/BibleGateway-to-Markdown) script and is forked from [selfire1's BibleGateway-to-Obsidian](https://github.com/selfire1/BibleGateway-to-Obsidian) to export the Bible for use in Obsidian.
 
 The script fetches text from [Bible Gateway](https://www.biblegateway.com/) and saves it as a markdown file. Each chapter is saved as two files, one for reading and another without text so that you can take notes in. A navigation bar is located at the bottom of each file for navigating files and is automatically created. All the chapter reading and table of contents are saved to a folder named `Scripture`, and all note-taking files are saved to another folder named `Notes`.
 
 This script is intended to be very simple to run, and is customizable from the `config` file. To adapt it to your taste, you can modify `bg2ob` or fork this script.
+
+## Copyright
+
+By default, this program downloads the NET Bible translation, but it can be changed. Depending on the translation's copyright, once generated, rights to distribute vary because they are subject to the translation's copyright standards. This is not affiliated or approved by BibleGateway.com or Crossway. I make no guarantee regarding the usage of the script, it is at your own discretion.
 
 ## Installation
 
