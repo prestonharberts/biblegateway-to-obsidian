@@ -177,7 +177,7 @@ for chapter in ${scripture_dir}/ps*.md ${scripture_dir}/lam*.md; do
 done
 
 
-if [[ $translation == "NET" ]]; then
+if [[ $translation == "NET" ]] || [[ $translation == "NLT" ]]; then
   find . -type f -name "ps*.md" -exec sed -i -E ':a;$!{N;s/\n## [^\n]*//;ba;}' {} +
   find . -type f -wholename "*.md" -exec sed -i 's/<i>//g' {} +
   find . -type f -wholename "*.md" -exec sed -i 's/<\/i>//g' {} +
@@ -211,6 +211,7 @@ echo -n "."
 
 # remove old div tags (if any)
 find . -type f -wholename "*.md" -exec sed -i 's/<div.*>\(.*\)<\/div>/\1/g' {} +
+find . -type f -wholename "*.md" -exec sed -i 's/<div class=\"[a-z]*-[0-9] *[a-z0-9-]*\"  >//g' {} +
 
 echo -n "."
 
@@ -411,6 +412,10 @@ find . -type f -wholename "*.md" -exec sed -i 's/^\([^(]*\))/\1/g' {} +
 
 # fix some note files that don't have bullet points
 find . -type f -wholename "*notes.md" -exec sed -i -E ':a;$!{N;s/(<span class=arrow-right><\/span>\n)(#####)/\1- \n\2/;ba;}' {} +
+
+# add extra bullet point to top of notes while removing duplicate ones
+find . -type f -wholename "*notes.md" -exec sed -i -E ':a;$!{N;s/(<span class=arrow-right><\/span>\n)(##)/\1- \n\2/;ba;}' {} +
+find . -type f -wholename "*notes.md" -exec sed -i -E ':a;$!{N;s/- \n- /- \n/;ba;}' {} +
 
 if [[ $translation == "NET" ]]; then
   # re-remove italics that don't get removed earlier for some reason

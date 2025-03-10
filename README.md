@@ -54,6 +54,25 @@ Certain manual changes must be made to the Bible files that cannot be done autom
 
 - Remove the above HTML in Rev. 19 where it should say `KING OF KINGS AND\nLORD OF LORDS`
 - 2 Chron. 36:22 has some junk HTML
+- Now open all edited files and remove the newline at the end of the file
+
+#### NLT specific changes
+
+- Neh. 7 has various table related tags that are best manually removed for the time being
+  - Transform `</td><td>` into `: ` where appropriate
+  - Remove all occurrences of `</td></tr> <tr><td>` and `</td></tr></table>`
+  - Transform all occurrences of `</td></tr> <tr><td>` and `</td></tr></table>` into `.`
+  - Transform all occurrences of `<table class="top-1"><tr><td>` into the following:
+
+```
+<div class=paragraph-break></div>
+
+```
+
+  - Remove the occurrence of the above snippet from right above verses 44
+  - Insert the above snippet above verse 40, after the first line of verse 46, and after the first line of verse 57.
+- Num. 1 and 2 have occurrences of `<sup class="versenum">`. Delete the entire lines they are on.
+- Now open all edited files and remove the newline at the end of the file
 
 #### CSB specific changes
 
