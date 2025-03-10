@@ -455,6 +455,9 @@ find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/<div class=paragraph
 # replace Lᴏʀᴅ OF LᴏʀᴅS with LORD OF LORDS
 find . -type f -wholename "*.md" -exec sed -i 's/Lᴏʀᴅ OF LᴏʀᴅS/LORD OF LORDS/g' {} +
 
+# remove duplicate italics
+find . -type f -wholename "*.md" -exec sed -i 's/<\/i> <i>//g' {} +
+
 # remove footnotes and verse numbers that may show up in NET (Isaiah 64)
 find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/>[0-9a-z:]+\n## [0-9a-z]+/>/;ba;}' {} +
 
