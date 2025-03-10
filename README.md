@@ -31,7 +31,7 @@ chmod u+x bg2md bg2ob
 
 ## Usage
 
-Once you are in the directory containing the script, run `./bg2ob`. This will run the bash script. Do not copy anything while the program is running. See the Troubleshooting, further below.
+Once you are in the directory containing the script, *remove* or *rename* the included Bible folder containing the NET translation. Then run `./bg2ob` (this will run the bash script). Do not copy anything while the program is running. See the Troubleshooting, further below.
 
 ### Manual changes
 
