@@ -58,6 +58,8 @@ Certain manual changes must be made to the Bible files that cannot be done autom
 
 #### NLT specific changes
 
+Currently this is a work in progress as Gal. 1 has quotation issues.
+
 - Neh. 7 has various table related tags that are best manually removed for the time being
   - Transform `</td><td>` into `: ` where appropriate
   - Remove all occurrences of `</td></tr> <tr><td>` and `</td></tr></table>`
