@@ -15,8 +15,6 @@ This script is intended to be very simple to run, and is customizable from the `
 - [Troubleshooting](#troubleshooting)
 - [Todo](#todo)
 
-## Credits
-
 ## Screenshots
 
 <p align=center><img src="https://github.com/user-attachments/assets/c13df5d8-5194-4657-bb8e-962e6fb15d5d" width="768"></p>
