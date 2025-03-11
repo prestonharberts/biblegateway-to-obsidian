@@ -6,7 +6,16 @@ This script downloads the Bible in Markdown files along with empty note-taking f
 
 The script fetches text from [Bible Gateway](https://www.biblegateway.com/) and saves it as a markdown file. Each chapter is saved as two files (one for reading and another without text so that you can take notes). A navigation bar is located at the top and bottom of each file for navigating chapters. All Bible chapters are saved to a folder named `Scripture`, note-taking files are saved to another folder named `Notes`, and outline files are stored in `Outlines`.
 
-This script is intended to be very simple to run, and is customizable from the `config` file. To adapt it even more to your liking, you can modify `bg2ob` or fork this script.
+This script is intended to be very simple to run, and is customizable from the `config` file. To adapt it even more to your liking, you can modify `bg2ob` or fork this script. Included in this repository also is a CSS snippet for Obsidian that must be enabled to make it appear like the pictures below.
+
+## Screenshots
+
+<p align=center><img src="https://github.com/user-attachments/assets/c13df5d8-5194-4657-bb8e-962e6fb15d5d" width="768"></p>
+
+<p align=center><img src="https://github.com/user-attachments/assets/e75aca9b-9a9d-4b45-b9ad-25cafeec0a4c" width="768"></p>
+
+<p align=center><img src="https://github.com/user-attachments/assets/0a4739e2-f93c-4d23-bdd7-06f0882536f1" width="768"></p>
+
 
 ## Copyright
 
@@ -31,7 +40,9 @@ chmod u+x bg2md bg2ob
 
 ## Usage
 
-Once you are in the directory containing the script, *remove* or *rename* the included Bible folder containing the NET translation. Then run `./bg2ob` (this will run the bash script). Do not copy anything while the program is running. See the Troubleshooting, further below.
+Once you are in the directory containing the script, *remove* or *rename* the included Bible folder containing the NET translation. Then run `./bg2ob` (this will run the bash script) to create a new Bible folder with your translation. Do not copy anything while the program is running. See the Troubleshooting, further below.
+
+Once it has finished, move the included `bible.css` to `<your obsidian vault>/.obsidian/snippets`, and enable the CSS snippet from Obsidian's settings under Appearance.
 
 ### Manual changes
 
@@ -102,4 +113,4 @@ I am unsure what causes this, but it is fixed when the Bible folder is deleted a
 
 ## Credits
 
-Thank you [selfire](https://github.com/selfire1) and [jgclark](https://github.com/jgclark) for your work putting these scripts together. This fork could not have been possible without you two. selfire1's patreon can be found at joschua if you feel inclined to support him.
+A special thanks to [selfire](https://github.com/selfire1) and [jgclark](https://github.com/jgclark) for their original scripts, which served as the foundation for this project. Working on and expanding upon this has been an incredibly fun and educational experience. Your contributions have made this journey even more enjoyable!
