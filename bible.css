@@ -1,0 +1,264 @@
+/******************** GLOBAL STYLES ********************/
+
+body {
+  --accent-h: 213;
+  --accent-s: 72%;
+  --accent-l: 54%;
+  --code-background: #f0f0f0;
+  --code-normal: #222222;
+  --file-line-width: 36rem;
+  --h2-font-size: 1.12em;
+  --link-unresolved-opacity: 0.5;
+  --link-decoration: none;
+  --link-external-decoration: none !important;
+  --list-marker-color: #b3b3b3;
+  --text-highlight-bg: rgb(255, 247, 195);
+  --p-spacing: 0.2rem;
+  --line-height-normal: 1.55rem;
+}
+
+* {
+  letter-spacing: 0.008em;
+}
+
+/******************** WHITESPACE ********************/
+
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer {
+  padding-bottom: 40px !important;
+}
+
+.view-content>.markdown-source-view.mod-cm6>.cm-editor>.cm-scroller {
+  padding: 0 3em 0 3em;
+}
+
+
+/******************** QUOTEBLOCK ********************/
+
+.markdown-source-view.mod-cm6.is-live-preview .HyperMD-quote:before {
+  display: none;
+}
+
+.markdown-source-view.mod-cm6.is-live-preview .HyperMD-quote {
+  margin-left: 8px !important;
+}
+
+.cm-s-obsidian span.cm-formatting-quote {
+  padding-left: 30px !important;
+  margin-block-end: 0em;
+}
+
+
+/******************** NOTE PREVIEW ********************/
+
+.hover-popover .markdown-embed[data-type="heading"] .inline-title,
+.popover .verse1,
+.popover .verse2,
+.popover .verse3,
+.popover .verse4 {
+  display: none !important;
+}
+
+.popover blockquote {
+  padding-left: 0em !important;
+}
+
+/******************** LIST PADDING ********************/
+
+.list-bullet {
+  right: 4px;
+}
+
+.list-number {
+  position: relative;
+  right: 4px !important;
+}
+
+.HyperMD-list-line:has(+ :is(.cm-line:not([class*="HyperMD-list-line"], [class*="header"]))) {
+  padding-bottom: 10px;
+}
+
+.cm-line:not([class*="header"], [class*="HyperMD-list-line"]):has(+ :is(.HyperMD-list-line)) {
+  padding-bottom: 10px;
+}
+
+.cm-table-widget:has(+ :is(.HyperMD-list-line)) {
+  padding-bottom: 10px !important;
+}
+
+/******************** LEFT AND RIGHT ARROW STYLES ********************/
+
+.arrow-left::after {
+  content: "🙘";
+  font-size: 130%;
+  font-weight: normal;
+  padding-right: 0.5em;
+  color: var(--list-marker-color);
+}
+
+.arrow-right::before {
+  content: "🙚";
+  font-size: 130%;
+  font-weight: normal;
+  padding-left: 0.5em;
+  color: var(--list-marker-color);
+}
+
+/******************** EMBEDS AND LINES ********************/
+
+.cm-html-embed+.cm-line {
+  display: none !important;
+}
+
+.paragraph-break {
+  padding: 0.5em;
+}
+
+.navigation-separator::after {
+  content: "|";
+  font-weight: normal;
+  font-size: 95%;
+  text-shadow: 0.3px 0 var(--list-marker-color);
+  padding: 0.5em;
+  color: var(--list-marker-color);
+  position: relative;
+  top: -1.5px;
+}
+
+/******************** HEADERS ********************/
+
+h1,
+.HyperMD-header-1,
+.markdown-rendered h1 {
+  padding-top: 50px !important;
+  text-align: center;
+}
+
+.HyperMD-header-1:has(+ :is(.cm-line:not([class*="header"]))) {
+  padding-bottom: 20px;
+}
+
+h2,
+.HyperMD-header-2,
+.markdown-rendered h2 {
+  border-bottom: var(--hr-color) solid var(--hr-thickness);
+  bottom: 15px;
+  color: var(--list-marker-color);
+  font-size: var(--h2-font-size);
+  font-style: italic;
+  padding-bottom: 5px !important;
+  padding-top: 30px !important;
+  text-align: center;
+}
+
+h2+*,
+.HyperMD-header-2+*,
+.markdown-rendered h2+* {
+  padding-top: 0.5rem !important;
+}
+
+h5,
+.HyperMD-header-5,
+.markdown-rendered h5 {
+  color: var(--text-faint);
+  font-size: 18px !important;
+  font-weight: bold !important;
+  line-height: 24px;
+  margin-bottom: 4px;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  text-align: center;
+}
+
+h5+*,
+.HyperMD-header-5+*,
+.markdown-rendered h5+* {
+  padding-top: 1rem !important;
+}
+
+.HyperMD-header-5:has(+ :is(.cm-line:not([class*="header"]))) {
+  border-bottom: var(--hr-color) solid var(--hr-thickness);
+  padding-bottom: 10px !important;
+}
+
+.HyperMD-header-5:has(+ :is(.cm-line:is([class*="header-6"]))) {
+  border-bottom: var(--hr-color) solid var(--hr-thickness);
+  padding-bottom: 5px !important;
+  margin-bottom: 15px !important;
+}
+
+.cm-line:not([class*="header"])+.HyperMD-header-5 {
+  border-top: var(--hr-color) solid var(--hr-thickness);
+  top: 15px;
+}
+
+.cm-line:is(.HyperMD-list-line)+.HyperMD-header-5 {
+  top: 20px;
+}
+
+.HyperMD-header-2:has(+ :is(.cm-line:not([class*="header"]))),
+.HyperMD-header-5:has(+ :is(.cm-line:not([class*="header"]))) {
+  padding-bottom: 5px;
+}
+
+.markdown-rendered h6,
+.HyperMD-header-6,
+h6 {
+  display: none !important;
+}
+
+/******************** VERSE STYLES ********************/
+
+.verse-first {
+  color: #3581de;
+  padding-right: 0.4em;
+  font-weight: 700;
+}
+
+.verse-body {
+  color: var(--list-marker-color);
+  padding-right: 0.4em;
+}
+
+.verse-first-poetry {
+  color: #3581de;
+  padding-right: 0.1em;
+  font-weight: 700;
+  position: absolute;
+  left: -7px;
+}
+
+.verse-body-poetry {
+  color: var(--list-marker-color);
+  padding-right: 0.1em;
+  position: absolute;
+  left: -8px;
+}
+
+/******************** QUOTE STYLES ********************/
+
+/* left needs to be changed whenever font size or screen zoom is changed */
+.poetry-quote-double {
+  position: absolute;
+  left: 33px;
+}
+
+/* left needs to be changed whenever font size or screen zoom is changed */
+.poetry-quote-single {
+  position: absolute;
+  left: 35px;
+}
+
+.popover .poetry-quote-double,
+.popover .poetry-quote-single {
+  position: static;
+}
+
+/******************** HIDE HEADINGS IN POPUP PREVIEW ********************/
+
+.hover-popover .markdown-embed[data-type="heading"] .inline-title,
+.popover .verse-first,
+.popover .verse-body,
+.popover .verse-first-poetry,
+.popover .verse-body-poetry {
+  display: none !important;
+}
