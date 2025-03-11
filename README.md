@@ -8,6 +8,15 @@ The script fetches text from [Bible Gateway](https://www.biblegateway.com/) and 
 
 This script is intended to be very simple to run, and is customizable from the `config` file. To adapt it even more to your liking, you can modify `bg2ob` or fork this script. Included in this repository also is a CSS snippet for Obsidian that must be enabled to make it appear like the pictures below.
 
+- [Screenshots](#screenshots)
+- [Copyright](#copyright)
+- [Setup](#setup)
+- [Usage](#usage)
+- [Troubleshooting](#troubleshooting)
+- [Todo](#todo)
+
+## Credits
+
 ## Screenshots
 
 <p align=center><img src="https://github.com/user-attachments/assets/c13df5d8-5194-4657-bb8e-962e6fb15d5d" width="768"></p>
@@ -114,3 +123,8 @@ I am unsure what causes this, but it is fixed when the Bible folder is deleted a
 ## Credits
 
 A special thanks to [selfire](https://github.com/selfire1) and [jgclark](https://github.com/jgclark) for their original scripts, which served as the foundation for this project. Working on and expanding upon this has been an incredibly fun and educational experience. Your contributions have made this journey even more enjoyable!
+
+## Todo
+
+- [ ] Help menu
+- [ ] Other language support
