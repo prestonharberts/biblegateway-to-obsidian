@@ -21,7 +21,7 @@ This script is intended to be very simple to run, and is customizable from the `
 
 By default, this program downloads the NET Bible translation, but it can be changed. Depending on the translation's copyright, once generated, rights to distribute vary because they are subject to the translation's copyright standards. This is not affiliated or approved by BibleGateway.com or any publisher. I make no guarantee regarding the usage of the script, it is at your own discretion.
 
-## Installation
+## Setup
 
 This script is intended to be run in Linux, but it is able to be run on macOS and Windows with some setup that I am unable to provide as I do not currently use either.
 
