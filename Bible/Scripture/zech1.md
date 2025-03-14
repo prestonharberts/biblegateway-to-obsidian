@@ -38,10 +38,8 @@ aliases: ["Zechariah 1", "Zech. 1"]
 ###### 14
 <span class=verse-body>14</span>Turning to me, the messenger then said, “Cry out that the Lᴏʀᴅ of Heaven’s Armies says, ‘I am very much moved for Jerusalem and for Zion.
 ###### 15
-<span class=verse-body>15</span>‘But I am greatly displeased with the nations that take my grace for granted. I was a little displeased with them, but they have only made things worse for themselves.
-<div class=paragraph-break></div>
-
-‘## The Oracle of Response
+<span class=verse-body>15</span>‘But I am greatly displeased with the nations that take my grace for granted. I was a little displeased with them, but they have only made things worse for themselves.’
+## The Oracle of Response
 ###### 16
 <span class=verse-body>16</span>“‘Therefore,’ this is what the Lᴏʀᴅ has said, ‘I have become compassionate toward Jerusalem and will rebuild my temple in it,’ says the Lᴏʀᴅ of Heaven’s Armies. ‘Once more a surveyor’s measuring line will be stretched out over Jerusalem.’
 ###### 17

@@ -3,6 +3,7 @@ aliases: ["Deuteronomy 28 notes", "Deut. 28 notes"]
 ---
 # Deuteronomy 28 notes
 ##### <span class=arrow-left></span>[[deut27notes|Prev]]<span class=navigation-separator></span>[[deut28|Read]]<span class=navigation-separator></span>[[deut29notes|Next]]<span class=arrow-right></span>
+- 
 ## The Covenant Blessings
 - 
 ## Curses as Reversal of Blessings

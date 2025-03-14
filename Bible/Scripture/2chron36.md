@@ -57,5 +57,5 @@ aliases: ["2 Chronicles 36", "2 Chron. 36"]
 <span class=verse-body>23</span>“This is what King Cyrus of Persia says:
 <div class=paragraph-break></div>
 
-‘The Lᴏʀᴅ God of heaven has given me all the kingdoms of the earth. He has appointed me to build a temple for him in Jerusalem, which is in Judah. Anyone of his people among you may go up there, and may the Lᴏʀᴅ his God be with him.”
-<span class=arrow-right></span>‘##### <span class=arrow-left></span>[[2chron35|Prev]]<span class=navigation-separator></span>[[2chron36notes|Notes]]<span class=navigation-separator></span>[[ezra1|Next]]
+‘The Lᴏʀᴅ God of heaven has given me all the kingdoms of the earth. He has appointed me to build a temple for him in Jerusalem, which is in Judah. Anyone of his people among you may go up there, and may the Lᴏʀᴅ his God be with him.’”
+##### <span class=arrow-left></span>[[2chron35|Prev]]<span class=navigation-separator></span>[[2chron36notes|Notes]]<span class=navigation-separator></span>[[ezra1|Next]]<span class=arrow-right></span>

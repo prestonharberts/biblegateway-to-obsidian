@@ -9,6 +9,8 @@ aliases: ["1 Chronicles 3", "1 Chron. 3"]
 <div class=paragraph-break></div>
 
 The firstborn was Amnon, whose mother was Ahinoam from Jezreel;
+<div class=paragraph-break></div>
+
 the second was Daniel, whose mother was Abigail from Carmel;
 ###### 2
 <span class=verse-body>2</span>the third was Absalom whose mother was Maacah, daughter of King Talmai of Geshur;
@@ -44,25 +46,35 @@ Shimea, Shobab, Nathan, and Solomon—the mother of these four was Bathsheba the
 <div class=paragraph-break></div>
 
 followed by Abijah his son,
+<div class=paragraph-break></div>
+
 Asa his son,
+<div class=paragraph-break></div>
+
 Jehoshaphat his son,
 ###### 11
 <span class=verse-body>11</span>Joram his son,
 <div class=paragraph-break></div>
 
 Ahaziah his son,
+<div class=paragraph-break></div>
+
 Joash his son,
 ###### 12
 <span class=verse-body>12</span>Amaziah his son,
 <div class=paragraph-break></div>
 
 Azariah his son,
+<div class=paragraph-break></div>
+
 Jotham his son,
 ###### 13
 <span class=verse-body>13</span>Ahaz his son,
 <div class=paragraph-break></div>
 
 Hezekiah his son,
+<div class=paragraph-break></div>
+
 Manasseh his son,
 ###### 14
 <span class=verse-body>14</span>Amon his son,

@@ -67,5 +67,5 @@ aliases: ["Ezekiel 45", "Ezek. 45"]
 ###### 24
 <span class=verse-body>24</span>‘He will provide as a grain offering an ephah for each bull, an ephah for each ram, and a gallon of olive oil for each ephah of grain.
 ###### 25
-<span class=verse-body>25</span>‘In the seventh month, on the fifteenth day of the month, at the feast, he will make the same provisions for the sin offering, burnt offering, and grain offering, and for the olive oil, for the seven days.
-<span class=arrow-right></span>‘##### <span class=arrow-left></span>[[ezek44|Prev]]<span class=navigation-separator></span>[[ezek45notes|Notes]]<span class=navigation-separator></span>[[ezek46|Next]]
+<span class=verse-body>25</span>‘In the seventh month, on the fifteenth day of the month, at the feast, he will make the same provisions for the sin offering, burnt offering, and grain offering, and for the olive oil, for the seven days.’”
+##### <span class=arrow-left></span>[[ezek44|Prev]]<span class=navigation-separator></span>[[ezek45notes|Notes]]<span class=navigation-separator></span>[[ezek46|Next]]<span class=arrow-right></span>

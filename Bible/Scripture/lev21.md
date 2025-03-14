@@ -21,12 +21,8 @@ aliases: ["Leviticus 21", "Lev. 21"]
 ###### 8
 <span class=verse-body>8</span>‘You must sanctify him because he presents the food of your God. He must be holy to you because I, the Lᴏʀᴅ who sanctifies you all, am holy.
 ###### 9
-<span class=verse-body>9</span>‘If a daughter of a priest profanes herself by engaging in prostitution, she is profaning her father. She must be burned to death.
-<div class=paragraph-break></div>
-
-‘## Rules for the High Priest
-<div class=paragraph-break></div>
-
+<span class=verse-body>9</span>‘If a daughter of a priest profanes herself by engaging in prostitution, she is profaning her father. She must be burned to death.’
+## Rules for the High Priest
 ###### 10
 <span class=verse-first>10</span>“‘The high priest—who is greater than his brothers, and on whose head the anointing oil is poured, and who has been ordained to wear the priestly garments—must neither dishevel the hair of his head nor tear his garments.
 ###### 11

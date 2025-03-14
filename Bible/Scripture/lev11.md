@@ -19,12 +19,8 @@ aliases: ["Leviticus 11", "Lev. 11"]
 ###### 7
 <span class=verse-body>7</span>‘The pig is unclean to you because its hoof is divided (the hoof is completely split in two), even though it does not chew the cud.
 ###### 8
-<span class=verse-body>8</span>‘You must not eat from their meat and you must not touch their carcasses; they are unclean to you.
-<div class=paragraph-break></div>
-
-‘## Clean and Unclean Water Creatures
-<div class=paragraph-break></div>
-
+<span class=verse-body>8</span>‘You must not eat from their meat and you must not touch their carcasses; they are unclean to you.’
+## Clean and Unclean Water Creatures
 ###### 9
 <span class=verse-first>9</span>“‘These you can eat from all creatures that are in the water: Any creatures in the water that have both fins and scales, whether in the seas or in the streams, you may eat.
 ###### 10
@@ -32,12 +28,8 @@ aliases: ["Leviticus 11", "Lev. 11"]
 ###### 11
 <span class=verse-body>11</span>‘Since they are detestable to you, you must not eat their meat and their carcass you must detest.
 ###### 12
-<span class=verse-body>12</span>‘Any creature in the water that does not have both fins and scales is detestable to you.
-<div class=paragraph-break></div>
-
-‘## Clean and Unclean Birds
-<div class=paragraph-break></div>
-
+<span class=verse-body>12</span>‘Any creature in the water that does not have both fins and scales is detestable to you.’
+## Clean and Unclean Birds
 ###### 13
 <span class=verse-first>13</span>“‘These you are to detest from among the birds—they must not be eaten, because they are detestable: the griffon vulture, the bearded vulture, the black vulture,
 ###### 14
@@ -51,12 +43,8 @@ aliases: ["Leviticus 11", "Lev. 11"]
 ###### 18
 <span class=verse-body>18</span>‘the white owl, the scops owl, the osprey,
 ###### 19
-<span class=verse-body>19</span>‘the stork, the heron of any kind, the hoopoe, and the bat.
-<div class=paragraph-break></div>
-
-‘## Clean and Unclean Insects
-<div class=paragraph-break></div>
-
+<span class=verse-body>19</span>‘the stork, the heron of any kind, the hoopoe, and the bat.’
+## Clean and Unclean Insects
 ###### 20
 <span class=verse-first>20</span>“‘Every winged swarming thing that walks on all fours is detestable to you.
 ###### 21
@@ -64,30 +52,20 @@ aliases: ["Leviticus 11", "Lev. 11"]
 ###### 22
 <span class=verse-body>22</span>‘These you may eat from them: the locust of any kind, the bald locust of any kind, the cricket of any kind, the grasshopper of any kind.
 ###### 23
-<span class=verse-body>23</span>‘But any other winged swarming thing that has four legs is detestable to you.
-<div class=paragraph-break></div>
-
-‘## Carcass Uncleanness
-<div class=paragraph-break></div>
-
+<span class=verse-body>23</span>‘But any other winged swarming thing that has four legs is detestable to you.’
+## Carcass Uncleanness
 ###### 24
 <span class=verse-first>24</span>“‘By these you defile yourselves—anyone who touches their carcass will be unclean until the evening,
 ###### 25
-<span class=verse-body>25</span>‘and anyone who carries their carcass must wash his clothes and will be unclean until the evening.
-<div class=paragraph-break></div>
-
-‘## Inedible Land Quadrupeds
+<span class=verse-body>25</span>‘and anyone who carries their carcass must wash his clothes and will be unclean until the evening.’
+## Inedible Land Quadrupeds
 ###### 26
 <span class=verse-body>26</span>“‘All animals that divide the hoof, but it is not completely split in two, and do not chew the cud are unclean to you; anyone who touches them becomes unclean.
 ###### 27
 <span class=verse-body>27</span>‘All that walk on their paws among all the creatures that walk on all fours are unclean to you. Anyone who touches their carcass will be unclean until the evening,
 ###### 28
-<span class=verse-body>28</span>‘and the one who carries their carcass must wash his clothes and be unclean until the evening; they are unclean to you.
-<div class=paragraph-break></div>
-
-‘## Creatures that Swarm on the Land
-<div class=paragraph-break></div>
-
+<span class=verse-body>28</span>‘and the one who carries their carcass must wash his clothes and be unclean until the evening; they are unclean to you.’
+## Creatures that Swarm on the Land
 ###### 29
 <span class=verse-first>29</span>“‘Now this is what is unclean to you among the swarming things that swarm on the land: the rat, the mouse, the large lizard of any kind,
 ###### 30
@@ -107,12 +85,8 @@ aliases: ["Leviticus 11", "Lev. 11"]
 ###### 37
 <span class=verse-body>37</span>‘Now, if such a carcass falls on any sowing seed which is to be sown, it is clean,
 ###### 38
-<span class=verse-body>38</span>‘but if water is put on the seed and such a carcass falls on it, it is unclean to you.
-<div class=paragraph-break></div>
-
-‘## Edible Land Animals
-<div class=paragraph-break></div>
-
+<span class=verse-body>38</span>‘but if water is put on the seed and such a carcass falls on it, it is unclean to you.’
+## Edible Land Animals
 ###### 39
 <span class=verse-first>39</span>“‘Now if an animal that you may eat dies, whoever touches its carcass will be unclean until the evening.
 ###### 40

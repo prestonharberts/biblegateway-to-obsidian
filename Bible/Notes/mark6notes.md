@@ -3,6 +3,7 @@ aliases: ["Mark 6 notes"]
 ---
 # Mark 6 notes
 ##### <span class=arrow-left></span>[[mark5notes|Prev]]<span class=navigation-separator></span>[[mark6|Read]]<span class=navigation-separator></span>[[mark7notes|Next]]<span class=arrow-right></span>
+- 
 ## Rejection at Nazareth
 - 
 ## Sending Out the Twelve Apostles

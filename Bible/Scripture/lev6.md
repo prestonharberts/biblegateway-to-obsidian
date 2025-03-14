@@ -30,12 +30,8 @@ aliases: ["Leviticus 6", "Lev. 6"]
 ###### 12
 <span class=verse-body>12</span>‘but the fire which is on the altar must be kept burning on it. It must not be extinguished. So the priest must kindle wood on it morning by morning, and he must arrange the burnt offering on it and offer the fat of the peace offering up in smoke on it.
 ###### 13
-<span class=verse-body>13</span>‘A continual fire must be kept burning on the altar. It must not be extinguished.
-<div class=paragraph-break></div>
-
-‘## The Grain Offering of the Common Person
-<div class=paragraph-break></div>
-
+<span class=verse-body>13</span>‘A continual fire must be kept burning on the altar. It must not be extinguished.’
+## The Grain Offering of the Common Person
 ###### 14
 <span class=verse-first>14</span>“‘This is the law of the grain offering. The sons of Aaron are to present it before the Lᴏʀᴅ in front of the altar,
 ###### 15
@@ -71,5 +67,5 @@ aliases: ["Leviticus 6", "Lev. 6"]
 ###### 29
 <span class=verse-body>29</span>‘Any male among the priests may eat it. It is most holy.
 ###### 30
-<span class=verse-body>30</span>‘But any sin offering from which some of its blood is brought into the Meeting Tent to make atonement in the sanctuary must not be eaten. It must be burned up in the fire.
-<span class=arrow-right></span>‘##### <span class=arrow-left></span>[[lev5|Prev]]<span class=navigation-separator></span>[[lev6notes|Notes]]<span class=navigation-separator></span>[[lev7|Next]]
+<span class=verse-body>30</span>‘But any sin offering from which some of its blood is brought into the Meeting Tent to make atonement in the sanctuary must not be eaten. It must be burned up in the fire.’”
+##### <span class=arrow-left></span>[[lev5|Prev]]<span class=navigation-separator></span>[[lev6notes|Notes]]<span class=navigation-separator></span>[[lev7|Next]]<span class=arrow-right></span>

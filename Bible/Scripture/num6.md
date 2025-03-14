@@ -23,12 +23,8 @@ aliases: ["Numbers 6", "Num. 6"]
 ###### 7
 <span class=verse-body>7</span>‘He must not defile himself even for his father or his mother or his brother or his sister if they die, because the separation for his God is on his head.
 ###### 8
-<span class=verse-body>8</span>‘All the days of his separation he must be holy to the Lᴏʀᴅ.
-<div class=paragraph-break></div>
-
-‘## Contingencies for Defilement
-<div class=paragraph-break></div>
-
+<span class=verse-body>8</span>‘All the days of his separation he must be holy to the Lᴏʀᴅ.’
+## Contingencies for Defilement
 ###### 9
 <span class=verse-first>9</span>“‘If anyone dies very suddenly beside him and he defiles his consecrated head, then he must shave his head on the day of his purification—on the seventh day he must shave it.
 ###### 10
@@ -36,12 +32,8 @@ aliases: ["Numbers 6", "Num. 6"]
 ###### 11
 <span class=verse-body>11</span>‘Then the priest will offer one for a purification offering and the other as a burnt offering, and make atonement for him, because of his transgression in regard to the corpse. So he must reconsecrate his head on that day.
 ###### 12
-<span class=verse-body>12</span>‘He must rededicate to the Lᴏʀᴅ the days of his separation and bring a male lamb in its first year as a reparation offering, but the former days will not be counted because his separation was defiled.
-<div class=paragraph-break></div>
-
-‘## Fulfilling the Vows
-<div class=paragraph-break></div>
-
+<span class=verse-body>12</span>‘He must rededicate to the Lᴏʀᴅ the days of his separation and bring a male lamb in its first year as a reparation offering, but the former days will not be counted because his separation was defiled.’
+## Fulfilling the Vows
 ###### 13
 <span class=verse-first>13</span>“‘Now this is the law of the Nazirite: When the days of his separation are fulfilled, he must be brought to the entrance of the tent of meeting,
 ###### 14

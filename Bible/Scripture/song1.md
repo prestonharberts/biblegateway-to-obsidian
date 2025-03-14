@@ -17,6 +17,8 @@ For your lovemaking is more delightful than wine.
 <div class=paragraph-break></div>
 
 your name is like the finest perfume.
+<div class=paragraph-break></div>
+
 No wonder the young women adore you!
 ###### 4
 <span class=verse-body>4</span>Draw me after you; let us hurry!
@@ -49,8 +51,14 @@ we will praise your love more than wine.
 <div class=paragraph-break></div>
 
 where do you pasture your sheep?
+<div class=paragraph-break></div>
+
 Where do you rest your sheep during the midday heat?
+<div class=paragraph-break></div>
+
 Tell me lest I wander around
+<div class=paragraph-break></div>
+
 beside the flocks of your companions!
 <div class=paragraph-break></div>
 
@@ -94,6 +102,8 @@ studded with silver.
 <div class=paragraph-break></div>
 
 Oh, how beautiful you are!
+<div class=paragraph-break></div>
+
 Your eyes are like doves!
 <div class=paragraph-break></div>
 

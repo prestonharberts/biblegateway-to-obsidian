@@ -11,6 +11,8 @@ aliases: ["Ezra 8"]
 <div class=paragraph-break></div>
 
 from the descendants of Ithamar, Daniel;
+<div class=paragraph-break></div>
+
 from the descendants of David, Hattush
 ###### 3
 <span class=verse-body>3</span>the son of Shecaniah;

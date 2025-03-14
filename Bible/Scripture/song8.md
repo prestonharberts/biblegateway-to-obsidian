@@ -55,14 +55,22 @@ leaning on her beloved?
 <div class=paragraph-break></div>
 
 and as yet she has no breasts.
+<div class=paragraph-break></div>
+
 What shall we do for our sister
+<div class=paragraph-break></div>
+
 on the day when she is spoken for?
 ###### 9
 <span class=verse-body>9</span>If she is a wall,
 <div class=paragraph-break></div>
 
 we will build on her a battlement of silver;
+<div class=paragraph-break></div>
+
 but if she is a door,
+<div class=paragraph-break></div>
+
 we will barricade her with boards of cedar.
 <div class=paragraph-break></div>
 
@@ -85,6 +93,8 @@ we will barricade her with boards of cedar.
 <div class=paragraph-break></div>
 
 my companions are listening attentively for your voice;
+<div class=paragraph-break></div>
+
 let me be the one to hear it!
 <div class=paragraph-break></div>
 

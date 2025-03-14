@@ -3,6 +3,7 @@ aliases: ["Leviticus 7 notes", "Lev. 7 notes"]
 ---
 # Leviticus 7 notes
 ##### <span class=arrow-left></span>[[lev6notes|Prev]]<span class=navigation-separator></span>[[lev7|Read]]<span class=navigation-separator></span>[[lev8notes|Next]]<span class=arrow-right></span>
+- 
 ## The Guilt Offering
 - 
 ## Priestly Portions of Burnt and Grain Offerings

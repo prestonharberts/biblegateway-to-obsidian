@@ -13,10 +13,8 @@ aliases: ["Leviticus 3", "Lev. 3"]
 ###### 4
 <span class=verse-body>4</span>‘the two kidneys with the fat on their sinews, and the protruding lobe on the liver (which he is to remove along with the kidneys).
 ###### 5
-<span class=verse-body>5</span>‘Then the sons of Aaron must offer it up in smoke on the altar atop the burnt offering that is on the wood in the fire as a gift of a soothing aroma to the Lᴏʀᴅ.
-<div class=paragraph-break></div>
-
-‘## Animal from the Flock
+<span class=verse-body>5</span>‘Then the sons of Aaron must offer it up in smoke on the altar atop the burnt offering that is on the wood in the fire as a gift of a soothing aroma to the Lᴏʀᴅ.’
+## Animal from the Flock
 ###### 6
 <span class=verse-body>6</span>“‘If his offering for a peace-offering sacrifice to the Lᴏʀᴅ is from the flock, he must present a flawless male or female.
 ###### 7

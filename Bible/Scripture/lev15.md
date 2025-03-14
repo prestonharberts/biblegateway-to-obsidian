@@ -27,12 +27,8 @@ aliases: ["Leviticus 15", "Lev. 15"]
 ###### 11
 <span class=verse-body>11</span>‘Anyone whom the man with the discharge touches without having rinsed his hands in water must wash his clothes, bathe in water, and be unclean until evening.
 ###### 12
-<span class=verse-body>12</span>‘A clay vessel which the man with the discharge touches must be broken, and any wooden utensil must be rinsed in water.
-<div class=paragraph-break></div>
-
-‘## Purity Regulations for Male Bodily Discharges
-<div class=paragraph-break></div>
-
+<span class=verse-body>12</span>‘A clay vessel which the man with the discharge touches must be broken, and any wooden utensil must be rinsed in water.’
+## Purity Regulations for Male Bodily Discharges
 ###### 13
 <span class=verse-first>13</span>“‘When the man with the discharge becomes clean from his discharge he is to count off for himself seven days for his purification, and he must wash his clothes, bathe in fresh water, and be clean.
 ###### 14
@@ -46,12 +42,8 @@ aliases: ["Leviticus 15", "Lev. 15"]
 ###### 17
 <span class=verse-body>17</span>‘and he must wash in water any clothing or leather that has semen on it, and it will be unclean until evening.
 ###### 18
-<span class=verse-body>18</span>‘As for a woman whom a man goes to bed with, then has a seminal emission, they must bathe in water and be unclean until evening.
-<div class=paragraph-break></div>
-
-‘## Female Bodily Discharges
-<div class=paragraph-break></div>
-
+<span class=verse-body>18</span>‘As for a woman whom a man goes to bed with, then has a seminal emission, they must bathe in water and be unclean until evening.’
+## Female Bodily Discharges
 ###### 19
 <span class=verse-first>19</span>“‘When a woman has a discharge and her discharge is blood from her body, she is to be in her menstruation seven days, and anyone who touches her will be unclean until evening.
 ###### 20
@@ -71,21 +63,15 @@ aliases: ["Leviticus 15", "Lev. 15"]
 ###### 26
 <span class=verse-body>26</span>‘Any bed she lies on all the days of her discharge will be to her like the bed of her menstruation, any furniture she sits on will be unclean like the impurity of her menstruation,
 ###### 27
-<span class=verse-body>27</span>‘and anyone who touches them will be unclean, and he must wash his clothes, bathe in water, and be unclean until evening.
-<div class=paragraph-break></div>
-
-‘## Purity Regulations for Female Bodily Discharges
+<span class=verse-body>27</span>‘and anyone who touches them will be unclean, and he must wash his clothes, bathe in water, and be unclean until evening.’
+## Purity Regulations for Female Bodily Discharges
 ###### 28
 <span class=verse-body>28</span>“‘If she becomes clean from her discharge, then she is to count off for herself seven days, and afterward she will be clean.
 ###### 29
 <span class=verse-body>29</span>‘Then on the eighth day she must take for herself two turtledoves or two young pigeons and she must bring them to the priest at the entrance of the Meeting Tent,
 ###### 30
-<span class=verse-body>30</span>‘and the priest is to make one a sin offering and the other a burnt offering. So the priest is to make atonement for her before the Lᴏʀᴅ from her discharge of impurity.
-<div class=paragraph-break></div>
-
-‘## Summary of Purification Regulations for Bodily Discharges
-<div class=paragraph-break></div>
-
+<span class=verse-body>30</span>‘and the priest is to make one a sin offering and the other a burnt offering. So the priest is to make atonement for her before the Lᴏʀᴅ from her discharge of impurity.’
+## Summary of Purification Regulations for Bodily Discharges
 ###### 31
 <span class=verse-first>31</span>“‘Thus you are to set the Israelites apart from their impurity so that they do not die in their impurity by defiling my tabernacle which is in their midst.
 ###### 32

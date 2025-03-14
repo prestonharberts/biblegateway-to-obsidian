@@ -3,6 +3,7 @@ aliases: ["Luke 21 notes"]
 ---
 # Luke 21 notes
 ##### <span class=arrow-left></span>[[luke20notes|Prev]]<span class=navigation-separator></span>[[luke21|Read]]<span class=navigation-separator></span>[[luke22notes|Next]]<span class=arrow-right></span>
+- 
 ## The Widow’s Offering
 - 
 ## The Signs of the End of the Age

@@ -3,6 +3,7 @@ aliases: ["Deuteronomy 4 notes", "Deut. 4 notes"]
 ---
 # Deuteronomy 4 notes
 ##### <span class=arrow-left></span>[[deut3notes|Prev]]<span class=navigation-separator></span>[[deut4|Read]]<span class=navigation-separator></span>[[deut5notes|Next]]<span class=arrow-right></span>
+- 
 ## The Privileges of the Covenant
 - 
 ## Reminder of the Horeb Covenant

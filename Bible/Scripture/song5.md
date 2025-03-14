@@ -8,7 +8,11 @@ aliases: ["Song of Songs 5", "Song 5"]
 <div class=paragraph-break></div>
 
 I have gathered my myrrh with my balsam spice.
+<div class=paragraph-break></div>
+
 I have eaten my honeycomb and my honey;
+<div class=paragraph-break></div>
+
 I have drunk my wine and my milk!
 <div class=paragraph-break></div>
 
@@ -57,6 +61,8 @@ Listen! My lover is knocking at the door!
 <div class=paragraph-break></div>
 
 If you find my beloved, what will you tell him?
+<div class=paragraph-break></div>
+
 Tell him that I am lovesick!
 <div class=paragraph-break></div>
 
@@ -65,7 +71,11 @@ Tell him that I am lovesick!
 <div class=paragraph-break></div>
 
 O most beautiful of women?
+<div class=paragraph-break></div>
+
 Why is your beloved better than others,
+<div class=paragraph-break></div>
+
 that you would admonish us in this manner?
 <div class=paragraph-break></div>
 

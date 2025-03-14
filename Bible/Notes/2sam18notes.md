@@ -3,6 +3,7 @@ aliases: ["2 Samuel 18 notes", "2 Sam. 18 notes"]
 ---
 # 2 Samuel 18 notes
 ##### <span class=arrow-left></span>[[2sam17notes|Prev]]<span class=navigation-separator></span>[[2sam18|Read]]<span class=navigation-separator></span>[[2sam19notes|Next]]<span class=arrow-right></span>
+- 
 ## The Death of Absalom
 - 
 ## David Learns of Absalom’s Death

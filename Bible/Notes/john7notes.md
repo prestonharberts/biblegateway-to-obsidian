@@ -3,6 +3,7 @@ aliases: ["John 7 notes"]
 ---
 # John 7 notes
 ##### <span class=arrow-left></span>[[john6notes|Prev]]<span class=navigation-separator></span>[[john7|Read]]<span class=navigation-separator></span>[[john8notes|Next]]<span class=arrow-right></span>
+- 
 ## The Feast of Shelters
 - 
 ## Teaching in the Temple

@@ -35,10 +35,8 @@ aliases: ["Joel 1"]
 ><span class=verse-body-poetry>7</span><span class=poetry-quote-single>‘</span>They have destroyed my vines;
 ><span class=poetry-quote-single>‘</span>They have turned my fig trees into mere splinters.
 ><span class=poetry-quote-single>‘</span>They have completely stripped off the bark and thrown it aside;
-><span class=poetry-quote-single>‘</span>The twigs are stripped bare.
-‘## A Call to Lament
-<div class=paragraph-break></div>
-
+><span class=poetry-quote-single>‘</span>The twigs are stripped bare.’
+## A Call to Lament
 ###### 8
 ><span class=verse-first-poetry>8</span><span class=poetry-quote-single>‘</span>Wail like a young virgin clothed in sackcloth,
 ><span class=poetry-quote-single>‘</span>Lamenting the death of her husband to be.
@@ -99,5 +97,5 @@ aliases: ["Joel 1"]
 ###### 20
 ><span class=verse-body-poetry>20</span><span class=poetry-quote-single>‘</span>Even the wild animals cry out to you,
 ><span class=poetry-quote-single>‘</span>For the river beds have dried up;
-><span class=poetry-quote-single>‘</span>Fire has destroyed the pastures of the wilderness.
-<span class=arrow-right></span>‘##### <span class=arrow-left></span>[[hos14|Prev]]<span class=navigation-separator></span>[[joel1notes|Notes]]<span class=navigation-separator></span>[[joel2|Next]]
+><span class=poetry-quote-single>‘</span>Fire has destroyed the pastures of the wilderness.’”
+##### <span class=arrow-left></span>[[hos14|Prev]]<span class=navigation-separator></span>[[joel1notes|Notes]]<span class=navigation-separator></span>[[joel2|Next]]<span class=arrow-right></span>

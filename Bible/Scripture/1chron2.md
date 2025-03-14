@@ -79,6 +79,8 @@ The sons of Shammai: Nadab and Abishur.
 <div class=paragraph-break></div>
 
 The son of Ishi: Sheshan.
+<div class=paragraph-break></div>
+
 The son of Sheshan: Ahlai.
 ###### 32
 <span class=verse-body>32</span>The sons of Jada, Shammai’s brother: Jether and Jonathan. (Jether died without having sons.)

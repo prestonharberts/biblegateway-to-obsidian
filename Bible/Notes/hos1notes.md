@@ -3,6 +3,7 @@ aliases: ["Hosea 1 notes", "Hos. 1 notes"]
 ---
 # Hosea 1 notes
 ##### <span class=arrow-left></span>[[dan12notes|Prev]]<span class=navigation-separator></span>[[hos1|Read]]<span class=navigation-separator></span>[[hos2notes|Next]]<span class=arrow-right></span>
+- 
 ## Superscription
 - 
 ## Symbols of Sin and Judgment: The Prostitute and Her Children

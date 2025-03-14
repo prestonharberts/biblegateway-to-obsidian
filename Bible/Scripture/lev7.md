@@ -17,21 +17,15 @@ aliases: ["Leviticus 7", "Lev. 7"]
 ###### 6
 <span class=verse-body>6</span>‘Any male among the priests may eat it. It must be eaten in a holy place. It is most holy.
 ###### 7
-<span class=verse-body>7</span>‘The law is the same for the sin offering and the guilt offering; it belongs to the priest who makes atonement with it.
-<div class=paragraph-break></div>
-
-‘## Priestly Portions of Burnt and Grain Offerings
+<span class=verse-body>7</span>‘The law is the same for the sin offering and the guilt offering; it belongs to the priest who makes atonement with it.’
+## Priestly Portions of Burnt and Grain Offerings
 ###### 8
 <span class=verse-body>8</span>“‘As for the priest who presents someone’s burnt offering, the hide of that burnt offering which he presented belongs to him.
 ###### 9
 <span class=verse-body>9</span>‘Every grain offering which is baked in the oven or made in the pan or on the griddle belongs to the priest who presented it.
 ###### 10
-<span class=verse-body>10</span>‘Every grain offering, whether mixed with olive oil or dry, belongs to all the sons of Aaron, each one alike.
-<div class=paragraph-break></div>
-
-‘## The Peace Offering
-<div class=paragraph-break></div>
-
+<span class=verse-body>10</span>‘Every grain offering, whether mixed with olive oil or dry, belongs to all the sons of Aaron, each one alike.’
+## The Peace Offering
 ###### 11
 <span class=verse-first>11</span>“‘This is the law of the peace-offering sacrifice which he is to present to the Lᴏʀᴅ.
 ###### 12

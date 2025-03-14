@@ -23,12 +23,8 @@ aliases: ["Leviticus 17", "Lev. 17"]
 ###### 8
 <span class=verse-first>8</span>“You are to say to them: ‘Any man from the house of Israel or from the resident foreigners who live in their midst, who offers a burnt offering or a sacrifice
 ###### 9
-<span class=verse-body>9</span>‘but does not bring it to the entrance of the Meeting Tent to offer it to the Lᴏʀᴅ—that person will be cut off from his people.
-<div class=paragraph-break></div>
-
-‘## Prohibition against Eating Blood
-<div class=paragraph-break></div>
-
+<span class=verse-body>9</span>‘but does not bring it to the entrance of the Meeting Tent to offer it to the Lᴏʀᴅ—that person will be cut off from his people.’
+## Prohibition against Eating Blood
 ###### 10
 <span class=verse-first>10</span>“‘Any man from the house of Israel or from the resident foreigners who live in their midst who eats any blood, I will set my face against that person who eats the blood, and I will cut him off from the midst of his people,
 ###### 11
@@ -40,10 +36,8 @@ aliases: ["Leviticus 17", "Lev. 17"]
 <div class=paragraph-break></div>
 
 ###### 14
-<span class=verse-first>14</span>‘for the life of all flesh is its blood. So I have said to the Israelites: You must not eat the blood of any living thing because the life of every living thing is its blood—all who eat it will be cut off.
-<div class=paragraph-break></div>
-
-‘## Regulations for Eating Carcasses
+<span class=verse-first>14</span>‘for the life of all flesh is its blood. So I have said to the Israelites: You must not eat the blood of any living thing because the life of every living thing is its blood—all who eat it will be cut off.’
+## Regulations for Eating Carcasses
 ###### 15
 <span class=verse-body>15</span>“‘Any person who eats an animal that has died of natural causes or an animal torn by beasts, whether a native citizen or a resident foreigner, must wash his clothes, bathe in water, and be unclean until evening; then he will be clean.
 ###### 16

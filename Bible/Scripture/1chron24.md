@@ -89,6 +89,8 @@ the twenty-fourth to Maaziah.
 <div class=paragraph-break></div>
 
 Shubael from the sons of Amram,
+<div class=paragraph-break></div>
+
 Jehdeiah from the sons of Shubael,
 ###### 21
 <span class=verse-body>21</span>the firstborn Isshiah from Rehabiah and the sons of Rehabiah,

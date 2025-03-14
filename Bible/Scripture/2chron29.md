@@ -35,7 +35,11 @@ aliases: ["2 Chronicles 29", "2 Chron. 29"]
 <div class=paragraph-break></div>
 
 From the Kohathites: Mahath son of Amasai and Joel son of Azariah;
+<div class=paragraph-break></div>
+
 from the Merarites: Kish son of Abdi and Azariah son of Jehallelel;
+<div class=paragraph-break></div>
+
 from the Gershonites: Joah son of Zimmah and Eden son of Joah;
 ###### 13
 <span class=verse-body>13</span>from the descendants of Elizaphan: Shimri and Jeiel;

@@ -9,7 +9,11 @@ aliases: ["Song of Songs 6", "Song 6"]
 <div class=paragraph-break></div>
 
 O most beautiful among women?
+<div class=paragraph-break></div>
+
 Where has your beloved turned?
+<div class=paragraph-break></div>
+
 Tell us, that we may seek him with you.
 <div class=paragraph-break></div>
 

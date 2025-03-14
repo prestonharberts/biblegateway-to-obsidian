@@ -3,6 +3,7 @@ aliases: ["Leviticus 19 notes", "Lev. 19 notes"]
 ---
 # Leviticus 19 notes
 ##### <span class=arrow-left></span>[[lev18notes|Prev]]<span class=navigation-separator></span>[[lev19|Read]]<span class=navigation-separator></span>[[lev20notes|Next]]<span class=arrow-right></span>
+- 
 ## Religious and Social Regulations
 - 
 ## Eating the Peace Offering

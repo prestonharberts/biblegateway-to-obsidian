@@ -48,12 +48,8 @@ aliases: ["Numbers 15", "Num. 15"]
 ###### 20
 <span class=verse-body>20</span>‘You must offer up a cake of the first of your finely ground flour as a raised offering; as you offer the raised offering of the threshing floor, so you must offer it up.
 ###### 21
-<span class=verse-body>21</span>‘You must give to the Lᴏʀᴅ some of the first of your finely ground flour as a raised offering in your future generations.
-<div class=paragraph-break></div>
-
-‘## Rules for Unintentional Offenses
-<div class=paragraph-break></div>
-
+<span class=verse-body>21</span>‘You must give to the Lᴏʀᴅ some of the first of your finely ground flour as a raised offering in your future generations.’
+## Rules for Unintentional Offenses
 ###### 22
 <span class=verse-first>22</span>“‘If you sin unintentionally and do not observe all these commandments that the Lᴏʀᴅ has spoken to Moses—
 ###### 23
@@ -71,10 +67,8 @@ aliases: ["Numbers 15", "Num. 15"]
 ###### 28
 <span class=verse-body>28</span>‘And the priest must make atonement for the person who sins unintentionally—when he sins unintentionally before the Lᴏʀᴅ—to make atonement for him, and he will be forgiven.
 ###### 29
-<span class=verse-body>29</span>‘You must have one law for the person who sins unintentionally, both for the native-born among the Israelites and for the resident foreigner who lives among them.
-<div class=paragraph-break></div>
-
-‘## Deliberate Sin
+<span class=verse-body>29</span>‘You must have one law for the person who sins unintentionally, both for the native-born among the Israelites and for the resident foreigner who lives among them.’
+## Deliberate Sin
 ###### 30
 <span class=verse-body>30</span>“‘But the person who acts defiantly, whether native-born or a resident foreigner, insults the Lᴏʀᴅ. That person must be cut off from among his people.
 ###### 31

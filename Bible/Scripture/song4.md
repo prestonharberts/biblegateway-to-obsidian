@@ -70,12 +70,16 @@ you are an enclosed spring, a sealed-up fountain.
 <div class=paragraph-break></div>
 
 with choice fruits:
+<div class=paragraph-break></div>
+
 henna with nard,
 ###### 14
 <span class=verse-body>14</span>nard and saffron,
 <div class=paragraph-break></div>
 
 calamus and cinnamon with every kind of spice,
+<div class=paragraph-break></div>
+
 myrrh and aloes with all the finest spices.
 ###### 15
 <span class=verse-body>15</span>You are a garden spring,

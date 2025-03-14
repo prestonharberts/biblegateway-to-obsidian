@@ -7,19 +7,11 @@ aliases: ["Leviticus 23", "Lev. 23"]
 ###### 1
 <span class=verse-first>1</span>The Lᴏʀᴅ spoke to Moses:
 ###### 2
-<span class=verse-body>2</span>“Speak to the Israelites and tell them, ‘These are the Lᴏʀᴅ’s appointed times which you must proclaim as holy assemblies—my appointed times.
-<div class=paragraph-break></div>
-
-‘## The Weekly Sabbath
-<div class=paragraph-break></div>
-
+<span class=verse-body>2</span>“Speak to the Israelites and tell them, ‘These are the Lᴏʀᴅ’s appointed times which you must proclaim as holy assemblies—my appointed times.’”
+## The Weekly Sabbath
 ###### 3
-<span class=verse-first>3</span>“‘Six days work may be done, but on the seventh day there must be a Sabbath of complete rest, a holy assembly. You must not do any work; it is a Sabbath to the Lᴏʀᴅ in all the places where you live.
-<div class=paragraph-break></div>
-
-‘## The Passover and Feast of Unleavened Bread
-<div class=paragraph-break></div>
-
+<span class=verse-first>3</span>“‘Six days work may be done, but on the seventh day there must be a Sabbath of complete rest, a holy assembly. You must not do any work; it is a Sabbath to the Lᴏʀᴅ in all the places where you live.’”
+## The Passover and Feast of Unleavened Bread
 ###### 4
 <span class=verse-first>4</span>“‘These are the Lᴏʀᴅ’s appointed times, holy assemblies, which you must proclaim at their appointed time.
 ###### 5
@@ -42,12 +34,8 @@ aliases: ["Leviticus 23", "Lev. 23"]
 ###### 13
 <span class=verse-body>13</span>‘along with its grain offering, two-tenths of an ephah of choice wheat flour mixed with olive oil, as a gift to the Lᴏʀᴅ, a soothing aroma, and its drink offering, one-fourth of a hin of wine.
 ###### 14
-<span class=verse-body>14</span>‘You must not eat bread, roasted grain, or fresh grain until this very day, until you bring the offering to your God. This is a perpetual statute throughout your generations in all the places where you live.
-<div class=paragraph-break></div>
-
-‘## The Feast of Weeks
-<div class=paragraph-break></div>
-
+<span class=verse-body>14</span>‘You must not eat bread, roasted grain, or fresh grain until this very day, until you bring the offering to your God. This is a perpetual statute throughout your generations in all the places where you live.’
+## The Feast of Weeks
 ###### 15
 <span class=verse-first>15</span>“‘You must count for yourselves seven weeks from the day after the Sabbath, from the day you bring the wave offering sheaf; they must be complete weeks.
 ###### 16

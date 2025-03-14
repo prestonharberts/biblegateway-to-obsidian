@@ -23,12 +23,8 @@ aliases: ["Numbers 19", "Num. 19"]
 ###### 9
 <span class=verse-body>9</span>“‘Then a man who is ceremonially clean must gather up the ashes of the red heifer and put them in a ceremonially clean place outside the camp. They must be kept for the community of the Israelites for use in the water of purification—it is a purification for sin.
 ###### 10
-<span class=verse-body>10</span>‘The one who gathers the ashes of the heifer must wash his clothes and be ceremonially unclean until evening. This will be a permanent ordinance both for the Israelites and the resident foreigner who lives among them.
-<div class=paragraph-break></div>
-
-‘## Purification from Uncleanness
-<div class=paragraph-break></div>
-
+<span class=verse-body>10</span>‘The one who gathers the ashes of the heifer must wash his clothes and be ceremonially unclean until evening. This will be a permanent ordinance both for the Israelites and the resident foreigner who lives among them.’
+## Purification from Uncleanness
 ###### 11
 <span class=verse-first>11</span>“‘Whoever touches the corpse of any person will be ceremonially unclean seven days.
 ###### 12

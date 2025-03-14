@@ -3,6 +3,7 @@ aliases: ["Luke 22 notes"]
 ---
 # Luke 22 notes
 ##### <span class=arrow-left></span>[[luke21notes|Prev]]<span class=navigation-separator></span>[[luke22|Read]]<span class=navigation-separator></span>[[luke23notes|Next]]<span class=arrow-right></span>
+- 
 ## Judas’ Decision to Betray Jesus
 - 
 ## The Passover

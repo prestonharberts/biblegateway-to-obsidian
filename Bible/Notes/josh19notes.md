@@ -3,6 +3,7 @@ aliases: ["Joshua 19 notes", "Josh. 19 notes"]
 ---
 # Joshua 19 notes
 ##### <span class=arrow-left></span>[[josh18notes|Prev]]<span class=navigation-separator></span>[[josh19|Read]]<span class=navigation-separator></span>[[josh20notes|Next]]<span class=arrow-right></span>
+- 
 ## Simeon’s Tribal Lands
 - 
 ## Zebulun’s Tribal Lands

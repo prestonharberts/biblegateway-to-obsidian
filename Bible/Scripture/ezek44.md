@@ -35,12 +35,8 @@ aliases: ["Ezekiel 44", "Ezek. 44"]
 ###### 13
 <span class=verse-body>13</span>‘They will not come near me to serve me as priest, nor will they come near any of my holy things, the things that are most sacred. They will bear the shame of the abominable deeds they have committed.
 ###### 14
-<span class=verse-body>14</span>‘Yet I will appoint them to keep charge of the temple, all its service, and all that will be done in it.
-<div class=paragraph-break></div>
-
-‘## The Levitical Priests
-<div class=paragraph-break></div>
-
+<span class=verse-body>14</span>‘Yet I will appoint them to keep charge of the temple, all its service, and all that will be done in it.’
+## The Levitical Priests
 ###### 15
 <span class=verse-first>15</span>“‘But the Levitical priests, the descendants of Zadok who kept the charge of my sanctuary when the people of Israel went astray from me, will approach me to minister to me; they will stand before me to offer me the fat and the blood, declares the Sovereign Lᴏʀᴅ.
 ###### 16
@@ -76,5 +72,5 @@ aliases: ["Ezekiel 44", "Ezek. 44"]
 ###### 30
 <span class=verse-body>30</span>‘The first of all the firstfruits and all contributions of any kind will be for the priests; you will also give to the priest the first portion of your dough, so that a blessing may rest on your house.
 ###### 31
-<span class=verse-body>31</span>‘The priests will not eat any bird or animal that has died a natural death or was torn to pieces by a wild animal.
-<span class=arrow-right></span>‘##### <span class=arrow-left></span>[[ezek43|Prev]]<span class=navigation-separator></span>[[ezek44notes|Notes]]<span class=navigation-separator></span>[[ezek45|Next]]
+<span class=verse-body>31</span>‘The priests will not eat any bird or animal that has died a natural death or was torn to pieces by a wild animal.’”
+##### <span class=arrow-left></span>[[ezek43|Prev]]<span class=navigation-separator></span>[[ezek44notes|Notes]]<span class=navigation-separator></span>[[ezek45|Next]]<span class=arrow-right></span>

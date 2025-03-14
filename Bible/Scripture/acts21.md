@@ -91,7 +91,7 @@ aliases: ["Acts 21"]
 ###### 38
 <span class=verse-body>38</span>“Then you’re not that Egyptian who started a rebellion and led the 4,000 men of the ‘Assassins’ into the wilderness some time ago?”
 ###### 39
-<span class=verse-body>39</span>‘Paul answered, “I am a Jew from Tarsus in Cilicia, a citizen of an important city. Please allow me to speak to the people.”
+<span class=verse-body>39</span>Paul answered, “I am a Jew from Tarsus in Cilicia, a citizen of an important city. Please allow me to speak to the people.”
 ###### 40
-<span class=verse-body>40</span>‘When the commanding officer had given him permission, Paul stood on the steps and gestured to the people with his hand. When they had become silent, he addressed them in Aramaic,
-<span class=arrow-right></span>‘##### <span class=arrow-left></span>[[acts20|Prev]]<span class=navigation-separator></span>[[acts21notes|Notes]]<span class=navigation-separator></span>[[acts22|Next]]
+<span class=verse-body>40</span>When the commanding officer had given him permission, Paul stood on the steps and gestured to the people with his hand. When they had become silent, he addressed them in Aramaic,
+##### <span class=arrow-left></span>[[acts20|Prev]]<span class=navigation-separator></span>[[acts21notes|Notes]]<span class=navigation-separator></span>[[acts22|Next]]<span class=arrow-right></span>

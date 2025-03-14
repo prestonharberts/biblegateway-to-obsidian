@@ -145,13 +145,11 @@ aliases: ["Joel 2"]
 ###### 27
 ><span class=verse-body-poetry>27</span><span class=poetry-quote-single>‘</span>You will be convinced that I am in the midst of Israel.
 ><span class=poetry-quote-single>‘</span>I am the Lᴏʀᴅ your God; there is no other.
-><span class=poetry-quote-single>‘</span>My people will never again be put to shame.
-‘## An Outpouring of the Spirit
-<div class=paragraph-break></div>
-
+><span class=poetry-quote-single>‘</span>My people will never again be put to shame.’
+## An Outpouring of the Spirit
 ###### 28
-><span class=verse-first-poetry>28</span><span class=poetry-quote-single>‘</span>3:
-‘## 1 After all of this
+><span class=verse-first-poetry>28</span><span class=poetry-quote-single>‘</span>3:’
+## 1 After all of this
 ><span class=poetry-quote-single>‘</span>I will pour out my Spirit on all kinds of people.
 ><span class=poetry-quote-single>‘</span>Your sons and daughters will prophesy.
 ><span class=poetry-quote-single>‘</span>Your elderly will have prophetic dreams;
@@ -173,4 +171,4 @@ aliases: ["Joel 2"]
 ><span class=poetry-quote-single>‘</span>For on Mount Zion and in Jerusalem there will be those who survive,
 ><span class=poetry-quote-single>‘</span>Just as the Lᴏʀᴅ has promised;
 ><span class=poetry-quote-single>‘</span>The remnant will be those whom the Lᴏʀᴅ will call.
-<span class=arrow-right></span>‘##### <span class=arrow-left></span>[[joel1|Prev]]<span class=navigation-separator></span>[[joel2notes|Notes]]<span class=navigation-separator></span>[[joel3|Next]]
+##### <span class=arrow-left></span>[[joel1|Prev]]<span class=navigation-separator></span>[[joel2notes|Notes]]<span class=navigation-separator></span>[[joel3|Next]]<span class=arrow-right></span>

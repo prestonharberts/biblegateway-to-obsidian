@@ -41,6 +41,8 @@ aliases: ["1 Chronicles 27", "1 Chron. 27"]
 <div class=paragraph-break></div>
 
 Eliezer son of Zikri was the leader of the Reubenites,
+<div class=paragraph-break></div>
+
 Shephatiah son of Maacah led the Simeonites,
 ###### 17
 <span class=verse-body>17</span>Hashabiah son of Kemuel led the Levites,

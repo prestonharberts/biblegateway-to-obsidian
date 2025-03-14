@@ -60,6 +60,14 @@ Certain manual changes must be made to the Bible files that cannot be done autom
 - If wanted, bold OT references in the NT.
 - If wanted, add editorial footnotes and cross-references.
 
+#### NET specific changes
+
+These are specific changes I had to make to the NET and that you will have to make if you build the NET yourself using bg2ob.
+
+- 2 Chron. 36 needs `’` inserted to the end of the last verse before the `”`
+- Acts 21:39-40 needs `‘` removed from the beginning of the verses
+- Ezek. 44-45, Joel 1, Lev. 1-2, Lev. 4, Lev. 6, Lev. 25, and Num. 28 all need `’”` added to the end of the last verse
+
 #### NKJV specific changes
 
 - The first header for 1 Sam. 28, 2 Chron. 5, 2 Cor. 7, 2 Kings 7, 2 Sam. 19, Dan. 11, Eccles. 8, and Zeph. 1 need to be removed in all Scripture and Note files.

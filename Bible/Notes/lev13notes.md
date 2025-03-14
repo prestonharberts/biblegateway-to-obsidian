@@ -3,6 +3,7 @@ aliases: ["Leviticus 13 notes", "Lev. 13 notes"]
 ---
 # Leviticus 13 notes
 ##### <span class=arrow-left></span>[[lev12notes|Prev]]<span class=navigation-separator></span>[[lev13|Read]]<span class=navigation-separator></span>[[lev14notes|Next]]<span class=arrow-right></span>
+- 
 ## Infections on the Skin
 - 
 ## A Bright Spot on the Skin

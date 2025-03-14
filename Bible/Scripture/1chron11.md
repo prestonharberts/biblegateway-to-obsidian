@@ -74,6 +74,8 @@ Jashobeam, a Hacmonite, was head of the officers. He killed 300 men with his spe
 <div class=paragraph-break></div>
 
 Asahel the brother of Joab,
+<div class=paragraph-break></div>
+
 Elhanan son of Dodo, from Bethlehem,
 ###### 27
 <span class=verse-body>27</span>Shammoth the Harorite,
@@ -172,11 +174,15 @@ and Joha his brother, the Tizite,
 <div class=paragraph-break></div>
 
 and Jeribai and Joshaviah, the sons of Elnaam,
+<div class=paragraph-break></div>
+
 and Ithmah the Moabite,
 ###### 47
 <span class=verse-body>47</span>Eliel,
 <div class=paragraph-break></div>
 
 and Obed,
+<div class=paragraph-break></div>
+
 and Jaasiel the Mezobaite.
 ##### <span class=arrow-left></span>[[1chron10|Prev]]<span class=navigation-separator></span>[[1chron11notes|Notes]]<span class=navigation-separator></span>[[1chron12|Next]]<span class=arrow-right></span>

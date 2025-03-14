@@ -13,12 +13,8 @@ aliases: ["Leviticus 19", "Lev. 19"]
 ###### 3
 <span class=verse-body>3</span>‘Each of you must respect his mother and his father, and you must keep my Sabbaths. I am the Lᴏʀᴅ your God.
 ###### 4
-<span class=verse-body>4</span>‘Do not turn to idols, and you must not make for yourselves gods of cast metal. I am the Lᴏʀᴅ your God.
-<div class=paragraph-break></div>
-
-‘## Eating the Peace Offering
-<div class=paragraph-break></div>
-
+<span class=verse-body>4</span>‘Do not turn to idols, and you must not make for yourselves gods of cast metal. I am the Lᴏʀᴅ your God.’
+## Eating the Peace Offering
 ###### 5
 <span class=verse-first>5</span>“‘When you sacrifice a peace-offering sacrifice to the Lᴏʀᴅ, you must sacrifice it so that it is accepted for you.
 ###### 6
@@ -26,21 +22,13 @@ aliases: ["Leviticus 19", "Lev. 19"]
 ###### 7
 <span class=verse-body>7</span>‘If, however, it is eaten on the third day, it is spoiled; it will not be accepted,
 ###### 8
-<span class=verse-body>8</span>‘and the one who eats it will bear his punishment for iniquity because he has profaned what is holy to the Lᴏʀᴅ. That person will be cut off from his people.
-<div class=paragraph-break></div>
-
-‘## Leaving the Gleanings
-<div class=paragraph-break></div>
-
+<span class=verse-body>8</span>‘and the one who eats it will bear his punishment for iniquity because he has profaned what is holy to the Lᴏʀᴅ. That person will be cut off from his people.’
+## Leaving the Gleanings
 ###### 9
 <span class=verse-first>9</span>“‘When you gather in the harvest of your land, you must not completely harvest the corner of your field, and you must not gather up the gleanings of your harvest.
 ###### 10
-<span class=verse-body>10</span>‘You must not pick your vineyard bare, and you must not gather up the fallen grapes of your vineyard. You must leave them for the poor and the resident foreigner. I am the Lᴏʀᴅ your God.
-<div class=paragraph-break></div>
-
-‘## Dealing Honestly
-<div class=paragraph-break></div>
-
+<span class=verse-body>10</span>‘You must not pick your vineyard bare, and you must not gather up the fallen grapes of your vineyard. You must leave them for the poor and the resident foreigner. I am the Lᴏʀᴅ your God.’
+## Dealing Honestly
 ###### 11
 <span class=verse-first>11</span>“‘You must not steal, you must not tell lies, and you must not deal falsely with your fellow citizen.
 ###### 12
@@ -50,12 +38,8 @@ aliases: ["Leviticus 19", "Lev. 19"]
 ###### 13
 <span class=verse-first>13</span>‘You must not oppress your neighbor or commit robbery against your neighbor. You must not withhold the wages of the hired laborer overnight until morning.
 ###### 14
-<span class=verse-body>14</span>‘You must not curse a deaf person or put a stumbling block in front of a blind person. You must fear your God; I am the Lᴏʀᴅ.
-<div class=paragraph-break></div>
-
-‘## Justice, Love, and Propriety
-<div class=paragraph-break></div>
-
+<span class=verse-body>14</span>‘You must not curse a deaf person or put a stumbling block in front of a blind person. You must fear your God; I am the Lᴏʀᴅ.’
+## Justice, Love, and Propriety
 ###### 15
 <span class=verse-first>15</span>“‘You must not deal unjustly in judgment: You must neither show partiality to the poor nor honor the rich. You must judge your fellow citizen fairly.
 ###### 16
@@ -69,34 +53,22 @@ aliases: ["Leviticus 19", "Lev. 19"]
 <div class=paragraph-break></div>
 
 ###### 19
-<span class=verse-first>19</span>‘You must keep my statutes. You must not allow two different kinds of your animals to breed together, you must not sow your field with two different kinds of seed, and you must not wear a garment made of two different kinds of material.
-<div class=paragraph-break></div>
-
-‘## Lying with a Slave Woman
-<div class=paragraph-break></div>
-
+<span class=verse-first>19</span>‘You must keep my statutes. You must not allow two different kinds of your animals to breed together, you must not sow your field with two different kinds of seed, and you must not wear a garment made of two different kinds of material.’
+## Lying with a Slave Woman
 ###### 20
 <span class=verse-first>20</span>“‘When a man goes to bed with a woman for intercourse, although she is a slave woman designated for another man and she has not yet been ransomed, or freedom has not been granted to her, there will be an obligation to pay compensation. They must not be put to death, because she was not free.
 ###### 21
 <span class=verse-body>21</span>‘He must bring his guilt offering to the Lᴏʀᴅ at the entrance of the Meeting Tent, a guilt offering ram,
 ###### 22
-<span class=verse-body>22</span>‘and the priest is to make atonement for him with the ram of the guilt offering before the Lᴏʀᴅ for his sin that he has committed, and he will be forgiven of his sin that he has committed.
-<div class=paragraph-break></div>
-
-‘## The Produce of Fruit Trees
-<div class=paragraph-break></div>
-
+<span class=verse-body>22</span>‘and the priest is to make atonement for him with the ram of the guilt offering before the Lᴏʀᴅ for his sin that he has committed, and he will be forgiven of his sin that he has committed.’
+## The Produce of Fruit Trees
 ###### 23
 <span class=verse-first>23</span>“‘When you enter the land and plant any fruit tree, you must consider its fruit to be forbidden. Three years it will be forbidden to you; it must not be eaten.
 ###### 24
 <span class=verse-body>24</span>‘In the fourth year all its fruit will be holy, praise offerings to the Lᴏʀᴅ.
 ###### 25
-<span class=verse-body>25</span>‘Then in the fifth year you may eat its fruit to add its produce to your harvest. I am the Lᴏʀᴅ your God.
-<div class=paragraph-break></div>
-
-‘## Blood, Hair, Body, and Prostitution
-<div class=paragraph-break></div>
-
+<span class=verse-body>25</span>‘Then in the fifth year you may eat its fruit to add its produce to your harvest. I am the Lᴏʀᴅ your God.’
+## Blood, Hair, Body, and Prostitution
 ###### 26
 <span class=verse-first>26</span>“‘You must not eat anything with the blood still in it. You must not practice either divination or soothsaying.
 ###### 27
@@ -106,10 +78,8 @@ aliases: ["Leviticus 19", "Lev. 19"]
 <div class=paragraph-break></div>
 
 ###### 29
-<span class=verse-first>29</span>‘Do not profane your daughter by making her a prostitute, so that the land does not practice prostitution and become full of lewdness.
-<div class=paragraph-break></div>
-
-‘## Sabbaths, Purity, Honor, Respect, and Honesty
+<span class=verse-first>29</span>‘Do not profane your daughter by making her a prostitute, so that the land does not practice prostitution and become full of lewdness.’
+## Sabbaths, Purity, Honor, Respect, and Honesty
 ###### 30
 <span class=verse-body>30</span>“‘You must keep my Sabbaths and fear my sanctuary. I am the Lᴏʀᴅ.
 <div class=paragraph-break></div>

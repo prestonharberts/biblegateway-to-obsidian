@@ -9,12 +9,8 @@ aliases: ["Leviticus 2", "Lev. 2"]
 ###### 2
 <span class=verse-body>2</span>‘Then he must bring it to the sons of Aaron, the priests, and the priest must scoop out from there a handful of its choice wheat flour and some of its olive oil in addition to all of its frankincense, and the priest must offer its memorial portion up in smoke on the altar—it is a gift of a soothing aroma to the Lᴏʀᴅ.
 ###### 3
-<span class=verse-body>3</span>‘The remainder of the grain offering belongs to Aaron and to his sons—it is most holy from the gifts of the Lᴏʀᴅ.
-<div class=paragraph-break></div>
-
-‘## Processed Grain Offerings
-<div class=paragraph-break></div>
-
+<span class=verse-body>3</span>‘The remainder of the grain offering belongs to Aaron and to his sons—it is most holy from the gifts of the Lᴏʀᴅ.’
+## Processed Grain Offerings
 ###### 4
 <span class=verse-first>4</span>“‘When you present an offering of grain baked in an oven, it must be made of choice wheat flour baked into unleavened loaves mixed with olive oil or unleavened wafers smeared with olive oil.
 ###### 5
@@ -28,12 +24,8 @@ aliases: ["Leviticus 2", "Lev. 2"]
 ###### 9
 <span class=verse-body>9</span>‘Then the priest must take up from the grain offering its memorial portion and offer it up in smoke on the altar—it is a gift of a soothing aroma to the Lᴏʀᴅ.
 ###### 10
-<span class=verse-body>10</span>‘The remainder of the grain offering belongs to Aaron and to his sons—it is most holy from the gifts of the Lᴏʀᴅ.
-<div class=paragraph-break></div>
-
-‘## Additional Grain-Offering Regulations
-<div class=paragraph-break></div>
-
+<span class=verse-body>10</span>‘The remainder of the grain offering belongs to Aaron and to his sons—it is most holy from the gifts of the Lᴏʀᴅ.’
+## Additional Grain-Offering Regulations
 ###### 11
 <span class=verse-first>11</span>“‘No grain offering which you present to the Lᴏʀᴅ can be made with yeast, for you must not offer up in smoke any yeast or honey as a gift to the Lᴏʀᴅ.
 ###### 12
@@ -47,5 +39,5 @@ aliases: ["Leviticus 2", "Lev. 2"]
 ###### 15
 <span class=verse-body>15</span>‘And you must put olive oil on it and set frankincense on it—it is a grain offering.
 ###### 16
-<span class=verse-body>16</span>‘Then the priest must offer its memorial portion up in smoke—some of its crushed bits, some of its olive oil, in addition to all of its frankincense—it is a gift to the Lᴏʀᴅ.
-<span class=arrow-right></span>‘##### <span class=arrow-left></span>[[lev1|Prev]]<span class=navigation-separator></span>[[lev2notes|Notes]]<span class=navigation-separator></span>[[lev3|Next]]
+<span class=verse-body>16</span>‘Then the priest must offer its memorial portion up in smoke—some of its crushed bits, some of its olive oil, in addition to all of its frankincense—it is a gift to the Lᴏʀᴅ.’”
+##### <span class=arrow-left></span>[[lev1|Prev]]<span class=navigation-separator></span>[[lev2notes|Notes]]<span class=navigation-separator></span>[[lev3|Next]]<span class=arrow-right></span>

@@ -3,6 +3,7 @@ aliases: ["Jonah 1 notes"]
 ---
 # Jonah 1 notes
 ##### <span class=arrow-left></span>[[obad1notes|Prev]]<span class=navigation-separator></span>[[jonah1|Read]]<span class=navigation-separator></span>[[jonah2notes|Next]]<span class=arrow-right></span>
+- 
 ## Jonah Tries to Run from the Lord
 - 
 ## Jonah Prays

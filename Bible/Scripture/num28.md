@@ -19,21 +19,13 @@ aliases: ["Numbers 28", "Num. 28"]
 ###### 7
 <span class=verse-body>7</span>“‘And its drink offering must be one-quarter of a hin for each lamb. You must pour out the strong drink as a drink offering to the Lᴏʀᴅ in the Holy Place.
 ###### 8
-<span class=verse-body>8</span>‘And the second lamb you must offer in the late afternoon; just as you offered the grain offering and drink offering in the morning, you must offer it as an offering made by fire, as a pleasing aroma to the Lᴏʀᴅ.
-<div class=paragraph-break></div>
-
-‘## Weekly Offerings
-<div class=paragraph-break></div>
-
+<span class=verse-body>8</span>‘And the second lamb you must offer in the late afternoon; just as you offered the grain offering and drink offering in the morning, you must offer it as an offering made by fire, as a pleasing aroma to the Lᴏʀᴅ.’
+## Weekly Offerings
 ###### 9
 <span class=verse-first>9</span>“‘On the Sabbath day, you must offer two unblemished lambs a year old, and two-tenths of an ephah of finely ground flour as a grain offering, mixed with olive oil, along with its drink offering.
 ###### 10
-<span class=verse-body>10</span>‘This is the burnt offering for every Sabbath, besides the continual burnt offering and its drink offering.
-<div class=paragraph-break></div>
-
-‘## Monthly Offerings
-<div class=paragraph-break></div>
-
+<span class=verse-body>10</span>‘This is the burnt offering for every Sabbath, besides the continual burnt offering and its drink offering.’
+## Monthly Offerings
 ###### 11
 <span class=verse-first>11</span>“‘On the first day of each month you must offer as a burnt offering to the Lᴏʀᴅ two young bulls, one ram, and seven unblemished lambs a year old,
 ###### 12
@@ -43,12 +35,8 @@ aliases: ["Numbers 28", "Num. 28"]
 ###### 14
 <span class=verse-body>14</span>‘For their drink offerings, include half a hin of wine with each bull, one-third of a hin for the ram, and one-fourth of a hin for each lamb. This is the burnt offering for each month throughout the months of the year.
 ###### 15
-<span class=verse-body>15</span>‘And one male goat must be offered to the Lᴏʀᴅ as a purification offering, in addition to the continual burnt offering and its drink offering.
-<div class=paragraph-break></div>
-
-‘## The Passover
-<div class=paragraph-break></div>
-
+<span class=verse-body>15</span>‘And one male goat must be offered to the Lᴏʀᴅ as a purification offering, in addition to the continual burnt offering and its drink offering.’
+## The Passover
 ###### 16
 <span class=verse-first>16</span>“‘On the fourteenth day of the first month is the Lᴏʀᴅ’s Passover.
 ###### 17
@@ -68,12 +56,8 @@ aliases: ["Numbers 28", "Num. 28"]
 ###### 24
 <span class=verse-body>24</span>‘In this manner you must offer daily throughout the seven days the food of the sacrifice made by fire as a sweet aroma to the Lᴏʀᴅ. It is to be offered in addition to the continual burnt offering and its drink offering.
 ###### 25
-<span class=verse-body>25</span>‘On the seventh day you are to have a holy assembly, you must do no regular work.
-<div class=paragraph-break></div>
-
-‘## Firstfruits
-<div class=paragraph-break></div>
-
+<span class=verse-body>25</span>‘On the seventh day you are to have a holy assembly, you must do no regular work.’
+## Firstfruits
 ###### 26
 <span class=verse-first>26</span>“‘Also, on the day of the firstfruits, when you bring a new grain offering to the Lᴏʀᴅ during your Feast of Weeks, you are to have a holy assembly. You must do no ordinary work.
 ###### 27
@@ -85,5 +69,5 @@ aliases: ["Numbers 28", "Num. 28"]
 ###### 30
 <span class=verse-body>30</span>‘as well as one male goat to make an atonement for you.
 ###### 31
-<span class=verse-body>31</span>‘You are to offer them with their drink offerings in addition to the continual burnt offering and its grain offering—they must be unblemished.
-<span class=arrow-right></span>‘##### <span class=arrow-left></span>[[num27|Prev]]<span class=navigation-separator></span>[[num28notes|Notes]]<span class=navigation-separator></span>[[num29|Next]]
+<span class=verse-body>31</span>‘You are to offer them with their drink offerings in addition to the continual burnt offering and its grain offering—they must be unblemished.’”
+##### <span class=arrow-left></span>[[num27|Prev]]<span class=navigation-separator></span>[[num28notes|Notes]]<span class=navigation-separator></span>[[num29|Next]]<span class=arrow-right></span>

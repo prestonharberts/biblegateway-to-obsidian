@@ -3,6 +3,7 @@ aliases: ["Nehemiah 4 notes", "Neh. 4 notes"]
 ---
 # Nehemiah 4 notes
 ##### <span class=arrow-left></span>[[neh3notes|Prev]]<span class=navigation-separator></span>[[neh4|Read]]<span class=navigation-separator></span>[[neh5notes|Next]]<span class=arrow-right></span>
+- 
 ## Opposition to the Work Continues
 - 
 ## 33 Now when Sanballat heard that we were rebuilding the wall he became angry and was quite upset. He derided the Jews,

@@ -31,12 +31,8 @@ aliases: ["Jeremiah 22", "Jer. 22"]
 ###### 8
 <span class=verse-first>8</span>“‘People from other nations will pass by this city. They will ask one another, “Why has the Lᴏʀᴅ done such a thing to this great city?”
 ###### 9
-<span class=verse-body>9</span>‘The answer will come back, “It is because they broke their covenant with the Lᴏʀᴅ their God and worshiped and served other gods.”
-<div class=paragraph-break></div>
-
-‘## Judgment on Jehoahaz
-<div class=paragraph-break></div>
-
+<span class=verse-body>9</span>‘The answer will come back, “It is because they broke their covenant with the Lᴏʀᴅ their God and worshiped and served other gods.”’
+## Judgment on Jehoahaz
 ###### 10
 ><span class=verse-first-poetry>10</span><span class=poetry-quote-double>“</span><span class=poetry-quote-single>‘</span>Do not weep for the king who was killed.
 ><span class=poetry-quote-single>‘</span>Do not grieve for him.
@@ -47,12 +43,8 @@ aliases: ["Jeremiah 22", "Jer. 22"]
 ###### 11
 <span class=verse-first>11</span>“‘For the Lᴏʀᴅ has spoken about Shallum son of Josiah, who succeeded his father as king of Judah but was carried off into exile. He has said, “He will never return to this land.
 ###### 12
-<span class=verse-body>12</span>‘For he will die in the country where they took him as a captive. He will never see this land again.”
-<div class=paragraph-break></div>
-
-‘## Judgment on Jehoiakim
-<div class=paragraph-break></div>
-
+<span class=verse-body>12</span>‘For he will die in the country where they took him as a captive. He will never see this land again.”’
+## Judgment on Jehoiakim
 ###### 13
 ><span class=verse-first-poetry>13</span><span class=poetry-quote-double>“</span><span class=poetry-quote-single>‘</span>Sure to be judged is the king who builds his palace using injustice
 ><span class=poetry-quote-single>‘</span>And treats people unfairly while adding its upper rooms.

@@ -13,12 +13,8 @@ aliases: ["Leviticus 18", "Lev. 18"]
 ###### 4
 <span class=verse-body>4</span>‘You must observe my regulations and you must be sure to walk in my statutes. I am the Lᴏʀᴅ your God.
 ###### 5
-<span class=verse-body>5</span>‘So you must keep my statutes and my regulations; anyone who does so will live by keeping them. I am the Lᴏʀᴅ.
-<div class=paragraph-break></div>
-
-‘## Laws of Sexual Relations
-<div class=paragraph-break></div>
-
+<span class=verse-body>5</span>‘So you must keep my statutes and my regulations; anyone who does so will live by keeping them. I am the Lᴏʀᴅ.’
+## Laws of Sexual Relations
 ###### 6
 <span class=verse-first>6</span>“‘No man is to approach any close relative to have sexual relations with her. I am the Lᴏʀᴅ.
 ###### 7
@@ -56,12 +52,8 @@ aliases: ["Leviticus 18", "Lev. 18"]
 ###### 22
 <span class=verse-body>22</span>‘You must not have sexual relations with a male as one has sexual relations with a woman; it is a detestable act.
 ###### 23
-<span class=verse-body>23</span>‘You must not have sexual relations with any animal to become defiled with it, and a woman must not stand before an animal to have sexual relations with it; it is a perversion.
-<div class=paragraph-break></div>
-
-‘## Warning against the Abominations of the Nations
-<div class=paragraph-break></div>
-
+<span class=verse-body>23</span>‘You must not have sexual relations with any animal to become defiled with it, and a woman must not stand before an animal to have sexual relations with it; it is a perversion.’
+## Warning against the Abominations of the Nations
 ###### 24
 <span class=verse-first>24</span>“‘Do not defile yourselves with any of these things, for the nations that I am about to drive out before you have been defiled with all these things.
 ###### 25

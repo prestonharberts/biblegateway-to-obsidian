@@ -3,6 +3,7 @@ aliases: ["Luke 9 notes"]
 ---
 # Luke 9 notes
 ##### <span class=arrow-left></span>[[luke8notes|Prev]]<span class=navigation-separator></span>[[luke9|Read]]<span class=navigation-separator></span>[[luke10notes|Next]]<span class=arrow-right></span>
+- 
 ## The Sending of the Twelve Apostles
 - 
 ## Herod’s Confusion about Jesus

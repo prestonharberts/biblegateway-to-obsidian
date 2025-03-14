@@ -17,6 +17,8 @@ aliases: ["Nehemiah 11", "Neh. 11"]
 <div class=paragraph-break></div>
 
 Of the descendants of Judah:
+<div class=paragraph-break></div>
+
 Athaiah son of Uzziah, the son of Zechariah, the son of Amariah, the son of Shephatiah, the son of Mahalalel, from the descendants of Perez;
 ###### 5
 <span class=verse-body>5</span>and Maaseiah son of Baruch, the son of Col-Hozeh, the son of Hazaiah, the son of Adaiah, the son of Joiarib, the son of Zechariah, from the descendants of Shelah.
