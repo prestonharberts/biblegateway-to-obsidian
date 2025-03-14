@@ -469,7 +469,7 @@ find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/>[0-9a-z:]+\n## [0-9
 find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/\(>*<span class=verse-[a-z-]*>\)\([0-9]*\)/###### \2\n\1\2/g' {} +
 
 # add closing double quotes to final verse if continuation of a single quote
-find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i ':a;$!{N;s/’(\n##### [^\n]*)$/’”\1/;ba;}' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/’(\n##### [^\n]*)$/’”\1/;ba;}' {} +
 
 # remove paragraph breaks from non-scripture files
 find . -type f -wholename "${notes_dir}/*.md" -exec sed -i -E ':a;$!{N;s/<div class=paragraph-break><\/div>\n\n//;ba;}' {} +
