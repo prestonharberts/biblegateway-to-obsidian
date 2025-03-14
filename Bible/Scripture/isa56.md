@@ -70,5 +70,5 @@ aliases: ["Isaiah 56", "Isa. 56"]
 ><span class=poetry-quote-single>‘</span>Come on, I’ll get some wine!
 ><span class=poetry-quote-double>“</span>Let’s guzzle some beer!
 ><span class=poetry-quote-double>“</span>Tomorrow will be just like today!
-><span class=poetry-quote-double>“</span>We’ll have everything we want!’
+><span class=poetry-quote-double>“</span>We’ll have everything we want!’”
 ##### <span class=arrow-left></span>[[isa55|Prev]]<span class=navigation-separator></span>[[isa56notes|Notes]]<span class=navigation-separator></span>[[isa57|Next]]<span class=arrow-right></span>

@@ -57,5 +57,5 @@ aliases: ["Ezekiel 38", "Ezek. 38"]
 ###### 22
 <span class=verse-body>22</span>‘I will judge him with plague and bloodshed. I will rain down on him, his troops, and the many peoples who are with him a torrential downpour, hailstones, fire, and brimstone.
 ###### 23
-<span class=verse-body>23</span>‘I will exalt and magnify myself; I will reveal myself before many nations. Then they will know that I am the Lᴏʀᴅ.’
+<span class=verse-body>23</span>‘I will exalt and magnify myself; I will reveal myself before many nations. Then they will know that I am the Lᴏʀᴅ.’”
 ##### <span class=arrow-left></span>[[ezek37|Prev]]<span class=navigation-separator></span>[[ezek38notes|Notes]]<span class=navigation-separator></span>[[ezek39|Next]]<span class=arrow-right></span>

@@ -89,5 +89,5 @@ aliases: ["Revelation 2", "Rev. 2"]
 ###### 28
 <span class=verse-body>28</span>‘just as I have received the right to rule from my Father—and I will give him the morning star.
 ###### 29
-<span class=verse-body>29</span>‘The one who has an ear had better hear what the Spirit says to the churches.’
+<span class=verse-body>29</span>‘The one who has an ear had better hear what the Spirit says to the churches.’”
 ##### <span class=arrow-left></span>[[rev1|Prev]]<span class=navigation-separator></span>[[rev2notes|Notes]]<span class=navigation-separator></span>[[rev3|Next]]<span class=arrow-right></span>

@@ -84,5 +84,5 @@ aliases: ["Deuteronomy 27", "Deut. 27"]
 <div class=paragraph-break></div>
 
 ###### 26
-<span class=verse-first>26</span>‘Cursed is the one who refuses to keep the words of this law.’ Then all the people will say, ‘Amen!’
+<span class=verse-first>26</span>‘Cursed is the one who refuses to keep the words of this law.’ Then all the people will say, ‘Amen!’”
 ##### <span class=arrow-left></span>[[deut26|Prev]]<span class=navigation-separator></span>[[deut27notes|Notes]]<span class=navigation-separator></span>[[deut28|Next]]<span class=arrow-right></span>

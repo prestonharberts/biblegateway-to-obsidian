@@ -80,5 +80,5 @@ aliases: ["Job 4"]
 ><span class=poetry-quote-single>‘</span>They perish forever without anyone regarding it.
 ###### 21
 ><span class=verse-body-poetry>21</span><span class=poetry-quote-single>‘</span>Is not their excess wealth taken away from them?
-><span class=poetry-quote-single>‘</span>They die, yet without attaining wisdom.’
+><span class=poetry-quote-single>‘</span>They die, yet without attaining wisdom.’”
 ##### <span class=arrow-left></span>[[job3|Prev]]<span class=navigation-separator></span>[[job4notes|Notes]]<span class=navigation-separator></span>[[job5|Next]]<span class=arrow-right></span>

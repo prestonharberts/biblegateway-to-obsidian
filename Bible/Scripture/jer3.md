@@ -116,5 +116,5 @@ aliases: ["Jeremiah 3", "Jer. 3"]
 ><span class=poetry-quote-single>‘</span>For we have sinned against the Lᴏʀᴅ our God,
 ><span class=poetry-quote-single>‘</span>Both we and our ancestors.
 ><span class=poetry-quote-single>‘</span>From earliest times to this very day
-><span class=poetry-quote-single>‘</span>We have not obeyed the Lᴏʀᴅ our God.’
+><span class=poetry-quote-single>‘</span>We have not obeyed the Lᴏʀᴅ our God.’”
 ##### <span class=arrow-left></span>[[jer2|Prev]]<span class=navigation-separator></span>[[jer3notes|Notes]]<span class=navigation-separator></span>[[jer4|Next]]<span class=arrow-right></span>

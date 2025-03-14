@@ -157,5 +157,5 @@ aliases: ["Isaiah 44", "Isa. 44"]
 ><span class=verse-body-poetry>28</span><span class=poetry-quote-double>“</span>Who commissions Cyrus, the one I appointed as shepherd
 ><span class=poetry-quote-double>“</span>To carry out all my wishes
 ><span class=poetry-quote-double>“</span>And to decree concerning Jerusalem, ‘She will be rebuilt,’
-><span class=poetry-quote-double>“</span>And concerning the temple, ‘It will be reconstructed.’
+><span class=poetry-quote-double>“</span>And concerning the temple, ‘It will be reconstructed.’”
 ##### <span class=arrow-left></span>[[isa43|Prev]]<span class=navigation-separator></span>[[isa44notes|Notes]]<span class=navigation-separator></span>[[isa45|Next]]<span class=arrow-right></span>
