@@ -32,7 +32,13 @@ By default, this program downloads the NET Bible translation, but it can be chan
 
 This script is intended to be run in Linux, but it is able to be run on macOS and Windows with some setup that I am unable to provide as I do not currently use either.
 
-[Download my fork of jgclark's BibleGateway-to-Markdown](https://github.com/prestonharberts/biblegateway-to-markdown) and copy `bg2md` to this program's folder. Next, install RubyGems and the necessary gems with the following line (change the package manager to work with your Linux distribution; I use Fedora so I use `dnf`):
+Clone this repository to any directorying by runnning this in a terminal:
+
+```bash
+git clone https://github.com/prestonharberts/biblegateway-to-obsidian
+```
+
+[Download the bg2md file from my fork of jgclark's BibleGateway-to-Markdown](https://github.com/prestonharberts/biblegateway-to-markdown) and copy bg2md to this program's folder. Next, install RubyGems and the necessary gems with the following line (change the package manager to work with your Linux distribution; I use Fedora so I use `dnf`):
 
 ```
 sudo dnf install rubygems
@@ -68,6 +74,13 @@ These are specific changes I had to make to the NET and that you will have to ma
 - Acts 21:39-40 needs `‘` removed from the beginning of the verses
 - Ezek. 44-45, Joel 1, Lev. 1-2, Lev. 4, Lev. 6, Lev. 25, and Num. 28 all need `’”` added to the end of the last verse
 
+Run this following to remove trailing newlines from these edited files (make sure you are still in this repos folder): 
+
+```bash
+source config
+find . -type f -wholename "${scripture_dir}/*.md" -exec perl -pi -e 'chomp if eof' {} +
+```
+
 #### NKJV specific changes
 
 - The first header for 1 Sam. 28, 2 Chron. 5, 2 Cor. 7, 2 Kings 7, 2 Sam. 19, Dan. 11, Eccles. 8, and Zeph. 1 need to be removed in all Scripture and Note files.
@@ -80,7 +93,13 @@ These are specific changes I had to make to the NET and that you will have to ma
 
 - Remove the above HTML in Rev. 19 where it should say `KING OF KINGS AND\nLORD OF LORDS`
 - 2 Chron. 36:22 has some junk HTML
-- Now open all edited files and remove the newline at the end of the file
+
+Run this following to remove trailing newlines from these edited files (make sure you are still in this repos folder): 
+
+```bash
+source config
+find . -type f -wholename "${scripture_dir}/*.md" -exec perl -pi -e 'chomp if eof' {} +
+```
 
 #### NLT specific changes
 
@@ -100,7 +119,13 @@ Currently this is a work in progress as Gal. 1 has quotation issues.
   - Remove the occurrence of the above snippet from right above verses 44
   - Insert the above snippet above verse 40, after the first line of verse 46, and after the first line of verse 57.
 - Num. 1 and 2 have occurrences of `<sup class="versenum">`. Delete the entire lines they are on.
-- Now open all edited files and remove the newline at the end of the file
+
+Run this following to remove trailing newlines from these edited files (make sure you are still in this repos folder): 
+
+```bash
+source config
+find . -type f -wholename "${scripture_dir}/*.md" -exec perl -pi -e 'chomp if eof' {} +
+```
 
 #### CSB specific changes
 
@@ -108,6 +133,13 @@ Currently this is a work in progress as Gal. 1 has quotation issues.
 - Ezra 2 skips verses 3-35 for some reason.
 - Neh 7 Skips verses 40-42 for some reason.
 - Ensure there are no underscores in Matthew 27:46. Replace any with an asterisk, and make sure the italics do not enclose any punctuation.
+
+Run this following to remove trailing newlines from these edited files (make sure you are still in this repos folder): 
+
+```bash
+source config
+find . -type f -wholename "${scripture_dir}/*.md" -exec perl -pi -e 'chomp if eof' {} +
+```
 
 #### LSB specific changes
 
@@ -117,6 +149,13 @@ Currently this is a work in progress as Gal. 1 has quotation issues.
 - Remove newline in Nehemiah 12:42.
 - Psalm 111:10 is messing over half the text.
 - Replace all occurences of 'E' with 'Ē' in Daniel 5 verses 25, 26, 27, and 28.
+
+Run this following to remove trailing newlines from these edited files (make sure you are still in this repos folder): 
+
+```bash
+source config
+find . -type f -wholename "${scripture_dir}/*.md" -exec perl -pi -e 'chomp if eof' {} +
+```
 
 ## Troubleshooting
 
