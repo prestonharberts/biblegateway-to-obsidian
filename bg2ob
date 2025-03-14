@@ -8,4 +8,4 @@ source bin/make-outline-files
 source bin/make-scripture-files
 
 # cleanup
-#source bin/cleanup
+source bin/cleanup
