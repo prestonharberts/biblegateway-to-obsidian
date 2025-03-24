@@ -475,6 +475,10 @@ find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/’
 find . -type f -wholename "${notes_dir}/*.md" -exec sed -i -E ':a;$!{N;s/<div class=paragraph-break><\/div>\n\n//;ba;}' {} +
 find . -type f -wholename "${outlines_dir}/*.md" -exec sed -i -E ':a;$!{N;s/<div class=paragraph-break><\/div>\n\n//;ba;}' {} +
 
+# remove space in between quotes
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/’ ”/’”/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/” ’/”’/g' {} +
+
 echo -n "."
 
 printf '\nDownloaded the %s Bible.\n' "${translation}"
