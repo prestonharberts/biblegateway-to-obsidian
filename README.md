@@ -93,6 +93,7 @@ find . -type f -wholename "${scripture_dir}/*.md" -exec perl -pi -e 'chomp if eo
 
 - Remove the above HTML in Rev. 19 where it should say `KING OF KINGS AND\nLORD OF LORDS`
 - 2 Chron. 36:22 has some junk HTML
+- So far I have only found one occurrence of 2 words missing a space between them due to a footnote. Add a space between `kind` and `of` in 1 Cor. 15:39
 
 Run this following to remove trailing newlines from these edited files (make sure you are still in this repos folder): 
 
