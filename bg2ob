@@ -4,8 +4,8 @@
 source config
 
 # create files
-source bin/make-outline-files
-source bin/make-scripture-files
+source bin/create-outline-files
+source bin/create-scripture-files
 
 # cleanup
 source bin/cleanup

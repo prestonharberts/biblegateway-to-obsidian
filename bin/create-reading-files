@@ -1,0 +1,62 @@
+#john3 9
+#matt9 27
+rm *.md && cp ~/Downloads/Scripture/*.md .
+
+sed -i 's/<i>//g' *.md
+sed -i 's/— /—/g' *.md
+sed -i 's/ —/—/g' *.md
+sed -i 's/<\/i>//g' *.md
+
+sed -i -E ':a;$!{N;s/\n###### [0-9]*//;ba;}' *.md
+sed -i -E ':a;$!{N;s/(<[^\n]*)\n(<span class=)verse-body(>)/\1 \2verse-body-reading\3/;ba;}' *.md
+
+sed -i 's/verse-body-poetry/verse-body-poetry-reading/g' *.md
+sed -i 's/verse-body>/verse-body-reading>/g' *.md
+
+
+sed -i 's/’s/single_possessive/g' *.md
+sed -i 's/s’ /double_possessive /g' *.md
+
+sed -i -E ':a; s/(“[^‘”]*)“/\1/; ta' *.md
+sed -i -E ':a; s/(‘[^“’]*)‘/\1/; ta' *.md
+
+
+sed -i -E ':a;$!{N;s/(><span class=poetry-quote-double>“<\/span>[^”]*)<span class=poetry-quote-double>“<\/span>/\1/;ba;}' *.md
+sed -i -E ':a;$!{N;s/(><span class=poetry-quote-single>‘<\/span>[^’]*)<span class=poetry-quote-single>‘<\/span>/\1/;ba;}' *.md
+
+sed -i 's/single_possessive/’s/g' *.md
+sed -i 's/double_possessive/s’/g' *.md
+
+sed -i -E ':a;$!{N;s/(<[^\n]*\n<div class=)paragraph-break(><\/div>\n\n<[^\n]*)/\1paragraph-break-temp\2/;ba;}' *.md
+sed -i -E 's/paragraph-break>/quote-break>/g' *.md
+sed -i -E 's/paragraph-break-temp/paragraph-break/g' *.md
+sed -i -E ':a;$!{N;s/([^\n]*\n<div class=)paragraph-break(><\/div>\n\n<span class=verse-body-reading>)/\1quote-break\2/;ba;}' *.md
+
+sed -i 's/’s/single_possessive/g' *.md
+sed -i 's/s’ /double_possessive /g' *.md
+
+sed -i -E 's/([.?!]”) ([A-Z<])/\1\n<div class=paragraph-break><\/div>\n\n\2/g' *.md
+sed -i -E 's/([.?!]’”) ([A-Z<])/\1\n<div class=paragraph-break><\/div>\n\n\2/g' *.md
+sed -i -E 's/([.?!]”’”) ([A-Z<])/\1\n<div class=paragraph-break><\/div>\n\n\2/g' *.md
+sed -i -E 's/([.?!]’”’”) ([A-Z<])/\1\n<div class=paragraph-break><\/div>\n\n\2/g' *.md
+sed -i -E ':a;$!{N;s/(“[^\n”]*‘[^\n’]*“[^\n’”]*”)\n<div class=paragraph-break><\/div>\n\n/\1 /;ba;}' *.md
+sed -i -E ':a;$!{N;s/‘([^’]*”)/\1/;ba;}' *.md
+
+sed -i -E 's/(”—[^“]*[.?!]) ([^“]*“)/\1\n<div class=paragraph-break><\/div>\n\n\2/g' *.md
+
+# account for ’ <span class=verse-body-reading>31</span>“
+# in ezek 35 last verse
+sed -i -E 's/(’[^“‘’”]*)“/\1/g' *.md
+# ezek 35 missing single quote in last paragraph
+
+sed -i 's/single_possessive/’s/g' *.md
+sed -i 's/double_possessive/s’/g' *.md
+
+sed -i -E 's/([.?!][”]*) ([^.?!”]*[“])/\1\n<div class=paragraph-break><\/div>\n\n\2/' *.md
+
+sed -i -E ':a;$!{N;s/(\n[^<#\n][^\n]*\n)(<span class=v)/\1<div class=paragraph-break><\/div>\n\n\2/;ba;}' *.md
+sed -i -E ':a;$!{N;s/(<div class=)quote(-break><\/div>\n\n[^>])/\1paragraph\2/;ba;}' *.md
+sed -i -E ':a;$!{N;s/(\n[>][^\n]*\n<div class=)paragraph(-break><\/div>)/\1quote\2/;ba;}' *.md
+
+sed -i 's/— /—/g' *.md
+sed -i 's/ —/—/g' *.md
