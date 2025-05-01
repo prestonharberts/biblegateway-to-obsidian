@@ -85,6 +85,7 @@ find . -type f -wholename "${scripture_dir}/*.md" -exec perl -pi -e 'chomp if eo
 
 - The first header for 1 Sam. 28, 2 Chron. 5, 2 Cor. 7, 2 Kings 7, 2 Sam. 19, Dan. 11, Eccles. 8, and Zeph. 1 need to be removed in all Scripture and Note files.
 - Dan. 4, Ezra 5, and Jer. 29 have a level 2 heading that has junk HTML in it. Delete this line manually in each file from another text editor because my CSS hides H6. Make sure to also insert this line (and the blank line too) where each header is if a new paragraph starts or a poetry verse ends:
+- 1 Cor. 10:26-33 needs all single quotes at the beginning of each line removed
 
 ```
 <div class=paragraph-break></div>

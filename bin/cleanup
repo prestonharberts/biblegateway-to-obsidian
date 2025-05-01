@@ -481,4 +481,53 @@ find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/” ’/”’
 
 echo -n "."
 
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/“<\/span>‘“/“<\/span>/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/‘<\/span>“‘/‘<\/span>/g' {} +
+
+find . -type f -wholename "${notes_dir}/*.md" -exec sed -i 's/[“‘]- \[ \] [’”]/- /g' {} +
+find . -type f -wholename "${notes_dir}/*.md" -exec sed -i 's/[“‘]- $/- /g' {} +
+find . -type f -wholename "${notes_dir}/*.md" -exec sed -i -E ':a;$!{N;s/\n\n/\n/;ba;}' {} +
+
+echo -n "."
+
+# replace apostrophe 's' and 's' apostrophe with 'possessive' to prepare adding single quotations
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/’s/single_possessive/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/s’ /double_possessive /g' {} +
+
+# fix same quotes being used twice in a row
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E 's/“([^“‘’”]*“)/‘\1/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E 's/‘([^“‘’”]*‘)/‘\1/g' {} +
+
+# fix erroneous single apostrophes into double quotes if it ought to be
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(>)‘([^“’]*”)/\1“\2/;ba;}' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(>)‘([^\n’“]*[^>]‘)/\1“\2/;ba;}' {} +
+
+# fix quotes randomly changing if they shouldn't
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(“[^\n“‘’”]*[.?!]\n###### [0-9]+\n<span class=[a-z-]+>[0-9]+<\/span>)‘/\1“/;ba;}' {} +
+
+# fix single quotes that don't get added to some lines
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(“[^‘”]*[^“‘]<\/span>)([^“‘<[])/\1“\2/;ba;}' {} +
+# single inside double one, two, and three times
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(“[^‘”]*‘[^“‘’”]*’[^‘”]<\/span>)([^“‘<[])/\1“\2/;ba;}' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(“[^‘”]*‘[^“‘’”]*’[^‘”]*‘[^“‘’”]*’[^‘”]<\/span>)([^“‘<[])/\1“\2/;ba;}' {} +
+find . -type f -wholename "*.md" -exec sed -i -E ':a;$!{N;s/(“[^‘”]*‘[^“‘’”]*’[^‘”]*‘[^“‘’”]*’[^‘”]*‘[^“‘’”]*’[^‘”]<\/span>)([^“‘<[])/\1“\2/;ba;}' {} +
+# double inside single inside double
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(“[^‘”]*‘[^“‘’”]*“[^“‘’”]*”[^“‘’”]*’[^‘”]<\/span>)([^“‘<[])/\1“\2/;ba;}' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(“[^‘”]*‘[^“‘’”]*“[^“‘’”]*”[^“‘’”]*’[^‘”]*‘[^“‘’”]*“[^“‘’”]*”[^“‘’”]*’[^‘”]<\/span>)([^“‘<[])/\1“\2/;ba;}' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(“[^‘”]*‘[^“‘’”]*“[^“‘’”]*”[^“‘’”]*’[^‘”]*‘[^“‘’”]*“[^“‘’”]*”[^“‘’”]*’[^‘”]*‘[^“‘’”]*“[^“‘’”]*”[^“‘’”]*’[^‘”]<\/span>)([^“‘<[])/\1“\2/;ba;}' {} +
+
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(‘[^“’]*[^“‘]<\/span>)([^“‘<[])/\1‘\2/;ba;}' {} +
+# double inside single one, two, and three times
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(‘[^“’]*“[^“‘’”]*”[^“’]*[^“‘]<\/span>)([^“‘<[])/\1‘\2/;ba;}' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(‘[^“’]*“[^“‘’”]*”[^“’]*“[^“‘’”]*”[^“’]*[^“‘]<\/span>)([^“‘<[])/\1‘\2/;ba;}' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(‘[^“’]*“[^“‘’”]*”[^“’]*“[^“‘’”]*”[^“’]*“[^\n“‘’”]*”[^“’]*[^“‘]<\/span>)([^“‘<[])/\1‘\2/;ba;}' {} +
+# sinle inside double inside single
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(‘[^“’]*“[^“‘’”]*‘[^“‘’”]*’[^“‘’”]*”[^“’]*[^“‘]<\/span>)([^“‘<[])/\1‘\2/;ba;}' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(‘[^“’]*“[^“‘’”]*‘[^“‘’”]*’[^“‘’”]*”[^“’]*“[^“‘’”]*‘[^“‘’”]*’[^“‘’”]*”[^“’]*[^“‘]<\/span>)([^“‘<[])/\1‘\2/;ba;}' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i -E ':a;$!{N;s/(‘[^“’]*“[^“‘’”]*‘[^“‘’”]*’[^“‘’”]*”[^“’]*“[^“‘’”]*‘[^“‘’”]*’[^“‘’”]*”[^“’]*“[^\n“‘’”]*‘[^“‘’”]*’[^“‘’”]*”[^“’]*[^“‘]<\/span>)([^“‘<[])/\1‘\2/;ba;}' {} +
+
+# fix possessive apostrophes
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/single_possessive/’s/g' {} +
+find . -type f -wholename "${scripture_dir}/*.md" -exec sed -i 's/double_possessive/s’/g' {} +
+
 printf '\nDownloaded the %s Bible.\n' "${translation}"
